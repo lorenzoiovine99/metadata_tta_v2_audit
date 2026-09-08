@@ -20,7 +20,6 @@ artifacts/*
 !artifacts/.gitkeep
 
 # Large data/checkpoints
-data/
 datasets/
 checkpoints/
 *.pt
