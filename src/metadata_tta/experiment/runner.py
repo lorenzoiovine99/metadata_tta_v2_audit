@@ -583,8 +583,28 @@ def run_experiment(
             )
         )
 
+        if method_name == "tent":
+
+            if single_model is None:
+                raise RuntimeError(
+                    "TENT requires a SingleHead "
+                    "source model."
+                )
+
+            source_model = single_model
+
+        else:
+
+            if double_model is None:
+                raise RuntimeError(
+                    f"{method_name} requires a "
+                    "DoubleHead source model."
+                )
+
+            source_model = double_model
+
         method = method_class(
-            source_model=double_model,
+            source_model=source_model,
             config=method_config,
             device=device,
         )

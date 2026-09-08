@@ -1,10 +1,13 @@
-from __future__ import annotations
-
 from .eval_fix import (
     EvalFixData,
     EvaluationYear,
     SourceYear,
     build_eval_fix,
+)
+
+from .eval_stream import (
+    EvalStreamData,
+    build_eval_stream,
 )
 
 from .eval_stream_tas import (
@@ -15,10 +18,12 @@ from .eval_stream_tas import (
 )
 
 __all__ = [
-    "EvalFixData",
-    "EvaluationYear",
     "SourceYear",
+    "EvaluationYear",
+    "EvalFixData",
+    "EvalStreamData",
     "build_eval_fix",
+    "build_eval_stream",
     "EvalStreamTASData",
     "OODStreamYear",
     "SourceStreamYear",

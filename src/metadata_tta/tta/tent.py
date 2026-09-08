@@ -16,7 +16,13 @@ class TentTTA(TTAMethod):
     """
     Test-time entropy minimization (TENT).
 
-    Only affine parameters of BatchNorm layers are adapted.
+    Stable V2 semantics:
+    - start from the SingleHead source model;
+    - do not use metadata labels;
+    - do not use main-task labels;
+    - adapt only affine BatchNorm parameters;
+    - use target-batch BatchNorm statistics;
+    - keep stochastic layers such as Dropout disabled.
 
     The evaluator must enforce the strict prequential order:
 
@@ -48,7 +54,6 @@ class TentTTA(TTAMethod):
         self.learning_rate = float(
             self.config["learning_rate"]
         )
-
         self.weight_decay = float(
             self.config.get(
                 "weight_decay",
@@ -69,7 +74,6 @@ class TentTTA(TTAMethod):
                 64,
             )
         )
-
         self.steps = int(
             self.config.get(
                 "steps",
@@ -118,6 +122,50 @@ class TentTTA(TTAMethod):
     # MODEL CONFIGURATION
     # ========================================================
 
+    @staticmethod
+    def _is_batch_norm(
+        module: nn.Module,
+    ) -> bool:
+        return isinstance(
+            module,
+            (
+                nn.BatchNorm1d,
+                nn.BatchNorm2d,
+                nn.BatchNorm3d,
+            ),
+        )
+
+    def _set_tent_mode(
+        self,
+    ) -> None:
+        """
+        Keep stochastic layers disabled while letting BatchNorm
+        layers use current target-batch statistics.
+
+        Important:
+        - model.eval() disables Dropout;
+        - BatchNorm modules are then put in train mode;
+        - track_running_stats=False makes BatchNorm use batch
+          statistics without deleting running_mean/running_var.
+
+        We deliberately do NOT set:
+
+            module.running_mean = None
+            module.running_var = None
+
+        because removing those registered buffers breaks exact
+        source-state restoration through load_state_dict(strict=True).
+        """
+
+        self.model.eval()
+
+        for module in self.model.modules():
+            if self._is_batch_norm(
+                module
+            ):
+                module.train()
+                module.track_running_stats = False
+
     def _configure_model(
         self,
     ) -> None:
@@ -126,11 +174,12 @@ class TentTTA(TTAMethod):
 
         - freeze every parameter;
         - enable only BatchNorm affine weight/bias;
-        - use batch statistics at test time;
-        - disable stored running statistics.
+        - use target-batch statistics at test time;
+        - keep running-stat buffers registered for exact reset;
+        - keep Dropout and other stochastic layers disabled.
         """
 
-        self.model.train()
+        self._set_tent_mode()
 
         for parameter in self.model.parameters():
             parameter.requires_grad_(
@@ -145,16 +194,13 @@ class TentTTA(TTAMethod):
 
         for module in self.model.modules():
 
-            if isinstance(
-                module,
-                (
-                    nn.BatchNorm1d,
-                    nn.BatchNorm2d,
-                    nn.BatchNorm3d,
-                ),
+            if self._is_batch_norm(
+                module
             ):
-
                 batch_norm_count += 1
+
+                module.train()
+                module.track_running_stats = False
 
                 if module.affine:
 
@@ -176,10 +222,6 @@ class TentTTA(TTAMethod):
                             module.bias
                         )
 
-                # TENT uses target-batch statistics rather
-                # than frozen source running statistics.
-                module.track_running_stats = False
-
         if batch_norm_count == 0:
             raise RuntimeError(
                 "TentTTA requires at least one "
@@ -199,7 +241,6 @@ class TentTTA(TTAMethod):
     def _build_optimizer(
         self,
     ) -> torch.optim.Optimizer:
-
         return torch.optim.Adam(
             self.trainable_parameters,
             lr=self.learning_rate,
@@ -219,7 +260,6 @@ class TentTTA(TTAMethod):
         self.optimizer = (
             self._build_optimizer()
         )
-
         self.sum_entropy = 0.0
         self.n_adapted_samples = 0
 
@@ -241,7 +281,6 @@ class TentTTA(TTAMethod):
                 dim=1,
             )
         )
-
         probabilities = (
             torch.softmax(
                 logits,
@@ -283,7 +322,7 @@ class TentTTA(TTAMethod):
                 "2 samples per batch."
             )
 
-        self.model.train()
+        self._set_tent_mode()
 
         with torch.no_grad():
 
@@ -327,7 +366,7 @@ class TentTTA(TTAMethod):
 
         self._record_observation()
 
-        self.model.train()
+        self._set_tent_mode()
 
         entropy_sum = 0.0
 
@@ -342,7 +381,6 @@ class TentTTA(TTAMethod):
             logits = self.model(
                 x_tensor
             )
-
             entropy = self._entropy(
                 logits
             )
@@ -368,7 +406,6 @@ class TentTTA(TTAMethod):
             mean_entropy
             * len(x_tensor)
         )
-
         self.n_adapted_samples += int(
             len(x_tensor)
         )
