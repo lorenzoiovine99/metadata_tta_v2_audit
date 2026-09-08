@@ -189,14 +189,21 @@ def _train_source_models(
     # MODEL CREATION
     # ========================================================
 
+    single_needed = (
+        config.baseline_enabled(
+            "single_head"
+        )
+        or config.method_enabled(
+            "tent"
+        )
+    )
+
     single_model = (
         _build_single_model(
             input_dim=input_dim,
             config=config,
         ).to(device)
-        if config.baseline_enabled(
-            "single_head"
-        )
+        if single_needed
         else None
     )
 
@@ -204,8 +211,10 @@ def _train_source_models(
         config.baseline_enabled(
             "double_head"
         )
-        or bool(
-            config.enabled_methods
+        or any(
+            method_name != "tent"
+            for method_name
+            in config.enabled_methods
         )
     )
 
@@ -337,11 +346,19 @@ def run_experiment(
     config: ExperimentConfig,
 ) -> ExperimentResult:
 
+    if config.protocol_name == "eval_stream_tas":
+        from metadata_tta.experiment.eval_stream_tas_runner import (
+            run_eval_stream_tas,
+        )
+
+        return run_eval_stream_tas(
+            config
+        )
+
     if config.protocol_name != "eval_fix":
         raise NotImplementedError(
             "The V2 runner currently executes "
-            "Eval-Fix only. Eval-Stream will be "
-            "connected after Eval-Fix parity."
+            "Eval-Fix and Eval-Stream-TAS only."
         )
 
     set_seed(
@@ -380,10 +397,24 @@ def run_experiment(
         )
     )
 
-    if double_model is None:
+    double_required = (
+        config.baseline_enabled(
+            "double_head"
+        )
+        or any(
+            method_name != "tent"
+            for method_name
+            in config.enabled_methods
+        )
+    )
+
+    if (
+        double_required
+        and double_model is None
+    ):
         raise RuntimeError(
             "Double-head source model is required "
-            "for the stable TTA methods."
+            "for double-head baselines and metadata TTA methods."
         )
 
     # ========================================================

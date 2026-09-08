@@ -191,3 +191,50 @@ class ResultsWriter:
                 sort_keys=True,
                 default=str,
             )
+
+    def write_tas_rows(
+        self,
+        rows: list[dict[str, Any]],
+    ) -> None:
+
+        path = (
+            self.metrics_directory
+            / "tas.csv"
+        )
+
+        fieldnames = [
+            "year",
+            "method",
+            "family",
+            "accuracy",
+            "frozen_reference_method",
+            "frozen_reference_accuracy",
+            "supervised_reference_method",
+            "supervised_reference_accuracy",
+            "tas",
+            "tas_defined",
+        ]
+
+        with path.open(
+            "w",
+            newline="",
+            encoding="utf-8",
+        ) as handle:
+
+            writer = csv.DictWriter(
+                handle,
+                fieldnames=fieldnames,
+            )
+
+            writer.writeheader()
+
+            for row in rows:
+                writer.writerow(
+                    {
+                        key: row.get(
+                            key,
+                            "",
+                        )
+                        for key in fieldnames
+                    }
+                )

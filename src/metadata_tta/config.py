@@ -14,6 +14,7 @@ import yaml
 VALID_PROTOCOLS = {
     "eval_fix",
     "eval_stream",
+    "eval_stream_tas",
 }
 
 
@@ -284,6 +285,11 @@ class ExperimentConfig:
                 section
             )
 
+        elif name == "eval_stream_tas":
+            self._validate_eval_stream_tas_protocol(
+                section
+            )
+
     def _validate_eval_fix_protocol(
         self,
         section: Mapping[str, Any],
@@ -328,6 +334,53 @@ class ExperimentConfig:
         if source_end >= ood_start:
             raise ConfigError(
                 "Eval-Fix requires source_end_year "
+                "< ood_start_year."
+            )
+
+    def _validate_eval_stream_tas_protocol(
+        self,
+        section: Mapping[str, Any],
+    ) -> None:
+
+        source_start = self._require_integer(
+            section,
+            "source_start_year",
+            "protocol",
+        )
+
+        source_end = self._require_integer(
+            section,
+            "source_end_year",
+            "protocol",
+        )
+
+        ood_start = self._require_integer(
+            section,
+            "ood_start_year",
+            "protocol",
+        )
+
+        ood_end = self._require_integer(
+            section,
+            "ood_end_year",
+            "protocol",
+        )
+
+        if source_start > source_end:
+            raise ConfigError(
+                "protocol.source_start_year must be "
+                "<= protocol.source_end_year."
+            )
+
+        if ood_start > ood_end:
+            raise ConfigError(
+                "protocol.ood_start_year must be "
+                "<= protocol.ood_end_year."
+            )
+
+        if source_end >= ood_start:
+            raise ConfigError(
+                "Eval-Stream-TAS requires source_end_year "
                 "< ood_start_year."
             )
 
