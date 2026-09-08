@@ -1,0 +1,123 @@
+experiment:
+  name: fmow_eval_fix
+  seed: 42
+
+paths:
+  data_root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/new_FMoW_embeddings_remapped
+  results_root: results
+  artifacts_root: artifacts
+  cache_root: .cache
+
+dataset:
+  name: fmow
+  n_classes_main: 52
+  n_classes_aux: 11
+
+  split:
+    test_size: 0.20
+    validation_size_within_train: 0.125
+    seed: 42
+
+protocol:
+  name: eval_fix
+
+  source_start_year: 2002
+  source_end_year: 2012
+
+  ood_start_year: 2013
+  ood_end_year: 2017
+
+pca:
+  enabled: false
+
+model:
+  shared_hidden_dim: 512
+  adapter_bottleneck_dim: 64
+  dropout: 0.1
+  use_shared_trunk: true
+
+training:
+  base:
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    epochs: 10
+    batch_size: 64
+
+  double_head:
+    aux_loss_weight: 1.0
+
+  temporal:
+    enabled: true
+    learning_rate: 0.0001
+    epochs: 2
+    reset_optimizer_each_year: false
+
+baselines:
+  single_head: true
+  double_head: true
+
+methods:
+  metadata: true
+  temporal_gradient: true
+  consensus: true
+  tent: true
+  experimental: false
+
+metadata:
+  learning_rate: 1.0e-6
+  batch_size: 1
+  regularization: 0.01
+  gradient_clip: 0.1
+  normalized_aux_loss_threshold: 0.5
+  steps: 1
+  episodic: false
+  reset_each_year: false
+
+temporal_gradient:
+  learning_rate: 1.0e-6
+  batch_size: 1
+  regularization: 0.01
+  gradient_clip: 0.1
+  normalized_aux_loss_threshold: 0.5
+  steps: 1
+
+  beta: 0.95
+  orthogonal_scale: 0.1
+  warmup_updates: 16
+  epsilon: 1.0e-12
+
+  reset_each_year: false
+
+consensus:
+  learning_rate: 1.0e-6
+  batch_size: 1
+  regularization: 0.01
+  gradient_clip: 0.1
+  normalized_aux_loss_threshold: 0.5
+  steps: 1
+
+  consensus_beta: 0.95
+  class_warmup_updates: 4
+  current_gradient_weight: 0.50
+  memory_gradient_weight: 0.50
+  preserve_gradient_norm: true
+  min_consensus_cosine: 0.0
+  epsilon: 1.0e-12
+
+  reset_each_year: false
+
+tent:
+  optimizer: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  batch_size: 64
+  steps: 1
+  reset_each_year: true
+
+cache:
+  enabled: true
+  version: v2
+
+output:
+  save_diagnostics: true
+  save_plots: false
