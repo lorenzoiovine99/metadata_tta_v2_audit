@@ -65,34 +65,113 @@ class TrainingSchedule:
 
     initialized_from_previous: bool
 
+def _merged_training_section(
+    config: ExperimentConfig,
+    model_kind: str | None,
+) -> tuple[
+    dict[str, Any],
+    dict[str, Any],
+]:
+
+    training = config.section(
+        "training"
+    )
+
+    base = dict(
+        training[
+            "base"
+        ]
+    )
+
+    temporal = dict(
+        training[
+            "temporal"
+        ]
+    )
+
+    if model_kind is None:
+        return (
+            base,
+            temporal,
+        )
+
+    head_section = training.get(
+        model_kind,
+        {}
+    )
+
+    if not isinstance(
+        head_section,
+        dict,
+    ):
+        return (
+            base,
+            temporal,
+        )
+
+    # Optional per-head base-training overrides.
+    for key in (
+        "learning_rate",
+        "weight_decay",
+        "epochs",
+        "batch_size",
+    ):
+        if key in head_section:
+            base[
+                key
+            ] = head_section[
+                key
+            ]
+
+    head_temporal = (
+        head_section.get(
+            "temporal",
+            {},
+        )
+    )
+
+    if isinstance(
+        head_temporal,
+        dict,
+    ):
+        temporal.update(
+            head_temporal
+        )
+
+    return (
+        base,
+        temporal,
+    )
 
 def build_training_schedule(
     config: ExperimentConfig,
     initialized_from_previous: bool,
+    model_kind: str | None = None,
 ) -> TrainingSchedule:
     """
     Determine supervised training hyperparameters.
 
-    First source year
-    -----------------
-    Uses training.base.
+    model_kind can be:
+        None
+        "single_head"
+        "double_head"
 
-    Later source years
-    ------------------
-    If training.temporal.enabled is True, use temporal
-    fine-tuning hyperparameters.
+    Per-head overrides are optional and backward compatible.
 
-    Otherwise the base hyperparameters are reused.
+    Examples:
+        training.single_head.learning_rate
+        training.double_head.batch_size
+
+        training.single_head.temporal.learning_rate
+        training.double_head.temporal.learning_rate
     """
 
-    base = config.get(
-        "training",
-        "base",
-    )
-
-    temporal = config.get(
-        "training",
-        "temporal",
+    (
+        base,
+        temporal,
+    ) = _merged_training_section(
+        config=config,
+        model_kind=model_kind,
     )
 
     if (
@@ -136,8 +215,6 @@ def build_training_schedule(
             ]
         )
 
-        # A newly initialized model always requires
-        # a newly initialized optimizer.
         reset_optimizer = True
 
     return TrainingSchedule(
@@ -153,12 +230,41 @@ def build_training_schedule(
                 "weight_decay"
             ]
         ),
-        reset_optimizer=reset_optimizer,
+        reset_optimizer=(
+            reset_optimizer
+        ),
         initialized_from_previous=bool(
             initialized_from_previous
         ),
     )
 
+def _merged_model_config(
+    config: ExperimentConfig,
+    model_kind: str,
+) -> dict[str, Any]:
+
+    model_config = (
+        config.section(
+            "model"
+        )
+    )
+
+    head_overrides = (
+        model_config.get(
+            model_kind,
+            {},
+        )
+    )
+
+    if isinstance(
+        head_overrides,
+        dict,
+    ):
+        model_config.update(
+            head_overrides
+        )
+
+    return model_config
 
 # ============================================================
 # MODEL CREATION
@@ -176,8 +282,9 @@ def create_single_head_model(
         "dataset"
     )
 
-    model_config = config.section(
-        "model"
+    model_config = _merged_model_config(
+        config=config,
+        model_kind="single_head",
     )
 
     return SingleHeadClassifier(
@@ -224,8 +331,9 @@ def create_double_head_model(
         "dataset"
     )
 
-    model_config = config.section(
-        "model"
+    model_config = _merged_model_config(
+        config=config,
+        model_kind="double_head",
     )
 
     return DoubleHeadClassifier(

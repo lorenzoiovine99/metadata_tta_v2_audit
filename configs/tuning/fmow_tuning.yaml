@@ -1,0 +1,295 @@
+base_config: configs/fmow_eval_stream_tas.yaml
+
+output_root: results/tuning/fmow
+
+
+# ============================================================
+# BASELINE TUNING
+# ============================================================
+
+baseline:
+
+  # ----------------------------------------------------------
+  # STAGE 1
+  #
+  # Tune the common supervised baseline.
+  # ----------------------------------------------------------
+
+  single_head:
+    enabled: true
+    search_strategy: grid
+
+    start_year: 2002
+    end_year: 2012
+
+    space:
+
+      learning_rate:
+        values:
+          - 0.001
+        paths:
+          - training.single_head.learning_rate
+
+      weight_decay:
+        values:
+          - 0.0
+        paths:
+          - training.single_head.weight_decay
+
+      dropout:
+        values:
+          - 0.1
+        paths:
+          - model.single_head.dropout
+
+      shared_hidden_dim:
+        values:
+          - 256
+        paths:
+          - model.single_head.shared_hidden_dim
+
+      batch_size:
+        values:
+          - 32
+        paths:
+          - training.single_head.batch_size
+
+
+  # ----------------------------------------------------------
+  # STAGE 2
+  #
+  # Start from best single-head common hyperparameters.
+  # Tune ONLY the additional double-head parameter.
+  # ----------------------------------------------------------
+
+  double_head:
+    enabled: true
+    search_strategy: grid
+
+    start_year: 2002
+    end_year: 2012
+
+    inherits_from: single_head
+
+    # Logical single-head best parameter
+    #        ↓
+    # corresponding double-head config path
+    inherit_parameters:
+
+      learning_rate:
+        - training.double_head.learning_rate
+
+      weight_decay:
+        - training.double_head.weight_decay
+
+      dropout:
+        - model.double_head.dropout
+
+      shared_hidden_dim:
+        - model.double_head.shared_hidden_dim
+
+      batch_size:
+        - training.double_head.batch_size
+
+    space:
+
+      aux_loss_weight:
+        values:
+          - 0.1
+          - 0.2
+          - 0.3
+          - 0.4
+          - 0.5
+          - 0.6
+          - 0.8
+          - 1.0
+        paths:
+          - training.double_head.aux_loss_weight
+
+
+# ============================================================
+# TTA TUNING
+# ============================================================
+
+tta:
+
+  # 2002-2008 = pseudo-source
+  #
+  # 2009 -> 2010 -> 2011 -> 2012
+  # = continuous pseudo-OOD stream
+
+  stream_start_year: 2009
+
+  methods:
+
+    # --------------------------------------------------------
+    # STAGE 3
+    #
+    # Base metadata adaptation method.
+    # Tune common metadata-based TTA hyperparameters.
+    # --------------------------------------------------------
+
+    metadata:
+      enabled: true
+      search_strategy: grid
+
+      space:
+
+        learning_rate:
+          values:
+            - 1.0e-6
+          paths:
+            - metadata.learning_rate
+
+        regularization:
+          values:
+            - 0.001
+          paths:
+            - metadata.regularization
+
+        gradient_clip:
+          values:
+            - 0.1
+          paths:
+            - metadata.gradient_clip
+
+        normalized_aux_loss_threshold:
+          values:
+            - 0.1
+            - 0.25
+            - 0.5
+            - 0.75
+            - 1.0
+            - 1.5
+            - 2.0
+          paths:
+            - metadata.normalized_aux_loss_threshold
+
+
+    # --------------------------------------------------------
+    # STAGE 4
+    #
+    # Inherit common adaptation hyperparameters from Metadata.
+    # Tune ONLY Temporal Gradient specific parameters.
+    # --------------------------------------------------------
+
+    temporal_gradient:
+      enabled: true
+      search_strategy: grid
+
+      inherits_from: metadata
+
+      inherit_parameters:
+
+        learning_rate:
+          - temporal_gradient.learning_rate
+
+        regularization:
+          - temporal_gradient.regularization
+
+        gradient_clip:
+          - temporal_gradient.gradient_clip
+
+        normalized_aux_loss_threshold:
+          - temporal_gradient.normalized_aux_loss_threshold
+
+      space:
+
+        beta:
+          values:
+            - 0.95
+          paths:
+            - temporal_gradient.beta
+
+        orthogonal_scale:
+          values:
+            - 0.5
+          paths:
+            - temporal_gradient.orthogonal_scale
+
+        warmup_updates:
+          values:
+            - 16
+          paths:
+            - temporal_gradient.warmup_updates
+
+
+    # --------------------------------------------------------
+    # STAGE 5
+    #
+    # Same common Metadata parameters.
+    # Tune ONLY Consensus-specific parameters.
+    # --------------------------------------------------------
+
+    consensus:
+      enabled: true
+      search_strategy: grid
+
+      inherits_from: metadata
+
+      inherit_parameters:
+
+        learning_rate:
+          - consensus.learning_rate
+
+        regularization:
+          - consensus.regularization
+
+        gradient_clip:
+          - consensus.gradient_clip
+
+        normalized_aux_loss_threshold:
+          - consensus.normalized_aux_loss_threshold
+
+      space:
+
+        consensus_beta:
+          values:
+            - 0.95
+          paths:
+            - consensus.consensus_beta
+
+        class_warmup_updates:
+          values:
+            - 8
+          paths:
+            - consensus.class_warmup_updates
+
+        gradient_mix:
+          value_overrides:
+            - label: alpha_0.75
+              overrides:
+                consensus.current_gradient_weight: 0.75
+                consensus.memory_gradient_weight: 0.25
+
+        min_consensus_cosine:
+          values:
+            - 0.0
+          paths:
+            - consensus.min_consensus_cosine
+
+
+    # --------------------------------------------------------
+    # STAGE 6
+    #
+    # TENT is independent from Metadata TTA.
+    # It automatically uses the tuned single-head source.
+    # --------------------------------------------------------
+
+    tent:
+      enabled: true
+      search_strategy: grid
+
+      space:
+
+        learning_rate:
+          values:
+            - 0.001
+          paths:
+            - tent.learning_rate
+
+        batch_size:
+          values:
+            - 64
+          paths:
+            - tent.batch_size

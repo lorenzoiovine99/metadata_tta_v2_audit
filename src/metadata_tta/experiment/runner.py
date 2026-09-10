@@ -87,6 +87,21 @@ def _build_single_model(
         "model"
     )
 
+    single_overrides = (
+        model_config.get(
+            "single_head",
+            {},
+        )
+    )
+
+    if isinstance(
+        single_overrides,
+        dict,
+    ):
+        model_config.update(
+            single_overrides
+        )
+
     dataset_config = config.section(
         "dataset"
     )
@@ -129,6 +144,21 @@ def _build_double_model(
     model_config = config.section(
         "model"
     )
+
+    double_overrides = (
+        model_config.get(
+            "double_head",
+            {},
+        )
+    )
+
+    if isinstance(
+        double_overrides,
+        dict,
+    ):
+        model_config.update(
+            double_overrides
+        )
 
     dataset_config = config.section(
         "dataset"
@@ -252,19 +282,30 @@ def _train_source_models(
             year_index > 0
         )
 
-        schedule = build_training_schedule(
-            config=config,
-            initialized_from_previous=(
-                initialized_from_previous
-            ),
+        single_schedule = (
+            build_training_schedule(
+                config=config,
+                initialized_from_previous=(
+                    initialized_from_previous
+                ),
+                model_kind="single_head",
+            )
+        )
+
+        double_schedule = (
+            build_training_schedule(
+                config=config,
+                initialized_from_previous=(
+                    initialized_from_previous
+                ),
+                model_kind="double_head",
+            )
         )
 
         print()
         print(
             f"Source year {year_data.year} | "
-            f"n={len(year_data.y_main_supervised)} | "
-            f"epochs={schedule.epochs} | "
-            f"lr={schedule.learning_rate:g}"
+            f"n={len(year_data.y_main_supervised)}"
         )
 
         # ----------------------------------------------------
@@ -279,7 +320,7 @@ def _train_source_models(
                 y_main=(
                     year_data.y_main_supervised
                 ),
-                schedule=schedule,
+                schedule=single_schedule,
                 device=device,
                 optimizer=single_optimizer,
             )
@@ -309,7 +350,7 @@ def _train_source_models(
                 y_aux=(
                     year_data.y_aux_supervised
                 ),
-                schedule=schedule,
+                schedule=double_schedule,
                 aux_loss_weight=(
                     aux_loss_weight
                 ),

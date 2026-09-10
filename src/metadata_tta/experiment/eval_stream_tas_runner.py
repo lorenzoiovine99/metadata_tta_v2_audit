@@ -155,20 +155,31 @@ def _train_source_models_with_yearly_id(
             year_index > 0
         )
 
-        schedule = build_training_schedule(
-            config=config,
-            initialized_from_previous=(
-                initialized_from_previous
-            ),
+        single_schedule = (
+            build_training_schedule(
+                config=config,
+                initialized_from_previous=(
+                    initialized_from_previous
+                ),
+                model_kind="single_head",
+            )
+        )
+
+        double_schedule = (
+            build_training_schedule(
+                config=config,
+                initialized_from_previous=(
+                    initialized_from_previous
+                ),
+                model_kind="double_head",
+            )
         )
 
         print()
         print(
             f"Source year {year_data.year} | "
             f"train_n={len(year_data.y_main_supervised)} | "
-            f"id_n={len(year_data.y_main_id)} | "
-            f"epochs={schedule.epochs} | "
-            f"lr={schedule.learning_rate:g}"
+            f"id_n={len(year_data.y_main_id)}"
         )
 
         if single_model is not None:
@@ -179,7 +190,7 @@ def _train_source_models_with_yearly_id(
                 y_main=(
                     year_data.y_main_supervised
                 ),
-                schedule=schedule,
+                schedule=single_schedule,
                 device=device,
                 optimizer=single_optimizer,
             )
@@ -221,7 +232,7 @@ def _train_source_models_with_yearly_id(
                 y_aux=(
                     year_data.y_aux_supervised
                 ),
-                schedule=schedule,
+                schedule=double_schedule,
                 aux_loss_weight=(
                     aux_loss_weight
                 ),
@@ -286,6 +297,7 @@ def _fine_tune_single_reference(
         schedule = build_training_schedule(
             config=config,
             initialized_from_previous=True,
+            model_kind="single_head",
         )
 
         result = train_single_head(
@@ -333,6 +345,7 @@ def _fine_tune_double_reference(
         schedule = build_training_schedule(
             config=config,
             initialized_from_previous=True,
+            model_kind="double_head",
         )
 
         result = train_double_head(
