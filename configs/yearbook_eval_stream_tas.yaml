@@ -3,15 +3,15 @@ experiment:
   seed: 42
 
 paths:
-  data_root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/new_FMoW_embeddings_remapped
+  data_root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/moco_embedding/yearbook_embeddings_csv_encoded
   results_root: results
   artifacts_root: artifacts
   cache_root: .cache
 
 dataset:
-  name: fmow
-  n_classes_main: 52
-  n_classes_aux: 11
+  name: yearbook
+  n_classes_main: 2
+  n_classes_aux: 23
 
   split:
     test_size: 0.20
@@ -21,10 +21,10 @@ dataset:
 protocol:
   name: eval_stream_tas
 
-  source_start_year: 2002
-  source_end_year: 2012
-  ood_start_year: 2013
-  ood_end_year: 2017
+  source_start_year: 1930
+  source_end_year: 1970
+  ood_start_year: 1971
+  ood_end_year: 2013
 
 pca:
   enabled: false
