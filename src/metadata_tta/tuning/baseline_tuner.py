@@ -186,7 +186,6 @@ def _year_split(
 # SINGLE-HEAD TRIAL
 # ============================================================
 
-
 def _run_single_trial(
     config: ExperimentConfig,
     bundle: DataBundle,
@@ -238,15 +237,38 @@ def _run_single_trial(
 
         result = train_single_head(
             model=model,
+
             X=X_train,
+
             y_main=y_main_train,
+
             schedule=schedule,
+
             device=device,
+
             optimizer=optimizer,
+
+            X_validation=(
+                X_validation
+            ),
+
+            y_main_validation=(
+                y_main_validation
+            ),
+
+            log_prefix=(
+                f"Baseline tuning {year} | "
+                "Single Head"
+            ),
         )
 
-        model = result.model
-        optimizer = result.optimizer
+        model = (
+            result.model
+        )
+
+        optimizer = (
+            result.optimizer
+        )
 
         record = (
             evaluate_frozen_year(
@@ -264,18 +286,18 @@ def _run_single_trial(
         )
 
         accuracies[
-            str(year)
+            str(
+                year
+            )
         ] = float(
             record.accuracy
         )
 
     return accuracies
 
-
 # ============================================================
 # DOUBLE-HEAD TRIAL
 # ============================================================
-
 
 def _run_double_trial(
     config: ExperimentConfig,
@@ -315,7 +337,7 @@ def _run_double_trial(
             y_aux_train,
             X_validation,
             y_main_validation,
-            _,
+            y_aux_validation,
         ) = _year_split(
             bundle=bundle,
             config=config,
@@ -334,19 +356,52 @@ def _run_double_trial(
 
         result = train_double_head(
             model=model,
+
             X=X_train,
-            y_main=y_main_train,
-            y_aux=y_aux_train,
+
+            y_main=(
+                y_main_train
+            ),
+
+            y_aux=(
+                y_aux_train
+            ),
+
             schedule=schedule,
+
             aux_loss_weight=(
                 aux_loss_weight
             ),
+
             device=device,
+
             optimizer=optimizer,
+
+            X_validation=(
+                X_validation
+            ),
+
+            y_main_validation=(
+                y_main_validation
+            ),
+
+            y_aux_validation=(
+                y_aux_validation
+            ),
+
+            log_prefix=(
+                f"Baseline tuning {year} | "
+                "Double Head"
+            ),
         )
 
-        model = result.model
-        optimizer = result.optimizer
+        model = (
+            result.model
+        )
+
+        optimizer = (
+            result.optimizer
+        )
 
         record = (
             evaluate_frozen_year(
@@ -364,13 +419,14 @@ def _run_double_trial(
         )
 
         accuracies[
-            str(year)
+            str(
+                year
+            )
         ] = float(
             record.accuracy
         )
 
     return accuracies
-
 
 # ============================================================
 # INHERITANCE

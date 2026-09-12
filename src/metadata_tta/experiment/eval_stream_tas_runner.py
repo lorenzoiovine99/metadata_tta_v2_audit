@@ -75,7 +75,6 @@ def _concat_year_arrays(
         axis=0,
     )
 
-
 def _train_source_models_with_yearly_id(
     protocol_data: EvalStreamTASData,
     config: ExperimentConfig,
@@ -147,6 +146,10 @@ def _train_source_models_with_yearly_id(
         EvaluationRecord
     ] = []
 
+    # ========================================================
+    # SEQUENTIAL SOURCE TRAINING
+    # ========================================================
+
     for year_index, year_data in enumerate(
         protocol_data.source_years
     ):
@@ -177,42 +180,77 @@ def _train_source_models_with_yearly_id(
 
         print()
         print(
-            f"Source year {year_data.year} | "
-            f"train_n={len(year_data.y_main_supervised)} | "
-            f"id_n={len(year_data.y_main_id)}"
+            "=" * 80
         )
+        print(
+            f"Source year {year_data.year} | "
+            f"train_n="
+            f"{len(year_data.y_main_supervised)} | "
+            f"val_n="
+            f"{len(year_data.y_main_validation)} | "
+            f"id_n="
+            f"{len(year_data.y_main_id)}"
+        )
+        print(
+            "=" * 80
+        )
+
+        # ====================================================
+        # SINGLE HEAD
+        # ====================================================
 
         if single_model is not None:
 
             result = train_single_head(
                 model=single_model,
-                X=year_data.X_supervised,
+
+                X=(
+                    year_data.X_supervised
+                ),
+
                 y_main=(
                     year_data.y_main_supervised
                 ),
+
                 schedule=single_schedule,
+
                 device=device,
+
                 optimizer=single_optimizer,
+
+                X_validation=(
+                    year_data.X_validation
+                ),
+
+                y_main_validation=(
+                    year_data.y_main_validation
+                ),
+
+                log_prefix=(
+                    f"Source {year_data.year} | "
+                    "Single Head"
+                ),
             )
 
-            single_model = result.model
+            single_model = (
+                result.model
+            )
+
             single_optimizer = (
                 result.optimizer
-            )
-
-            print(
-                "  Single Head loss:",
-                f"{result.mean_epoch_losses[-1]:.6f}",
             )
 
             if config.baseline_enabled(
                 "single_head"
             ):
+
                 id_records.append(
                     evaluate_frozen_year(
                         model=single_model,
                         X=year_data.X_id,
-                        y_main=year_data.y_main_id,
+                        y_main=(
+                            year_data.y_main_id
+                        ),
                         year=year_data.year,
                         method_name=(
                             "single_head_frozen"
@@ -221,43 +259,74 @@ def _train_source_models_with_yearly_id(
                     )
                 )
 
+        # ====================================================
+        # DOUBLE HEAD
+        # ====================================================
+
         if double_model is not None:
 
             result = train_double_head(
                 model=double_model,
-                X=year_data.X_supervised,
+
+                X=(
+                    year_data.X_supervised
+                ),
+
                 y_main=(
                     year_data.y_main_supervised
                 ),
+
                 y_aux=(
                     year_data.y_aux_supervised
                 ),
+
                 schedule=double_schedule,
+
                 aux_loss_weight=(
                     aux_loss_weight
                 ),
+
                 device=device,
+
                 optimizer=double_optimizer,
+
+                X_validation=(
+                    year_data.X_validation
+                ),
+
+                y_main_validation=(
+                    year_data.y_main_validation
+                ),
+
+                y_aux_validation=(
+                    year_data.y_aux_validation
+                ),
+
+                log_prefix=(
+                    f"Source {year_data.year} | "
+                    "Double Head"
+                ),
             )
 
-            double_model = result.model
+            double_model = (
+                result.model
+            )
+
             double_optimizer = (
                 result.optimizer
-            )
-
-            print(
-                "  Double Head loss:",
-                f"{result.mean_epoch_losses[-1]:.6f}",
             )
 
             if config.baseline_enabled(
                 "double_head"
             ):
+
                 id_records.append(
                     evaluate_frozen_year(
                         model=double_model,
                         X=year_data.X_id,
-                        y_main=year_data.y_main_id,
+                        y_main=(
+                            year_data.y_main_id
+                        ),
                         year=year_data.year,
                         method_name=(
                             "double_head_frozen"
@@ -278,7 +347,6 @@ def _train_source_models_with_yearly_id(
         id_records,
     )
 
-
 def _fine_tune_single_reference(
     source_model: nn.Module,
     ood_years: list[OODStreamYear],
@@ -294,30 +362,66 @@ def _fine_tune_single_reference(
 
     for year_data in ood_years:
 
-        schedule = build_training_schedule(
-            config=config,
-            initialized_from_previous=True,
-            model_kind="single_head",
+        schedule = (
+            build_training_schedule(
+                config=config,
+                initialized_from_previous=True,
+                model_kind="single_head",
+            )
+        )
+
+        print()
+        print(
+            f"TAS supervised Single Head | "
+            f"fine-tuning year {year_data.year} | "
+            f"train_n="
+            f"{len(year_data.y_main_reference_train)} | "
+            f"val_n="
+            f"{len(year_data.y_main_reference_validation)}"
         )
 
         result = train_single_head(
             model=model,
-            X=year_data.X_reference_train,
+
+            X=(
+                year_data.X_reference_train
+            ),
+
             y_main=(
                 year_data.y_main_reference_train
             ),
+
             schedule=schedule,
+
             device=device,
+
             optimizer=optimizer,
+
+            X_validation=(
+                year_data.X_reference_validation
+            ),
+
+            y_main_validation=(
+                year_data.y_main_reference_validation
+            ),
+
+            log_prefix=(
+                f"TAS {year_data.year} | "
+                "Single Head"
+            ),
         )
 
-        model = result.model
-        optimizer = result.optimizer
+        model = (
+            result.model
+        )
+
+        optimizer = (
+            result.optimizer
+        )
 
     model.eval()
 
     return model
-
 
 def _fine_tune_double_reference(
     source_model: nn.Module,
@@ -342,36 +446,78 @@ def _fine_tune_double_reference(
 
     for year_data in ood_years:
 
-        schedule = build_training_schedule(
-            config=config,
-            initialized_from_previous=True,
-            model_kind="double_head",
+        schedule = (
+            build_training_schedule(
+                config=config,
+                initialized_from_previous=True,
+                model_kind="double_head",
+            )
+        )
+
+        print()
+        print(
+            f"TAS supervised Double Head | "
+            f"fine-tuning year {year_data.year} | "
+            f"train_n="
+            f"{len(year_data.y_main_reference_train)} | "
+            f"val_n="
+            f"{len(year_data.y_main_reference_validation)}"
         )
 
         result = train_double_head(
             model=model,
-            X=year_data.X_reference_train,
+
+            X=(
+                year_data.X_reference_train
+            ),
+
             y_main=(
                 year_data.y_main_reference_train
             ),
+
             y_aux=(
                 year_data.y_aux_reference_train
             ),
+
             schedule=schedule,
+
             aux_loss_weight=(
                 aux_loss_weight
             ),
+
             device=device,
+
             optimizer=optimizer,
+
+            X_validation=(
+                year_data.X_reference_validation
+            ),
+
+            y_main_validation=(
+                year_data.y_main_reference_validation
+            ),
+
+            y_aux_validation=(
+                year_data.y_aux_reference_validation
+            ),
+
+            log_prefix=(
+                f"TAS {year_data.year} | "
+                "Double Head"
+            ),
         )
 
-        model = result.model
-        optimizer = result.optimizer
+        model = (
+            result.model
+        )
+
+        optimizer = (
+            result.optimizer
+        )
 
     model.eval()
 
     return model
-
 
 def _evaluate_supervised_references(
     source_single_model: nn.Module | None,

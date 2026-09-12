@@ -521,9 +521,58 @@ class ExperimentConfig:
                 "model.use_shared_trunk must be boolean."
             )
 
-    # --------------------------------------------------------
-    # Training
-    # --------------------------------------------------------
+    def _validate_early_stopping(
+        self,
+        section: Mapping[str, Any],
+        section_name: str,
+    ) -> None:
+        early_stopping = section.get(
+            "early_stopping"
+        )
+
+        # Backward compatibility:
+        # old configs without early_stopping remain valid.
+        if early_stopping is None:
+            return
+
+        if not isinstance(
+            early_stopping,
+            Mapping,
+        ):
+            raise ConfigError(
+                f"{section_name}.early_stopping "
+                "must be a mapping."
+            )
+
+        enabled = early_stopping.get(
+            "enabled"
+        )
+
+        if not isinstance(
+            enabled,
+            bool,
+        ):
+            raise ConfigError(
+                f"{section_name}.early_stopping.enabled "
+                "must be boolean."
+            )
+
+        if not enabled:
+            return
+
+        self._require_integer(
+            early_stopping,
+            "patience",
+            f"{section_name}.early_stopping",
+            minimum=1,
+        )
+
+        self._require_non_negative_number(
+            early_stopping,
+            "min_delta",
+            f"{section_name}.early_stopping",
+        )
+
 
     def _validate_training(
         self,
@@ -532,6 +581,10 @@ class ExperimentConfig:
         section = self._require_mapping(
             "training"
         )
+
+        # ========================================================
+        # BASE TRAINING
+        # ========================================================
 
         base = section.get(
             "base"
@@ -571,6 +624,15 @@ class ExperimentConfig:
             minimum=1,
         )
 
+        self._validate_early_stopping(
+            base,
+            "training.base",
+        )
+
+        # ========================================================
+        # DOUBLE HEAD
+        # ========================================================
+
         double_head = section.get(
             "double_head"
         )
@@ -588,6 +650,10 @@ class ExperimentConfig:
             "aux_loss_weight",
             "training.double_head",
         )
+
+        # ========================================================
+        # TEMPORAL / YEARLY FINE-TUNING
+        # ========================================================
 
         temporal = section.get(
             "temporal"
@@ -612,6 +678,11 @@ class ExperimentConfig:
             raise ConfigError(
                 "training.temporal.enabled must be boolean."
             )
+
+        self._validate_early_stopping(
+            temporal,
+            "training.temporal",
+        )
 
         if enabled:
             self._require_positive_number(

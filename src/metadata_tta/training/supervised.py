@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass
 from typing import Any
 
@@ -36,12 +37,20 @@ class TrainingResult:
 
     optimizer: Optimizer
 
+    # Number of epochs actually executed.
     epochs: int
 
     learning_rate: float
 
     mean_epoch_losses: list[float]
 
+    validation_losses: list[float]
+
+    best_epoch: int
+
+    best_validation_loss: float
+
+    stopped_early: bool
 
 # ============================================================
 # TEMPORAL TRAINING SCHEDULE
@@ -64,6 +73,12 @@ class TrainingSchedule:
     reset_optimizer: bool
 
     initialized_from_previous: bool
+
+    early_stopping_enabled: bool
+
+    early_stopping_patience: int
+
+    early_stopping_min_delta: float
 
 def _merged_training_section(
     config: ExperimentConfig,
@@ -156,14 +171,13 @@ def build_training_schedule(
         "single_head"
         "double_head"
 
-    Per-head overrides are optional and backward compatible.
+    The first supervised stage uses training.base.
 
-    Examples:
-        training.single_head.learning_rate
-        training.double_head.batch_size
+    Later yearly stages use training.temporal when enabled.
 
-        training.single_head.temporal.learning_rate
-        training.double_head.temporal.learning_rate
+    Early stopping settings follow the same rule:
+        training.base.early_stopping
+        training.temporal.early_stopping
     """
 
     (
@@ -201,6 +215,11 @@ def build_training_schedule(
             ]
         )
 
+        early_stopping = temporal.get(
+            "early_stopping",
+            {},
+        )
+
     else:
 
         learning_rate = float(
@@ -217,24 +236,73 @@ def build_training_schedule(
 
         reset_optimizer = True
 
+        early_stopping = base.get(
+            "early_stopping",
+            {},
+        )
+
+    if not isinstance(
+        early_stopping,
+        dict,
+    ):
+        early_stopping = {}
+
+    early_stopping_enabled = bool(
+        early_stopping.get(
+            "enabled",
+            False,
+        )
+    )
+
+    early_stopping_patience = int(
+        early_stopping.get(
+            "patience",
+            1,
+        )
+    )
+
+    early_stopping_min_delta = float(
+        early_stopping.get(
+            "min_delta",
+            0.0,
+        )
+    )
+
     return TrainingSchedule(
         learning_rate=learning_rate,
+
         epochs=epochs,
+
         batch_size=int(
             base[
                 "batch_size"
             ]
         ),
+
         weight_decay=float(
             base[
                 "weight_decay"
             ]
         ),
+
         reset_optimizer=(
             reset_optimizer
         ),
+
         initialized_from_previous=bool(
             initialized_from_previous
+        ),
+
+        early_stopping_enabled=(
+            early_stopping_enabled
+        ),
+
+        early_stopping_patience=(
+            early_stopping_patience
+        ),
+
+        early_stopping_min_delta=(
+            early_stopping_min_delta
         ),
     )
 
@@ -492,6 +560,7 @@ def _single_head_loader(
     X: np.ndarray,
     y_main: np.ndarray,
     batch_size: int,
+    shuffle: bool = True,
 ) -> DataLoader:
 
     dataset = TensorDataset(
@@ -510,19 +579,25 @@ def _single_head_loader(
         batch_size=int(
             batch_size
         ),
-        shuffle=True,
-        drop_last=_should_drop_last(
-            n_samples=len(dataset),
-            batch_size=batch_size,
+        shuffle=bool(
+            shuffle
+        ),
+        drop_last=(
+            _should_drop_last(
+                n_samples=len(dataset),
+                batch_size=batch_size,
+            )
+            if shuffle
+            else False
         ),
     )
-
 
 def _double_head_loader(
     X: np.ndarray,
     y_main: np.ndarray,
     y_aux: np.ndarray,
     batch_size: int,
+    shuffle: bool = True,
 ) -> DataLoader:
 
     dataset = TensorDataset(
@@ -545,13 +620,210 @@ def _double_head_loader(
         batch_size=int(
             batch_size
         ),
-        shuffle=True,
-        drop_last=_should_drop_last(
-            n_samples=len(dataset),
-            batch_size=batch_size,
+        shuffle=bool(
+            shuffle
+        ),
+        drop_last=(
+            _should_drop_last(
+                n_samples=len(dataset),
+                batch_size=batch_size,
+            )
+            if shuffle
+            else False
         ),
     )
 
+def _single_head_validation_loss(
+    model: SingleHeadClassifier,
+    X: np.ndarray,
+    y_main: np.ndarray,
+    batch_size: int,
+    device: torch.device,
+) -> float:
+
+    loader = _single_head_loader(
+        X=X,
+        y_main=y_main,
+        batch_size=batch_size,
+        shuffle=False,
+    )
+
+    criterion = nn.CrossEntropyLoss()
+
+    was_training = model.training
+
+    model.eval()
+
+    total_loss = 0.0
+    total_samples = 0
+
+    with torch.no_grad():
+
+        for (
+            batch_X,
+            batch_y,
+        ) in loader:
+
+            batch_X = batch_X.to(
+                device
+            )
+
+            batch_y = batch_y.to(
+                device
+            )
+
+            logits = model(
+                batch_X
+            )
+
+            loss = criterion(
+                logits,
+                batch_y,
+            )
+
+            batch_n = int(
+                len(
+                    batch_X
+                )
+            )
+
+            total_loss += (
+                float(
+                    loss.item()
+                )
+                * batch_n
+            )
+
+            total_samples += (
+                batch_n
+            )
+
+    if was_training:
+        model.train()
+
+    return (
+        total_loss
+        / max(
+            total_samples,
+            1,
+        )
+    )
+
+
+def _double_head_validation_loss(
+    model: DoubleHeadClassifier,
+    X: np.ndarray,
+    y_main: np.ndarray,
+    y_aux: np.ndarray,
+    batch_size: int,
+    aux_loss_weight: float,
+    device: torch.device,
+) -> float:
+    """
+    Validation objective is the same objective used for training:
+
+        CE_main + aux_loss_weight * CE_aux
+    """
+
+    loader = _double_head_loader(
+        X=X,
+        y_main=y_main,
+        y_aux=y_aux,
+        batch_size=batch_size,
+        shuffle=False,
+    )
+
+    main_criterion = (
+        nn.CrossEntropyLoss()
+    )
+
+    aux_criterion = (
+        nn.CrossEntropyLoss()
+    )
+
+    was_training = model.training
+
+    model.eval()
+
+    total_loss = 0.0
+    total_samples = 0
+
+    with torch.no_grad():
+
+        for (
+            batch_X,
+            batch_main,
+            batch_aux,
+        ) in loader:
+
+            batch_X = batch_X.to(
+                device
+            )
+
+            batch_main = batch_main.to(
+                device
+            )
+
+            batch_aux = batch_aux.to(
+                device
+            )
+
+            (
+                main_logits,
+                aux_logits,
+            ) = model.forward_both(
+                batch_X
+            )
+
+            main_loss = (
+                main_criterion(
+                    main_logits,
+                    batch_main,
+                )
+            )
+
+            aux_loss = (
+                aux_criterion(
+                    aux_logits,
+                    batch_aux,
+                )
+            )
+
+            loss = (
+                main_loss
+                + float(
+                    aux_loss_weight
+                )
+                * aux_loss
+            )
+
+            batch_n = int(
+                len(
+                    batch_X
+                )
+            )
+
+            total_loss += (
+                float(
+                    loss.item()
+                )
+                * batch_n
+            )
+
+            total_samples += (
+                batch_n
+            )
+
+    if was_training:
+        model.train()
+
+    return (
+        total_loss
+        / max(
+            total_samples,
+            1,
+        )
+    )
 
 # ============================================================
 # SINGLE HEAD TRAINING
@@ -564,9 +836,15 @@ def train_single_head(
     schedule: TrainingSchedule,
     device: torch.device,
     optimizer: Optimizer | None = None,
+    X_validation: np.ndarray | None = None,
+    y_main_validation: np.ndarray | None = None,
+    log_prefix: str | None = None,
 ) -> TrainingResult:
     """
     Train or temporally fine-tune a Single Head model.
+
+    When early stopping is enabled, the model and optimizer
+    state corresponding to the best validation loss are restored.
     """
 
     X = np.asarray(
@@ -583,6 +861,46 @@ def train_single_head(
         X=X,
         y_main=y_main,
     )
+
+    if (
+        X_validation is None
+    ) != (
+        y_main_validation is None
+    ):
+        raise ValueError(
+            "X_validation and y_main_validation "
+            "must either both be provided or both be None."
+        )
+
+    has_validation = (
+        X_validation is not None
+    )
+
+    if (
+        schedule.early_stopping_enabled
+        and not has_validation
+    ):
+        raise ValueError(
+            "Early stopping is enabled but no "
+            "validation data was provided."
+        )
+
+    if has_validation:
+
+        X_validation = np.asarray(
+            X_validation,
+            dtype=np.float32,
+        )
+
+        y_main_validation = np.asarray(
+            y_main_validation,
+            dtype=np.int64,
+        )
+
+        _validate_training_arrays(
+            X=X_validation,
+            y_main=y_main_validation,
+        )
 
     model = model.to(
         device
@@ -618,17 +936,45 @@ def train_single_head(
         batch_size=(
             schedule.batch_size
         ),
+        shuffle=True,
     )
 
     mean_epoch_losses: list[
         float
     ] = []
 
+    validation_losses: list[
+        float
+    ] = []
+
+    best_validation_loss = float(
+        "inf"
+    )
+
+    best_epoch = 0
+
+    best_model_state = None
+    best_optimizer_state = None
+
+    epochs_without_improvement = 0
+
+    stopped_early = False
+
+    prefix = (
+        f"[{log_prefix}] "
+        if log_prefix
+        else ""
+    )
+
     model.train()
 
-    for _ in range(
+    for epoch_index in range(
         schedule.epochs
     ):
+
+        epoch = (
+            epoch_index + 1
+        )
 
         total_loss = 0.0
         total_samples = 0
@@ -676,9 +1022,11 @@ def train_single_head(
                 * batch_n
             )
 
-            total_samples += batch_n
+            total_samples += (
+                batch_n
+            )
 
-        mean_epoch_losses.append(
+        train_loss = (
             total_loss
             / max(
                 total_samples,
@@ -686,20 +1034,205 @@ def train_single_head(
             )
         )
 
+        mean_epoch_losses.append(
+            train_loss
+        )
+
+        # ====================================================
+        # VALIDATION
+        # ====================================================
+
+        if has_validation:
+
+            val_loss = (
+                _single_head_validation_loss(
+                    model=model,
+                    X=X_validation,
+                    y_main=(
+                        y_main_validation
+                    ),
+                    batch_size=(
+                        schedule.batch_size
+                    ),
+                    device=device,
+                )
+            )
+
+            validation_losses.append(
+                val_loss
+            )
+
+            if schedule.early_stopping_enabled:
+
+                improved = (
+                    val_loss
+                    < (
+                        best_validation_loss
+                        - schedule.early_stopping_min_delta
+                    )
+                )
+
+            else:
+
+                improved = (
+                    val_loss
+                    < best_validation_loss
+                )
+
+            if improved:
+
+                best_validation_loss = (
+                    val_loss
+                )
+
+                best_epoch = epoch
+
+                best_model_state = (
+                    copy.deepcopy(
+                        model.state_dict()
+                    )
+                )
+
+                best_optimizer_state = (
+                    copy.deepcopy(
+                        optimizer.state_dict()
+                    )
+                )
+
+                epochs_without_improvement = 0
+
+            elif schedule.early_stopping_enabled:
+
+                epochs_without_improvement += 1
+
+            if schedule.early_stopping_enabled:
+
+                print(
+                    f"{prefix}"
+                    f"epoch {epoch}/{schedule.epochs} | "
+                    f"train_loss={train_loss:.6f} | "
+                    f"val_loss={val_loss:.6f} | "
+                    f"best_val_loss="
+                    f"{best_validation_loss:.6f} | "
+                    f"best_epoch={best_epoch} | "
+                    f"patience="
+                    f"{epochs_without_improvement}/"
+                    f"{schedule.early_stopping_patience}"
+                )
+
+            else:
+
+                print(
+                    f"{prefix}"
+                    f"epoch {epoch}/{schedule.epochs} | "
+                    f"train_loss={train_loss:.6f} | "
+                    f"val_loss={val_loss:.6f}"
+                )
+
+            # =================================================
+            # EARLY STOP
+            # =================================================
+
+            if (
+                schedule.early_stopping_enabled
+                and epochs_without_improvement
+                >= schedule.early_stopping_patience
+            ):
+
+                stopped_early = True
+
+                print(
+                    f"{prefix}"
+                    f"EARLY STOP at epoch {epoch} | "
+                    f"best_epoch={best_epoch} | "
+                    f"best_val_loss="
+                    f"{best_validation_loss:.6f}"
+                )
+
+                break
+
+        else:
+
+            print(
+                f"{prefix}"
+                f"epoch {epoch}/{schedule.epochs} | "
+                f"train_loss={train_loss:.6f}"
+            )
+
+    executed_epochs = len(
+        mean_epoch_losses
+    )
+
+    # ========================================================
+    # RESTORE BEST CHECKPOINT
+    # ========================================================
+
+    if (
+        schedule.early_stopping_enabled
+        and best_model_state is not None
+    ):
+
+        model.load_state_dict(
+            best_model_state
+        )
+
+        optimizer.load_state_dict(
+            best_optimizer_state
+        )
+
+    # ========================================================
+    # FINAL LOG
+    # ========================================================
+
+    if has_validation:
+
+        print(
+            f"{prefix}"
+            f"TRAINING FINISHED | "
+            f"executed_epochs={executed_epochs} | "
+            f"best_epoch={best_epoch} | "
+            f"best_val_loss="
+            f"{best_validation_loss:.6f} | "
+            f"stopped_early={stopped_early}"
+        )
+
+    else:
+
+        print(
+            f"{prefix}"
+            f"TRAINING FINISHED | "
+            f"executed_epochs={executed_epochs}"
+        )
+
     return TrainingResult(
         model=model,
+
         optimizer=optimizer,
-        epochs=int(
-            schedule.epochs
-        ),
+
+        epochs=executed_epochs,
+
         learning_rate=float(
             schedule.learning_rate
         ),
+
         mean_epoch_losses=(
             mean_epoch_losses
         ),
-    )
 
+        validation_losses=(
+            validation_losses
+        ),
+
+        best_epoch=best_epoch,
+
+        best_validation_loss=(
+            best_validation_loss
+        ),
+
+        stopped_early=(
+            stopped_early
+        ),
+    )
 
 # ============================================================
 # DOUBLE HEAD TRAINING
@@ -714,13 +1247,20 @@ def train_double_head(
     aux_loss_weight: float,
     device: torch.device,
     optimizer: Optimizer | None = None,
+    X_validation: np.ndarray | None = None,
+    y_main_validation: np.ndarray | None = None,
+    y_aux_validation: np.ndarray | None = None,
+    log_prefix: str | None = None,
 ) -> TrainingResult:
     """
     Train or temporally fine-tune a Double Head model.
 
-    Loss:
+    Training and validation objective:
 
         L = L_main + lambda_aux * L_aux
+
+    When early stopping is enabled, the model and optimizer
+    state corresponding to the best validation loss are restored.
     """
 
     X = np.asarray(
@@ -744,6 +1284,68 @@ def train_double_head(
         y_aux=y_aux,
     )
 
+    validation_values = (
+        X_validation,
+        y_main_validation,
+        y_aux_validation,
+    )
+
+    has_any_validation = any(
+        value is not None
+        for value in validation_values
+    )
+
+    has_all_validation = all(
+        value is not None
+        for value in validation_values
+    )
+
+    if (
+        has_any_validation
+        and not has_all_validation
+    ):
+        raise ValueError(
+            "X_validation, y_main_validation and "
+            "y_aux_validation must either all be provided "
+            "or all be None."
+        )
+
+    has_validation = (
+        has_all_validation
+    )
+
+    if (
+        schedule.early_stopping_enabled
+        and not has_validation
+    ):
+        raise ValueError(
+            "Early stopping is enabled but no "
+            "validation data was provided."
+        )
+
+    if has_validation:
+
+        X_validation = np.asarray(
+            X_validation,
+            dtype=np.float32,
+        )
+
+        y_main_validation = np.asarray(
+            y_main_validation,
+            dtype=np.int64,
+        )
+
+        y_aux_validation = np.asarray(
+            y_aux_validation,
+            dtype=np.int64,
+        )
+
+        _validate_training_arrays(
+            X=X_validation,
+            y_main=y_main_validation,
+            y_aux=y_aux_validation,
+        )
+
     aux_loss_weight = float(
         aux_loss_weight
     )
@@ -761,6 +1363,7 @@ def train_double_head(
         optimizer is None
         or schedule.reset_optimizer
     ):
+
         optimizer = create_optimizer(
             model=model,
             learning_rate=(
@@ -772,6 +1375,7 @@ def train_double_head(
         )
 
     else:
+
         set_optimizer_learning_rate(
             optimizer=optimizer,
             learning_rate=(
@@ -794,17 +1398,45 @@ def train_double_head(
         batch_size=(
             schedule.batch_size
         ),
+        shuffle=True,
     )
 
     mean_epoch_losses: list[
         float
     ] = []
 
+    validation_losses: list[
+        float
+    ] = []
+
+    best_validation_loss = float(
+        "inf"
+    )
+
+    best_epoch = 0
+
+    best_model_state = None
+    best_optimizer_state = None
+
+    epochs_without_improvement = 0
+
+    stopped_early = False
+
+    prefix = (
+        f"[{log_prefix}] "
+        if log_prefix
+        else ""
+    )
+
     model.train()
 
-    for _ in range(
+    for epoch_index in range(
         schedule.epochs
     ):
+
+        epoch = (
+            epoch_index + 1
+        )
 
         total_loss = 0.0
         total_samples = 0
@@ -879,7 +1511,7 @@ def train_double_head(
                 batch_n
             )
 
-        mean_epoch_losses.append(
+        train_loss = (
             total_loss
             / max(
                 total_samples,
@@ -887,20 +1519,211 @@ def train_double_head(
             )
         )
 
+        mean_epoch_losses.append(
+            train_loss
+        )
+
+        # ====================================================
+        # VALIDATION
+        # ====================================================
+
+        if has_validation:
+
+            val_loss = (
+                _double_head_validation_loss(
+                    model=model,
+                    X=X_validation,
+                    y_main=(
+                        y_main_validation
+                    ),
+                    y_aux=(
+                        y_aux_validation
+                    ),
+                    batch_size=(
+                        schedule.batch_size
+                    ),
+                    aux_loss_weight=(
+                        aux_loss_weight
+                    ),
+                    device=device,
+                )
+            )
+
+            validation_losses.append(
+                val_loss
+            )
+
+            if schedule.early_stopping_enabled:
+
+                improved = (
+                    val_loss
+                    < (
+                        best_validation_loss
+                        - schedule.early_stopping_min_delta
+                    )
+                )
+
+            else:
+
+                improved = (
+                    val_loss
+                    < best_validation_loss
+                )
+
+            if improved:
+
+                best_validation_loss = (
+                    val_loss
+                )
+
+                best_epoch = epoch
+
+                best_model_state = (
+                    copy.deepcopy(
+                        model.state_dict()
+                    )
+                )
+
+                best_optimizer_state = (
+                    copy.deepcopy(
+                        optimizer.state_dict()
+                    )
+                )
+
+                epochs_without_improvement = 0
+
+            elif schedule.early_stopping_enabled:
+
+                epochs_without_improvement += 1
+
+            if schedule.early_stopping_enabled:
+
+                print(
+                    f"{prefix}"
+                    f"epoch {epoch}/{schedule.epochs} | "
+                    f"train_loss={train_loss:.6f} | "
+                    f"val_loss={val_loss:.6f} | "
+                    f"best_val_loss="
+                    f"{best_validation_loss:.6f} | "
+                    f"best_epoch={best_epoch} | "
+                    f"patience="
+                    f"{epochs_without_improvement}/"
+                    f"{schedule.early_stopping_patience}"
+                )
+
+            else:
+
+                print(
+                    f"{prefix}"
+                    f"epoch {epoch}/{schedule.epochs} | "
+                    f"train_loss={train_loss:.6f} | "
+                    f"val_loss={val_loss:.6f}"
+                )
+
+            # =================================================
+            # EARLY STOP
+            # =================================================
+
+            if (
+                schedule.early_stopping_enabled
+                and epochs_without_improvement
+                >= schedule.early_stopping_patience
+            ):
+
+                stopped_early = True
+
+                print(
+                    f"{prefix}"
+                    f"EARLY STOP at epoch {epoch} | "
+                    f"best_epoch={best_epoch} | "
+                    f"best_val_loss="
+                    f"{best_validation_loss:.6f}"
+                )
+
+                break
+
+        else:
+
+            print(
+                f"{prefix}"
+                f"epoch {epoch}/{schedule.epochs} | "
+                f"train_loss={train_loss:.6f}"
+            )
+
+    executed_epochs = len(
+        mean_epoch_losses
+    )
+
+    # ========================================================
+    # RESTORE BEST CHECKPOINT
+    # ========================================================
+
+    if (
+        schedule.early_stopping_enabled
+        and best_model_state is not None
+    ):
+
+        model.load_state_dict(
+            best_model_state
+        )
+
+        optimizer.load_state_dict(
+            best_optimizer_state
+        )
+
+    # ========================================================
+    # FINAL LOG
+    # ========================================================
+
+    if has_validation:
+
+        print(
+            f"{prefix}"
+            f"TRAINING FINISHED | "
+            f"executed_epochs={executed_epochs} | "
+            f"best_epoch={best_epoch} | "
+            f"best_val_loss="
+            f"{best_validation_loss:.6f} | "
+            f"stopped_early={stopped_early}"
+        )
+
+    else:
+
+        print(
+            f"{prefix}"
+            f"TRAINING FINISHED | "
+            f"executed_epochs={executed_epochs}"
+        )
+
     return TrainingResult(
         model=model,
+
         optimizer=optimizer,
-        epochs=int(
-            schedule.epochs
-        ),
+
+        epochs=executed_epochs,
+
         learning_rate=float(
             schedule.learning_rate
         ),
+
         mean_epoch_losses=(
             mean_epoch_losses
         ),
-    )
 
+        validation_losses=(
+            validation_losses
+        ),
+
+        best_epoch=best_epoch,
+
+        best_validation_loss=(
+            best_validation_loss
+        ),
+
+        stopped_early=(
+            stopped_early
+        ),
+    )
 
 # ============================================================
 # CONFIG CONVENIENCE

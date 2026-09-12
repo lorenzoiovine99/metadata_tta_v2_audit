@@ -141,12 +141,14 @@ def _split_for_year(
 # SOURCE TRAINING DATA
 # ============================================================
 
-
 def _source_supervised_arrays(
     bundle: DataBundle,
     config: ExperimentConfig,
     year: int,
 ) -> tuple[
+    np.ndarray,
+    np.ndarray,
+    np.ndarray,
     np.ndarray,
     np.ndarray,
     np.ndarray,
@@ -160,37 +162,45 @@ def _source_supervised_arrays(
         )
     )
 
-    # During TTA hyperparameter tuning the years BEFORE the
-    # pseudo-OOD boundary are source years.
-    #
-    # Their train + validation portions can therefore be used
-    # to train the pseudo-source model.
-    supervised_indices = np.sort(
-        np.concatenate(
-            [
-                split.train,
-                split.validation,
-            ]
+    if len(
+        split.validation
+    ) == 0:
+        raise ValueError(
+            f"TTA source year {year} has an empty "
+            "validation split."
         )
-    )
 
     return (
+        # TRAIN
         data.X[
-            supervised_indices
+            split.train
         ],
+
         data.y_main[
-            supervised_indices
+            split.train
         ],
+
         data.y_aux[
-            supervised_indices
+            split.train
+        ],
+
+        # VALIDATION
+        data.X[
+            split.validation
+        ],
+
+        data.y_main[
+            split.validation
+        ],
+
+        data.y_aux[
+            split.validation
         ],
     )
-
 
 # ============================================================
 # SOURCE MODEL
 # ============================================================
-
 
 def _train_source_model(
     *,
@@ -228,6 +238,7 @@ def _train_source_model(
         )
 
     else:
+
         raise ValueError(
             f"Unknown family: {family}"
         )
@@ -247,9 +258,12 @@ def _train_source_model(
     ):
 
         (
-            X,
-            y_main,
-            y_aux,
+            X_train,
+            y_main_train,
+            y_aux_train,
+            X_validation,
+            y_main_validation,
+            y_aux_validation,
         ) = _source_supervised_arrays(
             bundle=bundle,
             config=config,
@@ -270,35 +284,87 @@ def _train_source_model(
 
             result = train_single_head(
                 model=model,
-                X=X,
-                y_main=y_main,
+
+                X=X_train,
+
+                y_main=(
+                    y_main_train
+                ),
+
                 schedule=schedule,
+
                 device=device,
+
                 optimizer=optimizer,
+
+                X_validation=(
+                    X_validation
+                ),
+
+                y_main_validation=(
+                    y_main_validation
+                ),
+
+                log_prefix=(
+                    f"TTA tuning source {year} | "
+                    "Single Head"
+                ),
             )
 
         else:
 
             result = train_double_head(
                 model=model,
-                X=X,
-                y_main=y_main,
-                y_aux=y_aux,
+
+                X=X_train,
+
+                y_main=(
+                    y_main_train
+                ),
+
+                y_aux=(
+                    y_aux_train
+                ),
+
                 schedule=schedule,
+
                 aux_loss_weight=float(
                     aux_loss_weight
                 ),
+
                 device=device,
+
                 optimizer=optimizer,
+
+                X_validation=(
+                    X_validation
+                ),
+
+                y_main_validation=(
+                    y_main_validation
+                ),
+
+                y_aux_validation=(
+                    y_aux_validation
+                ),
+
+                log_prefix=(
+                    f"TTA tuning source {year} | "
+                    "Double Head"
+                ),
             )
 
-        model = result.model
-        optimizer = result.optimizer
+        model = (
+            result.model
+        )
+
+        optimizer = (
+            result.optimizer
+        )
 
     model.eval()
 
     return model
-
 
 # ============================================================
 # CONTINUOUS PSEUDO-OOD STREAM
