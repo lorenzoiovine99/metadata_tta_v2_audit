@@ -347,94 +347,64 @@ def _train_source_models_with_yearly_id(
         id_records,
     )
 
-def _fine_tune_single_reference(
-    source_model: nn.Module,
-    ood_years: list[OODStreamYear],
+def _evaluate_supervised_references(
+    source_single_model: nn.Module | None,
+    source_double_model: nn.Module | None,
+    protocol_data: EvalStreamTASData,
     config: ExperimentConfig,
     device: torch.device,
-) -> nn.Module:
+) -> list[EvaluationRecord]:
+    """
+    Build the supervised TAS reference as ONE continual trajectory
+    across the OOD years.
 
-    model = copy.deepcopy(
-        source_model
-    ).to(device)
+    Example:
+        source_2012
+            -> supervised train 2013 -> evaluate test 2013
+            -> supervised train 2014 -> evaluate test 2014
+            -> supervised train 2015 -> evaluate test 2015
+            -> ...
 
-    optimizer = None
+    The model is copied from the source model only once.
 
-    for year_data in ood_years:
+    When training.temporal.reset_optimizer_each_year == False,
+    the optimizer state is also carried from one OOD year to the next.
 
-        schedule = (
-            build_training_schedule(
-                config=config,
-                initialized_from_previous=True,
-                model_kind="single_head",
-            )
-        )
+    train_single_head() / train_double_head() already restore the
+    best model state AND the corresponding best optimizer state
+    when early stopping is enabled, so the next year starts from
+    the best checkpoint of the previous year.
+    """
 
-        print()
-        print(
-            f"TAS supervised Single Head | "
-            f"fine-tuning year {year_data.year} | "
-            f"train_n="
-            f"{len(year_data.y_main_reference_train)} | "
-            f"val_n="
-            f"{len(year_data.y_main_reference_validation)}"
-        )
+    records: list[EvaluationRecord] = []
 
-        result = train_single_head(
-            model=model,
+    # ========================================================
+    # INITIALIZE THE SUPERVISED REFERENCES ONLY ONCE
+    # ========================================================
 
-            X=(
-                year_data.X_reference_train
-            ),
+    single_reference = (
+        copy.deepcopy(
+            source_single_model
+        ).to(device)
+        if source_single_model is not None
+        else None
+    )
 
-            y_main=(
-                year_data.y_main_reference_train
-            ),
+    double_reference = (
+        copy.deepcopy(
+            source_double_model
+        ).to(device)
+        if source_double_model is not None
+        else None
+    )
 
-            schedule=schedule,
-
-            device=device,
-
-            optimizer=optimizer,
-
-            X_validation=(
-                year_data.X_reference_validation
-            ),
-
-            y_main_validation=(
-                year_data.y_main_reference_validation
-            ),
-
-            log_prefix=(
-                f"TAS {year_data.year} | "
-                "Single Head"
-            ),
-        )
-
-        model = (
-            result.model
-        )
-
-        optimizer = (
-            result.optimizer
-        )
-
-    model.eval()
-
-    return model
-
-def _fine_tune_double_reference(
-    source_model: nn.Module,
-    ood_years: list[OODStreamYear],
-    config: ExperimentConfig,
-    device: torch.device,
-) -> nn.Module:
-
-    model = copy.deepcopy(
-        source_model
-    ).to(device)
-
-    optimizer = None
+    # New optimizer at the beginning of the OOD supervised
+    # reference trajectory.
+    #
+    # After the first OOD year, the returned optimizer is reused
+    # when reset_optimizer_each_year=False.
+    single_optimizer = None
+    double_optimizer = None
 
     aux_loss_weight = float(
         config.get(
@@ -444,119 +414,81 @@ def _fine_tune_double_reference(
         )
     )
 
-    for year_data in ood_years:
-
-        schedule = (
-            build_training_schedule(
-                config=config,
-                initialized_from_previous=True,
-                model_kind="double_head",
-            )
-        )
-
-        print()
-        print(
-            f"TAS supervised Double Head | "
-            f"fine-tuning year {year_data.year} | "
-            f"train_n="
-            f"{len(year_data.y_main_reference_train)} | "
-            f"val_n="
-            f"{len(year_data.y_main_reference_validation)}"
-        )
-
-        result = train_double_head(
-            model=model,
-
-            X=(
-                year_data.X_reference_train
-            ),
-
-            y_main=(
-                year_data.y_main_reference_train
-            ),
-
-            y_aux=(
-                year_data.y_aux_reference_train
-            ),
-
-            schedule=schedule,
-
-            aux_loss_weight=(
-                aux_loss_weight
-            ),
-
-            device=device,
-
-            optimizer=optimizer,
-
-            X_validation=(
-                year_data.X_reference_validation
-            ),
-
-            y_main_validation=(
-                year_data.y_main_reference_validation
-            ),
-
-            y_aux_validation=(
-                year_data.y_aux_reference_validation
-            ),
-
-            log_prefix=(
-                f"TAS {year_data.year} | "
-                "Double Head"
-            ),
-        )
-
-        model = (
-            result.model
-        )
-
-        optimizer = (
-            result.optimizer
-        )
-
-    model.eval()
-
-    return model
-
-def _evaluate_supervised_references(
-    source_single_model: nn.Module | None,
-    source_double_model: nn.Module | None,
-    protocol_data: EvalStreamTASData,
-    config: ExperimentConfig,
-    device: torch.device,
-) -> list[EvaluationRecord]:
-
-    records: list[
-        EvaluationRecord
-    ] = []
-
-    cumulative_years: list[
-        OODStreamYear
-    ] = []
+    # ========================================================
+    # SINGLE CONTINUAL SUPERVISED TRAJECTORY
+    # ========================================================
 
     for year_data in protocol_data.ood_years:
 
-        cumulative_years.append(
-            year_data
-        )
-
         print()
         print(
-            f"Supervised TAS reference up to "
-            f"{year_data.year}"
+            "=" * 80
+        )
+        print(
+            f"Supervised TAS reference | year {year_data.year}"
+        )
+        print(
+            "=" * 80
         )
 
-        if source_single_model is not None:
+        # ====================================================
+        # SINGLE HEAD REFERENCE
+        # ====================================================
 
-            single_reference = (
-                _fine_tune_single_reference(
-                    source_model=source_single_model,
-                    ood_years=cumulative_years,
-                    config=config,
-                    device=device,
-                )
+        if single_reference is not None:
+
+            schedule = build_training_schedule(
+                config=config,
+                initialized_from_previous=True,
+                model_kind="single_head",
             )
+
+            print()
+            print(
+                f"TAS supervised Single Head | "
+                f"fine-tuning year {year_data.year} | "
+                f"train_n="
+                f"{len(year_data.y_main_reference_train)} | "
+                f"val_n="
+                f"{len(year_data.y_main_reference_validation)}"
+            )
+
+            result = train_single_head(
+                model=single_reference,
+
+                X=(
+                    year_data.X_reference_train
+                ),
+
+                y_main=(
+                    year_data.y_main_reference_train
+                ),
+
+                schedule=schedule,
+
+                device=device,
+
+                optimizer=single_optimizer,
+
+                X_validation=(
+                    year_data.X_reference_validation
+                ),
+
+                y_main_validation=(
+                    year_data.y_main_reference_validation
+                ),
+
+                log_prefix=(
+                    f"TAS {year_data.year} | "
+                    "Single Head"
+                ),
+            )
+
+            # IMPORTANT:
+            # train_single_head() has already restored the best
+            # validation checkpoint and the corresponding optimizer.
+            single_reference = result.model
+            single_optimizer = result.optimizer
 
             records.append(
                 evaluate_frozen_year(
@@ -571,16 +503,76 @@ def _evaluate_supervised_references(
                 )
             )
 
-        if source_double_model is not None:
+        # ====================================================
+        # DOUBLE HEAD REFERENCE
+        # ====================================================
 
-            double_reference = (
-                _fine_tune_double_reference(
-                    source_model=source_double_model,
-                    ood_years=cumulative_years,
-                    config=config,
-                    device=device,
-                )
+        if double_reference is not None:
+
+            schedule = build_training_schedule(
+                config=config,
+                initialized_from_previous=True,
+                model_kind="double_head",
             )
+
+            print()
+            print(
+                f"TAS supervised Double Head | "
+                f"fine-tuning year {year_data.year} | "
+                f"train_n="
+                f"{len(year_data.y_main_reference_train)} | "
+                f"val_n="
+                f"{len(year_data.y_main_reference_validation)}"
+            )
+
+            result = train_double_head(
+                model=double_reference,
+
+                X=(
+                    year_data.X_reference_train
+                ),
+
+                y_main=(
+                    year_data.y_main_reference_train
+                ),
+
+                y_aux=(
+                    year_data.y_aux_reference_train
+                ),
+
+                schedule=schedule,
+
+                aux_loss_weight=(
+                    aux_loss_weight
+                ),
+
+                device=device,
+
+                optimizer=double_optimizer,
+
+                X_validation=(
+                    year_data.X_reference_validation
+                ),
+
+                y_main_validation=(
+                    year_data.y_main_reference_validation
+                ),
+
+                y_aux_validation=(
+                    year_data.y_aux_reference_validation
+                ),
+
+                log_prefix=(
+                    f"TAS {year_data.year} | "
+                    "Double Head"
+                ),
+            )
+
+            # IMPORTANT:
+            # train_double_head() has already restored the best
+            # validation checkpoint and its optimizer state.
+            double_reference = result.model
+            double_optimizer = result.optimizer
 
             records.append(
                 evaluate_frozen_year(
@@ -596,7 +588,6 @@ def _evaluate_supervised_references(
             )
 
     return records
-
 
 def _build_tas_rows(
     ood_records: list[EvaluationRecord],
@@ -842,6 +833,12 @@ def run_eval_stream_tas(
 
             "tta_state":
                 "carries_across_ood_years",
+
+            "supervised_reference_policy":
+                "single_continual_trajectory_across_ood_years",
+
+            "supervised_reference_state":
+                "model_and_optimizer_carry_across_ood_years",
 
             "tent_source_model":
                 "single_head",
