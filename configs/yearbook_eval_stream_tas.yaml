@@ -21,7 +21,7 @@ dataset:
 protocol:
   name: eval_stream_tas
 
-  source_start_year: 1930
+  source_start_year: 1930s
   source_end_year: 1970
   ood_start_year: 1971
   ood_end_year: 2013
@@ -61,10 +61,9 @@ training:
     batch_size: 32
 
   double_head:
-    learning_rate: 0.0003
-    weight_decay: 0.0001
+    learning_rate: 0.001
+    weight_decay: 0.0
     batch_size: 32
-    aux_loss_weight: 0.3
 
   temporal:
     enabled: true
@@ -79,7 +78,6 @@ training:
 
 baselines:
   single_head: true
-  double_head: true
 
 methods:
   metadata: true

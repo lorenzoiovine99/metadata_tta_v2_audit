@@ -324,11 +324,6 @@ class MetadataTTA(
 
         self.optimizer.state.clear()
 
-        self._number_of_observations = 0
-        self._number_of_updates = 0
-
-        self._reset_method_stats()
-
         self.model.eval()
 
     # ========================================================

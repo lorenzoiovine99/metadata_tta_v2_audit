@@ -1,0 +1,1048 @@
+Base experiment config: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Metadata OOD adaptation/metadata_tta_v2/configs/fmow_eval_stream_tas.yaml
+
+================================================================================
+DATASET
+================================================================================
+Dataset: fmow
+Data root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/new_FMoW_embeddings_remapped
+
+Year 2002: valid=1199/1199 | main_classes=52 | aux_classes=11
+Year 2003: valid=1661/1661 | main_classes=52 | aux_classes=11
+Year 2004: valid=1499/1499 | main_classes=52 | aux_classes=11
+Year 2005: valid=1837/1837 | main_classes=52 | aux_classes=11
+Year 2006: valid=1995/1995 | main_classes=52 | aux_classes=11
+Year 2007: valid=1044/1044 | main_classes=52 | aux_classes=11
+Year 2008: valid=1459/1459 | main_classes=52 | aux_classes=11
+Year 2009: valid=4278/4278 | main_classes=52 | aux_classes=11
+Year 2010: valid=9922/9922 | main_classes=52 | aux_classes=11
+Year 2011: valid=10933/10933 | main_classes=52 | aux_classes=11
+Year 2012: valid=11122/11122 | main_classes=52 | aux_classes=11
+Year 2013: valid=13374/13374 | main_classes=52 | aux_classes=11
+Year 2014: valid=18840/18840 | main_classes=52 | aux_classes=11
+Year 2015: valid=27653/27653 | main_classes=52 | aux_classes=11
+Year 2016: valid=48861/48861 | main_classes=52 | aux_classes=11
+Year 2017: valid=17160/17160 | main_classes=52 | aux_classes=11
+
+Years: 2002-2017
+Number of years: 16
+Feature dimension: 2048
+Total valid samples: 172837
+
+double_head inherited overrides:
+  training.double_head.learning_rate = 0.001
+  training.double_head.weight_decay = 0.0
+  model.double_head.dropout = 0.1
+  model.double_head.shared_hidden_dim = 256
+  training.double_head.batch_size = 32
+
+================================================================================
+BASELINE TUNING | double_head | trial=0
+{'aux_loss_weight': 0.0}
+================================================================================
+[Baseline tuning 2002 | Double Head] epoch 1/50 | train_loss=3.458730 | val_loss=3.859595 | best_val_loss=3.859595 | best_epoch=1 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 2/50 | train_loss=2.246081 | val_loss=3.573754 | best_val_loss=3.573754 | best_epoch=2 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 3/50 | train_loss=1.581957 | val_loss=3.060828 | best_val_loss=3.060828 | best_epoch=3 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 4/50 | train_loss=1.032778 | val_loss=2.864286 | best_val_loss=2.864286 | best_epoch=4 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 5/50 | train_loss=0.643304 | val_loss=3.021728 | best_val_loss=2.864286 | best_epoch=4 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 6/50 | train_loss=0.379037 | val_loss=2.935066 | best_val_loss=2.864286 | best_epoch=4 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 7/50 | train_loss=0.219567 | val_loss=2.901160 | best_val_loss=2.864286 | best_epoch=4 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 8/50 | train_loss=0.131508 | val_loss=2.907255 | best_val_loss=2.864286 | best_epoch=4 | patience=4/5
+[Baseline tuning 2002 | Double Head] epoch 9/50 | train_loss=0.082085 | val_loss=2.901923 | best_val_loss=2.864286 | best_epoch=4 | patience=5/5
+[Baseline tuning 2002 | Double Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=2.864286
+[Baseline tuning 2002 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=2.864286 | stopped_early=True
+AUX_DIAG | year=2002 | aux_weight=0 | train_acc=0.171633 | train_loss=2.495825 | train_majority=0.263409 | val_acc=0.166667 | val_loss=2.511512 | val_majority=0.275000
+[Baseline tuning 2003 | Double Head] epoch 1/20 | train_loss=3.114018 | val_loss=2.838041 | best_val_loss=2.838041 | best_epoch=1 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 2/20 | train_loss=2.708701 | val_loss=2.728624 | best_val_loss=2.728624 | best_epoch=2 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 3/20 | train_loss=2.461173 | val_loss=2.665243 | best_val_loss=2.665243 | best_epoch=3 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 4/20 | train_loss=2.255645 | val_loss=2.616723 | best_val_loss=2.616723 | best_epoch=4 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 5/20 | train_loss=2.080512 | val_loss=2.588675 | best_val_loss=2.588675 | best_epoch=5 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 6/20 | train_loss=1.935152 | val_loss=2.562395 | best_val_loss=2.562395 | best_epoch=6 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 7/20 | train_loss=1.791593 | val_loss=2.541930 | best_val_loss=2.541930 | best_epoch=7 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 8/20 | train_loss=1.659930 | val_loss=2.521855 | best_val_loss=2.521855 | best_epoch=8 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 9/20 | train_loss=1.527185 | val_loss=2.508502 | best_val_loss=2.508502 | best_epoch=9 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 10/20 | train_loss=1.416073 | val_loss=2.494379 | best_val_loss=2.494379 | best_epoch=10 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 11/20 | train_loss=1.311622 | val_loss=2.481976 | best_val_loss=2.481976 | best_epoch=11 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 12/20 | train_loss=1.213021 | val_loss=2.481402 | best_val_loss=2.481402 | best_epoch=12 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 13/20 | train_loss=1.115517 | val_loss=2.472742 | best_val_loss=2.472742 | best_epoch=13 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 14/20 | train_loss=1.025574 | val_loss=2.474486 | best_val_loss=2.472742 | best_epoch=13 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 15/20 | train_loss=0.945795 | val_loss=2.477216 | best_val_loss=2.472742 | best_epoch=13 | patience=2/3
+[Baseline tuning 2003 | Double Head] epoch 16/20 | train_loss=0.864517 | val_loss=2.468333 | best_val_loss=2.468333 | best_epoch=16 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 17/20 | train_loss=0.791975 | val_loss=2.453052 | best_val_loss=2.453052 | best_epoch=17 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 18/20 | train_loss=0.719085 | val_loss=2.456266 | best_val_loss=2.453052 | best_epoch=17 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 19/20 | train_loss=0.658385 | val_loss=2.446500 | best_val_loss=2.446500 | best_epoch=19 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 20/20 | train_loss=0.597811 | val_loss=2.452132 | best_val_loss=2.446500 | best_epoch=19 | patience=1/3
+[Baseline tuning 2003 | Double Head] TRAINING FINISHED | executed_epochs=20 | best_epoch=19 | best_val_loss=2.446500 | stopped_early=False
+AUX_DIAG | year=2003 | aux_weight=0 | train_acc=0.159208 | train_loss=2.348090 | train_majority=0.386403 | val_acc=0.162651 | val_loss=2.356014 | val_majority=0.397590
+[Baseline tuning 2004 | Double Head] epoch 1/20 | train_loss=3.065714 | val_loss=2.758567 | best_val_loss=2.758567 | best_epoch=1 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 2/20 | train_loss=2.477532 | val_loss=2.671460 | best_val_loss=2.671460 | best_epoch=2 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 3/20 | train_loss=2.107161 | val_loss=2.623374 | best_val_loss=2.623374 | best_epoch=3 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 4/20 | train_loss=1.856155 | val_loss=2.595486 | best_val_loss=2.595486 | best_epoch=4 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 5/20 | train_loss=1.647051 | val_loss=2.571846 | best_val_loss=2.571846 | best_epoch=5 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 6/20 | train_loss=1.465380 | val_loss=2.559519 | best_val_loss=2.559519 | best_epoch=6 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 7/20 | train_loss=1.312826 | val_loss=2.548700 | best_val_loss=2.548700 | best_epoch=7 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 8/20 | train_loss=1.181976 | val_loss=2.548880 | best_val_loss=2.548700 | best_epoch=7 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 9/20 | train_loss=1.050320 | val_loss=2.559632 | best_val_loss=2.548700 | best_epoch=7 | patience=2/3
+[Baseline tuning 2004 | Double Head] epoch 10/20 | train_loss=0.945898 | val_loss=2.557366 | best_val_loss=2.548700 | best_epoch=7 | patience=3/3
+[Baseline tuning 2004 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=2.548700
+[Baseline tuning 2004 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=2.548700 | stopped_early=True
+AUX_DIAG | year=2004 | aux_weight=0 | train_acc=0.095329 | train_loss=2.506413 | train_majority=0.379409 | val_acc=0.073333 | val_loss=2.464881 | val_majority=0.406667
+[Baseline tuning 2005 | Double Head] epoch 1/20 | train_loss=2.754335 | val_loss=2.518738 | best_val_loss=2.518738 | best_epoch=1 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 2/20 | train_loss=2.298715 | val_loss=2.478797 | best_val_loss=2.478797 | best_epoch=2 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 3/20 | train_loss=1.976220 | val_loss=2.448024 | best_val_loss=2.448024 | best_epoch=3 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 4/20 | train_loss=1.761724 | val_loss=2.436010 | best_val_loss=2.436010 | best_epoch=4 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 5/20 | train_loss=1.577538 | val_loss=2.418864 | best_val_loss=2.418864 | best_epoch=5 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 6/20 | train_loss=1.404642 | val_loss=2.414490 | best_val_loss=2.414490 | best_epoch=6 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 7/20 | train_loss=1.260372 | val_loss=2.384845 | best_val_loss=2.384845 | best_epoch=7 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 8/20 | train_loss=1.135631 | val_loss=2.374536 | best_val_loss=2.374536 | best_epoch=8 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 9/20 | train_loss=1.027233 | val_loss=2.374275 | best_val_loss=2.374275 | best_epoch=9 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 10/20 | train_loss=0.927634 | val_loss=2.389107 | best_val_loss=2.374275 | best_epoch=9 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 11/20 | train_loss=0.832252 | val_loss=2.382254 | best_val_loss=2.374275 | best_epoch=9 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 12/20 | train_loss=0.751578 | val_loss=2.382220 | best_val_loss=2.374275 | best_epoch=9 | patience=3/3
+[Baseline tuning 2005 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.374275
+[Baseline tuning 2005 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.374275 | stopped_early=True
+AUX_DIAG | year=2005 | aux_weight=0 | train_acc=0.182879 | train_loss=2.445599 | train_majority=0.301167 | val_acc=0.157609 | val_loss=2.381224 | val_majority=0.342391
+[Baseline tuning 2006 | Double Head] epoch 1/20 | train_loss=2.514644 | val_loss=2.572958 | best_val_loss=2.572958 | best_epoch=1 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 2/20 | train_loss=2.076590 | val_loss=2.533422 | best_val_loss=2.533422 | best_epoch=2 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 3/20 | train_loss=1.791783 | val_loss=2.497744 | best_val_loss=2.497744 | best_epoch=3 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 4/20 | train_loss=1.593551 | val_loss=2.493674 | best_val_loss=2.493674 | best_epoch=4 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 5/20 | train_loss=1.412279 | val_loss=2.478167 | best_val_loss=2.478167 | best_epoch=5 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 6/20 | train_loss=1.244564 | val_loss=2.470785 | best_val_loss=2.470785 | best_epoch=6 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 7/20 | train_loss=1.127126 | val_loss=2.485421 | best_val_loss=2.470785 | best_epoch=6 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 8/20 | train_loss=0.996103 | val_loss=2.451676 | best_val_loss=2.451676 | best_epoch=8 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 9/20 | train_loss=0.896283 | val_loss=2.480798 | best_val_loss=2.451676 | best_epoch=8 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 10/20 | train_loss=0.806759 | val_loss=2.463543 | best_val_loss=2.451676 | best_epoch=8 | patience=2/3
+[Baseline tuning 2006 | Double Head] epoch 11/20 | train_loss=0.711779 | val_loss=2.462353 | best_val_loss=2.451676 | best_epoch=8 | patience=3/3
+[Baseline tuning 2006 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.451676
+[Baseline tuning 2006 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.451676 | stopped_early=True
+AUX_DIAG | year=2006 | aux_weight=0 | train_acc=0.168338 | train_loss=2.433437 | train_majority=0.333811 | val_acc=0.175000 | val_loss=2.464987 | val_majority=0.300000
+[Baseline tuning 2007 | Double Head] epoch 1/20 | train_loss=2.424081 | val_loss=2.456152 | best_val_loss=2.456152 | best_epoch=1 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 2/20 | train_loss=2.003227 | val_loss=2.423907 | best_val_loss=2.423907 | best_epoch=2 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 3/20 | train_loss=1.641390 | val_loss=2.381635 | best_val_loss=2.381635 | best_epoch=3 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 4/20 | train_loss=1.417713 | val_loss=2.380812 | best_val_loss=2.380812 | best_epoch=4 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 5/20 | train_loss=1.225949 | val_loss=2.355799 | best_val_loss=2.355799 | best_epoch=5 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 6/20 | train_loss=1.055933 | val_loss=2.354122 | best_val_loss=2.354122 | best_epoch=6 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 7/20 | train_loss=0.954926 | val_loss=2.364288 | best_val_loss=2.354122 | best_epoch=6 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 8/20 | train_loss=0.831308 | val_loss=2.364902 | best_val_loss=2.354122 | best_epoch=6 | patience=2/3
+[Baseline tuning 2007 | Double Head] epoch 9/20 | train_loss=0.749724 | val_loss=2.370828 | best_val_loss=2.354122 | best_epoch=6 | patience=3/3
+[Baseline tuning 2007 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=2.354122
+[Baseline tuning 2007 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=2.354122 | stopped_early=True
+AUX_DIAG | year=2007 | aux_weight=0 | train_acc=0.076712 | train_loss=2.649660 | train_majority=0.317808 | val_acc=0.076190 | val_loss=2.583471 | val_majority=0.295238
+[Baseline tuning 2008 | Double Head] epoch 1/20 | train_loss=2.483461 | val_loss=2.477228 | best_val_loss=2.477228 | best_epoch=1 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 2/20 | train_loss=1.995158 | val_loss=2.387041 | best_val_loss=2.387041 | best_epoch=2 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 3/20 | train_loss=1.715796 | val_loss=2.370923 | best_val_loss=2.370923 | best_epoch=3 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 4/20 | train_loss=1.479125 | val_loss=2.344655 | best_val_loss=2.344655 | best_epoch=4 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 5/20 | train_loss=1.293631 | val_loss=2.338521 | best_val_loss=2.338521 | best_epoch=5 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 6/20 | train_loss=1.149977 | val_loss=2.330401 | best_val_loss=2.330401 | best_epoch=6 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 7/20 | train_loss=1.018359 | val_loss=2.331879 | best_val_loss=2.330401 | best_epoch=6 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 8/20 | train_loss=0.900869 | val_loss=2.328039 | best_val_loss=2.328039 | best_epoch=8 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 9/20 | train_loss=0.808665 | val_loss=2.345763 | best_val_loss=2.328039 | best_epoch=8 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 10/20 | train_loss=0.725900 | val_loss=2.336808 | best_val_loss=2.328039 | best_epoch=8 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 11/20 | train_loss=0.664599 | val_loss=2.323983 | best_val_loss=2.323983 | best_epoch=11 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 12/20 | train_loss=0.583642 | val_loss=2.322994 | best_val_loss=2.322994 | best_epoch=12 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 13/20 | train_loss=0.518324 | val_loss=2.343967 | best_val_loss=2.322994 | best_epoch=12 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 14/20 | train_loss=0.478580 | val_loss=2.346010 | best_val_loss=2.322994 | best_epoch=12 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 15/20 | train_loss=0.424111 | val_loss=2.352482 | best_val_loss=2.322994 | best_epoch=12 | patience=3/3
+[Baseline tuning 2008 | Double Head] EARLY STOP at epoch 15 | best_epoch=12 | best_val_loss=2.322994
+[Baseline tuning 2008 | Double Head] TRAINING FINISHED | executed_epochs=15 | best_epoch=12 | best_val_loss=2.322994 | stopped_early=True
+AUX_DIAG | year=2008 | aux_weight=0 | train_acc=0.156709 | train_loss=2.367321 | train_majority=0.278159 | val_acc=0.164384 | val_loss=2.382033 | val_majority=0.253425
+[Baseline tuning 2009 | Double Head] epoch 1/20 | train_loss=2.663280 | val_loss=2.482447 | best_val_loss=2.482447 | best_epoch=1 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 2/20 | train_loss=2.122741 | val_loss=2.403875 | best_val_loss=2.403875 | best_epoch=2 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 3/20 | train_loss=1.815641 | val_loss=2.376633 | best_val_loss=2.376633 | best_epoch=3 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 4/20 | train_loss=1.622739 | val_loss=2.350512 | best_val_loss=2.350512 | best_epoch=4 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 5/20 | train_loss=1.420116 | val_loss=2.324035 | best_val_loss=2.324035 | best_epoch=5 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 6/20 | train_loss=1.276272 | val_loss=2.337314 | best_val_loss=2.324035 | best_epoch=5 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 7/20 | train_loss=1.145791 | val_loss=2.309515 | best_val_loss=2.309515 | best_epoch=7 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 8/20 | train_loss=1.016336 | val_loss=2.301399 | best_val_loss=2.301399 | best_epoch=8 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 9/20 | train_loss=0.908894 | val_loss=2.281240 | best_val_loss=2.281240 | best_epoch=9 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 10/20 | train_loss=0.809922 | val_loss=2.290250 | best_val_loss=2.281240 | best_epoch=9 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 11/20 | train_loss=0.720571 | val_loss=2.287939 | best_val_loss=2.281240 | best_epoch=9 | patience=2/3
+[Baseline tuning 2009 | Double Head] epoch 12/20 | train_loss=0.644643 | val_loss=2.297375 | best_val_loss=2.281240 | best_epoch=9 | patience=3/3
+[Baseline tuning 2009 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.281240
+[Baseline tuning 2009 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.281240 | stopped_early=True
+AUX_DIAG | year=2009 | aux_weight=0 | train_acc=0.148631 | train_loss=2.463196 | train_majority=0.284235 | val_acc=0.156542 | val_loss=2.426910 | val_majority=0.294393
+[Baseline tuning 2010 | Double Head] epoch 1/20 | train_loss=2.371647 | val_loss=2.167021 | best_val_loss=2.167021 | best_epoch=1 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 2/20 | train_loss=1.927761 | val_loss=2.101037 | best_val_loss=2.101037 | best_epoch=2 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 3/20 | train_loss=1.690056 | val_loss=2.040784 | best_val_loss=2.040784 | best_epoch=3 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 4/20 | train_loss=1.509802 | val_loss=2.015808 | best_val_loss=2.015808 | best_epoch=4 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 5/20 | train_loss=1.352230 | val_loss=2.003285 | best_val_loss=2.003285 | best_epoch=5 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 6/20 | train_loss=1.210143 | val_loss=1.991407 | best_val_loss=1.991407 | best_epoch=6 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 7/20 | train_loss=1.081514 | val_loss=1.980536 | best_val_loss=1.980536 | best_epoch=7 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 8/20 | train_loss=0.968317 | val_loss=1.969693 | best_val_loss=1.969693 | best_epoch=8 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 9/20 | train_loss=0.865094 | val_loss=1.978303 | best_val_loss=1.969693 | best_epoch=8 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 10/20 | train_loss=0.756957 | val_loss=1.964694 | best_val_loss=1.964694 | best_epoch=10 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 11/20 | train_loss=0.670241 | val_loss=1.974160 | best_val_loss=1.964694 | best_epoch=10 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 12/20 | train_loss=0.590406 | val_loss=1.985764 | best_val_loss=1.964694 | best_epoch=10 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 13/20 | train_loss=0.518468 | val_loss=1.996464 | best_val_loss=1.964694 | best_epoch=10 | patience=3/3
+[Baseline tuning 2010 | Double Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=1.964694
+[Baseline tuning 2010 | Double Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=1.964694 | stopped_early=True
+AUX_DIAG | year=2010 | aux_weight=0 | train_acc=0.186492 | train_loss=2.417498 | train_majority=0.335974 | val_acc=0.184290 | val_loss=2.391024 | val_majority=0.358510
+[Baseline tuning 2011 | Double Head] epoch 1/20 | train_loss=1.994495 | val_loss=1.815832 | best_val_loss=1.815832 | best_epoch=1 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 2/20 | train_loss=1.587506 | val_loss=1.766954 | best_val_loss=1.766954 | best_epoch=2 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 3/20 | train_loss=1.361407 | val_loss=1.731996 | best_val_loss=1.731996 | best_epoch=3 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 4/20 | train_loss=1.193254 | val_loss=1.719924 | best_val_loss=1.719924 | best_epoch=4 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 5/20 | train_loss=1.055668 | val_loss=1.704635 | best_val_loss=1.704635 | best_epoch=5 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 6/20 | train_loss=0.939824 | val_loss=1.717913 | best_val_loss=1.704635 | best_epoch=5 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 7/20 | train_loss=0.833760 | val_loss=1.701637 | best_val_loss=1.701637 | best_epoch=7 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 8/20 | train_loss=0.731200 | val_loss=1.715275 | best_val_loss=1.701637 | best_epoch=7 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 9/20 | train_loss=0.654748 | val_loss=1.719996 | best_val_loss=1.701637 | best_epoch=7 | patience=2/3
+[Baseline tuning 2011 | Double Head] epoch 10/20 | train_loss=0.575417 | val_loss=1.716449 | best_val_loss=1.701637 | best_epoch=7 | patience=3/3
+[Baseline tuning 2011 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.701637
+[Baseline tuning 2011 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.701637 | stopped_early=True
+AUX_DIAG | year=2011 | aux_weight=0 | train_acc=0.157344 | train_loss=2.530440 | train_majority=0.372190 | val_acc=0.170018 | val_loss=2.494569 | val_majority=0.391225
+[Baseline tuning 2012 | Double Head] epoch 1/20 | train_loss=2.084608 | val_loss=1.939999 | best_val_loss=1.939999 | best_epoch=1 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 2/20 | train_loss=1.654329 | val_loss=1.890200 | best_val_loss=1.890200 | best_epoch=2 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 3/20 | train_loss=1.431002 | val_loss=1.879410 | best_val_loss=1.879410 | best_epoch=3 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 4/20 | train_loss=1.248824 | val_loss=1.856502 | best_val_loss=1.856502 | best_epoch=4 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 5/20 | train_loss=1.094792 | val_loss=1.847962 | best_val_loss=1.847962 | best_epoch=5 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 6/20 | train_loss=0.960812 | val_loss=1.853144 | best_val_loss=1.847962 | best_epoch=5 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 7/20 | train_loss=0.857711 | val_loss=1.837681 | best_val_loss=1.837681 | best_epoch=7 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 8/20 | train_loss=0.755344 | val_loss=1.846900 | best_val_loss=1.837681 | best_epoch=7 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 9/20 | train_loss=0.665499 | val_loss=1.877138 | best_val_loss=1.837681 | best_epoch=7 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 10/20 | train_loss=0.576126 | val_loss=1.880246 | best_val_loss=1.837681 | best_epoch=7 | patience=3/3
+[Baseline tuning 2012 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.837681
+[Baseline tuning 2012 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.837681 | stopped_early=True
+AUX_DIAG | year=2012 | aux_weight=0 | train_acc=0.184481 | train_loss=2.347185 | train_majority=0.492292 | val_acc=0.203953 | val_loss=2.362759 | val_majority=0.485175
+
+================================================================================
+BASELINE TUNING | double_head | trial=1
+{'aux_loss_weight': 0.01}
+================================================================================
+[Baseline tuning 2002 | Double Head] epoch 1/50 | train_loss=3.477886 | val_loss=3.882908 | best_val_loss=3.882908 | best_epoch=1 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 2/50 | train_loss=2.265235 | val_loss=3.587072 | best_val_loss=3.587072 | best_epoch=2 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 3/50 | train_loss=1.598347 | val_loss=3.069110 | best_val_loss=3.069110 | best_epoch=3 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 4/50 | train_loss=1.033987 | val_loss=2.891264 | best_val_loss=2.891264 | best_epoch=4 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 5/50 | train_loss=0.639261 | val_loss=2.932831 | best_val_loss=2.891264 | best_epoch=4 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 6/50 | train_loss=0.384427 | val_loss=2.946856 | best_val_loss=2.891264 | best_epoch=4 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 7/50 | train_loss=0.221787 | val_loss=2.848567 | best_val_loss=2.848567 | best_epoch=7 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 8/50 | train_loss=0.131110 | val_loss=2.864959 | best_val_loss=2.848567 | best_epoch=7 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 9/50 | train_loss=0.087542 | val_loss=2.810780 | best_val_loss=2.810780 | best_epoch=9 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 10/50 | train_loss=0.068296 | val_loss=2.971934 | best_val_loss=2.810780 | best_epoch=9 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 11/50 | train_loss=0.050097 | val_loss=2.914996 | best_val_loss=2.810780 | best_epoch=9 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 12/50 | train_loss=0.039806 | val_loss=2.950741 | best_val_loss=2.810780 | best_epoch=9 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 13/50 | train_loss=0.034254 | val_loss=2.979833 | best_val_loss=2.810780 | best_epoch=9 | patience=4/5
+[Baseline tuning 2002 | Double Head] epoch 14/50 | train_loss=0.038880 | val_loss=3.126631 | best_val_loss=2.810780 | best_epoch=9 | patience=5/5
+[Baseline tuning 2002 | Double Head] EARLY STOP at epoch 14 | best_epoch=9 | best_val_loss=2.810780
+[Baseline tuning 2002 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=9 | best_val_loss=2.810780 | stopped_early=True
+AUX_DIAG | year=2002 | aux_weight=0.01 | train_acc=0.722288 | train_loss=0.822705 | train_majority=0.263409 | val_acc=0.633333 | val_loss=1.202438 | val_majority=0.275000
+[Baseline tuning 2003 | Double Head] epoch 1/20 | train_loss=3.256682 | val_loss=2.851195 | best_val_loss=2.851195 | best_epoch=1 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 2/20 | train_loss=2.496544 | val_loss=2.682982 | best_val_loss=2.682982 | best_epoch=2 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 3/20 | train_loss=2.089673 | val_loss=2.620592 | best_val_loss=2.620592 | best_epoch=3 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 4/20 | train_loss=1.803211 | val_loss=2.551400 | best_val_loss=2.551400 | best_epoch=4 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 5/20 | train_loss=1.591133 | val_loss=2.521363 | best_val_loss=2.521363 | best_epoch=5 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 6/20 | train_loss=1.395626 | val_loss=2.484387 | best_val_loss=2.484387 | best_epoch=6 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 7/20 | train_loss=1.267723 | val_loss=2.475802 | best_val_loss=2.475802 | best_epoch=7 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 8/20 | train_loss=1.120916 | val_loss=2.459836 | best_val_loss=2.459836 | best_epoch=8 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 9/20 | train_loss=1.012314 | val_loss=2.452229 | best_val_loss=2.452229 | best_epoch=9 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 10/20 | train_loss=0.898075 | val_loss=2.438065 | best_val_loss=2.438065 | best_epoch=10 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 11/20 | train_loss=0.806109 | val_loss=2.437670 | best_val_loss=2.437670 | best_epoch=11 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 12/20 | train_loss=0.725364 | val_loss=2.435752 | best_val_loss=2.435752 | best_epoch=12 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 13/20 | train_loss=0.653559 | val_loss=2.443326 | best_val_loss=2.435752 | best_epoch=12 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 14/20 | train_loss=0.580852 | val_loss=2.427686 | best_val_loss=2.427686 | best_epoch=14 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 15/20 | train_loss=0.536014 | val_loss=2.422728 | best_val_loss=2.422728 | best_epoch=15 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 16/20 | train_loss=0.463480 | val_loss=2.436286 | best_val_loss=2.422728 | best_epoch=15 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 17/20 | train_loss=0.428265 | val_loss=2.437519 | best_val_loss=2.422728 | best_epoch=15 | patience=2/3
+[Baseline tuning 2003 | Double Head] epoch 18/20 | train_loss=0.380688 | val_loss=2.427230 | best_val_loss=2.422728 | best_epoch=15 | patience=3/3
+[Baseline tuning 2003 | Double Head] EARLY STOP at epoch 18 | best_epoch=15 | best_val_loss=2.422728
+[Baseline tuning 2003 | Double Head] TRAINING FINISHED | executed_epochs=18 | best_epoch=15 | best_val_loss=2.422728 | stopped_early=True
+AUX_DIAG | year=2003 | aux_weight=0.01 | train_acc=0.660929 | train_loss=1.044641 | train_majority=0.386403 | val_acc=0.596386 | val_loss=1.166992 | val_majority=0.397590
+[Baseline tuning 2004 | Double Head] epoch 1/20 | train_loss=3.199457 | val_loss=2.823767 | best_val_loss=2.823767 | best_epoch=1 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 2/20 | train_loss=2.489305 | val_loss=2.691762 | best_val_loss=2.691762 | best_epoch=2 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 3/20 | train_loss=2.007427 | val_loss=2.648522 | best_val_loss=2.648522 | best_epoch=3 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 4/20 | train_loss=1.723392 | val_loss=2.614864 | best_val_loss=2.614864 | best_epoch=4 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 5/20 | train_loss=1.495800 | val_loss=2.593769 | best_val_loss=2.593769 | best_epoch=5 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 6/20 | train_loss=1.304097 | val_loss=2.584908 | best_val_loss=2.584908 | best_epoch=6 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 7/20 | train_loss=1.138345 | val_loss=2.574630 | best_val_loss=2.574630 | best_epoch=7 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 8/20 | train_loss=0.998523 | val_loss=2.572449 | best_val_loss=2.572449 | best_epoch=8 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 9/20 | train_loss=0.879898 | val_loss=2.574061 | best_val_loss=2.572449 | best_epoch=8 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 10/20 | train_loss=0.788056 | val_loss=2.591181 | best_val_loss=2.572449 | best_epoch=8 | patience=2/3
+[Baseline tuning 2004 | Double Head] epoch 11/20 | train_loss=0.707074 | val_loss=2.586932 | best_val_loss=2.572449 | best_epoch=8 | patience=3/3
+[Baseline tuning 2004 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.572449
+[Baseline tuning 2004 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.572449 | stopped_early=True
+AUX_DIAG | year=2004 | aux_weight=0.01 | train_acc=0.598665 | train_loss=1.145206 | train_majority=0.379409 | val_acc=0.620000 | val_loss=1.135913 | val_majority=0.406667
+[Baseline tuning 2005 | Double Head] epoch 1/20 | train_loss=2.819935 | val_loss=2.610062 | best_val_loss=2.610062 | best_epoch=1 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 2/20 | train_loss=2.263701 | val_loss=2.526676 | best_val_loss=2.526676 | best_epoch=2 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 3/20 | train_loss=1.897069 | val_loss=2.487885 | best_val_loss=2.487885 | best_epoch=3 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 4/20 | train_loss=1.628042 | val_loss=2.481363 | best_val_loss=2.481363 | best_epoch=4 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 5/20 | train_loss=1.458308 | val_loss=2.441391 | best_val_loss=2.441391 | best_epoch=5 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 6/20 | train_loss=1.264641 | val_loss=2.427630 | best_val_loss=2.427630 | best_epoch=6 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 7/20 | train_loss=1.125587 | val_loss=2.423880 | best_val_loss=2.423880 | best_epoch=7 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 8/20 | train_loss=0.993106 | val_loss=2.419163 | best_val_loss=2.419163 | best_epoch=8 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 9/20 | train_loss=0.875746 | val_loss=2.413000 | best_val_loss=2.413000 | best_epoch=9 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 10/20 | train_loss=0.792004 | val_loss=2.417240 | best_val_loss=2.413000 | best_epoch=9 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 11/20 | train_loss=0.697269 | val_loss=2.413799 | best_val_loss=2.413000 | best_epoch=9 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 12/20 | train_loss=0.632467 | val_loss=2.429243 | best_val_loss=2.413000 | best_epoch=9 | patience=3/3
+[Baseline tuning 2005 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.413000
+[Baseline tuning 2005 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.413000 | stopped_early=True
+AUX_DIAG | year=2005 | aux_weight=0.01 | train_acc=0.685603 | train_loss=0.961859 | train_majority=0.301167 | val_acc=0.668478 | val_loss=1.076209 | val_majority=0.342391
+[Baseline tuning 2006 | Double Head] epoch 1/20 | train_loss=2.591568 | val_loss=2.624385 | best_val_loss=2.624385 | best_epoch=1 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 2/20 | train_loss=2.076686 | val_loss=2.558514 | best_val_loss=2.558514 | best_epoch=2 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 3/20 | train_loss=1.771871 | val_loss=2.534382 | best_val_loss=2.534382 | best_epoch=3 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 4/20 | train_loss=1.531070 | val_loss=2.538994 | best_val_loss=2.534382 | best_epoch=3 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 5/20 | train_loss=1.326110 | val_loss=2.511670 | best_val_loss=2.511670 | best_epoch=5 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 6/20 | train_loss=1.170201 | val_loss=2.529839 | best_val_loss=2.511670 | best_epoch=5 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 7/20 | train_loss=1.037138 | val_loss=2.506957 | best_val_loss=2.506957 | best_epoch=7 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 8/20 | train_loss=0.924047 | val_loss=2.509426 | best_val_loss=2.506957 | best_epoch=7 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 9/20 | train_loss=0.820884 | val_loss=2.523809 | best_val_loss=2.506957 | best_epoch=7 | patience=2/3
+[Baseline tuning 2006 | Double Head] epoch 10/20 | train_loss=0.724667 | val_loss=2.536482 | best_val_loss=2.506957 | best_epoch=7 | patience=3/3
+[Baseline tuning 2006 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=2.506957
+[Baseline tuning 2006 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=2.506957 | stopped_early=True
+AUX_DIAG | year=2006 | aux_weight=0.01 | train_acc=0.633954 | train_loss=1.148209 | train_majority=0.333811 | val_acc=0.625000 | val_loss=1.166142 | val_majority=0.300000
+[Baseline tuning 2007 | Double Head] epoch 1/20 | train_loss=2.468896 | val_loss=2.640792 | best_val_loss=2.640792 | best_epoch=1 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 2/20 | train_loss=2.016541 | val_loss=2.566717 | best_val_loss=2.566717 | best_epoch=2 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 3/20 | train_loss=1.643350 | val_loss=2.543333 | best_val_loss=2.543333 | best_epoch=3 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 4/20 | train_loss=1.431440 | val_loss=2.514376 | best_val_loss=2.514376 | best_epoch=4 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 5/20 | train_loss=1.228562 | val_loss=2.511343 | best_val_loss=2.511343 | best_epoch=5 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 6/20 | train_loss=1.053358 | val_loss=2.504733 | best_val_loss=2.504733 | best_epoch=6 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 7/20 | train_loss=0.937530 | val_loss=2.516323 | best_val_loss=2.504733 | best_epoch=6 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 8/20 | train_loss=0.812233 | val_loss=2.525704 | best_val_loss=2.504733 | best_epoch=6 | patience=2/3
+[Baseline tuning 2007 | Double Head] epoch 9/20 | train_loss=0.721003 | val_loss=2.535034 | best_val_loss=2.504733 | best_epoch=6 | patience=3/3
+[Baseline tuning 2007 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=2.504733
+[Baseline tuning 2007 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=2.504733 | stopped_early=True
+AUX_DIAG | year=2007 | aux_weight=0.01 | train_acc=0.680822 | train_loss=1.030366 | train_majority=0.317808 | val_acc=0.628571 | val_loss=1.275311 | val_majority=0.295238
+[Baseline tuning 2008 | Double Head] epoch 1/20 | train_loss=2.533383 | val_loss=2.423508 | best_val_loss=2.423508 | best_epoch=1 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 2/20 | train_loss=2.020275 | val_loss=2.377767 | best_val_loss=2.377767 | best_epoch=2 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 3/20 | train_loss=1.715975 | val_loss=2.332004 | best_val_loss=2.332004 | best_epoch=3 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 4/20 | train_loss=1.477616 | val_loss=2.318236 | best_val_loss=2.318236 | best_epoch=4 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 5/20 | train_loss=1.276609 | val_loss=2.295605 | best_val_loss=2.295605 | best_epoch=5 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 6/20 | train_loss=1.121866 | val_loss=2.299538 | best_val_loss=2.295605 | best_epoch=5 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 7/20 | train_loss=0.971805 | val_loss=2.289095 | best_val_loss=2.289095 | best_epoch=7 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 8/20 | train_loss=0.884931 | val_loss=2.299819 | best_val_loss=2.289095 | best_epoch=7 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 9/20 | train_loss=0.772497 | val_loss=2.291847 | best_val_loss=2.289095 | best_epoch=7 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 10/20 | train_loss=0.682925 | val_loss=2.297864 | best_val_loss=2.289095 | best_epoch=7 | patience=3/3
+[Baseline tuning 2008 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=2.289095
+[Baseline tuning 2008 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=2.289095 | stopped_early=True
+AUX_DIAG | year=2008 | aux_weight=0.01 | train_acc=0.576885 | train_loss=1.279381 | train_majority=0.278159 | val_acc=0.458904 | val_loss=1.519828 | val_majority=0.253425
+[Baseline tuning 2009 | Double Head] epoch 1/20 | train_loss=2.701251 | val_loss=2.508130 | best_val_loss=2.508130 | best_epoch=1 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 2/20 | train_loss=2.202579 | val_loss=2.438594 | best_val_loss=2.438594 | best_epoch=2 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 3/20 | train_loss=1.896576 | val_loss=2.400086 | best_val_loss=2.400086 | best_epoch=3 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 4/20 | train_loss=1.684463 | val_loss=2.381267 | best_val_loss=2.381267 | best_epoch=4 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 5/20 | train_loss=1.490658 | val_loss=2.358819 | best_val_loss=2.358819 | best_epoch=5 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 6/20 | train_loss=1.343046 | val_loss=2.341381 | best_val_loss=2.341381 | best_epoch=6 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 7/20 | train_loss=1.220006 | val_loss=2.348382 | best_val_loss=2.341381 | best_epoch=6 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 8/20 | train_loss=1.093156 | val_loss=2.335313 | best_val_loss=2.335313 | best_epoch=8 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 9/20 | train_loss=0.971232 | val_loss=2.340929 | best_val_loss=2.335313 | best_epoch=8 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 10/20 | train_loss=0.882548 | val_loss=2.330618 | best_val_loss=2.330618 | best_epoch=10 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 11/20 | train_loss=0.785810 | val_loss=2.329453 | best_val_loss=2.329453 | best_epoch=11 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 12/20 | train_loss=0.691774 | val_loss=2.340552 | best_val_loss=2.329453 | best_epoch=11 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 13/20 | train_loss=0.618702 | val_loss=2.339171 | best_val_loss=2.329453 | best_epoch=11 | patience=2/3
+[Baseline tuning 2009 | Double Head] epoch 14/20 | train_loss=0.559664 | val_loss=2.359414 | best_val_loss=2.329453 | best_epoch=11 | patience=3/3
+[Baseline tuning 2009 | Double Head] EARLY STOP at epoch 14 | best_epoch=11 | best_val_loss=2.329453
+[Baseline tuning 2009 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=11 | best_val_loss=2.329453 | stopped_early=True
+AUX_DIAG | year=2009 | aux_weight=0.01 | train_acc=0.614896 | train_loss=1.186982 | train_majority=0.284235 | val_acc=0.563084 | val_loss=1.331178 | val_majority=0.294393
+[Baseline tuning 2010 | Double Head] epoch 1/20 | train_loss=2.414450 | val_loss=2.176796 | best_val_loss=2.176796 | best_epoch=1 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 2/20 | train_loss=1.942919 | val_loss=2.083998 | best_val_loss=2.083998 | best_epoch=2 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 3/20 | train_loss=1.705839 | val_loss=2.039481 | best_val_loss=2.039481 | best_epoch=3 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 4/20 | train_loss=1.502419 | val_loss=2.019917 | best_val_loss=2.019917 | best_epoch=4 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 5/20 | train_loss=1.346327 | val_loss=1.998113 | best_val_loss=1.998113 | best_epoch=5 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 6/20 | train_loss=1.210457 | val_loss=1.988168 | best_val_loss=1.988168 | best_epoch=6 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 7/20 | train_loss=1.087645 | val_loss=1.986280 | best_val_loss=1.986280 | best_epoch=7 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 8/20 | train_loss=0.966369 | val_loss=1.990316 | best_val_loss=1.986280 | best_epoch=7 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 9/20 | train_loss=0.860293 | val_loss=2.010091 | best_val_loss=1.986280 | best_epoch=7 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 10/20 | train_loss=0.769564 | val_loss=2.013734 | best_val_loss=1.986280 | best_epoch=7 | patience=3/3
+[Baseline tuning 2010 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.986280
+[Baseline tuning 2010 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.986280 | stopped_early=True
+AUX_DIAG | year=2010 | aux_weight=0.01 | train_acc=0.679435 | train_loss=1.020870 | train_majority=0.335974 | val_acc=0.657603 | val_loss=1.097544 | val_majority=0.358510
+[Baseline tuning 2011 | Double Head] epoch 1/20 | train_loss=2.029716 | val_loss=1.870321 | best_val_loss=1.870321 | best_epoch=1 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 2/20 | train_loss=1.665674 | val_loss=1.816034 | best_val_loss=1.816034 | best_epoch=2 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 3/20 | train_loss=1.466034 | val_loss=1.799084 | best_val_loss=1.799084 | best_epoch=3 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 4/20 | train_loss=1.303084 | val_loss=1.784050 | best_val_loss=1.784050 | best_epoch=4 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 5/20 | train_loss=1.156178 | val_loss=1.770533 | best_val_loss=1.770533 | best_epoch=5 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 6/20 | train_loss=1.042400 | val_loss=1.761425 | best_val_loss=1.761425 | best_epoch=6 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 7/20 | train_loss=0.940591 | val_loss=1.764159 | best_val_loss=1.761425 | best_epoch=6 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 8/20 | train_loss=0.834569 | val_loss=1.764163 | best_val_loss=1.761425 | best_epoch=6 | patience=2/3
+[Baseline tuning 2011 | Double Head] epoch 9/20 | train_loss=0.736001 | val_loss=1.762399 | best_val_loss=1.761425 | best_epoch=6 | patience=3/3
+[Baseline tuning 2011 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=1.761425
+[Baseline tuning 2011 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=1.761425 | stopped_early=True
+AUX_DIAG | year=2011 | aux_weight=0.01 | train_acc=0.707005 | train_loss=0.901236 | train_majority=0.372190 | val_acc=0.689214 | val_loss=0.970061 | val_majority=0.391225
+[Baseline tuning 2012 | Double Head] epoch 1/20 | train_loss=2.120301 | val_loss=1.925600 | best_val_loss=1.925600 | best_epoch=1 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 2/20 | train_loss=1.731756 | val_loss=1.878812 | best_val_loss=1.878812 | best_epoch=2 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 3/20 | train_loss=1.502196 | val_loss=1.855144 | best_val_loss=1.855144 | best_epoch=3 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 4/20 | train_loss=1.320195 | val_loss=1.848760 | best_val_loss=1.848760 | best_epoch=4 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 5/20 | train_loss=1.175290 | val_loss=1.830549 | best_val_loss=1.830549 | best_epoch=5 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 6/20 | train_loss=1.047678 | val_loss=1.834695 | best_val_loss=1.830549 | best_epoch=5 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 7/20 | train_loss=0.923620 | val_loss=1.837405 | best_val_loss=1.830549 | best_epoch=5 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 8/20 | train_loss=0.828093 | val_loss=1.852441 | best_val_loss=1.830549 | best_epoch=5 | patience=3/3
+[Baseline tuning 2012 | Double Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=1.830549
+[Baseline tuning 2012 | Double Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=1.830549 | stopped_early=True
+AUX_DIAG | year=2012 | aux_weight=0.01 | train_acc=0.708376 | train_loss=0.898312 | train_majority=0.492292 | val_acc=0.681941 | val_loss=0.980399 | val_majority=0.485175
+
+================================================================================
+BASELINE TUNING | double_head | trial=2
+{'aux_loss_weight': 0.03}
+================================================================================
+[Baseline tuning 2002 | Double Head] epoch 1/50 | train_loss=3.516873 | val_loss=3.928668 | best_val_loss=3.928668 | best_epoch=1 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 2/50 | train_loss=2.292670 | val_loss=3.630885 | best_val_loss=3.630885 | best_epoch=2 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 3/50 | train_loss=1.625845 | val_loss=3.109027 | best_val_loss=3.109027 | best_epoch=3 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 4/50 | train_loss=1.062919 | val_loss=2.913612 | best_val_loss=2.913612 | best_epoch=4 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 5/50 | train_loss=0.671341 | val_loss=2.992879 | best_val_loss=2.913612 | best_epoch=4 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 6/50 | train_loss=0.408946 | val_loss=3.017254 | best_val_loss=2.913612 | best_epoch=4 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 7/50 | train_loss=0.250183 | val_loss=2.980554 | best_val_loss=2.913612 | best_epoch=4 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 8/50 | train_loss=0.156767 | val_loss=2.867940 | best_val_loss=2.867940 | best_epoch=8 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 9/50 | train_loss=0.110643 | val_loss=2.850899 | best_val_loss=2.850899 | best_epoch=9 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 10/50 | train_loss=0.085564 | val_loss=2.927190 | best_val_loss=2.850899 | best_epoch=9 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 11/50 | train_loss=0.062067 | val_loss=2.938977 | best_val_loss=2.850899 | best_epoch=9 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 12/50 | train_loss=0.048785 | val_loss=2.953700 | best_val_loss=2.850899 | best_epoch=9 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 13/50 | train_loss=0.043240 | val_loss=2.988719 | best_val_loss=2.850899 | best_epoch=9 | patience=4/5
+[Baseline tuning 2002 | Double Head] epoch 14/50 | train_loss=0.041968 | val_loss=3.070316 | best_val_loss=2.850899 | best_epoch=9 | patience=5/5
+[Baseline tuning 2002 | Double Head] EARLY STOP at epoch 14 | best_epoch=9 | best_val_loss=2.850899
+[Baseline tuning 2002 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=9 | best_val_loss=2.850899 | stopped_early=True
+AUX_DIAG | year=2002 | aux_weight=0.03 | train_acc=0.800954 | train_loss=0.683751 | train_majority=0.263409 | val_acc=0.666667 | val_loss=1.156586 | val_majority=0.275000
+[Baseline tuning 2003 | Double Head] epoch 1/20 | train_loss=3.263490 | val_loss=2.866861 | best_val_loss=2.866861 | best_epoch=1 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 2/20 | train_loss=2.513969 | val_loss=2.709060 | best_val_loss=2.709060 | best_epoch=2 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 3/20 | train_loss=2.102838 | val_loss=2.646407 | best_val_loss=2.646407 | best_epoch=3 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 4/20 | train_loss=1.820619 | val_loss=2.578202 | best_val_loss=2.578202 | best_epoch=4 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 5/20 | train_loss=1.614280 | val_loss=2.550777 | best_val_loss=2.550777 | best_epoch=5 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 6/20 | train_loss=1.417758 | val_loss=2.520071 | best_val_loss=2.520071 | best_epoch=6 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 7/20 | train_loss=1.286882 | val_loss=2.508655 | best_val_loss=2.508655 | best_epoch=7 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 8/20 | train_loss=1.141574 | val_loss=2.490063 | best_val_loss=2.490063 | best_epoch=8 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 9/20 | train_loss=1.035382 | val_loss=2.482036 | best_val_loss=2.482036 | best_epoch=9 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 10/20 | train_loss=0.916757 | val_loss=2.472885 | best_val_loss=2.472885 | best_epoch=10 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 11/20 | train_loss=0.830661 | val_loss=2.466141 | best_val_loss=2.466141 | best_epoch=11 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 12/20 | train_loss=0.745317 | val_loss=2.483379 | best_val_loss=2.466141 | best_epoch=11 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 13/20 | train_loss=0.672038 | val_loss=2.491025 | best_val_loss=2.466141 | best_epoch=11 | patience=2/3
+[Baseline tuning 2003 | Double Head] epoch 14/20 | train_loss=0.602156 | val_loss=2.478978 | best_val_loss=2.466141 | best_epoch=11 | patience=3/3
+[Baseline tuning 2003 | Double Head] EARLY STOP at epoch 14 | best_epoch=11 | best_val_loss=2.466141
+[Baseline tuning 2003 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=11 | best_val_loss=2.466141 | stopped_early=True
+AUX_DIAG | year=2003 | aux_weight=0.03 | train_acc=0.678141 | train_loss=0.989890 | train_majority=0.386403 | val_acc=0.644578 | val_loss=1.103696 | val_majority=0.397590
+[Baseline tuning 2004 | Double Head] epoch 1/20 | train_loss=3.191483 | val_loss=2.827483 | best_val_loss=2.827483 | best_epoch=1 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 2/20 | train_loss=2.597367 | val_loss=2.704253 | best_val_loss=2.704253 | best_epoch=2 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 3/20 | train_loss=2.141185 | val_loss=2.667105 | best_val_loss=2.667105 | best_epoch=3 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 4/20 | train_loss=1.874452 | val_loss=2.628391 | best_val_loss=2.628391 | best_epoch=4 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 5/20 | train_loss=1.658371 | val_loss=2.605880 | best_val_loss=2.605880 | best_epoch=5 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 6/20 | train_loss=1.439044 | val_loss=2.609169 | best_val_loss=2.605880 | best_epoch=5 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 7/20 | train_loss=1.275724 | val_loss=2.598873 | best_val_loss=2.598873 | best_epoch=7 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 8/20 | train_loss=1.137616 | val_loss=2.600697 | best_val_loss=2.598873 | best_epoch=7 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 9/20 | train_loss=1.018256 | val_loss=2.601836 | best_val_loss=2.598873 | best_epoch=7 | patience=2/3
+[Baseline tuning 2004 | Double Head] epoch 10/20 | train_loss=0.912673 | val_loss=2.601380 | best_val_loss=2.598873 | best_epoch=7 | patience=3/3
+[Baseline tuning 2004 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=2.598873
+[Baseline tuning 2004 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=2.598873 | stopped_early=True
+AUX_DIAG | year=2004 | aux_weight=0.03 | train_acc=0.632030 | train_loss=1.099611 | train_majority=0.379409 | val_acc=0.653333 | val_loss=1.090339 | val_majority=0.406667
+[Baseline tuning 2005 | Double Head] epoch 1/20 | train_loss=2.831741 | val_loss=2.569393 | best_val_loss=2.569393 | best_epoch=1 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 2/20 | train_loss=2.328360 | val_loss=2.527743 | best_val_loss=2.527743 | best_epoch=2 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 3/20 | train_loss=1.987303 | val_loss=2.470946 | best_val_loss=2.470946 | best_epoch=3 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 4/20 | train_loss=1.765149 | val_loss=2.479988 | best_val_loss=2.470946 | best_epoch=3 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 5/20 | train_loss=1.532924 | val_loss=2.453232 | best_val_loss=2.453232 | best_epoch=5 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 6/20 | train_loss=1.362770 | val_loss=2.444784 | best_val_loss=2.444784 | best_epoch=6 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 7/20 | train_loss=1.234899 | val_loss=2.422980 | best_val_loss=2.422980 | best_epoch=7 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 8/20 | train_loss=1.094540 | val_loss=2.444450 | best_val_loss=2.422980 | best_epoch=7 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 9/20 | train_loss=0.998206 | val_loss=2.440473 | best_val_loss=2.422980 | best_epoch=7 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 10/20 | train_loss=0.886471 | val_loss=2.438633 | best_val_loss=2.422980 | best_epoch=7 | patience=3/3
+[Baseline tuning 2005 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=2.422980
+[Baseline tuning 2005 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=2.422980 | stopped_early=True
+AUX_DIAG | year=2005 | aux_weight=0.03 | train_acc=0.703502 | train_loss=0.914066 | train_majority=0.301167 | val_acc=0.690217 | val_loss=1.049449 | val_majority=0.342391
+[Baseline tuning 2006 | Double Head] epoch 1/20 | train_loss=2.608964 | val_loss=2.607486 | best_val_loss=2.607486 | best_epoch=1 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 2/20 | train_loss=2.186545 | val_loss=2.565776 | best_val_loss=2.565776 | best_epoch=2 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 3/20 | train_loss=1.881584 | val_loss=2.557580 | best_val_loss=2.557580 | best_epoch=3 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 4/20 | train_loss=1.640146 | val_loss=2.555548 | best_val_loss=2.555548 | best_epoch=4 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 5/20 | train_loss=1.474035 | val_loss=2.541762 | best_val_loss=2.541762 | best_epoch=5 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 6/20 | train_loss=1.293920 | val_loss=2.531913 | best_val_loss=2.531913 | best_epoch=6 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 7/20 | train_loss=1.172471 | val_loss=2.534078 | best_val_loss=2.531913 | best_epoch=6 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 8/20 | train_loss=1.048990 | val_loss=2.535665 | best_val_loss=2.531913 | best_epoch=6 | patience=2/3
+[Baseline tuning 2006 | Double Head] epoch 9/20 | train_loss=0.930856 | val_loss=2.537983 | best_val_loss=2.531913 | best_epoch=6 | patience=3/3
+[Baseline tuning 2006 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=2.531913
+[Baseline tuning 2006 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=2.531913 | stopped_early=True
+AUX_DIAG | year=2006 | aux_weight=0.03 | train_acc=0.654728 | train_loss=1.105792 | train_majority=0.333811 | val_acc=0.655000 | val_loss=1.102776 | val_majority=0.300000
+[Baseline tuning 2007 | Double Head] epoch 1/20 | train_loss=2.555583 | val_loss=2.638885 | best_val_loss=2.638885 | best_epoch=1 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 2/20 | train_loss=2.127608 | val_loss=2.603914 | best_val_loss=2.603914 | best_epoch=2 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 3/20 | train_loss=1.818169 | val_loss=2.565626 | best_val_loss=2.565626 | best_epoch=3 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 4/20 | train_loss=1.559408 | val_loss=2.567881 | best_val_loss=2.565626 | best_epoch=3 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 5/20 | train_loss=1.391573 | val_loss=2.545471 | best_val_loss=2.545471 | best_epoch=5 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 6/20 | train_loss=1.214022 | val_loss=2.525869 | best_val_loss=2.525869 | best_epoch=6 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 7/20 | train_loss=1.095274 | val_loss=2.518993 | best_val_loss=2.518993 | best_epoch=7 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 8/20 | train_loss=0.977683 | val_loss=2.517666 | best_val_loss=2.517666 | best_epoch=8 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 9/20 | train_loss=0.872515 | val_loss=2.519333 | best_val_loss=2.517666 | best_epoch=8 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 10/20 | train_loss=0.790184 | val_loss=2.527382 | best_val_loss=2.517666 | best_epoch=8 | patience=2/3
+[Baseline tuning 2007 | Double Head] epoch 11/20 | train_loss=0.702731 | val_loss=2.533708 | best_val_loss=2.517666 | best_epoch=8 | patience=3/3
+[Baseline tuning 2007 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.517666
+[Baseline tuning 2007 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.517666 | stopped_early=True
+AUX_DIAG | year=2007 | aux_weight=0.03 | train_acc=0.706849 | train_loss=0.959689 | train_majority=0.317808 | val_acc=0.647619 | val_loss=1.215392 | val_majority=0.295238
+[Baseline tuning 2008 | Double Head] epoch 1/20 | train_loss=2.583172 | val_loss=2.546987 | best_val_loss=2.546987 | best_epoch=1 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 2/20 | train_loss=2.124946 | val_loss=2.465936 | best_val_loss=2.465936 | best_epoch=2 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 3/20 | train_loss=1.794072 | val_loss=2.446163 | best_val_loss=2.446163 | best_epoch=3 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 4/20 | train_loss=1.579233 | val_loss=2.414715 | best_val_loss=2.414715 | best_epoch=4 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 5/20 | train_loss=1.384839 | val_loss=2.403643 | best_val_loss=2.403643 | best_epoch=5 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 6/20 | train_loss=1.258360 | val_loss=2.386600 | best_val_loss=2.386600 | best_epoch=6 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 7/20 | train_loss=1.087797 | val_loss=2.380888 | best_val_loss=2.380888 | best_epoch=7 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 8/20 | train_loss=0.991205 | val_loss=2.368554 | best_val_loss=2.368554 | best_epoch=8 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 9/20 | train_loss=0.904375 | val_loss=2.365908 | best_val_loss=2.365908 | best_epoch=9 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 10/20 | train_loss=0.793391 | val_loss=2.372804 | best_val_loss=2.365908 | best_epoch=9 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 11/20 | train_loss=0.721759 | val_loss=2.379169 | best_val_loss=2.365908 | best_epoch=9 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 12/20 | train_loss=0.640498 | val_loss=2.383837 | best_val_loss=2.365908 | best_epoch=9 | patience=3/3
+[Baseline tuning 2008 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.365908
+[Baseline tuning 2008 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.365908 | stopped_early=True
+AUX_DIAG | year=2008 | aux_weight=0.03 | train_acc=0.616063 | train_loss=1.162417 | train_majority=0.278159 | val_acc=0.506849 | val_loss=1.399689 | val_majority=0.253425
+[Baseline tuning 2009 | Double Head] epoch 1/20 | train_loss=2.715972 | val_loss=2.537549 | best_val_loss=2.537549 | best_epoch=1 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 2/20 | train_loss=2.227403 | val_loss=2.457325 | best_val_loss=2.457325 | best_epoch=2 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 3/20 | train_loss=1.939711 | val_loss=2.408430 | best_val_loss=2.408430 | best_epoch=3 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 4/20 | train_loss=1.740768 | val_loss=2.406858 | best_val_loss=2.406858 | best_epoch=4 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 5/20 | train_loss=1.566647 | val_loss=2.368500 | best_val_loss=2.368500 | best_epoch=5 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 6/20 | train_loss=1.414970 | val_loss=2.355194 | best_val_loss=2.355194 | best_epoch=6 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 7/20 | train_loss=1.285739 | val_loss=2.346931 | best_val_loss=2.346931 | best_epoch=7 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 8/20 | train_loss=1.135709 | val_loss=2.343090 | best_val_loss=2.343090 | best_epoch=8 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 9/20 | train_loss=1.042900 | val_loss=2.341601 | best_val_loss=2.341601 | best_epoch=9 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 10/20 | train_loss=0.929749 | val_loss=2.332253 | best_val_loss=2.332253 | best_epoch=10 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 11/20 | train_loss=0.839527 | val_loss=2.335063 | best_val_loss=2.332253 | best_epoch=10 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 12/20 | train_loss=0.749648 | val_loss=2.332986 | best_val_loss=2.332253 | best_epoch=10 | patience=2/3
+[Baseline tuning 2009 | Double Head] epoch 13/20 | train_loss=0.678255 | val_loss=2.345915 | best_val_loss=2.332253 | best_epoch=10 | patience=3/3
+[Baseline tuning 2009 | Double Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=2.332253
+[Baseline tuning 2009 | Double Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=2.332253 | stopped_early=True
+AUX_DIAG | year=2009 | aux_weight=0.03 | train_acc=0.635605 | train_loss=1.124390 | train_majority=0.284235 | val_acc=0.558411 | val_loss=1.313675 | val_majority=0.294393
+[Baseline tuning 2010 | Double Head] epoch 1/20 | train_loss=2.422657 | val_loss=2.228999 | best_val_loss=2.228999 | best_epoch=1 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 2/20 | train_loss=1.989525 | val_loss=2.119678 | best_val_loss=2.119678 | best_epoch=2 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 3/20 | train_loss=1.744679 | val_loss=2.076621 | best_val_loss=2.076621 | best_epoch=3 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 4/20 | train_loss=1.563337 | val_loss=2.046233 | best_val_loss=2.046233 | best_epoch=4 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 5/20 | train_loss=1.403150 | val_loss=2.026625 | best_val_loss=2.026625 | best_epoch=5 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 6/20 | train_loss=1.262978 | val_loss=2.015398 | best_val_loss=2.015398 | best_epoch=6 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 7/20 | train_loss=1.148866 | val_loss=2.017010 | best_val_loss=2.015398 | best_epoch=6 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 8/20 | train_loss=1.024322 | val_loss=1.997724 | best_val_loss=1.997724 | best_epoch=8 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 9/20 | train_loss=0.916754 | val_loss=2.005412 | best_val_loss=1.997724 | best_epoch=8 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 10/20 | train_loss=0.820166 | val_loss=2.006919 | best_val_loss=1.997724 | best_epoch=8 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 11/20 | train_loss=0.733645 | val_loss=2.010284 | best_val_loss=1.997724 | best_epoch=8 | patience=3/3
+[Baseline tuning 2010 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=1.997724
+[Baseline tuning 2010 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=1.997724 | stopped_early=True
+AUX_DIAG | year=2010 | aux_weight=0.03 | train_acc=0.705213 | train_loss=0.939630 | train_majority=0.335974 | val_acc=0.673716 | val_loss=1.043471 | val_majority=0.358510
+[Baseline tuning 2011 | Double Head] epoch 1/20 | train_loss=2.039207 | val_loss=1.872981 | best_val_loss=1.872981 | best_epoch=1 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 2/20 | train_loss=1.669840 | val_loss=1.823245 | best_val_loss=1.823245 | best_epoch=2 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 3/20 | train_loss=1.460303 | val_loss=1.796762 | best_val_loss=1.796762 | best_epoch=3 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 4/20 | train_loss=1.306482 | val_loss=1.791075 | best_val_loss=1.791075 | best_epoch=4 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 5/20 | train_loss=1.164709 | val_loss=1.781373 | best_val_loss=1.781373 | best_epoch=5 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 6/20 | train_loss=1.049260 | val_loss=1.786687 | best_val_loss=1.781373 | best_epoch=5 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 7/20 | train_loss=0.940355 | val_loss=1.777205 | best_val_loss=1.777205 | best_epoch=7 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 8/20 | train_loss=0.838364 | val_loss=1.773825 | best_val_loss=1.773825 | best_epoch=8 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 9/20 | train_loss=0.751851 | val_loss=1.792244 | best_val_loss=1.773825 | best_epoch=8 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 10/20 | train_loss=0.658041 | val_loss=1.792019 | best_val_loss=1.773825 | best_epoch=8 | patience=2/3
+[Baseline tuning 2011 | Double Head] epoch 11/20 | train_loss=0.591532 | val_loss=1.800145 | best_val_loss=1.773825 | best_epoch=8 | patience=3/3
+[Baseline tuning 2011 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=1.773825
+[Baseline tuning 2011 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=1.773825 | stopped_early=True
+AUX_DIAG | year=2011 | aux_weight=0.03 | train_acc=0.735233 | train_loss=0.813003 | train_majority=0.372190 | val_acc=0.709324 | val_loss=0.896842 | val_majority=0.391225
+[Baseline tuning 2012 | Double Head] epoch 1/20 | train_loss=2.139848 | val_loss=1.969915 | best_val_loss=1.969915 | best_epoch=1 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 2/20 | train_loss=1.714748 | val_loss=1.924834 | best_val_loss=1.924834 | best_epoch=2 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 3/20 | train_loss=1.480699 | val_loss=1.880851 | best_val_loss=1.880851 | best_epoch=3 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 4/20 | train_loss=1.295050 | val_loss=1.882272 | best_val_loss=1.880851 | best_epoch=3 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 5/20 | train_loss=1.163124 | val_loss=1.882648 | best_val_loss=1.880851 | best_epoch=3 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 6/20 | train_loss=1.019638 | val_loss=1.871986 | best_val_loss=1.871986 | best_epoch=6 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 7/20 | train_loss=0.918154 | val_loss=1.867714 | best_val_loss=1.867714 | best_epoch=7 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 8/20 | train_loss=0.808072 | val_loss=1.884038 | best_val_loss=1.867714 | best_epoch=7 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 9/20 | train_loss=0.722276 | val_loss=1.891495 | best_val_loss=1.867714 | best_epoch=7 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 10/20 | train_loss=0.645615 | val_loss=1.906093 | best_val_loss=1.867714 | best_epoch=7 | patience=3/3
+[Baseline tuning 2012 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.867714
+[Baseline tuning 2012 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.867714 | stopped_early=True
+AUX_DIAG | year=2012 | aux_weight=0.03 | train_acc=0.732143 | train_loss=0.820947 | train_majority=0.492292 | val_acc=0.695418 | val_loss=0.930728 | val_majority=0.485175
+
+================================================================================
+BASELINE TUNING | double_head | trial=3
+{'aux_loss_weight': 0.1}
+================================================================================
+[Baseline tuning 2002 | Double Head] epoch 1/50 | train_loss=3.645323 | val_loss=4.093217 | best_val_loss=4.093217 | best_epoch=1 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 2/50 | train_loss=2.384424 | val_loss=3.771965 | best_val_loss=3.771965 | best_epoch=2 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 3/50 | train_loss=1.704159 | val_loss=3.188222 | best_val_loss=3.188222 | best_epoch=3 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 4/50 | train_loss=1.141439 | val_loss=3.013423 | best_val_loss=3.013423 | best_epoch=4 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 5/50 | train_loss=0.724889 | val_loss=3.028232 | best_val_loss=3.013423 | best_epoch=4 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 6/50 | train_loss=0.458384 | val_loss=3.088318 | best_val_loss=3.013423 | best_epoch=4 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 7/50 | train_loss=0.288793 | val_loss=2.982067 | best_val_loss=2.982067 | best_epoch=7 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 8/50 | train_loss=0.198636 | val_loss=3.011080 | best_val_loss=2.982067 | best_epoch=7 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 9/50 | train_loss=0.137045 | val_loss=2.971151 | best_val_loss=2.971151 | best_epoch=9 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 10/50 | train_loss=0.101869 | val_loss=3.053062 | best_val_loss=2.971151 | best_epoch=9 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 11/50 | train_loss=0.073553 | val_loss=3.051175 | best_val_loss=2.971151 | best_epoch=9 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 12/50 | train_loss=0.058405 | val_loss=3.028083 | best_val_loss=2.971151 | best_epoch=9 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 13/50 | train_loss=0.051716 | val_loss=3.058233 | best_val_loss=2.971151 | best_epoch=9 | patience=4/5
+[Baseline tuning 2002 | Double Head] epoch 14/50 | train_loss=0.052810 | val_loss=3.230627 | best_val_loss=2.971151 | best_epoch=9 | patience=5/5
+[Baseline tuning 2002 | Double Head] EARLY STOP at epoch 14 | best_epoch=9 | best_val_loss=2.971151
+[Baseline tuning 2002 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=9 | best_val_loss=2.971151 | stopped_early=True
+AUX_DIAG | year=2002 | aux_weight=0.1 | train_acc=0.940405 | train_loss=0.355609 | train_majority=0.263409 | val_acc=0.658333 | val_loss=1.018419 | val_majority=0.275000
+[Baseline tuning 2003 | Double Head] epoch 1/20 | train_loss=3.329742 | val_loss=2.973059 | best_val_loss=2.973059 | best_epoch=1 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 2/20 | train_loss=2.578913 | val_loss=2.806622 | best_val_loss=2.806622 | best_epoch=2 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 3/20 | train_loss=2.178956 | val_loss=2.741988 | best_val_loss=2.741988 | best_epoch=3 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 4/20 | train_loss=1.892057 | val_loss=2.678186 | best_val_loss=2.678186 | best_epoch=4 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 5/20 | train_loss=1.684522 | val_loss=2.654625 | best_val_loss=2.654625 | best_epoch=5 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 6/20 | train_loss=1.480278 | val_loss=2.628360 | best_val_loss=2.628360 | best_epoch=6 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 7/20 | train_loss=1.353839 | val_loss=2.623033 | best_val_loss=2.623033 | best_epoch=7 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 8/20 | train_loss=1.203273 | val_loss=2.614000 | best_val_loss=2.614000 | best_epoch=8 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 9/20 | train_loss=1.094927 | val_loss=2.611109 | best_val_loss=2.611109 | best_epoch=9 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 10/20 | train_loss=0.977767 | val_loss=2.603954 | best_val_loss=2.603954 | best_epoch=10 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 11/20 | train_loss=0.886757 | val_loss=2.604047 | best_val_loss=2.603954 | best_epoch=10 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 12/20 | train_loss=0.796026 | val_loss=2.614180 | best_val_loss=2.603954 | best_epoch=10 | patience=2/3
+[Baseline tuning 2003 | Double Head] epoch 13/20 | train_loss=0.726882 | val_loss=2.615182 | best_val_loss=2.603954 | best_epoch=10 | patience=3/3
+[Baseline tuning 2003 | Double Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=2.603954
+[Baseline tuning 2003 | Double Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=2.603954 | stopped_early=True
+AUX_DIAG | year=2003 | aux_weight=0.1 | train_acc=0.735800 | train_loss=0.803240 | train_majority=0.386403 | val_acc=0.650602 | val_loss=1.018789 | val_majority=0.397590
+[Baseline tuning 2004 | Double Head] epoch 1/20 | train_loss=3.311107 | val_loss=2.926218 | best_val_loss=2.926218 | best_epoch=1 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 2/20 | train_loss=2.698569 | val_loss=2.769700 | best_val_loss=2.769700 | best_epoch=2 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 3/20 | train_loss=2.294779 | val_loss=2.728368 | best_val_loss=2.728368 | best_epoch=3 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 4/20 | train_loss=2.000270 | val_loss=2.694316 | best_val_loss=2.694316 | best_epoch=4 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 5/20 | train_loss=1.759536 | val_loss=2.667754 | best_val_loss=2.667754 | best_epoch=5 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 6/20 | train_loss=1.577918 | val_loss=2.670621 | best_val_loss=2.667754 | best_epoch=5 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 7/20 | train_loss=1.396703 | val_loss=2.660288 | best_val_loss=2.660288 | best_epoch=7 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 8/20 | train_loss=1.261268 | val_loss=2.654544 | best_val_loss=2.654544 | best_epoch=8 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 9/20 | train_loss=1.123340 | val_loss=2.650666 | best_val_loss=2.650666 | best_epoch=9 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 10/20 | train_loss=1.004870 | val_loss=2.655168 | best_val_loss=2.650666 | best_epoch=9 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 11/20 | train_loss=0.919049 | val_loss=2.656698 | best_val_loss=2.650666 | best_epoch=9 | patience=2/3
+[Baseline tuning 2004 | Double Head] epoch 12/20 | train_loss=0.844461 | val_loss=2.658286 | best_val_loss=2.650666 | best_epoch=9 | patience=3/3
+[Baseline tuning 2004 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.650666
+[Baseline tuning 2004 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.650666 | stopped_early=True
+AUX_DIAG | year=2004 | aux_weight=0.1 | train_acc=0.714967 | train_loss=0.873005 | train_majority=0.379409 | val_acc=0.700000 | val_loss=0.963520 | val_majority=0.406667
+[Baseline tuning 2005 | Double Head] epoch 1/20 | train_loss=2.882987 | val_loss=2.669814 | best_val_loss=2.669814 | best_epoch=1 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 2/20 | train_loss=2.369350 | val_loss=2.592825 | best_val_loss=2.592825 | best_epoch=2 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 3/20 | train_loss=2.040603 | val_loss=2.575147 | best_val_loss=2.575147 | best_epoch=3 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 4/20 | train_loss=1.778624 | val_loss=2.538139 | best_val_loss=2.538139 | best_epoch=4 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 5/20 | train_loss=1.559121 | val_loss=2.523906 | best_val_loss=2.523906 | best_epoch=5 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 6/20 | train_loss=1.417912 | val_loss=2.509455 | best_val_loss=2.509455 | best_epoch=6 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 7/20 | train_loss=1.277063 | val_loss=2.506254 | best_val_loss=2.506254 | best_epoch=7 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 8/20 | train_loss=1.139386 | val_loss=2.489064 | best_val_loss=2.489064 | best_epoch=8 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 9/20 | train_loss=1.022823 | val_loss=2.499769 | best_val_loss=2.489064 | best_epoch=8 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 10/20 | train_loss=0.928621 | val_loss=2.492472 | best_val_loss=2.489064 | best_epoch=8 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 11/20 | train_loss=0.841217 | val_loss=2.485696 | best_val_loss=2.485696 | best_epoch=11 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 12/20 | train_loss=0.755231 | val_loss=2.520684 | best_val_loss=2.485696 | best_epoch=11 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 13/20 | train_loss=0.703968 | val_loss=2.496129 | best_val_loss=2.485696 | best_epoch=11 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 14/20 | train_loss=0.622545 | val_loss=2.500023 | best_val_loss=2.485696 | best_epoch=11 | patience=3/3
+[Baseline tuning 2005 | Double Head] EARLY STOP at epoch 14 | best_epoch=11 | best_val_loss=2.485696
+[Baseline tuning 2005 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=11 | best_val_loss=2.485696 | stopped_early=True
+AUX_DIAG | year=2005 | aux_weight=0.1 | train_acc=0.796887 | train_loss=0.662554 | train_majority=0.301167 | val_acc=0.760870 | val_loss=0.872019 | val_majority=0.342391
+[Baseline tuning 2006 | Double Head] epoch 1/20 | train_loss=2.694433 | val_loss=2.726774 | best_val_loss=2.726774 | best_epoch=1 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 2/20 | train_loss=2.195178 | val_loss=2.646951 | best_val_loss=2.646951 | best_epoch=2 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 3/20 | train_loss=1.854644 | val_loss=2.631607 | best_val_loss=2.631607 | best_epoch=3 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 4/20 | train_loss=1.639289 | val_loss=2.613751 | best_val_loss=2.613751 | best_epoch=4 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 5/20 | train_loss=1.429067 | val_loss=2.621622 | best_val_loss=2.613751 | best_epoch=4 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 6/20 | train_loss=1.267812 | val_loss=2.598321 | best_val_loss=2.598321 | best_epoch=6 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 7/20 | train_loss=1.146324 | val_loss=2.607691 | best_val_loss=2.598321 | best_epoch=6 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 8/20 | train_loss=1.000231 | val_loss=2.601351 | best_val_loss=2.598321 | best_epoch=6 | patience=2/3
+[Baseline tuning 2006 | Double Head] epoch 9/20 | train_loss=0.909115 | val_loss=2.610621 | best_val_loss=2.598321 | best_epoch=6 | patience=3/3
+[Baseline tuning 2006 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=2.598321
+[Baseline tuning 2006 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=2.598321 | stopped_early=True
+AUX_DIAG | year=2006 | aux_weight=0.1 | train_acc=0.727794 | train_loss=0.885888 | train_majority=0.333811 | val_acc=0.715000 | val_loss=0.947577 | val_majority=0.300000
+[Baseline tuning 2007 | Double Head] epoch 1/20 | train_loss=2.570136 | val_loss=2.791669 | best_val_loss=2.791669 | best_epoch=1 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 2/20 | train_loss=2.147601 | val_loss=2.662001 | best_val_loss=2.662001 | best_epoch=2 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 3/20 | train_loss=1.793740 | val_loss=2.631347 | best_val_loss=2.631347 | best_epoch=3 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 4/20 | train_loss=1.540955 | val_loss=2.617456 | best_val_loss=2.617456 | best_epoch=4 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 5/20 | train_loss=1.372241 | val_loss=2.608686 | best_val_loss=2.608686 | best_epoch=5 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 6/20 | train_loss=1.185484 | val_loss=2.603861 | best_val_loss=2.603861 | best_epoch=6 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 7/20 | train_loss=1.067551 | val_loss=2.617189 | best_val_loss=2.603861 | best_epoch=6 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 8/20 | train_loss=0.945856 | val_loss=2.600031 | best_val_loss=2.600031 | best_epoch=8 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 9/20 | train_loss=0.838875 | val_loss=2.613894 | best_val_loss=2.600031 | best_epoch=8 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 10/20 | train_loss=0.768163 | val_loss=2.612725 | best_val_loss=2.600031 | best_epoch=8 | patience=2/3
+[Baseline tuning 2007 | Double Head] epoch 11/20 | train_loss=0.688044 | val_loss=2.604320 | best_val_loss=2.600031 | best_epoch=8 | patience=3/3
+[Baseline tuning 2007 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.600031
+[Baseline tuning 2007 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.600031 | stopped_early=True
+AUX_DIAG | year=2007 | aux_weight=0.1 | train_acc=0.771233 | train_loss=0.762589 | train_majority=0.317808 | val_acc=0.695238 | val_loss=1.142456 | val_majority=0.295238
+[Baseline tuning 2008 | Double Head] epoch 1/20 | train_loss=2.632083 | val_loss=2.648685 | best_val_loss=2.648685 | best_epoch=1 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 2/20 | train_loss=2.114178 | val_loss=2.573779 | best_val_loss=2.573779 | best_epoch=2 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 3/20 | train_loss=1.785616 | val_loss=2.559276 | best_val_loss=2.559276 | best_epoch=3 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 4/20 | train_loss=1.528490 | val_loss=2.532914 | best_val_loss=2.532914 | best_epoch=4 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 5/20 | train_loss=1.365649 | val_loss=2.528139 | best_val_loss=2.528139 | best_epoch=5 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 6/20 | train_loss=1.200719 | val_loss=2.534147 | best_val_loss=2.528139 | best_epoch=5 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 7/20 | train_loss=1.063544 | val_loss=2.515770 | best_val_loss=2.515770 | best_epoch=7 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 8/20 | train_loss=0.957982 | val_loss=2.518297 | best_val_loss=2.515770 | best_epoch=7 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 9/20 | train_loss=0.865111 | val_loss=2.513552 | best_val_loss=2.513552 | best_epoch=9 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 10/20 | train_loss=0.783564 | val_loss=2.535787 | best_val_loss=2.513552 | best_epoch=9 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 11/20 | train_loss=0.697387 | val_loss=2.522745 | best_val_loss=2.513552 | best_epoch=9 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 12/20 | train_loss=0.633978 | val_loss=2.529953 | best_val_loss=2.513552 | best_epoch=9 | patience=3/3
+[Baseline tuning 2008 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.513552
+[Baseline tuning 2008 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.513552 | stopped_early=True
+AUX_DIAG | year=2008 | aux_weight=0.1 | train_acc=0.714985 | train_loss=0.891723 | train_majority=0.278159 | val_acc=0.602740 | val_loss=1.220094 | val_majority=0.253425
+[Baseline tuning 2009 | Double Head] epoch 1/20 | train_loss=2.813085 | val_loss=2.628504 | best_val_loss=2.628504 | best_epoch=1 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 2/20 | train_loss=2.288088 | val_loss=2.544859 | best_val_loss=2.544859 | best_epoch=2 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 3/20 | train_loss=1.984520 | val_loss=2.507560 | best_val_loss=2.507560 | best_epoch=3 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 4/20 | train_loss=1.758248 | val_loss=2.496263 | best_val_loss=2.496263 | best_epoch=4 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 5/20 | train_loss=1.582736 | val_loss=2.464368 | best_val_loss=2.464368 | best_epoch=5 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 6/20 | train_loss=1.409395 | val_loss=2.449616 | best_val_loss=2.449616 | best_epoch=6 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 7/20 | train_loss=1.282400 | val_loss=2.444620 | best_val_loss=2.444620 | best_epoch=7 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 8/20 | train_loss=1.159982 | val_loss=2.434842 | best_val_loss=2.434842 | best_epoch=8 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 9/20 | train_loss=1.048873 | val_loss=2.437090 | best_val_loss=2.434842 | best_epoch=8 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 10/20 | train_loss=0.954064 | val_loss=2.471899 | best_val_loss=2.434842 | best_epoch=8 | patience=2/3
+[Baseline tuning 2009 | Double Head] epoch 11/20 | train_loss=0.856800 | val_loss=2.457960 | best_val_loss=2.434842 | best_epoch=8 | patience=3/3
+[Baseline tuning 2009 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.434842
+[Baseline tuning 2009 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.434842 | stopped_early=True
+AUX_DIAG | year=2009 | aux_weight=0.1 | train_acc=0.697061 | train_loss=0.957006 | train_majority=0.284235 | val_acc=0.621495 | val_loss=1.180055 | val_majority=0.294393
+[Baseline tuning 2010 | Double Head] epoch 1/20 | train_loss=2.513011 | val_loss=2.294772 | best_val_loss=2.294772 | best_epoch=1 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 2/20 | train_loss=2.062563 | val_loss=2.207552 | best_val_loss=2.207552 | best_epoch=2 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 3/20 | train_loss=1.831474 | val_loss=2.160058 | best_val_loss=2.160058 | best_epoch=3 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 4/20 | train_loss=1.643651 | val_loss=2.125161 | best_val_loss=2.125161 | best_epoch=4 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 5/20 | train_loss=1.490152 | val_loss=2.105769 | best_val_loss=2.105769 | best_epoch=5 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 6/20 | train_loss=1.343472 | val_loss=2.085054 | best_val_loss=2.085054 | best_epoch=6 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 7/20 | train_loss=1.212012 | val_loss=2.074224 | best_val_loss=2.074224 | best_epoch=7 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 8/20 | train_loss=1.092270 | val_loss=2.063673 | best_val_loss=2.063673 | best_epoch=8 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 9/20 | train_loss=0.984575 | val_loss=2.076648 | best_val_loss=2.063673 | best_epoch=8 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 10/20 | train_loss=0.890850 | val_loss=2.057060 | best_val_loss=2.057060 | best_epoch=10 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 11/20 | train_loss=0.786779 | val_loss=2.062719 | best_val_loss=2.057060 | best_epoch=10 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 12/20 | train_loss=0.705797 | val_loss=2.066249 | best_val_loss=2.057060 | best_epoch=10 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 13/20 | train_loss=0.633581 | val_loss=2.084895 | best_val_loss=2.057060 | best_epoch=10 | patience=3/3
+[Baseline tuning 2010 | Double Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=2.057060
+[Baseline tuning 2010 | Double Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=2.057060 | stopped_early=True
+AUX_DIAG | year=2010 | aux_weight=0.1 | train_acc=0.773474 | train_loss=0.721959 | train_majority=0.335974 | val_acc=0.718026 | val_loss=0.877177 | val_majority=0.358510
+[Baseline tuning 2011 | Double Head] epoch 1/20 | train_loss=2.123270 | val_loss=1.925256 | best_val_loss=1.925256 | best_epoch=1 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 2/20 | train_loss=1.704652 | val_loss=1.889194 | best_val_loss=1.889194 | best_epoch=2 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 3/20 | train_loss=1.494036 | val_loss=1.845666 | best_val_loss=1.845666 | best_epoch=3 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 4/20 | train_loss=1.324868 | val_loss=1.842537 | best_val_loss=1.842537 | best_epoch=4 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 5/20 | train_loss=1.176038 | val_loss=1.837389 | best_val_loss=1.837389 | best_epoch=5 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 6/20 | train_loss=1.064638 | val_loss=1.810975 | best_val_loss=1.810975 | best_epoch=6 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 7/20 | train_loss=0.944646 | val_loss=1.817124 | best_val_loss=1.810975 | best_epoch=6 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 8/20 | train_loss=0.846579 | val_loss=1.826683 | best_val_loss=1.810975 | best_epoch=6 | patience=2/3
+[Baseline tuning 2011 | Double Head] epoch 9/20 | train_loss=0.764806 | val_loss=1.826110 | best_val_loss=1.810975 | best_epoch=6 | patience=3/3
+[Baseline tuning 2011 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=1.810975
+[Baseline tuning 2011 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=1.810975 | stopped_early=True
+AUX_DIAG | year=2011 | aux_weight=0.1 | train_acc=0.783847 | train_loss=0.679622 | train_majority=0.372190 | val_acc=0.741316 | val_loss=0.807055 | val_majority=0.391225
+[Baseline tuning 2012 | Double Head] epoch 1/20 | train_loss=2.200187 | val_loss=2.011263 | best_val_loss=2.011263 | best_epoch=1 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 2/20 | train_loss=1.783373 | val_loss=1.958786 | best_val_loss=1.958786 | best_epoch=2 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 3/20 | train_loss=1.557022 | val_loss=1.933970 | best_val_loss=1.933970 | best_epoch=3 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 4/20 | train_loss=1.370789 | val_loss=1.928705 | best_val_loss=1.928705 | best_epoch=4 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 5/20 | train_loss=1.220074 | val_loss=1.909802 | best_val_loss=1.909802 | best_epoch=5 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 6/20 | train_loss=1.098647 | val_loss=1.912634 | best_val_loss=1.909802 | best_epoch=5 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 7/20 | train_loss=0.980790 | val_loss=1.898790 | best_val_loss=1.898790 | best_epoch=7 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 8/20 | train_loss=0.875666 | val_loss=1.898882 | best_val_loss=1.898790 | best_epoch=7 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 9/20 | train_loss=0.778194 | val_loss=1.900115 | best_val_loss=1.898790 | best_epoch=7 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 10/20 | train_loss=0.701358 | val_loss=1.920480 | best_val_loss=1.898790 | best_epoch=7 | patience=3/3
+[Baseline tuning 2012 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.898790
+[Baseline tuning 2012 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.898790 | stopped_early=True
+AUX_DIAG | year=2012 | aux_weight=0.1 | train_acc=0.788798 | train_loss=0.667250 | train_majority=0.492292 | val_acc=0.734951 | val_loss=0.824405 | val_majority=0.485175
+
+================================================================================
+BASELINE TUNING | double_head | trial=4
+{'aux_loss_weight': 0.3}
+================================================================================
+[Baseline tuning 2002 | Double Head] epoch 1/50 | train_loss=3.980888 | val_loss=4.546899 | best_val_loss=4.546899 | best_epoch=1 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 2/50 | train_loss=2.626951 | val_loss=4.146414 | best_val_loss=4.146414 | best_epoch=2 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 3/50 | train_loss=1.910379 | val_loss=3.424812 | best_val_loss=3.424812 | best_epoch=3 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 4/50 | train_loss=1.303492 | val_loss=3.193834 | best_val_loss=3.193834 | best_epoch=4 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 5/50 | train_loss=0.851172 | val_loss=3.268114 | best_val_loss=3.193834 | best_epoch=4 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 6/50 | train_loss=0.536657 | val_loss=3.301731 | best_val_loss=3.193834 | best_epoch=4 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 7/50 | train_loss=0.348697 | val_loss=3.140193 | best_val_loss=3.140193 | best_epoch=7 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 8/50 | train_loss=0.220098 | val_loss=3.189976 | best_val_loss=3.140193 | best_epoch=7 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 9/50 | train_loss=0.146789 | val_loss=3.192563 | best_val_loss=3.140193 | best_epoch=7 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 10/50 | train_loss=0.117212 | val_loss=3.281059 | best_val_loss=3.140193 | best_epoch=7 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 11/50 | train_loss=0.077722 | val_loss=3.259654 | best_val_loss=3.140193 | best_epoch=7 | patience=4/5
+[Baseline tuning 2002 | Double Head] epoch 12/50 | train_loss=0.063112 | val_loss=3.271021 | best_val_loss=3.140193 | best_epoch=7 | patience=5/5
+[Baseline tuning 2002 | Double Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=3.140193
+[Baseline tuning 2002 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=3.140193 | stopped_early=True
+AUX_DIAG | year=2002 | aux_weight=0.3 | train_acc=0.983313 | train_loss=0.237852 | train_majority=0.263409 | val_acc=0.658333 | val_loss=1.051995 | val_majority=0.275000
+[Baseline tuning 2003 | Double Head] epoch 1/20 | train_loss=3.570980 | val_loss=3.170206 | best_val_loss=3.170206 | best_epoch=1 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 2/20 | train_loss=2.886710 | val_loss=3.011386 | best_val_loss=3.011386 | best_epoch=2 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 3/20 | train_loss=2.503388 | val_loss=2.940843 | best_val_loss=2.940843 | best_epoch=3 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 4/20 | train_loss=2.217845 | val_loss=2.872351 | best_val_loss=2.872351 | best_epoch=4 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 5/20 | train_loss=2.006367 | val_loss=2.843331 | best_val_loss=2.843331 | best_epoch=5 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 6/20 | train_loss=1.820284 | val_loss=2.805415 | best_val_loss=2.805415 | best_epoch=6 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 7/20 | train_loss=1.652135 | val_loss=2.793271 | best_val_loss=2.793271 | best_epoch=7 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 8/20 | train_loss=1.522885 | val_loss=2.768340 | best_val_loss=2.768340 | best_epoch=8 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 9/20 | train_loss=1.396146 | val_loss=2.765730 | best_val_loss=2.765730 | best_epoch=9 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 10/20 | train_loss=1.262330 | val_loss=2.752161 | best_val_loss=2.752161 | best_epoch=10 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 11/20 | train_loss=1.154246 | val_loss=2.745453 | best_val_loss=2.745453 | best_epoch=11 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 12/20 | train_loss=1.070753 | val_loss=2.737482 | best_val_loss=2.737482 | best_epoch=12 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 13/20 | train_loss=0.970118 | val_loss=2.741013 | best_val_loss=2.737482 | best_epoch=12 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 14/20 | train_loss=0.882591 | val_loss=2.723312 | best_val_loss=2.723312 | best_epoch=14 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 15/20 | train_loss=0.816743 | val_loss=2.722478 | best_val_loss=2.722478 | best_epoch=15 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 16/20 | train_loss=0.735538 | val_loss=2.711317 | best_val_loss=2.711317 | best_epoch=16 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 17/20 | train_loss=0.691248 | val_loss=2.711707 | best_val_loss=2.711317 | best_epoch=16 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 18/20 | train_loss=0.623850 | val_loss=2.711173 | best_val_loss=2.711173 | best_epoch=18 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 19/20 | train_loss=0.569994 | val_loss=2.721355 | best_val_loss=2.711173 | best_epoch=18 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 20/20 | train_loss=0.530043 | val_loss=2.729084 | best_val_loss=2.711173 | best_epoch=18 | patience=2/3
+[Baseline tuning 2003 | Double Head] TRAINING FINISHED | executed_epochs=20 | best_epoch=18 | best_val_loss=2.711173 | stopped_early=False
+AUX_DIAG | year=2003 | aux_weight=0.3 | train_acc=0.929432 | train_loss=0.373470 | train_majority=0.386403 | val_acc=0.734940 | val_loss=0.831162 | val_majority=0.397590
+[Baseline tuning 2004 | Double Head] epoch 1/20 | train_loss=3.544946 | val_loss=3.138704 | best_val_loss=3.138704 | best_epoch=1 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 2/20 | train_loss=2.804224 | val_loss=2.956020 | best_val_loss=2.956020 | best_epoch=2 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 3/20 | train_loss=2.355236 | val_loss=2.911578 | best_val_loss=2.911578 | best_epoch=3 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 4/20 | train_loss=2.015818 | val_loss=2.863951 | best_val_loss=2.863951 | best_epoch=4 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 5/20 | train_loss=1.782199 | val_loss=2.835424 | best_val_loss=2.835424 | best_epoch=5 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 6/20 | train_loss=1.569978 | val_loss=2.831180 | best_val_loss=2.831180 | best_epoch=6 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 7/20 | train_loss=1.420032 | val_loss=2.820991 | best_val_loss=2.820991 | best_epoch=7 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 8/20 | train_loss=1.262492 | val_loss=2.814652 | best_val_loss=2.814652 | best_epoch=8 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 9/20 | train_loss=1.146035 | val_loss=2.806595 | best_val_loss=2.806595 | best_epoch=9 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 10/20 | train_loss=1.029762 | val_loss=2.816723 | best_val_loss=2.806595 | best_epoch=9 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 11/20 | train_loss=0.926242 | val_loss=2.813751 | best_val_loss=2.806595 | best_epoch=9 | patience=2/3
+[Baseline tuning 2004 | Double Head] epoch 12/20 | train_loss=0.845424 | val_loss=2.809367 | best_val_loss=2.806595 | best_epoch=9 | patience=3/3
+[Baseline tuning 2004 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=2.806595
+[Baseline tuning 2004 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=2.806595 | stopped_early=True
+AUX_DIAG | year=2004 | aux_weight=0.3 | train_acc=0.849380 | train_loss=0.562417 | train_majority=0.379409 | val_acc=0.720000 | val_loss=0.859631 | val_majority=0.406667
+[Baseline tuning 2005 | Double Head] epoch 1/20 | train_loss=3.086033 | val_loss=2.840703 | best_val_loss=2.840703 | best_epoch=1 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 2/20 | train_loss=2.484747 | val_loss=2.752678 | best_val_loss=2.752678 | best_epoch=2 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 3/20 | train_loss=2.106935 | val_loss=2.697192 | best_val_loss=2.697192 | best_epoch=3 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 4/20 | train_loss=1.833721 | val_loss=2.677775 | best_val_loss=2.677775 | best_epoch=4 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 5/20 | train_loss=1.619722 | val_loss=2.643593 | best_val_loss=2.643593 | best_epoch=5 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 6/20 | train_loss=1.459217 | val_loss=2.637488 | best_val_loss=2.637488 | best_epoch=6 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 7/20 | train_loss=1.292339 | val_loss=2.665387 | best_val_loss=2.637488 | best_epoch=6 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 8/20 | train_loss=1.176567 | val_loss=2.648538 | best_val_loss=2.637488 | best_epoch=6 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 9/20 | train_loss=1.034156 | val_loss=2.658447 | best_val_loss=2.637488 | best_epoch=6 | patience=3/3
+[Baseline tuning 2005 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=2.637488
+[Baseline tuning 2005 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=2.637488 | stopped_early=True
+AUX_DIAG | year=2005 | aux_weight=0.3 | train_acc=0.858366 | train_loss=0.509336 | train_majority=0.301167 | val_acc=0.766304 | val_loss=0.774051 | val_majority=0.342391
+[Baseline tuning 2006 | Double Head] epoch 1/20 | train_loss=2.922989 | val_loss=2.891515 | best_val_loss=2.891515 | best_epoch=1 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 2/20 | train_loss=2.412283 | val_loss=2.802681 | best_val_loss=2.802681 | best_epoch=2 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 3/20 | train_loss=2.059477 | val_loss=2.779883 | best_val_loss=2.779883 | best_epoch=3 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 4/20 | train_loss=1.832596 | val_loss=2.755104 | best_val_loss=2.755104 | best_epoch=4 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 5/20 | train_loss=1.618059 | val_loss=2.754714 | best_val_loss=2.754714 | best_epoch=5 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 6/20 | train_loss=1.451732 | val_loss=2.735409 | best_val_loss=2.735409 | best_epoch=6 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 7/20 | train_loss=1.323207 | val_loss=2.736695 | best_val_loss=2.735409 | best_epoch=6 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 8/20 | train_loss=1.167382 | val_loss=2.731661 | best_val_loss=2.731661 | best_epoch=8 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 9/20 | train_loss=1.060477 | val_loss=2.740788 | best_val_loss=2.731661 | best_epoch=8 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 10/20 | train_loss=0.965343 | val_loss=2.733545 | best_val_loss=2.731661 | best_epoch=8 | patience=2/3
+[Baseline tuning 2006 | Double Head] epoch 11/20 | train_loss=0.881280 | val_loss=2.735551 | best_val_loss=2.731661 | best_epoch=8 | patience=3/3
+[Baseline tuning 2006 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.731661
+[Baseline tuning 2006 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.731661 | stopped_early=True
+AUX_DIAG | year=2006 | aux_weight=0.3 | train_acc=0.848138 | train_loss=0.550634 | train_majority=0.333811 | val_acc=0.765000 | val_loss=0.738843 | val_majority=0.300000
+[Baseline tuning 2007 | Double Head] epoch 1/20 | train_loss=2.819276 | val_loss=2.934379 | best_val_loss=2.934379 | best_epoch=1 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 2/20 | train_loss=2.279287 | val_loss=2.844166 | best_val_loss=2.844166 | best_epoch=2 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 3/20 | train_loss=1.904819 | val_loss=2.800497 | best_val_loss=2.800497 | best_epoch=3 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 4/20 | train_loss=1.667114 | val_loss=2.795586 | best_val_loss=2.795586 | best_epoch=4 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 5/20 | train_loss=1.436205 | val_loss=2.780989 | best_val_loss=2.780989 | best_epoch=5 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 6/20 | train_loss=1.259357 | val_loss=2.753978 | best_val_loss=2.753978 | best_epoch=6 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 7/20 | train_loss=1.125724 | val_loss=2.760559 | best_val_loss=2.753978 | best_epoch=6 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 8/20 | train_loss=1.001304 | val_loss=2.767827 | best_val_loss=2.753978 | best_epoch=6 | patience=2/3
+[Baseline tuning 2007 | Double Head] epoch 9/20 | train_loss=0.913250 | val_loss=2.761043 | best_val_loss=2.753978 | best_epoch=6 | patience=3/3
+[Baseline tuning 2007 | Double Head] EARLY STOP at epoch 9 | best_epoch=6 | best_val_loss=2.753978
+[Baseline tuning 2007 | Double Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=6 | best_val_loss=2.753978 | stopped_early=True
+AUX_DIAG | year=2007 | aux_weight=0.3 | train_acc=0.838356 | train_loss=0.563578 | train_majority=0.317808 | val_acc=0.714286 | val_loss=1.022657 | val_majority=0.295238
+[Baseline tuning 2008 | Double Head] epoch 1/20 | train_loss=2.893817 | val_loss=2.887350 | best_val_loss=2.887350 | best_epoch=1 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 2/20 | train_loss=2.386327 | val_loss=2.789155 | best_val_loss=2.789155 | best_epoch=2 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 3/20 | train_loss=2.004153 | val_loss=2.733593 | best_val_loss=2.733593 | best_epoch=3 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 4/20 | train_loss=1.764298 | val_loss=2.702864 | best_val_loss=2.702864 | best_epoch=4 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 5/20 | train_loss=1.545689 | val_loss=2.677746 | best_val_loss=2.677746 | best_epoch=5 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 6/20 | train_loss=1.391868 | val_loss=2.671193 | best_val_loss=2.671193 | best_epoch=6 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 7/20 | train_loss=1.227209 | val_loss=2.666858 | best_val_loss=2.666858 | best_epoch=7 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 8/20 | train_loss=1.116573 | val_loss=2.672222 | best_val_loss=2.666858 | best_epoch=7 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 9/20 | train_loss=1.012638 | val_loss=2.653560 | best_val_loss=2.653560 | best_epoch=9 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 10/20 | train_loss=0.912730 | val_loss=2.659873 | best_val_loss=2.653560 | best_epoch=9 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 11/20 | train_loss=0.842934 | val_loss=2.659709 | best_val_loss=2.653560 | best_epoch=9 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 12/20 | train_loss=0.773799 | val_loss=2.652035 | best_val_loss=2.652035 | best_epoch=12 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 13/20 | train_loss=0.685242 | val_loss=2.663691 | best_val_loss=2.652035 | best_epoch=12 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 14/20 | train_loss=0.651821 | val_loss=2.680338 | best_val_loss=2.652035 | best_epoch=12 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 15/20 | train_loss=0.587496 | val_loss=2.669607 | best_val_loss=2.652035 | best_epoch=12 | patience=3/3
+[Baseline tuning 2008 | Double Head] EARLY STOP at epoch 15 | best_epoch=12 | best_val_loss=2.652035
+[Baseline tuning 2008 | Double Head] TRAINING FINISHED | executed_epochs=15 | best_epoch=12 | best_val_loss=2.652035 | stopped_early=True
+AUX_DIAG | year=2008 | aux_weight=0.3 | train_acc=0.896180 | train_loss=0.482613 | train_majority=0.278159 | val_acc=0.609589 | val_loss=1.084569 | val_majority=0.253425
+[Baseline tuning 2009 | Double Head] epoch 1/20 | train_loss=3.051079 | val_loss=2.845796 | best_val_loss=2.845796 | best_epoch=1 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 2/20 | train_loss=2.467209 | val_loss=2.756677 | best_val_loss=2.756677 | best_epoch=2 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 3/20 | train_loss=2.136461 | val_loss=2.708711 | best_val_loss=2.708711 | best_epoch=3 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 4/20 | train_loss=1.910698 | val_loss=2.674936 | best_val_loss=2.674936 | best_epoch=4 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 5/20 | train_loss=1.699529 | val_loss=2.644249 | best_val_loss=2.644249 | best_epoch=5 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 6/20 | train_loss=1.540787 | val_loss=2.640813 | best_val_loss=2.640813 | best_epoch=6 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 7/20 | train_loss=1.399345 | val_loss=2.614359 | best_val_loss=2.614359 | best_epoch=7 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 8/20 | train_loss=1.264801 | val_loss=2.602288 | best_val_loss=2.602288 | best_epoch=8 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 9/20 | train_loss=1.143141 | val_loss=2.591381 | best_val_loss=2.591381 | best_epoch=9 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 10/20 | train_loss=1.043590 | val_loss=2.592570 | best_val_loss=2.591381 | best_epoch=9 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 11/20 | train_loss=0.938949 | val_loss=2.590242 | best_val_loss=2.590242 | best_epoch=11 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 12/20 | train_loss=0.845529 | val_loss=2.611186 | best_val_loss=2.590242 | best_epoch=11 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 13/20 | train_loss=0.767163 | val_loss=2.578311 | best_val_loss=2.578311 | best_epoch=13 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 14/20 | train_loss=0.696543 | val_loss=2.580443 | best_val_loss=2.578311 | best_epoch=13 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 15/20 | train_loss=0.623275 | val_loss=2.586737 | best_val_loss=2.578311 | best_epoch=13 | patience=2/3
+[Baseline tuning 2009 | Double Head] epoch 16/20 | train_loss=0.560980 | val_loss=2.582795 | best_val_loss=2.578311 | best_epoch=13 | patience=3/3
+[Baseline tuning 2009 | Double Head] EARLY STOP at epoch 16 | best_epoch=13 | best_val_loss=2.578311
+[Baseline tuning 2009 | Double Head] TRAINING FINISHED | executed_epochs=16 | best_epoch=13 | best_val_loss=2.578311 | stopped_early=True
+AUX_DIAG | year=2009 | aux_weight=0.3 | train_acc=0.876419 | train_loss=0.483392 | train_majority=0.284235 | val_acc=0.700935 | val_loss=0.970806 | val_majority=0.294393
+[Baseline tuning 2010 | Double Head] epoch 1/20 | train_loss=2.706811 | val_loss=2.407098 | best_val_loss=2.407098 | best_epoch=1 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 2/20 | train_loss=2.169842 | val_loss=2.304497 | best_val_loss=2.304497 | best_epoch=2 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 3/20 | train_loss=1.899542 | val_loss=2.252856 | best_val_loss=2.252856 | best_epoch=3 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 4/20 | train_loss=1.692927 | val_loss=2.218803 | best_val_loss=2.218803 | best_epoch=4 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 5/20 | train_loss=1.519691 | val_loss=2.206792 | best_val_loss=2.206792 | best_epoch=5 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 6/20 | train_loss=1.374293 | val_loss=2.172260 | best_val_loss=2.172260 | best_epoch=6 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 7/20 | train_loss=1.249330 | val_loss=2.169777 | best_val_loss=2.169777 | best_epoch=7 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 8/20 | train_loss=1.115443 | val_loss=2.173896 | best_val_loss=2.169777 | best_epoch=7 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 9/20 | train_loss=1.008311 | val_loss=2.155454 | best_val_loss=2.155454 | best_epoch=9 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 10/20 | train_loss=0.913178 | val_loss=2.167136 | best_val_loss=2.155454 | best_epoch=9 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 11/20 | train_loss=0.821474 | val_loss=2.146571 | best_val_loss=2.146571 | best_epoch=11 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 12/20 | train_loss=0.734287 | val_loss=2.155750 | best_val_loss=2.146571 | best_epoch=11 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 13/20 | train_loss=0.657521 | val_loss=2.158239 | best_val_loss=2.146571 | best_epoch=11 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 14/20 | train_loss=0.585561 | val_loss=2.168288 | best_val_loss=2.146571 | best_epoch=11 | patience=3/3
+[Baseline tuning 2010 | Double Head] EARLY STOP at epoch 14 | best_epoch=11 | best_val_loss=2.146571
+[Baseline tuning 2010 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=11 | best_val_loss=2.146571 | stopped_early=True
+AUX_DIAG | year=2010 | aux_weight=0.3 | train_acc=0.895017 | train_loss=0.403078 | train_majority=0.335974 | val_acc=0.772407 | val_loss=0.720584 | val_majority=0.358510
+[Baseline tuning 2011 | Double Head] epoch 1/20 | train_loss=2.281758 | val_loss=2.036478 | best_val_loss=2.036478 | best_epoch=1 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 2/20 | train_loss=1.808801 | val_loss=2.004031 | best_val_loss=2.004031 | best_epoch=2 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 3/20 | train_loss=1.563067 | val_loss=1.974570 | best_val_loss=1.974570 | best_epoch=3 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 4/20 | train_loss=1.386800 | val_loss=1.951545 | best_val_loss=1.951545 | best_epoch=4 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 5/20 | train_loss=1.237090 | val_loss=1.950758 | best_val_loss=1.950758 | best_epoch=5 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 6/20 | train_loss=1.107101 | val_loss=1.936931 | best_val_loss=1.936931 | best_epoch=6 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 7/20 | train_loss=0.996767 | val_loss=1.936005 | best_val_loss=1.936005 | best_epoch=7 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 8/20 | train_loss=0.896594 | val_loss=1.948942 | best_val_loss=1.936005 | best_epoch=7 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 9/20 | train_loss=0.812467 | val_loss=1.962335 | best_val_loss=1.936005 | best_epoch=7 | patience=2/3
+[Baseline tuning 2011 | Double Head] epoch 10/20 | train_loss=0.719665 | val_loss=1.966815 | best_val_loss=1.936005 | best_epoch=7 | patience=3/3
+[Baseline tuning 2011 | Double Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.936005
+[Baseline tuning 2011 | Double Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.936005 | stopped_early=True
+AUX_DIAG | year=2011 | aux_weight=0.3 | train_acc=0.865917 | train_loss=0.430732 | train_majority=0.372190 | val_acc=0.776051 | val_loss=0.680896 | val_majority=0.391225
+[Baseline tuning 2012 | Double Head] epoch 1/20 | train_loss=2.349828 | val_loss=2.179801 | best_val_loss=2.179801 | best_epoch=1 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 2/20 | train_loss=1.892626 | val_loss=2.110002 | best_val_loss=2.110002 | best_epoch=2 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 3/20 | train_loss=1.630021 | val_loss=2.086488 | best_val_loss=2.086488 | best_epoch=3 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 4/20 | train_loss=1.441586 | val_loss=2.070704 | best_val_loss=2.070704 | best_epoch=4 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 5/20 | train_loss=1.270661 | val_loss=2.044690 | best_val_loss=2.044690 | best_epoch=5 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 6/20 | train_loss=1.148180 | val_loss=2.061423 | best_val_loss=2.044690 | best_epoch=5 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 7/20 | train_loss=1.028725 | val_loss=2.052169 | best_val_loss=2.044690 | best_epoch=5 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 8/20 | train_loss=0.918596 | val_loss=2.054834 | best_val_loss=2.044690 | best_epoch=5 | patience=3/3
+[Baseline tuning 2012 | Double Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=2.044690
+[Baseline tuning 2012 | Double Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=2.044690 | stopped_early=True
+AUX_DIAG | year=2012 | aux_weight=0.3 | train_acc=0.849692 | train_loss=0.487767 | train_majority=0.492292 | val_acc=0.780773 | val_loss=0.692129 | val_majority=0.485175
+
+================================================================================
+BASELINE TUNING | double_head | trial=5
+{'aux_loss_weight': 1.0}
+================================================================================
+[Baseline tuning 2002 | Double Head] epoch 1/50 | train_loss=5.011370 | val_loss=6.110119 | best_val_loss=6.110119 | best_epoch=1 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 2/50 | train_loss=3.306063 | val_loss=5.309394 | best_val_loss=5.309394 | best_epoch=2 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 3/50 | train_loss=2.464457 | val_loss=4.286684 | best_val_loss=4.286684 | best_epoch=3 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 4/50 | train_loss=1.753092 | val_loss=3.952201 | best_val_loss=3.952201 | best_epoch=4 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 5/50 | train_loss=1.207973 | val_loss=3.902813 | best_val_loss=3.902813 | best_epoch=5 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 6/50 | train_loss=0.785278 | val_loss=4.032693 | best_val_loss=3.902813 | best_epoch=5 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 7/50 | train_loss=0.477592 | val_loss=3.918231 | best_val_loss=3.902813 | best_epoch=5 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 8/50 | train_loss=0.321123 | val_loss=3.967706 | best_val_loss=3.902813 | best_epoch=5 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 9/50 | train_loss=0.217759 | val_loss=3.873047 | best_val_loss=3.873047 | best_epoch=9 | patience=0/5
+[Baseline tuning 2002 | Double Head] epoch 10/50 | train_loss=0.170800 | val_loss=4.279873 | best_val_loss=3.873047 | best_epoch=9 | patience=1/5
+[Baseline tuning 2002 | Double Head] epoch 11/50 | train_loss=0.108859 | val_loss=4.041740 | best_val_loss=3.873047 | best_epoch=9 | patience=2/5
+[Baseline tuning 2002 | Double Head] epoch 12/50 | train_loss=0.091773 | val_loss=4.038187 | best_val_loss=3.873047 | best_epoch=9 | patience=3/5
+[Baseline tuning 2002 | Double Head] epoch 13/50 | train_loss=0.078258 | val_loss=4.107675 | best_val_loss=3.873047 | best_epoch=9 | patience=4/5
+[Baseline tuning 2002 | Double Head] epoch 14/50 | train_loss=0.083063 | val_loss=4.352568 | best_val_loss=3.873047 | best_epoch=9 | patience=5/5
+[Baseline tuning 2002 | Double Head] EARLY STOP at epoch 14 | best_epoch=9 | best_val_loss=3.873047
+[Baseline tuning 2002 | Double Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=9 | best_val_loss=3.873047 | stopped_early=True
+AUX_DIAG | year=2002 | aux_weight=1 | train_acc=1.000000 | train_loss=0.031222 | train_majority=0.263409 | val_acc=0.650000 | val_loss=1.092165 | val_majority=0.275000
+[Baseline tuning 2003 | Double Head] epoch 1/20 | train_loss=4.544351 | val_loss=3.947723 | best_val_loss=3.947723 | best_epoch=1 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 2/20 | train_loss=3.438458 | val_loss=3.651427 | best_val_loss=3.651427 | best_epoch=2 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 3/20 | train_loss=2.901601 | val_loss=3.534216 | best_val_loss=3.534216 | best_epoch=3 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 4/20 | train_loss=2.578526 | val_loss=3.446231 | best_val_loss=3.446231 | best_epoch=4 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 5/20 | train_loss=2.291045 | val_loss=3.392495 | best_val_loss=3.392495 | best_epoch=5 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 6/20 | train_loss=2.066898 | val_loss=3.356443 | best_val_loss=3.356443 | best_epoch=6 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 7/20 | train_loss=1.898830 | val_loss=3.315462 | best_val_loss=3.315462 | best_epoch=7 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 8/20 | train_loss=1.697041 | val_loss=3.310668 | best_val_loss=3.310668 | best_epoch=8 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 9/20 | train_loss=1.570428 | val_loss=3.301653 | best_val_loss=3.301653 | best_epoch=9 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 10/20 | train_loss=1.425162 | val_loss=3.298870 | best_val_loss=3.298870 | best_epoch=10 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 11/20 | train_loss=1.291909 | val_loss=3.269044 | best_val_loss=3.269044 | best_epoch=11 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 12/20 | train_loss=1.202833 | val_loss=3.258484 | best_val_loss=3.258484 | best_epoch=12 | patience=0/3
+[Baseline tuning 2003 | Double Head] epoch 13/20 | train_loss=1.086139 | val_loss=3.285174 | best_val_loss=3.258484 | best_epoch=12 | patience=1/3
+[Baseline tuning 2003 | Double Head] epoch 14/20 | train_loss=0.993551 | val_loss=3.269149 | best_val_loss=3.258484 | best_epoch=12 | patience=2/3
+[Baseline tuning 2003 | Double Head] epoch 15/20 | train_loss=0.929167 | val_loss=3.274216 | best_val_loss=3.258484 | best_epoch=12 | patience=3/3
+[Baseline tuning 2003 | Double Head] EARLY STOP at epoch 15 | best_epoch=12 | best_val_loss=3.258484
+[Baseline tuning 2003 | Double Head] TRAINING FINISHED | executed_epochs=15 | best_epoch=12 | best_val_loss=3.258484 | stopped_early=True
+AUX_DIAG | year=2003 | aux_weight=1 | train_acc=0.988812 | train_loss=0.162720 | train_majority=0.386403 | val_acc=0.728916 | val_loss=0.775055 | val_majority=0.397590
+[Baseline tuning 2004 | Double Head] epoch 1/20 | train_loss=4.476837 | val_loss=3.786938 | best_val_loss=3.786938 | best_epoch=1 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 2/20 | train_loss=3.537353 | val_loss=3.592332 | best_val_loss=3.592332 | best_epoch=2 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 3/20 | train_loss=2.993210 | val_loss=3.473600 | best_val_loss=3.473600 | best_epoch=3 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 4/20 | train_loss=2.644293 | val_loss=3.452155 | best_val_loss=3.452155 | best_epoch=4 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 5/20 | train_loss=2.362245 | val_loss=3.439193 | best_val_loss=3.439193 | best_epoch=5 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 6/20 | train_loss=2.103567 | val_loss=3.391579 | best_val_loss=3.391579 | best_epoch=6 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 7/20 | train_loss=1.901927 | val_loss=3.377763 | best_val_loss=3.377763 | best_epoch=7 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 8/20 | train_loss=1.733286 | val_loss=3.383685 | best_val_loss=3.377763 | best_epoch=7 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 9/20 | train_loss=1.573976 | val_loss=3.375896 | best_val_loss=3.375896 | best_epoch=9 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 10/20 | train_loss=1.443843 | val_loss=3.377703 | best_val_loss=3.375896 | best_epoch=9 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 11/20 | train_loss=1.310476 | val_loss=3.348144 | best_val_loss=3.348144 | best_epoch=11 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 12/20 | train_loss=1.230188 | val_loss=3.373663 | best_val_loss=3.348144 | best_epoch=11 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 13/20 | train_loss=1.129985 | val_loss=3.333594 | best_val_loss=3.333594 | best_epoch=13 | patience=0/3
+[Baseline tuning 2004 | Double Head] epoch 14/20 | train_loss=1.012233 | val_loss=3.371585 | best_val_loss=3.333594 | best_epoch=13 | patience=1/3
+[Baseline tuning 2004 | Double Head] epoch 15/20 | train_loss=0.938753 | val_loss=3.360227 | best_val_loss=3.333594 | best_epoch=13 | patience=2/3
+[Baseline tuning 2004 | Double Head] epoch 16/20 | train_loss=0.860185 | val_loss=3.354790 | best_val_loss=3.333594 | best_epoch=13 | patience=3/3
+[Baseline tuning 2004 | Double Head] EARLY STOP at epoch 16 | best_epoch=13 | best_val_loss=3.333594
+[Baseline tuning 2004 | Double Head] TRAINING FINISHED | executed_epochs=16 | best_epoch=13 | best_val_loss=3.333594 | stopped_early=True
+AUX_DIAG | year=2004 | aux_weight=1 | train_acc=0.987607 | train_loss=0.167183 | train_majority=0.379409 | val_acc=0.746667 | val_loss=0.816562 | val_majority=0.406667
+[Baseline tuning 2005 | Double Head] epoch 1/20 | train_loss=3.778814 | val_loss=3.248077 | best_val_loss=3.248077 | best_epoch=1 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 2/20 | train_loss=2.969320 | val_loss=3.119671 | best_val_loss=3.119671 | best_epoch=2 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 3/20 | train_loss=2.508553 | val_loss=3.034939 | best_val_loss=3.034939 | best_epoch=3 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 4/20 | train_loss=2.202834 | val_loss=3.023744 | best_val_loss=3.023744 | best_epoch=4 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 5/20 | train_loss=1.970245 | val_loss=2.961073 | best_val_loss=2.961073 | best_epoch=5 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 6/20 | train_loss=1.772510 | val_loss=2.972388 | best_val_loss=2.961073 | best_epoch=5 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 7/20 | train_loss=1.612022 | val_loss=2.990282 | best_val_loss=2.961073 | best_epoch=5 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 8/20 | train_loss=1.444053 | val_loss=2.935593 | best_val_loss=2.935593 | best_epoch=8 | patience=0/3
+[Baseline tuning 2005 | Double Head] epoch 9/20 | train_loss=1.319578 | val_loss=2.972604 | best_val_loss=2.935593 | best_epoch=8 | patience=1/3
+[Baseline tuning 2005 | Double Head] epoch 10/20 | train_loss=1.196665 | val_loss=2.937855 | best_val_loss=2.935593 | best_epoch=8 | patience=2/3
+[Baseline tuning 2005 | Double Head] epoch 11/20 | train_loss=1.103858 | val_loss=2.942933 | best_val_loss=2.935593 | best_epoch=8 | patience=3/3
+[Baseline tuning 2005 | Double Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.935593
+[Baseline tuning 2005 | Double Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.935593 | stopped_early=True
+AUX_DIAG | year=2005 | aux_weight=1 | train_acc=0.977432 | train_loss=0.193376 | train_majority=0.301167 | val_acc=0.820652 | val_loss=0.577079 | val_majority=0.342391
+[Baseline tuning 2006 | Double Head] epoch 1/20 | train_loss=3.661713 | val_loss=3.384398 | best_val_loss=3.384398 | best_epoch=1 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 2/20 | train_loss=2.919476 | val_loss=3.251997 | best_val_loss=3.251997 | best_epoch=2 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 3/20 | train_loss=2.502989 | val_loss=3.219122 | best_val_loss=3.219122 | best_epoch=3 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 4/20 | train_loss=2.194723 | val_loss=3.177985 | best_val_loss=3.177985 | best_epoch=4 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 5/20 | train_loss=1.965165 | val_loss=3.182406 | best_val_loss=3.177985 | best_epoch=4 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 6/20 | train_loss=1.740223 | val_loss=3.153009 | best_val_loss=3.153009 | best_epoch=6 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 7/20 | train_loss=1.612067 | val_loss=3.149230 | best_val_loss=3.149230 | best_epoch=7 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 8/20 | train_loss=1.437604 | val_loss=3.135525 | best_val_loss=3.135525 | best_epoch=8 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 9/20 | train_loss=1.317443 | val_loss=3.134074 | best_val_loss=3.134074 | best_epoch=9 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 10/20 | train_loss=1.182630 | val_loss=3.131968 | best_val_loss=3.131968 | best_epoch=10 | patience=0/3
+[Baseline tuning 2006 | Double Head] epoch 11/20 | train_loss=1.094988 | val_loss=3.152253 | best_val_loss=3.131968 | best_epoch=10 | patience=1/3
+[Baseline tuning 2006 | Double Head] epoch 12/20 | train_loss=1.004449 | val_loss=3.149134 | best_val_loss=3.131968 | best_epoch=10 | patience=2/3
+[Baseline tuning 2006 | Double Head] epoch 13/20 | train_loss=0.903915 | val_loss=3.136149 | best_val_loss=3.131968 | best_epoch=10 | patience=3/3
+[Baseline tuning 2006 | Double Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=3.131968
+[Baseline tuning 2006 | Double Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=3.131968 | stopped_early=True
+AUX_DIAG | year=2006 | aux_weight=1 | train_acc=0.979943 | train_loss=0.188145 | train_majority=0.333811 | val_acc=0.770000 | val_loss=0.668412 | val_majority=0.300000
+[Baseline tuning 2007 | Double Head] epoch 1/20 | train_loss=3.616478 | val_loss=3.865572 | best_val_loss=3.865572 | best_epoch=1 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 2/20 | train_loss=2.771884 | val_loss=3.638568 | best_val_loss=3.638568 | best_epoch=2 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 3/20 | train_loss=2.300403 | val_loss=3.613890 | best_val_loss=3.613890 | best_epoch=3 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 4/20 | train_loss=1.992587 | val_loss=3.584496 | best_val_loss=3.584496 | best_epoch=4 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 5/20 | train_loss=1.723480 | val_loss=3.553421 | best_val_loss=3.553421 | best_epoch=5 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 6/20 | train_loss=1.535863 | val_loss=3.557657 | best_val_loss=3.553421 | best_epoch=5 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 7/20 | train_loss=1.377878 | val_loss=3.544671 | best_val_loss=3.544671 | best_epoch=7 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 8/20 | train_loss=1.228043 | val_loss=3.535374 | best_val_loss=3.535374 | best_epoch=8 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 9/20 | train_loss=1.086053 | val_loss=3.519772 | best_val_loss=3.519772 | best_epoch=9 | patience=0/3
+[Baseline tuning 2007 | Double Head] epoch 10/20 | train_loss=0.996823 | val_loss=3.534426 | best_val_loss=3.519772 | best_epoch=9 | patience=1/3
+[Baseline tuning 2007 | Double Head] epoch 11/20 | train_loss=0.924806 | val_loss=3.551205 | best_val_loss=3.519772 | best_epoch=9 | patience=2/3
+[Baseline tuning 2007 | Double Head] epoch 12/20 | train_loss=0.816816 | val_loss=3.521605 | best_val_loss=3.519772 | best_epoch=9 | patience=3/3
+[Baseline tuning 2007 | Double Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=3.519772
+[Baseline tuning 2007 | Double Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=3.519772 | stopped_early=True
+AUX_DIAG | year=2007 | aux_weight=1 | train_acc=0.983562 | train_loss=0.169271 | train_majority=0.317808 | val_acc=0.723810 | val_loss=1.001197 | val_majority=0.295238
+[Baseline tuning 2008 | Double Head] epoch 1/20 | train_loss=3.838815 | val_loss=3.862226 | best_val_loss=3.862226 | best_epoch=1 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 2/20 | train_loss=2.919734 | val_loss=3.543181 | best_val_loss=3.543181 | best_epoch=2 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 3/20 | train_loss=2.444404 | val_loss=3.420070 | best_val_loss=3.420070 | best_epoch=3 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 4/20 | train_loss=2.082223 | val_loss=3.370080 | best_val_loss=3.370080 | best_epoch=4 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 5/20 | train_loss=1.811932 | val_loss=3.345148 | best_val_loss=3.345148 | best_epoch=5 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 6/20 | train_loss=1.644032 | val_loss=3.323583 | best_val_loss=3.323583 | best_epoch=6 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 7/20 | train_loss=1.458564 | val_loss=3.306611 | best_val_loss=3.306611 | best_epoch=7 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 8/20 | train_loss=1.310613 | val_loss=3.288391 | best_val_loss=3.288391 | best_epoch=8 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 9/20 | train_loss=1.188555 | val_loss=3.284643 | best_val_loss=3.284643 | best_epoch=9 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 10/20 | train_loss=1.070714 | val_loss=3.268665 | best_val_loss=3.268665 | best_epoch=10 | patience=0/3
+[Baseline tuning 2008 | Double Head] epoch 11/20 | train_loss=0.989333 | val_loss=3.274958 | best_val_loss=3.268665 | best_epoch=10 | patience=1/3
+[Baseline tuning 2008 | Double Head] epoch 12/20 | train_loss=0.897448 | val_loss=3.272568 | best_val_loss=3.268665 | best_epoch=10 | patience=2/3
+[Baseline tuning 2008 | Double Head] epoch 13/20 | train_loss=0.825020 | val_loss=3.280733 | best_val_loss=3.268665 | best_epoch=10 | patience=3/3
+[Baseline tuning 2008 | Double Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=3.268665
+[Baseline tuning 2008 | Double Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=3.268665 | stopped_early=True
+AUX_DIAG | year=2008 | aux_weight=1 | train_acc=0.986288 | train_loss=0.180201 | train_majority=0.278159 | val_acc=0.664384 | val_loss=0.973941 | val_majority=0.253425
+[Baseline tuning 2009 | Double Head] epoch 1/20 | train_loss=3.911383 | val_loss=3.616140 | best_val_loss=3.616140 | best_epoch=1 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 2/20 | train_loss=3.064580 | val_loss=3.415206 | best_val_loss=3.415206 | best_epoch=2 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 3/20 | train_loss=2.660417 | val_loss=3.348437 | best_val_loss=3.348437 | best_epoch=3 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 4/20 | train_loss=2.379253 | val_loss=3.292149 | best_val_loss=3.292149 | best_epoch=4 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 5/20 | train_loss=2.139967 | val_loss=3.242958 | best_val_loss=3.242958 | best_epoch=5 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 6/20 | train_loss=1.945671 | val_loss=3.247840 | best_val_loss=3.242958 | best_epoch=5 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 7/20 | train_loss=1.771064 | val_loss=3.220683 | best_val_loss=3.220683 | best_epoch=7 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 8/20 | train_loss=1.597226 | val_loss=3.218610 | best_val_loss=3.218610 | best_epoch=8 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 9/20 | train_loss=1.443333 | val_loss=3.205613 | best_val_loss=3.205613 | best_epoch=9 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 10/20 | train_loss=1.321664 | val_loss=3.175062 | best_val_loss=3.175062 | best_epoch=10 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 11/20 | train_loss=1.199538 | val_loss=3.171282 | best_val_loss=3.171282 | best_epoch=11 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 12/20 | train_loss=1.085176 | val_loss=3.200462 | best_val_loss=3.171282 | best_epoch=11 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 13/20 | train_loss=0.989443 | val_loss=3.170698 | best_val_loss=3.170698 | best_epoch=13 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 14/20 | train_loss=0.901556 | val_loss=3.170583 | best_val_loss=3.170583 | best_epoch=14 | patience=0/3
+[Baseline tuning 2009 | Double Head] epoch 15/20 | train_loss=0.815759 | val_loss=3.173560 | best_val_loss=3.170583 | best_epoch=14 | patience=1/3
+[Baseline tuning 2009 | Double Head] epoch 16/20 | train_loss=0.741411 | val_loss=3.195268 | best_val_loss=3.170583 | best_epoch=14 | patience=2/3
+[Baseline tuning 2009 | Double Head] epoch 17/20 | train_loss=0.672530 | val_loss=3.205673 | best_val_loss=3.170583 | best_epoch=14 | patience=3/3
+[Baseline tuning 2009 | Double Head] EARLY STOP at epoch 17 | best_epoch=14 | best_val_loss=3.170583
+[Baseline tuning 2009 | Double Head] TRAINING FINISHED | executed_epochs=17 | best_epoch=14 | best_val_loss=3.170583 | stopped_early=True
+AUX_DIAG | year=2009 | aux_weight=1 | train_acc=0.991650 | train_loss=0.137149 | train_majority=0.284235 | val_acc=0.731308 | val_loss=0.852115 | val_majority=0.294393
+[Baseline tuning 2010 | Double Head] epoch 1/20 | train_loss=3.353658 | val_loss=2.956938 | best_val_loss=2.956938 | best_epoch=1 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 2/20 | train_loss=2.648919 | val_loss=2.840028 | best_val_loss=2.840028 | best_epoch=2 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 3/20 | train_loss=2.329050 | val_loss=2.749921 | best_val_loss=2.749921 | best_epoch=3 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 4/20 | train_loss=2.063991 | val_loss=2.682942 | best_val_loss=2.682942 | best_epoch=4 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 5/20 | train_loss=1.869844 | val_loss=2.649776 | best_val_loss=2.649776 | best_epoch=5 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 6/20 | train_loss=1.697112 | val_loss=2.642140 | best_val_loss=2.642140 | best_epoch=6 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 7/20 | train_loss=1.528845 | val_loss=2.597302 | best_val_loss=2.597302 | best_epoch=7 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 8/20 | train_loss=1.389131 | val_loss=2.608608 | best_val_loss=2.597302 | best_epoch=7 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 9/20 | train_loss=1.262664 | val_loss=2.571620 | best_val_loss=2.571620 | best_epoch=9 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 10/20 | train_loss=1.152699 | val_loss=2.587835 | best_val_loss=2.571620 | best_epoch=9 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 11/20 | train_loss=1.033457 | val_loss=2.584975 | best_val_loss=2.571620 | best_epoch=9 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 12/20 | train_loss=0.931034 | val_loss=2.552866 | best_val_loss=2.552866 | best_epoch=12 | patience=0/3
+[Baseline tuning 2010 | Double Head] epoch 13/20 | train_loss=0.848015 | val_loss=2.590168 | best_val_loss=2.552866 | best_epoch=12 | patience=1/3
+[Baseline tuning 2010 | Double Head] epoch 14/20 | train_loss=0.746958 | val_loss=2.601996 | best_val_loss=2.552866 | best_epoch=12 | patience=2/3
+[Baseline tuning 2010 | Double Head] epoch 15/20 | train_loss=0.676775 | val_loss=2.643440 | best_val_loss=2.552866 | best_epoch=12 | patience=3/3
+[Baseline tuning 2010 | Double Head] EARLY STOP at epoch 15 | best_epoch=12 | best_val_loss=2.552866
+[Baseline tuning 2010 | Double Head] TRAINING FINISHED | executed_epochs=15 | best_epoch=12 | best_val_loss=2.552866 | stopped_early=True
+AUX_DIAG | year=2010 | aux_weight=1 | train_acc=0.991791 | train_loss=0.123036 | train_majority=0.335974 | val_acc=0.803625 | val_loss=0.619189 | val_majority=0.358510
+[Baseline tuning 2011 | Double Head] epoch 1/20 | train_loss=2.856087 | val_loss=2.541419 | best_val_loss=2.541419 | best_epoch=1 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 2/20 | train_loss=2.230209 | val_loss=2.448470 | best_val_loss=2.448470 | best_epoch=2 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 3/20 | train_loss=1.910318 | val_loss=2.419434 | best_val_loss=2.419434 | best_epoch=3 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 4/20 | train_loss=1.694929 | val_loss=2.386964 | best_val_loss=2.386964 | best_epoch=4 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 5/20 | train_loss=1.522365 | val_loss=2.357039 | best_val_loss=2.357039 | best_epoch=5 | patience=0/3
+[Baseline tuning 2011 | Double Head] epoch 6/20 | train_loss=1.364682 | val_loss=2.362707 | best_val_loss=2.357039 | best_epoch=5 | patience=1/3
+[Baseline tuning 2011 | Double Head] epoch 7/20 | train_loss=1.227028 | val_loss=2.360358 | best_val_loss=2.357039 | best_epoch=5 | patience=2/3
+[Baseline tuning 2011 | Double Head] epoch 8/20 | train_loss=1.103261 | val_loss=2.375281 | best_val_loss=2.357039 | best_epoch=5 | patience=3/3
+[Baseline tuning 2011 | Double Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=2.357039
+[Baseline tuning 2011 | Double Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=2.357039 | stopped_early=True
+AUX_DIAG | year=2011 | aux_weight=1 | train_acc=0.939362 | train_loss=0.240557 | train_majority=0.372190 | val_acc=0.785192 | val_loss=0.619847 | val_majority=0.391225
+[Baseline tuning 2012 | Double Head] epoch 1/20 | train_loss=2.941807 | val_loss=2.595702 | best_val_loss=2.595702 | best_epoch=1 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 2/20 | train_loss=2.373421 | val_loss=2.544871 | best_val_loss=2.544871 | best_epoch=2 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 3/20 | train_loss=2.072132 | val_loss=2.495590 | best_val_loss=2.495590 | best_epoch=3 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 4/20 | train_loss=1.832249 | val_loss=2.460472 | best_val_loss=2.460472 | best_epoch=4 | patience=0/3
+[Baseline tuning 2012 | Double Head] epoch 5/20 | train_loss=1.649786 | val_loss=2.469778 | best_val_loss=2.460472 | best_epoch=4 | patience=1/3
+[Baseline tuning 2012 | Double Head] epoch 6/20 | train_loss=1.490594 | val_loss=2.462002 | best_val_loss=2.460472 | best_epoch=4 | patience=2/3
+[Baseline tuning 2012 | Double Head] epoch 7/20 | train_loss=1.347402 | val_loss=2.466822 | best_val_loss=2.460472 | best_epoch=4 | patience=3/3
+[Baseline tuning 2012 | Double Head] EARLY STOP at epoch 7 | best_epoch=4 | best_val_loss=2.460472
+[Baseline tuning 2012 | Double Head] TRAINING FINISHED | executed_epochs=7 | best_epoch=4 | best_val_loss=2.460472 | stopped_early=True
+AUX_DIAG | year=2012 | aux_weight=1 | train_acc=0.918422 | train_loss=0.294183 | train_majority=0.492292 | val_acc=0.812219 | val_loss=0.595142 | val_majority=0.485175

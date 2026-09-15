@@ -52,44 +52,54 @@ def materialize_tuned_config(
     destination: Path,
 ) -> Path:
 
-    data = (
-        base_config.as_dict()
-    )
+    data = base_config.as_dict()
 
-    baseline_paths = [
+    # ---------------------------------------------------------
+    # 1. Apply tuned SINGLE-HEAD configuration
+    # ---------------------------------------------------------
+
+    single_best_path = (
         output_root
         / "baselines"
         / "single_head"
-        / "best.yaml",
+        / "best.yaml"
+    )
 
-        output_root
-        / "baselines"
-        / "double_head"
-        / "best.yaml",
-    ]
-
-    for path in baseline_paths:
-
-        if not path.is_file():
-            raise FileNotFoundError(
-                f"Missing baseline tuning "
-                f"result: {path}"
-            )
-
-        data = (
-            apply_overrides_to_dict(
-                data=data,
-                overrides=(
-                    _best_overrides(
-                        path
-                    )
-                ),
-            )
+    if not single_best_path.is_file():
+        raise FileNotFoundError(
+            f"Missing single-head tuning result: {single_best_path}"
         )
 
-    for method_name in (
-        enabled_methods
-    ):
+    data = apply_overrides_to_dict(
+        data=data,
+        overrides=_best_overrides(single_best_path),
+    )
+
+    # ---------------------------------------------------------
+    # 2. Keep DOUBLE architecture identical to SINGLE
+    #
+    # The double model is not independently tuned anymore.
+    # Its main path must exactly match the tuned single model
+    # so that single -> double weight copying is valid.
+    # ---------------------------------------------------------
+
+    data = apply_overrides_to_dict(
+        data=data,
+        overrides={
+            "model.double_head.shared_hidden_dim": (
+                data["model"]["single_head"]["shared_hidden_dim"]
+            ),
+            "model.double_head.dropout": (
+                data["model"]["single_head"]["dropout"]
+            ),
+        },
+    )
+
+    # ---------------------------------------------------------
+    # 3. Apply tuned TTA configurations
+    # ---------------------------------------------------------
+
+    for method_name in enabled_methods:
 
         path = (
             output_root
@@ -100,24 +110,19 @@ def materialize_tuned_config(
 
         if not path.is_file():
             raise FileNotFoundError(
-                f"Missing TTA tuning "
-                f"result: {path}"
+                f"Missing TTA tuning result: {path}"
             )
 
-        data = (
-            apply_overrides_to_dict(
-                data=data,
-                overrides=(
-                    _best_overrides(
-                        path
-                    )
-                ),
-            )
+        data = apply_overrides_to_dict(
+            data=data,
+            overrides=_best_overrides(path),
         )
 
-    destination = Path(
-        destination
-    )
+    # ---------------------------------------------------------
+    # 4. Write materialized config
+    # ---------------------------------------------------------
+
+    destination = Path(destination)
 
     destination.parent.mkdir(
         parents=True,

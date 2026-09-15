@@ -1,0 +1,445 @@
+Base experiment config: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Metadata OOD adaptation/metadata_tta_v2/configs/huffpost_eval_stream_tas.yaml
+
+================================================================================
+DATASET
+================================================================================
+Dataset: huffpost
+Data root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/moco_embedding/HuffPost_SimCSE_embeddings_clean_aux
+
+Year 2012: valid=7446/7446 | main_classes=11 | aux_classes=5
+Year 2013: valid=8325/8325 | main_classes=11 | aux_classes=5
+Year 2014: valid=10599/10599 | main_classes=11 | aux_classes=5
+Year 2015: valid=13140/13140 | main_classes=11 | aux_classes=5
+Year 2016: valid=11721/11721 | main_classes=11 | aux_classes=5
+Year 2017: valid=8786/8786 | main_classes=11 | aux_classes=5
+Year 2018: valid=3890/3890 | main_classes=11 | aux_classes=5
+
+Years: 2012-2018
+Number of years: 7
+Feature dimension: 768
+Total valid samples: 63907
+
+================================================================================
+BASELINE TUNING | single_head | trial=0
+{'learning_rate': 0.0003, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=1.133652 | val_loss=0.759313 | best_val_loss=0.759313 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.678091 | val_loss=0.686545 | best_val_loss=0.686545 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.545140 | val_loss=0.654672 | best_val_loss=0.654672 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.460461 | val_loss=0.637179 | best_val_loss=0.637179 | best_epoch=4 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.371823 | val_loss=0.640655 | best_val_loss=0.637179 | best_epoch=4 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.300977 | val_loss=0.653849 | best_val_loss=0.637179 | best_epoch=4 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.240733 | val_loss=0.660084 | best_val_loss=0.637179 | best_epoch=4 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.180499 | val_loss=0.679847 | best_val_loss=0.637179 | best_epoch=4 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 9/50 | train_loss=0.143220 | val_loss=0.700500 | best_val_loss=0.637179 | best_epoch=4 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.637179
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.637179 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.832541 | val_loss=0.741706 | best_val_loss=0.741706 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.697429 | val_loss=0.721597 | best_val_loss=0.721597 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.634512 | val_loss=0.720988 | best_val_loss=0.720988 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.576910 | val_loss=0.713117 | best_val_loss=0.713117 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.531018 | val_loss=0.716110 | best_val_loss=0.713117 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.496413 | val_loss=0.713621 | best_val_loss=0.713117 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.453296 | val_loss=0.712748 | best_val_loss=0.712748 | best_epoch=7 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.417992 | val_loss=0.717894 | best_val_loss=0.712748 | best_epoch=7 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.380892 | val_loss=0.721784 | best_val_loss=0.712748 | best_epoch=7 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 10/50 | train_loss=0.354679 | val_loss=0.721918 | best_val_loss=0.712748 | best_epoch=7 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 11/50 | train_loss=0.319149 | val_loss=0.732205 | best_val_loss=0.712748 | best_epoch=7 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 12/50 | train_loss=0.289087 | val_loss=0.751657 | best_val_loss=0.712748 | best_epoch=7 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=0.712748
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=0.712748 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.148604 | val_loss=0.989584 | best_val_loss=0.989584 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.928182 | val_loss=0.970754 | best_val_loss=0.970754 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.839984 | val_loss=0.964936 | best_val_loss=0.964936 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.777277 | val_loss=0.954102 | best_val_loss=0.954102 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.723208 | val_loss=0.946627 | best_val_loss=0.946627 | best_epoch=5 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.677943 | val_loss=0.956630 | best_val_loss=0.946627 | best_epoch=5 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.637573 | val_loss=0.952144 | best_val_loss=0.946627 | best_epoch=5 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.584502 | val_loss=0.963177 | best_val_loss=0.946627 | best_epoch=5 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.543226 | val_loss=0.958365 | best_val_loss=0.946627 | best_epoch=5 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 10/50 | train_loss=0.513119 | val_loss=0.972977 | best_val_loss=0.946627 | best_epoch=5 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 10 | best_epoch=5 | best_val_loss=0.946627
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=5 | best_val_loss=0.946627 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.078100 | val_loss=0.996538 | best_val_loss=0.996538 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.922883 | val_loss=0.971759 | best_val_loss=0.971759 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.845295 | val_loss=0.973523 | best_val_loss=0.971759 | best_epoch=2 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.788802 | val_loss=0.962047 | best_val_loss=0.962047 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.741786 | val_loss=0.962396 | best_val_loss=0.962047 | best_epoch=4 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.691592 | val_loss=0.957948 | best_val_loss=0.957948 | best_epoch=6 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.653165 | val_loss=0.957549 | best_val_loss=0.957549 | best_epoch=7 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.612123 | val_loss=0.961390 | best_val_loss=0.957549 | best_epoch=7 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.574295 | val_loss=0.967653 | best_val_loss=0.957549 | best_epoch=7 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 10/50 | train_loss=0.532991 | val_loss=0.974935 | best_val_loss=0.957549 | best_epoch=7 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 11/50 | train_loss=0.494414 | val_loss=0.975493 | best_val_loss=0.957549 | best_epoch=7 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 12/50 | train_loss=0.462117 | val_loss=0.989138 | best_val_loss=0.957549 | best_epoch=7 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=0.957549
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=0.957549 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=1
+{'learning_rate': 0.0003, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=1.027279 | val_loss=0.701729 | best_val_loss=0.701729 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.602086 | val_loss=0.660902 | best_val_loss=0.660902 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.465984 | val_loss=0.643662 | best_val_loss=0.643662 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.369365 | val_loss=0.635517 | best_val_loss=0.635517 | best_epoch=4 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.276231 | val_loss=0.638875 | best_val_loss=0.635517 | best_epoch=4 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.206007 | val_loss=0.665976 | best_val_loss=0.635517 | best_epoch=4 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.148536 | val_loss=0.688429 | best_val_loss=0.635517 | best_epoch=4 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.099813 | val_loss=0.704596 | best_val_loss=0.635517 | best_epoch=4 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 9/50 | train_loss=0.073526 | val_loss=0.715600 | best_val_loss=0.635517 | best_epoch=4 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.635517
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.635517 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.831090 | val_loss=0.744654 | best_val_loss=0.744654 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.656871 | val_loss=0.724189 | best_val_loss=0.724189 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.577001 | val_loss=0.724090 | best_val_loss=0.724189 | best_epoch=2 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.505415 | val_loss=0.715464 | best_val_loss=0.715464 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.452342 | val_loss=0.724260 | best_val_loss=0.715464 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.410620 | val_loss=0.723904 | best_val_loss=0.715464 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.362878 | val_loss=0.721757 | best_val_loss=0.715464 | best_epoch=4 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.323305 | val_loss=0.731356 | best_val_loss=0.715464 | best_epoch=4 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.285500 | val_loss=0.733700 | best_val_loss=0.715464 | best_epoch=4 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.715464
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.715464 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.122874 | val_loss=0.983789 | best_val_loss=0.983789 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.899885 | val_loss=0.957293 | best_val_loss=0.957293 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.803419 | val_loss=0.950893 | best_val_loss=0.950893 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.729379 | val_loss=0.937108 | best_val_loss=0.937108 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.657978 | val_loss=0.940175 | best_val_loss=0.937108 | best_epoch=4 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.603161 | val_loss=0.947572 | best_val_loss=0.937108 | best_epoch=4 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.557372 | val_loss=0.955181 | best_val_loss=0.937108 | best_epoch=4 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.492987 | val_loss=0.967113 | best_val_loss=0.937108 | best_epoch=4 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.451632 | val_loss=0.960472 | best_val_loss=0.937108 | best_epoch=4 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.937108
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.937108 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.050709 | val_loss=0.981811 | best_val_loss=0.981811 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.883966 | val_loss=0.968115 | best_val_loss=0.968115 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.797512 | val_loss=0.952481 | best_val_loss=0.952481 | best_epoch=3 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.723710 | val_loss=0.949922 | best_val_loss=0.949922 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.672089 | val_loss=0.950577 | best_val_loss=0.949922 | best_epoch=4 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.611099 | val_loss=0.950083 | best_val_loss=0.949922 | best_epoch=4 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.566183 | val_loss=0.965920 | best_val_loss=0.949922 | best_epoch=4 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.515447 | val_loss=0.961308 | best_val_loss=0.949922 | best_epoch=4 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.464395 | val_loss=0.976597 | best_val_loss=0.949922 | best_epoch=4 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.949922
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.949922 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=2
+{'learning_rate': 0.0003, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=1.133838 | val_loss=0.759333 | best_val_loss=0.759333 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.678068 | val_loss=0.687040 | best_val_loss=0.687040 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.545002 | val_loss=0.653321 | best_val_loss=0.653321 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.460857 | val_loss=0.637672 | best_val_loss=0.637672 | best_epoch=4 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.371773 | val_loss=0.639423 | best_val_loss=0.637672 | best_epoch=4 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.302007 | val_loss=0.651196 | best_val_loss=0.637672 | best_epoch=4 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.242349 | val_loss=0.660128 | best_val_loss=0.637672 | best_epoch=4 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.183346 | val_loss=0.688064 | best_val_loss=0.637672 | best_epoch=4 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 9/50 | train_loss=0.146000 | val_loss=0.700537 | best_val_loss=0.637672 | best_epoch=4 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.637672
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.637672 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.833993 | val_loss=0.740231 | best_val_loss=0.740231 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.698035 | val_loss=0.720261 | best_val_loss=0.720261 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.635596 | val_loss=0.718285 | best_val_loss=0.718285 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.578156 | val_loss=0.712280 | best_val_loss=0.712280 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.533014 | val_loss=0.714111 | best_val_loss=0.712280 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.498760 | val_loss=0.712526 | best_val_loss=0.712280 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.456563 | val_loss=0.709914 | best_val_loss=0.709914 | best_epoch=7 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.421722 | val_loss=0.713446 | best_val_loss=0.709914 | best_epoch=7 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.384001 | val_loss=0.717841 | best_val_loss=0.709914 | best_epoch=7 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 10/50 | train_loss=0.357981 | val_loss=0.717502 | best_val_loss=0.709914 | best_epoch=7 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 11/50 | train_loss=0.323444 | val_loss=0.725835 | best_val_loss=0.709914 | best_epoch=7 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 12/50 | train_loss=0.292653 | val_loss=0.745964 | best_val_loss=0.709914 | best_epoch=7 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=0.709914
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=0.709914 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.148107 | val_loss=0.986158 | best_val_loss=0.986158 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.930261 | val_loss=0.965349 | best_val_loss=0.965349 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.842679 | val_loss=0.960696 | best_val_loss=0.960696 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.780368 | val_loss=0.950063 | best_val_loss=0.950063 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.725282 | val_loss=0.943409 | best_val_loss=0.943409 | best_epoch=5 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.680458 | val_loss=0.952300 | best_val_loss=0.943409 | best_epoch=5 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.642178 | val_loss=0.948630 | best_val_loss=0.943409 | best_epoch=5 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.589046 | val_loss=0.960379 | best_val_loss=0.943409 | best_epoch=5 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.546732 | val_loss=0.956973 | best_val_loss=0.943409 | best_epoch=5 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 10/50 | train_loss=0.517012 | val_loss=0.972387 | best_val_loss=0.943409 | best_epoch=5 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 10 | best_epoch=5 | best_val_loss=0.943409
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=5 | best_val_loss=0.943409 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.076486 | val_loss=0.998418 | best_val_loss=0.998418 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.922530 | val_loss=0.972162 | best_val_loss=0.972162 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.846082 | val_loss=0.974963 | best_val_loss=0.972162 | best_epoch=2 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.789256 | val_loss=0.965599 | best_val_loss=0.965599 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.741548 | val_loss=0.964033 | best_val_loss=0.964033 | best_epoch=5 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.692413 | val_loss=0.958816 | best_val_loss=0.958816 | best_epoch=6 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.653211 | val_loss=0.958871 | best_val_loss=0.958816 | best_epoch=6 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.612154 | val_loss=0.962530 | best_val_loss=0.958816 | best_epoch=6 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.574034 | val_loss=0.970774 | best_val_loss=0.958816 | best_epoch=6 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 10/50 | train_loss=0.533061 | val_loss=0.977771 | best_val_loss=0.958816 | best_epoch=6 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 11/50 | train_loss=0.492950 | val_loss=0.980050 | best_val_loss=0.958816 | best_epoch=6 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 11 | best_epoch=6 | best_val_loss=0.958816
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=6 | best_val_loss=0.958816 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=3
+{'learning_rate': 0.0003, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=1.027472 | val_loss=0.701673 | best_val_loss=0.701673 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.602726 | val_loss=0.660885 | best_val_loss=0.660885 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.467334 | val_loss=0.644150 | best_val_loss=0.644150 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.370977 | val_loss=0.633574 | best_val_loss=0.633574 | best_epoch=4 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.277763 | val_loss=0.639062 | best_val_loss=0.633574 | best_epoch=4 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.208186 | val_loss=0.664998 | best_val_loss=0.633574 | best_epoch=4 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.150231 | val_loss=0.686492 | best_val_loss=0.633574 | best_epoch=4 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.101866 | val_loss=0.706553 | best_val_loss=0.633574 | best_epoch=4 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 9/50 | train_loss=0.075132 | val_loss=0.711355 | best_val_loss=0.633574 | best_epoch=4 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.633574
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.633574 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.830228 | val_loss=0.741827 | best_val_loss=0.741827 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.657465 | val_loss=0.722108 | best_val_loss=0.722108 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.578271 | val_loss=0.721968 | best_val_loss=0.721968 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.507228 | val_loss=0.713711 | best_val_loss=0.713711 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.454557 | val_loss=0.722539 | best_val_loss=0.713711 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.412775 | val_loss=0.723774 | best_val_loss=0.713711 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.364808 | val_loss=0.721155 | best_val_loss=0.713711 | best_epoch=4 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.325781 | val_loss=0.731242 | best_val_loss=0.713711 | best_epoch=4 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.287355 | val_loss=0.735412 | best_val_loss=0.713711 | best_epoch=4 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.713711
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.713711 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.122365 | val_loss=0.984255 | best_val_loss=0.984255 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.900894 | val_loss=0.960057 | best_val_loss=0.960057 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.805602 | val_loss=0.951601 | best_val_loss=0.951601 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.730553 | val_loss=0.938982 | best_val_loss=0.938982 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.661193 | val_loss=0.942109 | best_val_loss=0.938982 | best_epoch=4 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.606170 | val_loss=0.949952 | best_val_loss=0.938982 | best_epoch=4 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.560863 | val_loss=0.958804 | best_val_loss=0.938982 | best_epoch=4 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.497228 | val_loss=0.969671 | best_val_loss=0.938982 | best_epoch=4 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.456135 | val_loss=0.962115 | best_val_loss=0.938982 | best_epoch=4 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.938982
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.938982 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.049324 | val_loss=0.978509 | best_val_loss=0.978509 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.884279 | val_loss=0.966153 | best_val_loss=0.966153 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.799288 | val_loss=0.949968 | best_val_loss=0.949968 | best_epoch=3 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.726326 | val_loss=0.948400 | best_val_loss=0.948400 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.673222 | val_loss=0.947186 | best_val_loss=0.947186 | best_epoch=5 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.613857 | val_loss=0.946201 | best_val_loss=0.946201 | best_epoch=6 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.567946 | val_loss=0.962113 | best_val_loss=0.946201 | best_epoch=6 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.518258 | val_loss=0.959371 | best_val_loss=0.946201 | best_epoch=6 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.466956 | val_loss=0.974302 | best_val_loss=0.946201 | best_epoch=6 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 10/50 | train_loss=0.428301 | val_loss=0.990590 | best_val_loss=0.946201 | best_epoch=6 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 11/50 | train_loss=0.381451 | val_loss=0.997830 | best_val_loss=0.946201 | best_epoch=6 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 11 | best_epoch=6 | best_val_loss=0.946201
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=6 | best_val_loss=0.946201 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=4
+{'learning_rate': 0.001, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=0.945647 | val_loss=0.719764 | best_val_loss=0.719764 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.590042 | val_loss=0.696638 | best_val_loss=0.696638 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.453674 | val_loss=0.678232 | best_val_loss=0.678232 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.339983 | val_loss=0.706258 | best_val_loss=0.678232 | best_epoch=3 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.239995 | val_loss=0.731528 | best_val_loss=0.678232 | best_epoch=3 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.163210 | val_loss=0.762703 | best_val_loss=0.678232 | best_epoch=3 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.113095 | val_loss=0.837813 | best_val_loss=0.678232 | best_epoch=3 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.073886 | val_loss=0.899741 | best_val_loss=0.678232 | best_epoch=3 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 8 | best_epoch=3 | best_val_loss=0.678232
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=3 | best_val_loss=0.678232 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.902689 | val_loss=0.772012 | best_val_loss=0.772012 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.768024 | val_loss=0.740269 | best_val_loss=0.740269 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.683325 | val_loss=0.729261 | best_val_loss=0.729261 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.636875 | val_loss=0.715624 | best_val_loss=0.715624 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.595693 | val_loss=0.719867 | best_val_loss=0.715624 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.551298 | val_loss=0.716947 | best_val_loss=0.715624 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.520746 | val_loss=0.713715 | best_val_loss=0.713715 | best_epoch=7 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.484197 | val_loss=0.712358 | best_val_loss=0.712358 | best_epoch=8 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.458155 | val_loss=0.720237 | best_val_loss=0.712358 | best_epoch=8 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 10/50 | train_loss=0.421258 | val_loss=0.720446 | best_val_loss=0.712358 | best_epoch=8 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 11/50 | train_loss=0.390151 | val_loss=0.733653 | best_val_loss=0.712358 | best_epoch=8 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 12/50 | train_loss=0.360252 | val_loss=0.738776 | best_val_loss=0.712358 | best_epoch=8 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 13/50 | train_loss=0.336456 | val_loss=0.747081 | best_val_loss=0.712358 | best_epoch=8 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 13 | best_epoch=8 | best_val_loss=0.712358
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=8 | best_val_loss=0.712358 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.197686 | val_loss=1.030301 | best_val_loss=1.030301 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.985021 | val_loss=0.994809 | best_val_loss=0.994809 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.896097 | val_loss=0.979306 | best_val_loss=0.979306 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.839564 | val_loss=0.975676 | best_val_loss=0.975676 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.789373 | val_loss=0.973096 | best_val_loss=0.973096 | best_epoch=5 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.742739 | val_loss=0.969371 | best_val_loss=0.969371 | best_epoch=6 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.699767 | val_loss=0.967832 | best_val_loss=0.967832 | best_epoch=7 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.664105 | val_loss=0.972626 | best_val_loss=0.967832 | best_epoch=7 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.623258 | val_loss=0.976548 | best_val_loss=0.967832 | best_epoch=7 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 10/50 | train_loss=0.587565 | val_loss=0.982892 | best_val_loss=0.967832 | best_epoch=7 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 11/50 | train_loss=0.544116 | val_loss=0.991761 | best_val_loss=0.967832 | best_epoch=7 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 12/50 | train_loss=0.510331 | val_loss=1.001107 | best_val_loss=0.967832 | best_epoch=7 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=0.967832
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=0.967832 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.100320 | val_loss=1.007087 | best_val_loss=1.007087 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.953984 | val_loss=0.988293 | best_val_loss=0.988293 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.881118 | val_loss=0.979095 | best_val_loss=0.979095 | best_epoch=3 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.819099 | val_loss=0.970825 | best_val_loss=0.970825 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.780048 | val_loss=0.977335 | best_val_loss=0.970825 | best_epoch=4 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.729314 | val_loss=0.972794 | best_val_loss=0.970825 | best_epoch=4 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.689875 | val_loss=0.972597 | best_val_loss=0.970825 | best_epoch=4 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.650635 | val_loss=0.980150 | best_val_loss=0.970825 | best_epoch=4 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.607720 | val_loss=0.983078 | best_val_loss=0.970825 | best_epoch=4 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.970825
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.970825 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=5
+{'learning_rate': 0.001, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=0.907470 | val_loss=0.706751 | best_val_loss=0.706751 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.540180 | val_loss=0.692789 | best_val_loss=0.692789 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.393851 | val_loss=0.691355 | best_val_loss=0.691355 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.265062 | val_loss=0.726377 | best_val_loss=0.691355 | best_epoch=3 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.167859 | val_loss=0.728467 | best_val_loss=0.691355 | best_epoch=3 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.107325 | val_loss=0.816449 | best_val_loss=0.691355 | best_epoch=3 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.071003 | val_loss=0.894959 | best_val_loss=0.691355 | best_epoch=3 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.053043 | val_loss=0.949148 | best_val_loss=0.691355 | best_epoch=3 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 8 | best_epoch=3 | best_val_loss=0.691355
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=3 | best_val_loss=0.691355 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.898180 | val_loss=0.788595 | best_val_loss=0.788595 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.733948 | val_loss=0.752494 | best_val_loss=0.752494 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.645806 | val_loss=0.738119 | best_val_loss=0.738119 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.585276 | val_loss=0.727435 | best_val_loss=0.727435 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.537981 | val_loss=0.735735 | best_val_loss=0.727435 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.492171 | val_loss=0.737911 | best_val_loss=0.727435 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.455583 | val_loss=0.737243 | best_val_loss=0.727435 | best_epoch=4 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.411638 | val_loss=0.737500 | best_val_loss=0.727435 | best_epoch=4 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.382870 | val_loss=0.747835 | best_val_loss=0.727435 | best_epoch=4 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=0.727435
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=0.727435 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.192648 | val_loss=1.035460 | best_val_loss=1.035460 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.971250 | val_loss=1.000992 | best_val_loss=1.000992 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.884973 | val_loss=0.982317 | best_val_loss=0.982317 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.810735 | val_loss=0.973996 | best_val_loss=0.973996 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.756833 | val_loss=0.967783 | best_val_loss=0.967783 | best_epoch=5 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.703806 | val_loss=0.965553 | best_val_loss=0.965553 | best_epoch=6 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.649601 | val_loss=0.969357 | best_val_loss=0.965553 | best_epoch=6 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.603268 | val_loss=0.970126 | best_val_loss=0.965553 | best_epoch=6 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.555424 | val_loss=0.975831 | best_val_loss=0.965553 | best_epoch=6 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 10/50 | train_loss=0.511112 | val_loss=0.977354 | best_val_loss=0.965553 | best_epoch=6 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 11/50 | train_loss=0.474073 | val_loss=0.988362 | best_val_loss=0.965553 | best_epoch=6 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 11 | best_epoch=6 | best_val_loss=0.965553
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=6 | best_val_loss=0.965553 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.084838 | val_loss=1.011218 | best_val_loss=1.011218 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.928554 | val_loss=0.989928 | best_val_loss=0.989928 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.852163 | val_loss=0.982860 | best_val_loss=0.982860 | best_epoch=3 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.784038 | val_loss=0.974276 | best_val_loss=0.974276 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.724458 | val_loss=0.975364 | best_val_loss=0.974276 | best_epoch=4 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.666241 | val_loss=0.974698 | best_val_loss=0.974276 | best_epoch=4 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.630481 | val_loss=0.973661 | best_val_loss=0.973661 | best_epoch=7 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.584264 | val_loss=0.988114 | best_val_loss=0.973661 | best_epoch=7 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.533990 | val_loss=0.992832 | best_val_loss=0.973661 | best_epoch=7 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 10/50 | train_loss=0.489665 | val_loss=1.009423 | best_val_loss=0.973661 | best_epoch=7 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 11/50 | train_loss=0.447996 | val_loss=1.020244 | best_val_loss=0.973661 | best_epoch=7 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 12/50 | train_loss=0.409062 | val_loss=1.036775 | best_val_loss=0.973661 | best_epoch=7 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=0.973661
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=0.973661 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=6
+{'learning_rate': 0.001, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=0.946171 | val_loss=0.726055 | best_val_loss=0.726055 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.590323 | val_loss=0.701291 | best_val_loss=0.701291 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.452366 | val_loss=0.688501 | best_val_loss=0.688501 | best_epoch=3 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.343512 | val_loss=0.721902 | best_val_loss=0.688501 | best_epoch=3 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.242702 | val_loss=0.742408 | best_val_loss=0.688501 | best_epoch=3 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.178257 | val_loss=0.784843 | best_val_loss=0.688501 | best_epoch=3 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.115641 | val_loss=0.883158 | best_val_loss=0.688501 | best_epoch=3 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 8/50 | train_loss=0.088237 | val_loss=0.936614 | best_val_loss=0.688501 | best_epoch=3 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 8 | best_epoch=3 | best_val_loss=0.688501
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=3 | best_val_loss=0.688501 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.899116 | val_loss=0.781183 | best_val_loss=0.781183 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.764995 | val_loss=0.748912 | best_val_loss=0.748912 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.681476 | val_loss=0.736330 | best_val_loss=0.736330 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.633966 | val_loss=0.721150 | best_val_loss=0.721150 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.593407 | val_loss=0.723971 | best_val_loss=0.721150 | best_epoch=4 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.547534 | val_loss=0.721655 | best_val_loss=0.721150 | best_epoch=4 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.516565 | val_loss=0.719462 | best_val_loss=0.719462 | best_epoch=7 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.480096 | val_loss=0.715946 | best_val_loss=0.715946 | best_epoch=8 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.454006 | val_loss=0.718040 | best_val_loss=0.715946 | best_epoch=8 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 10/50 | train_loss=0.418556 | val_loss=0.719660 | best_val_loss=0.715946 | best_epoch=8 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 11/50 | train_loss=0.383992 | val_loss=0.728172 | best_val_loss=0.715946 | best_epoch=8 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 12/50 | train_loss=0.354119 | val_loss=0.725919 | best_val_loss=0.715946 | best_epoch=8 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 13/50 | train_loss=0.332116 | val_loss=0.737598 | best_val_loss=0.715946 | best_epoch=8 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 13 | best_epoch=8 | best_val_loss=0.715946
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=8 | best_val_loss=0.715946 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.195147 | val_loss=1.036831 | best_val_loss=1.036831 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.980396 | val_loss=1.000789 | best_val_loss=1.000789 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.893321 | val_loss=0.986673 | best_val_loss=0.986673 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.833608 | val_loss=0.984302 | best_val_loss=0.984302 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.783814 | val_loss=0.978642 | best_val_loss=0.978642 | best_epoch=5 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.736213 | val_loss=0.977800 | best_val_loss=0.977800 | best_epoch=6 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.692608 | val_loss=0.977752 | best_val_loss=0.977800 | best_epoch=6 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.655290 | val_loss=0.983251 | best_val_loss=0.977800 | best_epoch=6 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.614551 | val_loss=0.988969 | best_val_loss=0.977800 | best_epoch=6 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 10/50 | train_loss=0.575971 | val_loss=0.996255 | best_val_loss=0.977800 | best_epoch=6 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 11/50 | train_loss=0.533488 | val_loss=1.005053 | best_val_loss=0.977800 | best_epoch=6 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 11 | best_epoch=6 | best_val_loss=0.977800
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=6 | best_val_loss=0.977800 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.106147 | val_loss=1.010368 | best_val_loss=1.010368 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.951536 | val_loss=0.988555 | best_val_loss=0.988555 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.880504 | val_loss=0.981090 | best_val_loss=0.981090 | best_epoch=3 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.831771 | val_loss=0.975896 | best_val_loss=0.975896 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.780696 | val_loss=0.974346 | best_val_loss=0.974346 | best_epoch=5 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.738490 | val_loss=0.979084 | best_val_loss=0.974346 | best_epoch=5 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.692912 | val_loss=0.978591 | best_val_loss=0.974346 | best_epoch=5 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.655627 | val_loss=0.980794 | best_val_loss=0.974346 | best_epoch=5 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.614653 | val_loss=0.985998 | best_val_loss=0.974346 | best_epoch=5 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 10/50 | train_loss=0.583440 | val_loss=1.001421 | best_val_loss=0.974346 | best_epoch=5 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 10 | best_epoch=5 | best_val_loss=0.974346
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=5 | best_val_loss=0.974346 | stopped_early=True
+
+================================================================================
+BASELINE TUNING | single_head | trial=7
+{'learning_rate': 0.001, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 2012 | Single Head] epoch 1/50 | train_loss=0.905752 | val_loss=0.700694 | best_val_loss=0.700694 | best_epoch=1 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 2/50 | train_loss=0.541966 | val_loss=0.694315 | best_val_loss=0.694315 | best_epoch=2 | patience=0/5
+[Baseline tuning 2012 | Single Head] epoch 3/50 | train_loss=0.396119 | val_loss=0.699262 | best_val_loss=0.694315 | best_epoch=2 | patience=1/5
+[Baseline tuning 2012 | Single Head] epoch 4/50 | train_loss=0.267871 | val_loss=0.751079 | best_val_loss=0.694315 | best_epoch=2 | patience=2/5
+[Baseline tuning 2012 | Single Head] epoch 5/50 | train_loss=0.171877 | val_loss=0.724290 | best_val_loss=0.694315 | best_epoch=2 | patience=3/5
+[Baseline tuning 2012 | Single Head] epoch 6/50 | train_loss=0.120739 | val_loss=0.783536 | best_val_loss=0.694315 | best_epoch=2 | patience=4/5
+[Baseline tuning 2012 | Single Head] epoch 7/50 | train_loss=0.082224 | val_loss=0.857533 | best_val_loss=0.694315 | best_epoch=2 | patience=5/5
+[Baseline tuning 2012 | Single Head] EARLY STOP at epoch 7 | best_epoch=2 | best_val_loss=0.694315
+[Baseline tuning 2012 | Single Head] TRAINING FINISHED | executed_epochs=7 | best_epoch=2 | best_val_loss=0.694315 | stopped_early=True
+[Baseline tuning 2013 | Single Head] epoch 1/50 | train_loss=0.884572 | val_loss=0.758691 | best_val_loss=0.758691 | best_epoch=1 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 2/50 | train_loss=0.740934 | val_loss=0.738127 | best_val_loss=0.738127 | best_epoch=2 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 3/50 | train_loss=0.667501 | val_loss=0.725308 | best_val_loss=0.725308 | best_epoch=3 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 4/50 | train_loss=0.604950 | val_loss=0.714617 | best_val_loss=0.714617 | best_epoch=4 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 5/50 | train_loss=0.560692 | val_loss=0.707343 | best_val_loss=0.707343 | best_epoch=5 | patience=0/5
+[Baseline tuning 2013 | Single Head] epoch 6/50 | train_loss=0.518033 | val_loss=0.715840 | best_val_loss=0.707343 | best_epoch=5 | patience=1/5
+[Baseline tuning 2013 | Single Head] epoch 7/50 | train_loss=0.475291 | val_loss=0.710391 | best_val_loss=0.707343 | best_epoch=5 | patience=2/5
+[Baseline tuning 2013 | Single Head] epoch 8/50 | train_loss=0.437375 | val_loss=0.710504 | best_val_loss=0.707343 | best_epoch=5 | patience=3/5
+[Baseline tuning 2013 | Single Head] epoch 9/50 | train_loss=0.397455 | val_loss=0.718296 | best_val_loss=0.707343 | best_epoch=5 | patience=4/5
+[Baseline tuning 2013 | Single Head] epoch 10/50 | train_loss=0.363716 | val_loss=0.720136 | best_val_loss=0.707343 | best_epoch=5 | patience=5/5
+[Baseline tuning 2013 | Single Head] EARLY STOP at epoch 10 | best_epoch=5 | best_val_loss=0.707343
+[Baseline tuning 2013 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=5 | best_val_loss=0.707343 | stopped_early=True
+[Baseline tuning 2014 | Single Head] epoch 1/50 | train_loss=1.148065 | val_loss=1.005415 | best_val_loss=1.005415 | best_epoch=1 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 2/50 | train_loss=0.951171 | val_loss=0.976589 | best_val_loss=0.976589 | best_epoch=2 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 3/50 | train_loss=0.868328 | val_loss=0.962154 | best_val_loss=0.962154 | best_epoch=3 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 4/50 | train_loss=0.801105 | val_loss=0.954940 | best_val_loss=0.954940 | best_epoch=4 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 5/50 | train_loss=0.738560 | val_loss=0.955372 | best_val_loss=0.954940 | best_epoch=4 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 6/50 | train_loss=0.688109 | val_loss=0.951265 | best_val_loss=0.951265 | best_epoch=6 | patience=0/5
+[Baseline tuning 2014 | Single Head] epoch 7/50 | train_loss=0.634740 | val_loss=0.952052 | best_val_loss=0.951265 | best_epoch=6 | patience=1/5
+[Baseline tuning 2014 | Single Head] epoch 8/50 | train_loss=0.583410 | val_loss=0.962408 | best_val_loss=0.951265 | best_epoch=6 | patience=2/5
+[Baseline tuning 2014 | Single Head] epoch 9/50 | train_loss=0.535795 | val_loss=0.971175 | best_val_loss=0.951265 | best_epoch=6 | patience=3/5
+[Baseline tuning 2014 | Single Head] epoch 10/50 | train_loss=0.490090 | val_loss=0.970715 | best_val_loss=0.951265 | best_epoch=6 | patience=4/5
+[Baseline tuning 2014 | Single Head] epoch 11/50 | train_loss=0.443513 | val_loss=0.984065 | best_val_loss=0.951265 | best_epoch=6 | patience=5/5
+[Baseline tuning 2014 | Single Head] EARLY STOP at epoch 11 | best_epoch=6 | best_val_loss=0.951265
+[Baseline tuning 2014 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=6 | best_val_loss=0.951265 | stopped_early=True
+[Baseline tuning 2015 | Single Head] epoch 1/50 | train_loss=1.065581 | val_loss=0.989077 | best_val_loss=0.989077 | best_epoch=1 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 2/50 | train_loss=0.913963 | val_loss=0.966882 | best_val_loss=0.966882 | best_epoch=2 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 3/50 | train_loss=0.831433 | val_loss=0.960296 | best_val_loss=0.960296 | best_epoch=3 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 4/50 | train_loss=0.762155 | val_loss=0.959488 | best_val_loss=0.959488 | best_epoch=4 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 5/50 | train_loss=0.708420 | val_loss=0.954484 | best_val_loss=0.954484 | best_epoch=5 | patience=0/5
+[Baseline tuning 2015 | Single Head] epoch 6/50 | train_loss=0.657570 | val_loss=0.958224 | best_val_loss=0.954484 | best_epoch=5 | patience=1/5
+[Baseline tuning 2015 | Single Head] epoch 7/50 | train_loss=0.606215 | val_loss=0.963543 | best_val_loss=0.954484 | best_epoch=5 | patience=2/5
+[Baseline tuning 2015 | Single Head] epoch 8/50 | train_loss=0.554511 | val_loss=0.971667 | best_val_loss=0.954484 | best_epoch=5 | patience=3/5
+[Baseline tuning 2015 | Single Head] epoch 9/50 | train_loss=0.510116 | val_loss=0.983768 | best_val_loss=0.954484 | best_epoch=5 | patience=4/5
+[Baseline tuning 2015 | Single Head] epoch 10/50 | train_loss=0.467721 | val_loss=0.992147 | best_val_loss=0.954484 | best_epoch=5 | patience=5/5
+[Baseline tuning 2015 | Single Head] EARLY STOP at epoch 10 | best_epoch=5 | best_val_loss=0.954484
+[Baseline tuning 2015 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=5 | best_val_loss=0.954484 | stopped_early=True

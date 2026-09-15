@@ -1867,34 +1867,12 @@ def tune_tta(
     double_config = apply_overrides(
         config=single_config,
         overrides={
-            "training.double_head.learning_rate":
-                single_config.get(
-                    "training",
-                    "single_head",
-                    "learning_rate",
-                ),
-
-            "training.double_head.weight_decay":
-                single_config.get(
-                    "training",
-                    "single_head",
-                    "weight_decay",
-                ),
-
-            "training.double_head.batch_size":
-                single_config.get(
-                    "training",
-                    "single_head",
-                    "batch_size",
-                ),
-
             "model.double_head.dropout":
                 single_config.get(
                     "model",
                     "single_head",
                     "dropout",
                 ),
-
             "model.double_head.shared_hidden_dim":
                 single_config.get(
                     "model",

@@ -1,0 +1,316 @@
+Device: cpu
+Protocol: eval_stream_tas
+
+================================================================================
+DATASET
+================================================================================
+Dataset: fmow
+Data root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/new_FMoW_embeddings_remapped
+
+Year 2002: valid=1199/1199 | main_classes=52 | aux_classes=11
+Year 2003: valid=1661/1661 | main_classes=52 | aux_classes=11
+Year 2004: valid=1499/1499 | main_classes=52 | aux_classes=11
+Year 2005: valid=1837/1837 | main_classes=52 | aux_classes=11
+Year 2006: valid=1995/1995 | main_classes=52 | aux_classes=11
+Year 2007: valid=1044/1044 | main_classes=52 | aux_classes=11
+Year 2008: valid=1459/1459 | main_classes=52 | aux_classes=11
+Year 2009: valid=4278/4278 | main_classes=52 | aux_classes=11
+Year 2010: valid=9922/9922 | main_classes=52 | aux_classes=11
+Year 2011: valid=10933/10933 | main_classes=52 | aux_classes=11
+Year 2012: valid=11122/11122 | main_classes=52 | aux_classes=11
+Year 2013: valid=13374/13374 | main_classes=52 | aux_classes=11
+Year 2014: valid=18840/18840 | main_classes=52 | aux_classes=11
+Year 2015: valid=27653/27653 | main_classes=52 | aux_classes=11
+Year 2016: valid=48861/48861 | main_classes=52 | aux_classes=11
+Year 2017: valid=17160/17160 | main_classes=52 | aux_classes=11
+
+Years: 2002-2017
+Number of years: 16
+Feature dimension: 2048
+Total valid samples: 172837
+
+================================================================================
+Source year 2002 | train_n=839 | val_n=120 | id_n=240
+================================================================================
+[Source 2002 | Single Head] epoch 1/50 | train_loss=3.397227 | val_loss=3.843500 | best_val_loss=3.843500 | best_epoch=1 | patience=0/5
+[Source 2002 | Single Head] epoch 2/50 | train_loss=1.848529 | val_loss=3.530699 | best_val_loss=3.530699 | best_epoch=2 | patience=0/5
+[Source 2002 | Single Head] epoch 3/50 | train_loss=1.060413 | val_loss=2.948039 | best_val_loss=2.948039 | best_epoch=3 | patience=0/5
+[Source 2002 | Single Head] epoch 4/50 | train_loss=0.531139 | val_loss=2.832201 | best_val_loss=2.832201 | best_epoch=4 | patience=0/5
+[Source 2002 | Single Head] epoch 5/50 | train_loss=0.253462 | val_loss=2.875617 | best_val_loss=2.832201 | best_epoch=4 | patience=1/5
+[Source 2002 | Single Head] epoch 6/50 | train_loss=0.142913 | val_loss=3.076852 | best_val_loss=2.832201 | best_epoch=4 | patience=2/5
+[Source 2002 | Single Head] epoch 7/50 | train_loss=0.085523 | val_loss=2.981019 | best_val_loss=2.832201 | best_epoch=4 | patience=3/5
+[Source 2002 | Single Head] epoch 8/50 | train_loss=0.052985 | val_loss=2.941391 | best_val_loss=2.832201 | best_epoch=4 | patience=4/5
+[Source 2002 | Single Head] epoch 9/50 | train_loss=0.036944 | val_loss=2.909123 | best_val_loss=2.832201 | best_epoch=4 | patience=5/5
+[Source 2002 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=2.832201
+[Source 2002 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=2.832201 | stopped_early=True
+
+================================================================================
+Source year 2003 | train_n=1162 | val_n=166 | id_n=333
+================================================================================
+[Source 2003 | Single Head] epoch 1/20 | train_loss=3.144397 | val_loss=2.775249 | best_val_loss=2.775249 | best_epoch=1 | patience=0/3
+[Source 2003 | Single Head] epoch 2/20 | train_loss=2.576240 | val_loss=2.625429 | best_val_loss=2.625429 | best_epoch=2 | patience=0/3
+[Source 2003 | Single Head] epoch 3/20 | train_loss=2.230571 | val_loss=2.551232 | best_val_loss=2.551232 | best_epoch=3 | patience=0/3
+[Source 2003 | Single Head] epoch 4/20 | train_loss=1.961583 | val_loss=2.496438 | best_val_loss=2.496438 | best_epoch=4 | patience=0/3
+[Source 2003 | Single Head] epoch 5/20 | train_loss=1.737321 | val_loss=2.455676 | best_val_loss=2.455676 | best_epoch=5 | patience=0/3
+[Source 2003 | Single Head] epoch 6/20 | train_loss=1.557416 | val_loss=2.432324 | best_val_loss=2.432324 | best_epoch=6 | patience=0/3
+[Source 2003 | Single Head] epoch 7/20 | train_loss=1.393793 | val_loss=2.411793 | best_val_loss=2.411793 | best_epoch=7 | patience=0/3
+[Source 2003 | Single Head] epoch 8/20 | train_loss=1.234737 | val_loss=2.401729 | best_val_loss=2.401729 | best_epoch=8 | patience=0/3
+[Source 2003 | Single Head] epoch 9/20 | train_loss=1.091643 | val_loss=2.391241 | best_val_loss=2.391241 | best_epoch=9 | patience=0/3
+[Source 2003 | Single Head] epoch 10/20 | train_loss=0.965980 | val_loss=2.384483 | best_val_loss=2.384483 | best_epoch=10 | patience=0/3
+[Source 2003 | Single Head] epoch 11/20 | train_loss=0.877727 | val_loss=2.375676 | best_val_loss=2.375676 | best_epoch=11 | patience=0/3
+[Source 2003 | Single Head] epoch 12/20 | train_loss=0.769181 | val_loss=2.376831 | best_val_loss=2.375676 | best_epoch=11 | patience=1/3
+[Source 2003 | Single Head] epoch 13/20 | train_loss=0.680036 | val_loss=2.370791 | best_val_loss=2.370791 | best_epoch=13 | patience=0/3
+[Source 2003 | Single Head] epoch 14/20 | train_loss=0.600339 | val_loss=2.371557 | best_val_loss=2.370791 | best_epoch=13 | patience=1/3
+[Source 2003 | Single Head] epoch 15/20 | train_loss=0.540067 | val_loss=2.380389 | best_val_loss=2.370791 | best_epoch=13 | patience=2/3
+[Source 2003 | Single Head] epoch 16/20 | train_loss=0.470701 | val_loss=2.383073 | best_val_loss=2.370791 | best_epoch=13 | patience=3/3
+[Source 2003 | Single Head] EARLY STOP at epoch 16 | best_epoch=13 | best_val_loss=2.370791
+[Source 2003 | Single Head] TRAINING FINISHED | executed_epochs=16 | best_epoch=13 | best_val_loss=2.370791 | stopped_early=True
+
+================================================================================
+Source year 2004 | train_n=1049 | val_n=150 | id_n=300
+================================================================================
+[Source 2004 | Single Head] epoch 1/20 | train_loss=3.083003 | val_loss=2.748605 | best_val_loss=2.748605 | best_epoch=1 | patience=0/3
+[Source 2004 | Single Head] epoch 2/20 | train_loss=2.400062 | val_loss=2.620924 | best_val_loss=2.620924 | best_epoch=2 | patience=0/3
+[Source 2004 | Single Head] epoch 3/20 | train_loss=1.971816 | val_loss=2.584193 | best_val_loss=2.584193 | best_epoch=3 | patience=0/3
+[Source 2004 | Single Head] epoch 4/20 | train_loss=1.671633 | val_loss=2.569884 | best_val_loss=2.569884 | best_epoch=4 | patience=0/3
+[Source 2004 | Single Head] epoch 5/20 | train_loss=1.448039 | val_loss=2.546251 | best_val_loss=2.546251 | best_epoch=5 | patience=0/3
+[Source 2004 | Single Head] epoch 6/20 | train_loss=1.252539 | val_loss=2.565836 | best_val_loss=2.546251 | best_epoch=5 | patience=1/3
+[Source 2004 | Single Head] epoch 7/20 | train_loss=1.072559 | val_loss=2.551593 | best_val_loss=2.546251 | best_epoch=5 | patience=2/3
+[Source 2004 | Single Head] epoch 8/20 | train_loss=0.927193 | val_loss=2.550278 | best_val_loss=2.546251 | best_epoch=5 | patience=3/3
+[Source 2004 | Single Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=2.546251
+[Source 2004 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=2.546251 | stopped_early=True
+
+================================================================================
+Source year 2005 | train_n=1285 | val_n=184 | id_n=368
+================================================================================
+[Source 2005 | Single Head] epoch 1/20 | train_loss=2.695950 | val_loss=2.530250 | best_val_loss=2.530250 | best_epoch=1 | patience=0/3
+[Source 2005 | Single Head] epoch 2/20 | train_loss=2.181178 | val_loss=2.442931 | best_val_loss=2.442931 | best_epoch=2 | patience=0/3
+[Source 2005 | Single Head] epoch 3/20 | train_loss=1.819675 | val_loss=2.401846 | best_val_loss=2.401846 | best_epoch=3 | patience=0/3
+[Source 2005 | Single Head] epoch 4/20 | train_loss=1.584179 | val_loss=2.392433 | best_val_loss=2.392433 | best_epoch=4 | patience=0/3
+[Source 2005 | Single Head] epoch 5/20 | train_loss=1.385685 | val_loss=2.342887 | best_val_loss=2.342887 | best_epoch=5 | patience=0/3
+[Source 2005 | Single Head] epoch 6/20 | train_loss=1.206680 | val_loss=2.352888 | best_val_loss=2.342887 | best_epoch=5 | patience=1/3
+[Source 2005 | Single Head] epoch 7/20 | train_loss=1.060218 | val_loss=2.338938 | best_val_loss=2.338938 | best_epoch=7 | patience=0/3
+[Source 2005 | Single Head] epoch 8/20 | train_loss=0.918695 | val_loss=2.332905 | best_val_loss=2.332905 | best_epoch=8 | patience=0/3
+[Source 2005 | Single Head] epoch 9/20 | train_loss=0.815019 | val_loss=2.336634 | best_val_loss=2.332905 | best_epoch=8 | patience=1/3
+[Source 2005 | Single Head] epoch 10/20 | train_loss=0.703872 | val_loss=2.330809 | best_val_loss=2.330809 | best_epoch=10 | patience=0/3
+[Source 2005 | Single Head] epoch 11/20 | train_loss=0.614452 | val_loss=2.344912 | best_val_loss=2.330809 | best_epoch=10 | patience=1/3
+[Source 2005 | Single Head] epoch 12/20 | train_loss=0.539006 | val_loss=2.348521 | best_val_loss=2.330809 | best_epoch=10 | patience=2/3
+[Source 2005 | Single Head] epoch 13/20 | train_loss=0.484572 | val_loss=2.342221 | best_val_loss=2.330809 | best_epoch=10 | patience=3/3
+[Source 2005 | Single Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=2.330809
+[Source 2005 | Single Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=2.330809 | stopped_early=True
+
+================================================================================
+Source year 2006 | train_n=1396 | val_n=200 | id_n=399
+================================================================================
+[Source 2006 | Single Head] epoch 1/20 | train_loss=2.483075 | val_loss=2.478121 | best_val_loss=2.478121 | best_epoch=1 | patience=0/3
+[Source 2006 | Single Head] epoch 2/20 | train_loss=1.937180 | val_loss=2.432530 | best_val_loss=2.432530 | best_epoch=2 | patience=0/3
+[Source 2006 | Single Head] epoch 3/20 | train_loss=1.595730 | val_loss=2.381009 | best_val_loss=2.381009 | best_epoch=3 | patience=0/3
+[Source 2006 | Single Head] epoch 4/20 | train_loss=1.346358 | val_loss=2.364370 | best_val_loss=2.364370 | best_epoch=4 | patience=0/3
+[Source 2006 | Single Head] epoch 5/20 | train_loss=1.154441 | val_loss=2.367268 | best_val_loss=2.364370 | best_epoch=4 | patience=1/3
+[Source 2006 | Single Head] epoch 6/20 | train_loss=0.985084 | val_loss=2.361307 | best_val_loss=2.361307 | best_epoch=6 | patience=0/3
+[Source 2006 | Single Head] epoch 7/20 | train_loss=0.851600 | val_loss=2.336015 | best_val_loss=2.336015 | best_epoch=7 | patience=0/3
+[Source 2006 | Single Head] epoch 8/20 | train_loss=0.732426 | val_loss=2.350309 | best_val_loss=2.336015 | best_epoch=7 | patience=1/3
+[Source 2006 | Single Head] epoch 9/20 | train_loss=0.629399 | val_loss=2.334045 | best_val_loss=2.334045 | best_epoch=9 | patience=0/3
+[Source 2006 | Single Head] epoch 10/20 | train_loss=0.543336 | val_loss=2.332348 | best_val_loss=2.332348 | best_epoch=10 | patience=0/3
+[Source 2006 | Single Head] epoch 11/20 | train_loss=0.474727 | val_loss=2.359197 | best_val_loss=2.332348 | best_epoch=10 | patience=1/3
+[Source 2006 | Single Head] epoch 12/20 | train_loss=0.409489 | val_loss=2.344376 | best_val_loss=2.332348 | best_epoch=10 | patience=2/3
+[Source 2006 | Single Head] epoch 13/20 | train_loss=0.360530 | val_loss=2.361041 | best_val_loss=2.332348 | best_epoch=10 | patience=3/3
+[Source 2006 | Single Head] EARLY STOP at epoch 13 | best_epoch=10 | best_val_loss=2.332348
+[Source 2006 | Single Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=10 | best_val_loss=2.332348 | stopped_early=True
+
+================================================================================
+Source year 2007 | train_n=730 | val_n=105 | id_n=209
+================================================================================
+[Source 2007 | Single Head] epoch 1/20 | train_loss=2.405523 | val_loss=2.527421 | best_val_loss=2.527421 | best_epoch=1 | patience=0/3
+[Source 2007 | Single Head] epoch 2/20 | train_loss=1.789997 | val_loss=2.498909 | best_val_loss=2.498909 | best_epoch=2 | patience=0/3
+[Source 2007 | Single Head] epoch 3/20 | train_loss=1.390635 | val_loss=2.494740 | best_val_loss=2.494740 | best_epoch=3 | patience=0/3
+[Source 2007 | Single Head] epoch 4/20 | train_loss=1.106055 | val_loss=2.481119 | best_val_loss=2.481119 | best_epoch=4 | patience=0/3
+[Source 2007 | Single Head] epoch 5/20 | train_loss=0.893647 | val_loss=2.470793 | best_val_loss=2.470793 | best_epoch=5 | patience=0/3
+[Source 2007 | Single Head] epoch 6/20 | train_loss=0.732543 | val_loss=2.482361 | best_val_loss=2.470793 | best_epoch=5 | patience=1/3
+[Source 2007 | Single Head] epoch 7/20 | train_loss=0.610488 | val_loss=2.487959 | best_val_loss=2.470793 | best_epoch=5 | patience=2/3
+[Source 2007 | Single Head] epoch 8/20 | train_loss=0.538944 | val_loss=2.489759 | best_val_loss=2.470793 | best_epoch=5 | patience=3/3
+[Source 2007 | Single Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=2.470793
+[Source 2007 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=2.470793 | stopped_early=True
+
+================================================================================
+Source year 2008 | train_n=1021 | val_n=146 | id_n=292
+================================================================================
+[Source 2008 | Single Head] epoch 1/20 | train_loss=2.425834 | val_loss=2.410729 | best_val_loss=2.410729 | best_epoch=1 | patience=0/3
+[Source 2008 | Single Head] epoch 2/20 | train_loss=1.817944 | val_loss=2.354174 | best_val_loss=2.354174 | best_epoch=2 | patience=0/3
+[Source 2008 | Single Head] epoch 3/20 | train_loss=1.424163 | val_loss=2.318080 | best_val_loss=2.318080 | best_epoch=3 | patience=0/3
+[Source 2008 | Single Head] epoch 4/20 | train_loss=1.163795 | val_loss=2.306026 | best_val_loss=2.306026 | best_epoch=4 | patience=0/3
+[Source 2008 | Single Head] epoch 5/20 | train_loss=0.977404 | val_loss=2.309958 | best_val_loss=2.306026 | best_epoch=4 | patience=1/3
+[Source 2008 | Single Head] epoch 6/20 | train_loss=0.818840 | val_loss=2.320953 | best_val_loss=2.306026 | best_epoch=4 | patience=2/3
+[Source 2008 | Single Head] epoch 7/20 | train_loss=0.696514 | val_loss=2.305287 | best_val_loss=2.305287 | best_epoch=7 | patience=0/3
+[Source 2008 | Single Head] epoch 8/20 | train_loss=0.593118 | val_loss=2.308816 | best_val_loss=2.305287 | best_epoch=7 | patience=1/3
+[Source 2008 | Single Head] epoch 9/20 | train_loss=0.503459 | val_loss=2.306982 | best_val_loss=2.305287 | best_epoch=7 | patience=2/3
+[Source 2008 | Single Head] epoch 10/20 | train_loss=0.446675 | val_loss=2.316692 | best_val_loss=2.305287 | best_epoch=7 | patience=3/3
+[Source 2008 | Single Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=2.305287
+[Source 2008 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=2.305287 | stopped_early=True
+
+================================================================================
+Source year 2009 | train_n=2994 | val_n=428 | id_n=856
+================================================================================
+[Source 2009 | Single Head] epoch 1/20 | train_loss=2.596561 | val_loss=2.411854 | best_val_loss=2.411854 | best_epoch=1 | patience=0/3
+[Source 2009 | Single Head] epoch 2/20 | train_loss=1.996532 | val_loss=2.332389 | best_val_loss=2.332389 | best_epoch=2 | patience=0/3
+[Source 2009 | Single Head] epoch 3/20 | train_loss=1.640941 | val_loss=2.279199 | best_val_loss=2.279199 | best_epoch=3 | patience=0/3
+[Source 2009 | Single Head] epoch 4/20 | train_loss=1.400717 | val_loss=2.251832 | best_val_loss=2.251832 | best_epoch=4 | patience=0/3
+[Source 2009 | Single Head] epoch 5/20 | train_loss=1.201824 | val_loss=2.254806 | best_val_loss=2.251832 | best_epoch=4 | patience=1/3
+[Source 2009 | Single Head] epoch 6/20 | train_loss=1.034459 | val_loss=2.228785 | best_val_loss=2.228785 | best_epoch=6 | patience=0/3
+[Source 2009 | Single Head] epoch 7/20 | train_loss=0.895777 | val_loss=2.221264 | best_val_loss=2.221264 | best_epoch=7 | patience=0/3
+[Source 2009 | Single Head] epoch 8/20 | train_loss=0.766961 | val_loss=2.215600 | best_val_loss=2.215600 | best_epoch=8 | patience=0/3
+[Source 2009 | Single Head] epoch 9/20 | train_loss=0.671918 | val_loss=2.222371 | best_val_loss=2.215600 | best_epoch=8 | patience=1/3
+[Source 2009 | Single Head] epoch 10/20 | train_loss=0.566254 | val_loss=2.230458 | best_val_loss=2.215600 | best_epoch=8 | patience=2/3
+[Source 2009 | Single Head] epoch 11/20 | train_loss=0.480364 | val_loss=2.220442 | best_val_loss=2.215600 | best_epoch=8 | patience=3/3
+[Source 2009 | Single Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=2.215600
+[Source 2009 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=2.215600 | stopped_early=True
+
+================================================================================
+Source year 2010 | train_n=6944 | val_n=993 | id_n=1985
+================================================================================
+[Source 2010 | Single Head] epoch 1/20 | train_loss=2.315457 | val_loss=2.107049 | best_val_loss=2.107049 | best_epoch=1 | patience=0/3
+[Source 2010 | Single Head] epoch 2/20 | train_loss=1.798576 | val_loss=2.019028 | best_val_loss=2.019028 | best_epoch=2 | patience=0/3
+[Source 2010 | Single Head] epoch 3/20 | train_loss=1.515668 | val_loss=1.990314 | best_val_loss=1.990314 | best_epoch=3 | patience=0/3
+[Source 2010 | Single Head] epoch 4/20 | train_loss=1.313010 | val_loss=1.939937 | best_val_loss=1.939937 | best_epoch=4 | patience=0/3
+[Source 2010 | Single Head] epoch 5/20 | train_loss=1.129864 | val_loss=1.927366 | best_val_loss=1.927366 | best_epoch=5 | patience=0/3
+[Source 2010 | Single Head] epoch 6/20 | train_loss=0.977207 | val_loss=1.895187 | best_val_loss=1.895187 | best_epoch=6 | patience=0/3
+[Source 2010 | Single Head] epoch 7/20 | train_loss=0.837915 | val_loss=1.894805 | best_val_loss=1.894805 | best_epoch=7 | patience=0/3
+[Source 2010 | Single Head] epoch 8/20 | train_loss=0.720100 | val_loss=1.898992 | best_val_loss=1.894805 | best_epoch=7 | patience=1/3
+[Source 2010 | Single Head] epoch 9/20 | train_loss=0.610583 | val_loss=1.908706 | best_val_loss=1.894805 | best_epoch=7 | patience=2/3
+[Source 2010 | Single Head] epoch 10/20 | train_loss=0.515968 | val_loss=1.895445 | best_val_loss=1.894805 | best_epoch=7 | patience=3/3
+[Source 2010 | Single Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.894805
+[Source 2010 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.894805 | stopped_early=True
+
+================================================================================
+Source year 2011 | train_n=7652 | val_n=1094 | id_n=2187
+================================================================================
+[Source 2011 | Single Head] epoch 1/20 | train_loss=1.957029 | val_loss=1.777602 | best_val_loss=1.777602 | best_epoch=1 | patience=0/3
+[Source 2011 | Single Head] epoch 2/20 | train_loss=1.502990 | val_loss=1.727679 | best_val_loss=1.727679 | best_epoch=2 | patience=0/3
+[Source 2011 | Single Head] epoch 3/20 | train_loss=1.253316 | val_loss=1.708616 | best_val_loss=1.708616 | best_epoch=3 | patience=0/3
+[Source 2011 | Single Head] epoch 4/20 | train_loss=1.069853 | val_loss=1.696659 | best_val_loss=1.696659 | best_epoch=4 | patience=0/3
+[Source 2011 | Single Head] epoch 5/20 | train_loss=0.925674 | val_loss=1.683742 | best_val_loss=1.683742 | best_epoch=5 | patience=0/3
+[Source 2011 | Single Head] epoch 6/20 | train_loss=0.790436 | val_loss=1.684832 | best_val_loss=1.683742 | best_epoch=5 | patience=1/3
+[Source 2011 | Single Head] epoch 7/20 | train_loss=0.677737 | val_loss=1.690005 | best_val_loss=1.683742 | best_epoch=5 | patience=2/3
+[Source 2011 | Single Head] epoch 8/20 | train_loss=0.576706 | val_loss=1.691522 | best_val_loss=1.683742 | best_epoch=5 | patience=3/3
+[Source 2011 | Single Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=1.683742
+[Source 2011 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=1.683742 | stopped_early=True
+
+================================================================================
+Source year 2012 | train_n=7784 | val_n=1113 | id_n=2225
+================================================================================
+[Source 2012 | Single Head] epoch 1/20 | train_loss=2.022217 | val_loss=1.876323 | best_val_loss=1.876323 | best_epoch=1 | patience=0/3
+[Source 2012 | Single Head] epoch 2/20 | train_loss=1.560748 | val_loss=1.817204 | best_val_loss=1.817204 | best_epoch=2 | patience=0/3
+[Source 2012 | Single Head] epoch 3/20 | train_loss=1.311710 | val_loss=1.799902 | best_val_loss=1.799902 | best_epoch=3 | patience=0/3
+[Source 2012 | Single Head] epoch 4/20 | train_loss=1.103071 | val_loss=1.787899 | best_val_loss=1.787899 | best_epoch=4 | patience=0/3
+[Source 2012 | Single Head] epoch 5/20 | train_loss=0.937694 | val_loss=1.773417 | best_val_loss=1.773417 | best_epoch=5 | patience=0/3
+[Source 2012 | Single Head] epoch 6/20 | train_loss=0.805677 | val_loss=1.778583 | best_val_loss=1.773417 | best_epoch=5 | patience=1/3
+[Source 2012 | Single Head] epoch 7/20 | train_loss=0.681842 | val_loss=1.798341 | best_val_loss=1.773417 | best_epoch=5 | patience=2/3
+[Source 2012 | Single Head] epoch 8/20 | train_loss=0.582205 | val_loss=1.778414 | best_val_loss=1.773417 | best_epoch=5 | patience=3/3
+[Source 2012 | Single Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=1.773417
+[Source 2012 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=1.773417 | stopped_early=True
+
+OOD frozen year 2013 | test_n=2675
+
+OOD frozen year 2014 | test_n=3768
+
+OOD frozen year 2015 | test_n=5531
+
+OOD frozen year 2016 | test_n=9773
+
+OOD frozen year 2017 | test_n=3432
+
+================================================================================
+Supervised TAS reference | year 2013
+================================================================================
+
+TAS supervised Single Head | fine-tuning year 2013 | train_n=9361 | val_n=1338
+[TAS 2013 | Single Head] epoch 1/20 | train_loss=1.945332 | val_loss=1.869195 | best_val_loss=1.869195 | best_epoch=1 | patience=0/3
+[TAS 2013 | Single Head] epoch 2/20 | train_loss=1.540790 | val_loss=1.809744 | best_val_loss=1.809744 | best_epoch=2 | patience=0/3
+[TAS 2013 | Single Head] epoch 3/20 | train_loss=1.309368 | val_loss=1.795286 | best_val_loss=1.795286 | best_epoch=3 | patience=0/3
+[TAS 2013 | Single Head] epoch 4/20 | train_loss=1.117048 | val_loss=1.767559 | best_val_loss=1.767559 | best_epoch=4 | patience=0/3
+[TAS 2013 | Single Head] epoch 5/20 | train_loss=0.957762 | val_loss=1.758881 | best_val_loss=1.758881 | best_epoch=5 | patience=0/3
+[TAS 2013 | Single Head] epoch 6/20 | train_loss=0.822497 | val_loss=1.742702 | best_val_loss=1.742702 | best_epoch=6 | patience=0/3
+[TAS 2013 | Single Head] epoch 7/20 | train_loss=0.698029 | val_loss=1.740909 | best_val_loss=1.740909 | best_epoch=7 | patience=0/3
+[TAS 2013 | Single Head] epoch 8/20 | train_loss=0.592099 | val_loss=1.738343 | best_val_loss=1.738343 | best_epoch=8 | patience=0/3
+[TAS 2013 | Single Head] epoch 9/20 | train_loss=0.497006 | val_loss=1.743378 | best_val_loss=1.738343 | best_epoch=8 | patience=1/3
+[TAS 2013 | Single Head] epoch 10/20 | train_loss=0.420997 | val_loss=1.765011 | best_val_loss=1.738343 | best_epoch=8 | patience=2/3
+[TAS 2013 | Single Head] epoch 11/20 | train_loss=0.347580 | val_loss=1.783344 | best_val_loss=1.738343 | best_epoch=8 | patience=3/3
+[TAS 2013 | Single Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=1.738343
+[TAS 2013 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=1.738343 | stopped_early=True
+
+================================================================================
+Supervised TAS reference | year 2014
+================================================================================
+
+TAS supervised Single Head | fine-tuning year 2014 | train_n=13188 | val_n=1884
+[TAS 2014 | Single Head] epoch 1/20 | train_loss=1.847196 | val_loss=1.651213 | best_val_loss=1.651213 | best_epoch=1 | patience=0/3
+[TAS 2014 | Single Head] epoch 2/20 | train_loss=1.377650 | val_loss=1.581385 | best_val_loss=1.581385 | best_epoch=2 | patience=0/3
+[TAS 2014 | Single Head] epoch 3/20 | train_loss=1.137820 | val_loss=1.547544 | best_val_loss=1.547544 | best_epoch=3 | patience=0/3
+[TAS 2014 | Single Head] epoch 4/20 | train_loss=0.960694 | val_loss=1.532530 | best_val_loss=1.532530 | best_epoch=4 | patience=0/3
+[TAS 2014 | Single Head] epoch 5/20 | train_loss=0.818215 | val_loss=1.543971 | best_val_loss=1.532530 | best_epoch=4 | patience=1/3
+[TAS 2014 | Single Head] epoch 6/20 | train_loss=0.699479 | val_loss=1.516574 | best_val_loss=1.516574 | best_epoch=6 | patience=0/3
+[TAS 2014 | Single Head] epoch 7/20 | train_loss=0.592975 | val_loss=1.510543 | best_val_loss=1.510543 | best_epoch=7 | patience=0/3
+[TAS 2014 | Single Head] epoch 8/20 | train_loss=0.501182 | val_loss=1.529732 | best_val_loss=1.510543 | best_epoch=7 | patience=1/3
+[TAS 2014 | Single Head] epoch 9/20 | train_loss=0.423770 | val_loss=1.541061 | best_val_loss=1.510543 | best_epoch=7 | patience=2/3
+[TAS 2014 | Single Head] epoch 10/20 | train_loss=0.361012 | val_loss=1.548770 | best_val_loss=1.510543 | best_epoch=7 | patience=3/3
+[TAS 2014 | Single Head] EARLY STOP at epoch 10 | best_epoch=7 | best_val_loss=1.510543
+[TAS 2014 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=7 | best_val_loss=1.510543 | stopped_early=True
+
+================================================================================
+Supervised TAS reference | year 2015
+================================================================================
+
+TAS supervised Single Head | fine-tuning year 2015 | train_n=19356 | val_n=2766
+[TAS 2015 | Single Head] epoch 1/20 | train_loss=1.985608 | val_loss=1.795483 | best_val_loss=1.795483 | best_epoch=1 | patience=0/3
+[TAS 2015 | Single Head] epoch 2/20 | train_loss=1.507754 | val_loss=1.724068 | best_val_loss=1.724068 | best_epoch=2 | patience=0/3
+[TAS 2015 | Single Head] epoch 3/20 | train_loss=1.267565 | val_loss=1.706802 | best_val_loss=1.706802 | best_epoch=3 | patience=0/3
+[TAS 2015 | Single Head] epoch 4/20 | train_loss=1.098604 | val_loss=1.688466 | best_val_loss=1.688466 | best_epoch=4 | patience=0/3
+[TAS 2015 | Single Head] epoch 5/20 | train_loss=0.942533 | val_loss=1.669098 | best_val_loss=1.669098 | best_epoch=5 | patience=0/3
+[TAS 2015 | Single Head] epoch 6/20 | train_loss=0.814080 | val_loss=1.678782 | best_val_loss=1.669098 | best_epoch=5 | patience=1/3
+[TAS 2015 | Single Head] epoch 7/20 | train_loss=0.705989 | val_loss=1.680836 | best_val_loss=1.669098 | best_epoch=5 | patience=2/3
+[TAS 2015 | Single Head] epoch 8/20 | train_loss=0.608016 | val_loss=1.685077 | best_val_loss=1.669098 | best_epoch=5 | patience=3/3
+[TAS 2015 | Single Head] EARLY STOP at epoch 8 | best_epoch=5 | best_val_loss=1.669098
+[TAS 2015 | Single Head] TRAINING FINISHED | executed_epochs=8 | best_epoch=5 | best_val_loss=1.669098 | stopped_early=True
+
+================================================================================
+Supervised TAS reference | year 2016
+================================================================================
+
+TAS supervised Single Head | fine-tuning year 2016 | train_n=34202 | val_n=4886
+[TAS 2016 | Single Head] epoch 1/20 | train_loss=1.825744 | val_loss=1.654101 | best_val_loss=1.654101 | best_epoch=1 | patience=0/3
+[TAS 2016 | Single Head] epoch 2/20 | train_loss=1.448246 | val_loss=1.578481 | best_val_loss=1.578481 | best_epoch=2 | patience=0/3
+[TAS 2016 | Single Head] epoch 3/20 | train_loss=1.243442 | val_loss=1.538244 | best_val_loss=1.538244 | best_epoch=3 | patience=0/3
+[TAS 2016 | Single Head] epoch 4/20 | train_loss=1.078853 | val_loss=1.506923 | best_val_loss=1.506923 | best_epoch=4 | patience=0/3
+[TAS 2016 | Single Head] epoch 5/20 | train_loss=0.938296 | val_loss=1.486705 | best_val_loss=1.486705 | best_epoch=5 | patience=0/3
+[TAS 2016 | Single Head] epoch 6/20 | train_loss=0.818067 | val_loss=1.481331 | best_val_loss=1.481331 | best_epoch=6 | patience=0/3
+[TAS 2016 | Single Head] epoch 7/20 | train_loss=0.705008 | val_loss=1.466509 | best_val_loss=1.466509 | best_epoch=7 | patience=0/3
+[TAS 2016 | Single Head] epoch 8/20 | train_loss=0.614974 | val_loss=1.463013 | best_val_loss=1.463013 | best_epoch=8 | patience=0/3
+[TAS 2016 | Single Head] epoch 9/20 | train_loss=0.529158 | val_loss=1.475107 | best_val_loss=1.463013 | best_epoch=8 | patience=1/3
+[TAS 2016 | Single Head] epoch 10/20 | train_loss=0.458569 | val_loss=1.483481 | best_val_loss=1.463013 | best_epoch=8 | patience=2/3
+[TAS 2016 | Single Head] epoch 11/20 | train_loss=0.394670 | val_loss=1.485546 | best_val_loss=1.463013 | best_epoch=8 | patience=3/3
+[TAS 2016 | Single Head] EARLY STOP at epoch 11 | best_epoch=8 | best_val_loss=1.463013
+[TAS 2016 | Single Head] TRAINING FINISHED | executed_epochs=11 | best_epoch=8 | best_val_loss=1.463013 | stopped_early=True
+
+================================================================================
+Supervised TAS reference | year 2017
+================================================================================
+
+TAS supervised Single Head | fine-tuning year 2017 | train_n=12012 | val_n=1716
+[TAS 2017 | Single Head] epoch 1/20 | train_loss=1.546947 | val_loss=1.304674 | best_val_loss=1.304674 | best_epoch=1 | patience=0/3
+[TAS 2017 | Single Head] epoch 2/20 | train_loss=1.008806 | val_loss=1.222786 | best_val_loss=1.222786 | best_epoch=2 | patience=0/3
+[TAS 2017 | Single Head] epoch 3/20 | train_loss=0.772845 | val_loss=1.184577 | best_val_loss=1.184577 | best_epoch=3 | patience=0/3
+[TAS 2017 | Single Head] epoch 4/20 | train_loss=0.622699 | val_loss=1.163751 | best_val_loss=1.163751 | best_epoch=4 | patience=0/3
+[TAS 2017 | Single Head] epoch 5/20 | train_loss=0.500967 | val_loss=1.160124 | best_val_loss=1.160124 | best_epoch=5 | patience=0/3
+[TAS 2017 | Single Head] epoch 6/20 | train_loss=0.413644 | val_loss=1.157733 | best_val_loss=1.157733 | best_epoch=6 | patience=0/3
+[TAS 2017 | Single Head] epoch 7/20 | train_loss=0.340797 | val_loss=1.160882 | best_val_loss=1.157733 | best_epoch=6 | patience=1/3
+[TAS 2017 | Single Head] epoch 8/20 | train_loss=0.281106 | val_loss=1.157030 | best_val_loss=1.157030 | best_epoch=8 | patience=0/3
+[TAS 2017 | Single Head] epoch 9/20 | train_loss=0.229937 | val_loss=1.143484 | best_val_loss=1.143484 | best_epoch=9 | patience=0/3
+[TAS 2017 | Single Head] epoch 10/20 | train_loss=0.186143 | val_loss=1.169483 | best_val_loss=1.143484 | best_epoch=9 | patience=1/3
+[TAS 2017 | Single Head] epoch 11/20 | train_loss=0.156203 | val_loss=1.187638 | best_val_loss=1.143484 | best_epoch=9 | patience=2/3
+[TAS 2017 | Single Head] epoch 12/20 | train_loss=0.130857 | val_loss=1.187670 | best_val_loss=1.143484 | best_epoch=9 | patience=3/3
+[TAS 2017 | Single Head] EARLY STOP at epoch 12 | best_epoch=9 | best_val_loss=1.143484
+[TAS 2017 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=9 | best_val_loss=1.143484 | stopped_early=True
+Results: results/fmow/eval_stream_tas/fmow_eval_stream_tas_20260914_225706
+
+Run completed.
+results/fmow/eval_stream_tas/fmow_eval_stream_tas_20260914_225706

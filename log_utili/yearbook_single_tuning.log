@@ -1,0 +1,1185 @@
+Base experiment config: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Metadata OOD adaptation/metadata_tta_v2/configs/yearbook_eval_stream_tas.yaml
+
+================================================================================
+DATASET
+================================================================================
+Dataset: yearbook
+Data root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/moco_embedding/yearbook_embeddings_csv_encoded
+
+Year 1930: valid=154/154 | main_classes=2 | aux_classes=8
+Year 1931: valid=176/176 | main_classes=2 | aux_classes=4
+Year 1932: valid=243/243 | main_classes=2 | aux_classes=9
+Year 1933: valid=272/272 | main_classes=2 | aux_classes=7
+Year 1934: valid=326/326 | main_classes=2 | aux_classes=3
+Year 1935: valid=492/492 | main_classes=2 | aux_classes=6
+Year 1936: valid=154/154 | main_classes=2 | aux_classes=5
+Year 1937: valid=307/307 | main_classes=2 | aux_classes=6
+Year 1938: valid=402/402 | main_classes=2 | aux_classes=7
+Year 1939: valid=160/160 | main_classes=2 | aux_classes=6
+Year 1940: valid=402/402 | main_classes=2 | aux_classes=8
+Year 1941: valid=93/93 | main_classes=2 | aux_classes=4
+Year 1942: valid=220/220 | main_classes=2 | aux_classes=8
+Year 1943: valid=704/704 | main_classes=2 | aux_classes=9
+Year 1944: valid=858/858 | main_classes=2 | aux_classes=12
+Year 1945: valid=834/834 | main_classes=2 | aux_classes=13
+Year 1946: valid=404/404 | main_classes=2 | aux_classes=10
+Year 1947: valid=379/379 | main_classes=2 | aux_classes=8
+Year 1948: valid=406/406 | main_classes=2 | aux_classes=7
+Year 1949: valid=178/178 | main_classes=2 | aux_classes=8
+Year 1950: valid=387/387 | main_classes=2 | aux_classes=11
+Year 1951: valid=222/222 | main_classes=2 | aux_classes=7
+Year 1952: valid=328/328 | main_classes=2 | aux_classes=8
+Year 1953: valid=267/267 | main_classes=2 | aux_classes=7
+Year 1954: valid=581/581 | main_classes=2 | aux_classes=10
+Year 1955: valid=748/748 | main_classes=2 | aux_classes=9
+Year 1956: valid=269/269 | main_classes=2 | aux_classes=6
+Year 1957: valid=233/233 | main_classes=2 | aux_classes=6
+Year 1958: valid=272/272 | main_classes=2 | aux_classes=7
+Year 1959: valid=503/503 | main_classes=2 | aux_classes=8
+Year 1960: valid=299/299 | main_classes=2 | aux_classes=8
+Year 1961: valid=367/367 | main_classes=2 | aux_classes=7
+Year 1962: valid=411/411 | main_classes=2 | aux_classes=8
+Year 1963: valid=259/259 | main_classes=2 | aux_classes=9
+Year 1964: valid=313/313 | main_classes=2 | aux_classes=9
+Year 1965: valid=651/651 | main_classes=2 | aux_classes=8
+Year 1966: valid=487/487 | main_classes=2 | aux_classes=5
+Year 1967: valid=1036/1036 | main_classes=2 | aux_classes=6
+Year 1968: valid=336/336 | main_classes=2 | aux_classes=6
+Year 1969: valid=617/617 | main_classes=2 | aux_classes=9
+Year 1970: valid=828/828 | main_classes=2 | aux_classes=11
+Year 1971: valid=198/198 | main_classes=2 | aux_classes=4
+Year 1972: valid=478/478 | main_classes=2 | aux_classes=6
+Year 1973: valid=313/313 | main_classes=2 | aux_classes=5
+Year 1974: valid=769/769 | main_classes=2 | aux_classes=10
+Year 1975: valid=819/819 | main_classes=2 | aux_classes=9
+Year 1976: valid=358/358 | main_classes=2 | aux_classes=5
+Year 1977: valid=542/542 | main_classes=2 | aux_classes=5
+Year 1978: valid=234/234 | main_classes=2 | aux_classes=4
+Year 1979: valid=637/637 | main_classes=2 | aux_classes=5
+Year 1980: valid=602/602 | main_classes=2 | aux_classes=7
+Year 1981: valid=255/255 | main_classes=2 | aux_classes=3
+Year 1982: valid=494/494 | main_classes=2 | aux_classes=6
+Year 1983: valid=404/404 | main_classes=2 | aux_classes=5
+Year 1984: valid=1197/1197 | main_classes=2 | aux_classes=7
+Year 1985: valid=497/497 | main_classes=2 | aux_classes=7
+Year 1986: valid=273/273 | main_classes=2 | aux_classes=4
+Year 1987: valid=583/583 | main_classes=2 | aux_classes=9
+Year 1988: valid=360/360 | main_classes=2 | aux_classes=4
+Year 1989: valid=777/777 | main_classes=2 | aux_classes=6
+Year 1990: valid=801/801 | main_classes=2 | aux_classes=6
+Year 1991: valid=428/428 | main_classes=2 | aux_classes=4
+Year 1992: valid=472/472 | main_classes=2 | aux_classes=5
+Year 1993: valid=223/223 | main_classes=2 | aux_classes=5
+Year 1994: valid=532/532 | main_classes=2 | aux_classes=7
+Year 1995: valid=637/637 | main_classes=2 | aux_classes=6
+Year 1996: valid=417/417 | main_classes=2 | aux_classes=5
+Year 1997: valid=507/507 | main_classes=2 | aux_classes=5
+Year 1998: valid=634/634 | main_classes=2 | aux_classes=4
+Year 1999: valid=656/656 | main_classes=2 | aux_classes=9
+Year 2000: valid=458/458 | main_classes=2 | aux_classes=7
+Year 2001: valid=627/627 | main_classes=2 | aux_classes=8
+Year 2002: valid=717/717 | main_classes=2 | aux_classes=9
+Year 2003: valid=411/411 | main_classes=2 | aux_classes=5
+Year 2004: valid=508/508 | main_classes=2 | aux_classes=7
+Year 2005: valid=442/442 | main_classes=2 | aux_classes=6
+Year 2006: valid=70/70 | main_classes=2 | aux_classes=3
+Year 2007: valid=243/243 | main_classes=2 | aux_classes=4
+Year 2008: valid=306/306 | main_classes=2 | aux_classes=7
+Year 2009: valid=505/505 | main_classes=2 | aux_classes=7
+Year 2010: valid=521/521 | main_classes=2 | aux_classes=5
+Year 2011: valid=87/87 | main_classes=2 | aux_classes=2
+Year 2012: valid=126/126 | main_classes=2 | aux_classes=4
+Year 2013: valid=493/493 | main_classes=2 | aux_classes=3
+
+Years: 1930-2013
+Number of years: 84
+Feature dimension: 2048
+Total valid samples: 37189
+
+================================================================================
+BASELINE TUNING | single_head | trial=0
+{'learning_rate': 0.0003, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.573584 | val_loss=0.688889
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.247643 | val_loss=0.684811
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.178964 | val_loss=0.679801
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.108915 | val_loss=0.673268
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.070798 | val_loss=0.665588
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.059311 | val_loss=0.655328
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.041151 | val_loss=0.643415
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.038936 | val_loss=0.628766
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.034865 | val_loss=0.610218
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.023357 | val_loss=0.585869
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.585869 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.207915 | val_loss=0.569370
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.121111 | val_loss=0.541905
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.541905 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.147016 | val_loss=0.464666
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.127660 | val_loss=0.402198
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.402198 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.219699 | val_loss=0.365840
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.172314 | val_loss=0.303050
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.303050 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.098264 | val_loss=0.196503
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.064367 | val_loss=0.136405
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.136405 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.105982 | val_loss=0.093044
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.074574 | val_loss=0.082461
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.082461 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.062201 | val_loss=0.085069
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.074563 | val_loss=0.062430
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.062430 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.155553 | val_loss=0.112432
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.125595 | val_loss=0.095423
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.095423 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.095405 | val_loss=0.022941
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.051223 | val_loss=0.035012
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.022941 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.044237 | val_loss=0.038237
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.045532 | val_loss=0.037628
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.037628 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.064956 | val_loss=0.131385
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.060470 | val_loss=0.152290
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.131385 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.049386 | val_loss=0.075556
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.023607 | val_loss=0.071109
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.071109 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.054036 | val_loss=0.016934
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.040884 | val_loss=0.017834
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.016934 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.068732 | val_loss=0.054550
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.046411 | val_loss=0.034854
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.034854 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.073973 | val_loss=0.015024
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.047552 | val_loss=0.015385
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.015024 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.044419 | val_loss=0.014013
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.038262 | val_loss=0.013766
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.013766 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.026589 | val_loss=0.012024
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.031811 | val_loss=0.008791
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.008791 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.041932 | val_loss=0.035006
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.036412 | val_loss=0.030775
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.030775 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.065468 | val_loss=0.123501
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.050200 | val_loss=0.123926
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.123501 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.100582 | val_loss=0.023812
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.081579 | val_loss=0.026861
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.023812 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.085569 | val_loss=0.032632
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.059673 | val_loss=0.029446
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.029446 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.078371 | val_loss=0.023055
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.064948 | val_loss=0.021776
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.021776 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.103905 | val_loss=0.046695
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.053013 | val_loss=0.059764
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.046695 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.073512 | val_loss=0.067871
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.059642 | val_loss=0.069768
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.067871 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.086985 | val_loss=0.024596
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.055445 | val_loss=0.035143
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.024596 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.080230 | val_loss=0.061305
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.042195 | val_loss=0.059226
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.059226 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.044539 | val_loss=0.032506
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.077109 | val_loss=0.025478
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025478 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.092056 | val_loss=0.042197
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.109319 | val_loss=0.050914
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.042197 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.084026 | val_loss=0.226928
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.061215 | val_loss=0.195013
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.195013 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.063907 | val_loss=0.044389
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.052616 | val_loss=0.020611
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.020611 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.068247 | val_loss=0.007440
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.069606 | val_loss=0.013478
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.007440 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.121702 | val_loss=0.073839
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.074027 | val_loss=0.050242
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.050242 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.068029 | val_loss=0.021386
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.038634 | val_loss=0.023420
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.021386 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.054045 | val_loss=0.143964
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.028752 | val_loss=0.031072
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.031072 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.063186 | val_loss=0.006498
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.063705 | val_loss=0.008421
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.006498 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.056651 | val_loss=0.016134
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.033864 | val_loss=0.026829
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.016134 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.073563 | val_loss=0.046392
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.063902 | val_loss=0.033933
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.033933 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.046946 | val_loss=0.009375
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.040909 | val_loss=0.010923
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.009375 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.107109 | val_loss=0.039292
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.058056 | val_loss=0.021233
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.021233 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.141796 | val_loss=0.126545
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.103070 | val_loss=0.123529
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.123529 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.124957 | val_loss=0.085760
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.093866 | val_loss=0.067843
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.067843 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=1
+{'learning_rate': 0.0003, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.511505 | val_loss=0.685327
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.171135 | val_loss=0.680597
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.126748 | val_loss=0.674688
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.057593 | val_loss=0.666905
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.036926 | val_loss=0.658092
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.029436 | val_loss=0.646717
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.019460 | val_loss=0.632806
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.018392 | val_loss=0.615044
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.016061 | val_loss=0.593786
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.009131 | val_loss=0.567465
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.567465 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.208714 | val_loss=0.552275
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.096689 | val_loss=0.522499
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.522499 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.138965 | val_loss=0.436823
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.116724 | val_loss=0.374865
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.374865 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.209642 | val_loss=0.340374
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.159332 | val_loss=0.282181
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.282181 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.081655 | val_loss=0.179328
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.047221 | val_loss=0.118751
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.118751 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.100481 | val_loss=0.076592
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.061214 | val_loss=0.064870
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.064870 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.052127 | val_loss=0.060755
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.065183 | val_loss=0.039169
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.039169 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.145084 | val_loss=0.082272
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.112305 | val_loss=0.073934
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.073934 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.085857 | val_loss=0.017407
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.038164 | val_loss=0.034526
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.017407 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.040288 | val_loss=0.026784
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.031472 | val_loss=0.024025
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024025 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.059785 | val_loss=0.122775
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.053512 | val_loss=0.170383
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.122775 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.050638 | val_loss=0.046247
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.020264 | val_loss=0.042246
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.042246 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.046856 | val_loss=0.010908
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.032439 | val_loss=0.012054
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.010908 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.059688 | val_loss=0.057315
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.037432 | val_loss=0.021159
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.021159 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.074700 | val_loss=0.008250
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.043095 | val_loss=0.008147
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.008147 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.042018 | val_loss=0.008865
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.031045 | val_loss=0.007387
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.007387 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.020341 | val_loss=0.006032
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.024684 | val_loss=0.004046
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.004046 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.036260 | val_loss=0.027333
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.028334 | val_loss=0.025120
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025120 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.060710 | val_loss=0.121056
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.040182 | val_loss=0.127948
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.121056 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.096199 | val_loss=0.015062
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.074645 | val_loss=0.020073
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.015062 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.081176 | val_loss=0.033583
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.052728 | val_loss=0.028608
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.028608 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.072491 | val_loss=0.026950
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.063432 | val_loss=0.025025
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025025 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.106847 | val_loss=0.034903
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.045522 | val_loss=0.038018
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.034903 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.072321 | val_loss=0.057261
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.051061 | val_loss=0.058072
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.057261 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.084856 | val_loss=0.022124
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.049830 | val_loss=0.031008
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.022124 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.085328 | val_loss=0.063901
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.038331 | val_loss=0.071810
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.063901 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.041688 | val_loss=0.024988
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.070052 | val_loss=0.018407
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.018407 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.086816 | val_loss=0.029240
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.101678 | val_loss=0.037873
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.029240 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.091473 | val_loss=0.226521
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.063089 | val_loss=0.177852
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.177852 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.073418 | val_loss=0.051191
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.052547 | val_loss=0.019475
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.019475 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.066180 | val_loss=0.005775
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.073498 | val_loss=0.010302
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.005775 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.115417 | val_loss=0.080309
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.068485 | val_loss=0.059840
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.059840 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.066388 | val_loss=0.025277
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.031670 | val_loss=0.038669
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.025277 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.051315 | val_loss=0.152672
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.025409 | val_loss=0.024800
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024800 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.061912 | val_loss=0.004405
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.060538 | val_loss=0.006196
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.004405 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.049895 | val_loss=0.014390
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.027198 | val_loss=0.021185
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.014390 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.069584 | val_loss=0.036688
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.054864 | val_loss=0.024726
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024726 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.043513 | val_loss=0.004982
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.035540 | val_loss=0.008021
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.004982 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.109075 | val_loss=0.026748
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.050393 | val_loss=0.013262
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.013262 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.148224 | val_loss=0.124166
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.098921 | val_loss=0.119760
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.119760 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.127922 | val_loss=0.076764
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.084185 | val_loss=0.055013
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.055013 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=2
+{'learning_rate': 0.0003, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.573646 | val_loss=0.688953
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.247716 | val_loss=0.684804
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.179072 | val_loss=0.679800
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.108907 | val_loss=0.673194
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.070948 | val_loss=0.665399
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.059634 | val_loss=0.655065
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.041582 | val_loss=0.642977
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.039182 | val_loss=0.628278
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.035094 | val_loss=0.609690
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.023354 | val_loss=0.585235
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.585235 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.208976 | val_loss=0.569025
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.121251 | val_loss=0.541521
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.541521 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.146228 | val_loss=0.464817
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.126710 | val_loss=0.402401
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.402401 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.216936 | val_loss=0.365947
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.169838 | val_loss=0.303074
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.303074 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.097205 | val_loss=0.195603
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.063489 | val_loss=0.135395
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.135395 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.106426 | val_loss=0.090719
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.074694 | val_loss=0.080212
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.080212 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.062268 | val_loss=0.085564
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.074545 | val_loss=0.061789
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.061789 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.153779 | val_loss=0.107029
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.124007 | val_loss=0.093853
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.093853 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.094730 | val_loss=0.023808
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.051219 | val_loss=0.036604
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.023808 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.044521 | val_loss=0.038767
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.045328 | val_loss=0.038106
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.038106 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.064475 | val_loss=0.130511
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.060089 | val_loss=0.154824
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.130511 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.051227 | val_loss=0.084911
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.023723 | val_loss=0.078912
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.078912 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.055272 | val_loss=0.016937
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.042070 | val_loss=0.018443
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.016937 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.068473 | val_loss=0.056087
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.046253 | val_loss=0.034150
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.034150 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.073691 | val_loss=0.015253
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.046937 | val_loss=0.015236
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.015236 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.044030 | val_loss=0.013700
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.038036 | val_loss=0.013595
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.013595 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.027643 | val_loss=0.012361
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.031224 | val_loss=0.008941
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.008941 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.041189 | val_loss=0.033579
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.035916 | val_loss=0.025551
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025551 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.065081 | val_loss=0.124307
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.050012 | val_loss=0.125121
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.124307 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.099359 | val_loss=0.019293
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.080084 | val_loss=0.020967
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.019293 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.081579 | val_loss=0.033817
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.059952 | val_loss=0.028417
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.028417 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.078767 | val_loss=0.025293
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.064724 | val_loss=0.026033
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.025293 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.106175 | val_loss=0.048157
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.052701 | val_loss=0.063020
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.048157 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.068650 | val_loss=0.065096
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.055259 | val_loss=0.063704
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.063704 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.086360 | val_loss=0.023961
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.055771 | val_loss=0.032432
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.023961 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.080612 | val_loss=0.062355
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.042685 | val_loss=0.063074
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.062355 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.043783 | val_loss=0.032910
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.074788 | val_loss=0.025701
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025701 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.087873 | val_loss=0.040821
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.105433 | val_loss=0.047609
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.040821 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.083463 | val_loss=0.213620
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.061141 | val_loss=0.186955
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.186955 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.064482 | val_loss=0.046705
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.053804 | val_loss=0.020374
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.020374 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.067158 | val_loss=0.008213
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.068163 | val_loss=0.014147
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.008213 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.119080 | val_loss=0.083035
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.071796 | val_loss=0.056571
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.056571 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.065024 | val_loss=0.021527
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.035685 | val_loss=0.031644
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.021527 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.050311 | val_loss=0.172578
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.025718 | val_loss=0.030346
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.030346 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.063028 | val_loss=0.005539
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.064605 | val_loss=0.007574
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.005539 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.054936 | val_loss=0.017104
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.033276 | val_loss=0.025749
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.017104 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.076964 | val_loss=0.045399
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.065241 | val_loss=0.036447
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.036447 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.046492 | val_loss=0.009509
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.040318 | val_loss=0.011303
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.009509 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.106536 | val_loss=0.042949
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.058428 | val_loss=0.022308
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.022308 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.139698 | val_loss=0.128094
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.101561 | val_loss=0.123144
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.123144 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.122888 | val_loss=0.083141
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.094109 | val_loss=0.067128
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.067128 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=3
+{'learning_rate': 0.0003, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.511519 | val_loss=0.685321
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.171210 | val_loss=0.680499
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.126812 | val_loss=0.674546
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.057558 | val_loss=0.666815
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.036965 | val_loss=0.658064
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.029399 | val_loss=0.646764
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.019381 | val_loss=0.632840
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.018333 | val_loss=0.615248
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.016196 | val_loss=0.594120
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.009244 | val_loss=0.567890
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.567890 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.210276 | val_loss=0.552641
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.097450 | val_loss=0.522683
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.522683 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.137037 | val_loss=0.437496
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.114659 | val_loss=0.376114
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.376114 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.207733 | val_loss=0.340460
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.158319 | val_loss=0.280991
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.280991 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.080187 | val_loss=0.174001
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.046573 | val_loss=0.115570
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.115570 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.100644 | val_loss=0.079729
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.061385 | val_loss=0.066195
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.066195 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.052967 | val_loss=0.056218
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.066629 | val_loss=0.036988
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.036988 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.144242 | val_loss=0.080828
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.111144 | val_loss=0.071893
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.071893 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.084925 | val_loss=0.017811
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.037633 | val_loss=0.036071
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.017811 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.039643 | val_loss=0.029394
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.031603 | val_loss=0.025411
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025411 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.059860 | val_loss=0.121909
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.053860 | val_loss=0.173493
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.121909 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.052561 | val_loss=0.052369
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.020896 | val_loss=0.047017
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.047017 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.047594 | val_loss=0.011182
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.032616 | val_loss=0.012686
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.011182 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.060134 | val_loss=0.056688
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.037626 | val_loss=0.021481
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.021481 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.074157 | val_loss=0.009340
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.042825 | val_loss=0.008138
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.008138 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.042361 | val_loss=0.008564
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.031545 | val_loss=0.007648
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.007648 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.020933 | val_loss=0.006249
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.025382 | val_loss=0.004127
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.004127 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.036651 | val_loss=0.026924
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.028411 | val_loss=0.023780
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.023780 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.060720 | val_loss=0.119023
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.040378 | val_loss=0.121290
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.119023 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.095862 | val_loss=0.016886
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.074192 | val_loss=0.020100
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.016886 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.079946 | val_loss=0.036305
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.051909 | val_loss=0.031611
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.031611 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.071958 | val_loss=0.029681
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.063840 | val_loss=0.028329
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.028329 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.105669 | val_loss=0.040225
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.045484 | val_loss=0.048580
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.040225 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.072959 | val_loss=0.062410
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.051602 | val_loss=0.062153
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.062153 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.086455 | val_loss=0.022084
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.049526 | val_loss=0.032363
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.022084 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.082486 | val_loss=0.066466
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.038781 | val_loss=0.074159
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.066466 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.043262 | val_loss=0.023358
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.070594 | val_loss=0.017585
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.017585 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.088927 | val_loss=0.027675
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.103225 | val_loss=0.031628
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.027675 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.090178 | val_loss=0.200632
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.064288 | val_loss=0.170569
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.170569 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.069559 | val_loss=0.050896
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.051169 | val_loss=0.018523
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.018523 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.062898 | val_loss=0.006032
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.069872 | val_loss=0.010695
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.006032 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.114319 | val_loss=0.087278
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.068609 | val_loss=0.063794
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.063794 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.064808 | val_loss=0.022387
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.031694 | val_loss=0.026231
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.022387 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.048190 | val_loss=0.169345
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.025245 | val_loss=0.030271
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.030271 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.063674 | val_loss=0.004070
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.061144 | val_loss=0.005922
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.004070 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.049026 | val_loss=0.014585
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.027063 | val_loss=0.021911
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.014585 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.068592 | val_loss=0.038518
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.053634 | val_loss=0.026449
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.026449 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.042422 | val_loss=0.004995
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.034228 | val_loss=0.007685
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.004995 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.108343 | val_loss=0.023361
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.051099 | val_loss=0.013116
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.013116 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.148796 | val_loss=0.135045
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.100160 | val_loss=0.130264
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.130264 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.130288 | val_loss=0.072439
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.086062 | val_loss=0.053667
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.053667 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=4
+{'learning_rate': 0.001, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.538709 | val_loss=0.680756
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.144018 | val_loss=0.671438
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.083852 | val_loss=0.661363
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.039918 | val_loss=0.646022
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.031775 | val_loss=0.625704
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.018906 | val_loss=0.598791
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.013015 | val_loss=0.564095
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.016663 | val_loss=0.517107
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.016215 | val_loss=0.464336
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.005692 | val_loss=0.415550
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.415550 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.209423 | val_loss=0.431001
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.120907 | val_loss=0.383123
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.383123 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.149333 | val_loss=0.224081
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.136711 | val_loss=0.162196
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.162196 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.304497 | val_loss=0.158409
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.248670 | val_loss=0.129548
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.129548 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.094004 | val_loss=0.133248
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.056331 | val_loss=0.107399
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.107399 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.087676 | val_loss=0.060847
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.063779 | val_loss=0.061571
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.060847 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.046247 | val_loss=0.105362
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.068217 | val_loss=0.083005
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.083005 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.166096 | val_loss=0.215707
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.149146 | val_loss=0.196670
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.196670 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.096088 | val_loss=0.036842
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.050197 | val_loss=0.024939
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024939 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.040099 | val_loss=0.013576
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.051008 | val_loss=0.013501
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.013501 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.063594 | val_loss=0.184542
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.065630 | val_loss=0.209122
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.184542 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.045666 | val_loss=0.036240
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.018259 | val_loss=0.033741
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.033741 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.064144 | val_loss=0.013673
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.049989 | val_loss=0.014983
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.013673 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.075457 | val_loss=0.055496
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.049706 | val_loss=0.045884
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.045884 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.087184 | val_loss=0.014102
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.056898 | val_loss=0.015792
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.014102 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.050530 | val_loss=0.014946
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.047040 | val_loss=0.010399
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.010399 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.030080 | val_loss=0.007176
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.039695 | val_loss=0.005873
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.005873 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.045611 | val_loss=0.024868
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.043912 | val_loss=0.025808
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.024868 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.076354 | val_loss=0.129808
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.063932 | val_loss=0.130511
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.129808 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.091043 | val_loss=0.027533
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.075247 | val_loss=0.030155
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.027533 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.084579 | val_loss=0.036975
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.070702 | val_loss=0.028601
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.028601 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.076941 | val_loss=0.026412
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.063421 | val_loss=0.019778
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.019778 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.115928 | val_loss=0.039172
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.058156 | val_loss=0.052763
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.039172 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.076179 | val_loss=0.071172
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.072542 | val_loss=0.059125
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.059125 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.100627 | val_loss=0.035595
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.070826 | val_loss=0.040506
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.035595 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.090710 | val_loss=0.062000
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.048198 | val_loss=0.059733
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.059733 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.045872 | val_loss=0.047338
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.075703 | val_loss=0.038065
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.038065 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.105818 | val_loss=0.044435
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.126100 | val_loss=0.053788
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.044435 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.072417 | val_loss=0.210274
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.055551 | val_loss=0.171789
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.171789 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.058883 | val_loss=0.042017
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.049659 | val_loss=0.024609
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024609 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.075258 | val_loss=0.005286
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.080882 | val_loss=0.008493
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.005286 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.134303 | val_loss=0.065632
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.082629 | val_loss=0.054441
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.054441 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.076726 | val_loss=0.025883
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.046537 | val_loss=0.020110
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.020110 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.060952 | val_loss=0.172341
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.039615 | val_loss=0.051625
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.051625 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.050153 | val_loss=0.007489
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.063851 | val_loss=0.007105
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.007105 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.058293 | val_loss=0.021559
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.038275 | val_loss=0.038452
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.021559 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.082055 | val_loss=0.051865
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.074819 | val_loss=0.036332
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.036332 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.049396 | val_loss=0.010540
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.043895 | val_loss=0.014154
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.010540 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.106720 | val_loss=0.046599
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.066828 | val_loss=0.024260
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024260 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.140539 | val_loss=0.140111
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.108922 | val_loss=0.130769
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.130769 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.138473 | val_loss=0.102212
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.103450 | val_loss=0.079953
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.079953 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=5
+{'learning_rate': 0.001, 'weight_decay': 0.0, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.470011 | val_loss=0.676921
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.108379 | val_loss=0.666175
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.054872 | val_loss=0.655396
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.018150 | val_loss=0.639444
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.016136 | val_loss=0.619340
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.006840 | val_loss=0.596924
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.005390 | val_loss=0.568712
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.006737 | val_loss=0.525592
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.008545 | val_loss=0.469393
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.002293 | val_loss=0.416785
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.416785 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.307986 | val_loss=0.400101
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.136783 | val_loss=0.355314
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.355314 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.148759 | val_loss=0.204400
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.136575 | val_loss=0.155328
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.155328 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.314382 | val_loss=0.161344
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.266844 | val_loss=0.133771
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.133771 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.091425 | val_loss=0.100282
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.045397 | val_loss=0.080254
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.080254 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.101544 | val_loss=0.064653
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.063070 | val_loss=0.069034
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.064653 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.043896 | val_loss=0.125435
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.068771 | val_loss=0.088214
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.088214 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.170909 | val_loss=0.216084
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.147540 | val_loss=0.192890
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.192890 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.093959 | val_loss=0.024080
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.046080 | val_loss=0.028893
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.024080 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.037015 | val_loss=0.012787
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.044723 | val_loss=0.013778
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.012787 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.057185 | val_loss=0.168629
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.061228 | val_loss=0.231572
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.168629 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.038002 | val_loss=0.031149
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.012220 | val_loss=0.028750
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.028750 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.060658 | val_loss=0.006699
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.044178 | val_loss=0.008064
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.006699 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.071704 | val_loss=0.044859
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.045337 | val_loss=0.028882
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.028882 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.092817 | val_loss=0.007388
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.053014 | val_loss=0.009207
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.007388 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.047559 | val_loss=0.011082
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.039231 | val_loss=0.007744
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.007744 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.026084 | val_loss=0.003937
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.035601 | val_loss=0.003075
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.003075 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.044466 | val_loss=0.022083
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.038843 | val_loss=0.029964
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.022083 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.069024 | val_loss=0.118037
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.052190 | val_loss=0.125768
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.118037 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.088110 | val_loss=0.017566
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.070261 | val_loss=0.020387
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.017566 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.096215 | val_loss=0.031864
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.059529 | val_loss=0.037037
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.031864 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.077483 | val_loss=0.019690
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.071055 | val_loss=0.016570
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.016570 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.103252 | val_loss=0.038853
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.046660 | val_loss=0.083545
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.038853 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.074294 | val_loss=0.062242
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.066971 | val_loss=0.051530
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.051530 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.096943 | val_loss=0.024416
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.063422 | val_loss=0.028321
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.024416 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.092783 | val_loss=0.049973
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.045768 | val_loss=0.054443
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.049973 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.044892 | val_loss=0.029763
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.077419 | val_loss=0.020871
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.020871 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.100106 | val_loss=0.042452
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.123046 | val_loss=0.079575
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.042452 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.087419 | val_loss=0.292818
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.064982 | val_loss=0.188205
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.188205 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.069086 | val_loss=0.057459
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.050380 | val_loss=0.024013
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024013 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.069015 | val_loss=0.003556
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.078577 | val_loss=0.007179
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.003556 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.126630 | val_loss=0.089175
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.082517 | val_loss=0.075726
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.075726 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.082605 | val_loss=0.024285
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.039604 | val_loss=0.022634
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.022634 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.057294 | val_loss=0.200622
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.032226 | val_loss=0.035650
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.035650 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.051851 | val_loss=0.005498
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.064992 | val_loss=0.006705
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.005498 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.053817 | val_loss=0.020580
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.032508 | val_loss=0.035114
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.020580 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.077394 | val_loss=0.047599
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.068015 | val_loss=0.034178
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.034178 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.046649 | val_loss=0.006415
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.041040 | val_loss=0.007541
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.006415 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.116284 | val_loss=0.024872
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.063738 | val_loss=0.010949
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.010949 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.144080 | val_loss=0.146081
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.107916 | val_loss=0.138605
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.138605 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.149778 | val_loss=0.122909
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.102016 | val_loss=0.073847
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.073847 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=6
+{'learning_rate': 0.001, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 256, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.538593 | val_loss=0.681053
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.143008 | val_loss=0.671992
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.083579 | val_loss=0.661904
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.040953 | val_loss=0.648280
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.030139 | val_loss=0.629183
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.019146 | val_loss=0.604331
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.013287 | val_loss=0.569724
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.016131 | val_loss=0.519002
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.015368 | val_loss=0.458837
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.005526 | val_loss=0.406707
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.406707 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.191550 | val_loss=0.431403
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.109255 | val_loss=0.384804
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.384804 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.148172 | val_loss=0.223651
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.134400 | val_loss=0.163430
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.163430 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.298911 | val_loss=0.156821
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.242716 | val_loss=0.127869
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.127869 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.092911 | val_loss=0.128258
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.055608 | val_loss=0.103948
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.103948 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.088468 | val_loss=0.060371
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.064116 | val_loss=0.063987
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.060371 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.044900 | val_loss=0.110166
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.066203 | val_loss=0.084969
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.084969 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.163614 | val_loss=0.210853
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.147581 | val_loss=0.193769
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.193769 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.095787 | val_loss=0.029641
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.050351 | val_loss=0.025138
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.025138 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.040669 | val_loss=0.015991
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.049814 | val_loss=0.016343
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.015991 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.064172 | val_loss=0.186144
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.066350 | val_loss=0.213924
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.186144 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.048076 | val_loss=0.039981
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.018070 | val_loss=0.037051
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.037051 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.063266 | val_loss=0.012904
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.049032 | val_loss=0.014335
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.012904 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.074129 | val_loss=0.053361
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.048703 | val_loss=0.036106
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.036106 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.084928 | val_loss=0.013452
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.055257 | val_loss=0.014675
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.013452 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.049780 | val_loss=0.015075
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.046135 | val_loss=0.010481
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.010481 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.030735 | val_loss=0.007984
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.039366 | val_loss=0.006369
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.006369 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.043019 | val_loss=0.018645
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.041551 | val_loss=0.021071
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.018645 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.072917 | val_loss=0.125459
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.061064 | val_loss=0.125766
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.125459 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.094020 | val_loss=0.026724
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.077239 | val_loss=0.029593
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.026724 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.087609 | val_loss=0.037019
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.070936 | val_loss=0.029745
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.029745 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.076550 | val_loss=0.028180
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.064606 | val_loss=0.023096
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.023096 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.116526 | val_loss=0.042905
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.059016 | val_loss=0.061537
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.042905 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.074236 | val_loss=0.065347
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.071494 | val_loss=0.056134
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.056134 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.100528 | val_loss=0.032448
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.069729 | val_loss=0.034969
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.032448 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.092114 | val_loss=0.062888
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.047977 | val_loss=0.060511
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.060511 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.045412 | val_loss=0.047662
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.076569 | val_loss=0.037078
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.037078 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.105738 | val_loss=0.043449
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.127594 | val_loss=0.051491
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.043449 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.075766 | val_loss=0.218440
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.056988 | val_loss=0.179075
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.179075 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.060372 | val_loss=0.050938
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.050007 | val_loss=0.027097
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.027097 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.071524 | val_loss=0.005545
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.079075 | val_loss=0.009575
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.005545 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.134211 | val_loss=0.075735
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.082077 | val_loss=0.065888
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.065888 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.078295 | val_loss=0.024301
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.045337 | val_loss=0.020226
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.020226 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.057815 | val_loss=0.182533
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.036861 | val_loss=0.052672
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.052672 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.051053 | val_loss=0.006996
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.064758 | val_loss=0.006782
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.006782 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.058527 | val_loss=0.019850
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.038425 | val_loss=0.035987
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.019850 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.079488 | val_loss=0.046209
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.075879 | val_loss=0.034028
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.034028 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.048849 | val_loss=0.011383
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.043147 | val_loss=0.014797
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.011383 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.106620 | val_loss=0.043617
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.065604 | val_loss=0.024100
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.024100 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.139387 | val_loss=0.142696
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.109484 | val_loss=0.132943
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.132943 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.134696 | val_loss=0.106231
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.100796 | val_loss=0.080544
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.080544 | stopped_early=False
+
+================================================================================
+BASELINE TUNING | single_head | trial=7
+{'learning_rate': 0.001, 'weight_decay': 0.0001, 'dropout': 0.1, 'shared_hidden_dim': 512, 'batch_size': 32}
+================================================================================
+[Baseline tuning 1930 | Single Head] epoch 1/10 | train_loss=0.469778 | val_loss=0.676641
+[Baseline tuning 1930 | Single Head] epoch 2/10 | train_loss=0.107131 | val_loss=0.665533
+[Baseline tuning 1930 | Single Head] epoch 3/10 | train_loss=0.056309 | val_loss=0.653312
+[Baseline tuning 1930 | Single Head] epoch 4/10 | train_loss=0.018328 | val_loss=0.636581
+[Baseline tuning 1930 | Single Head] epoch 5/10 | train_loss=0.015983 | val_loss=0.614566
+[Baseline tuning 1930 | Single Head] epoch 6/10 | train_loss=0.007475 | val_loss=0.587027
+[Baseline tuning 1930 | Single Head] epoch 7/10 | train_loss=0.005165 | val_loss=0.553093
+[Baseline tuning 1930 | Single Head] epoch 8/10 | train_loss=0.006006 | val_loss=0.507896
+[Baseline tuning 1930 | Single Head] epoch 9/10 | train_loss=0.007096 | val_loss=0.456114
+[Baseline tuning 1930 | Single Head] epoch 10/10 | train_loss=0.002337 | val_loss=0.408039
+[Baseline tuning 1930 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=10 | best_val_loss=0.408039 | stopped_early=False
+[Baseline tuning 1931 | Single Head] epoch 1/2 | train_loss=0.304384 | val_loss=0.411581
+[Baseline tuning 1931 | Single Head] epoch 2/2 | train_loss=0.125157 | val_loss=0.366351
+[Baseline tuning 1931 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.366351 | stopped_early=False
+[Baseline tuning 1932 | Single Head] epoch 1/2 | train_loss=0.146395 | val_loss=0.210552
+[Baseline tuning 1932 | Single Head] epoch 2/2 | train_loss=0.134059 | val_loss=0.161475
+[Baseline tuning 1932 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.161475 | stopped_early=False
+[Baseline tuning 1933 | Single Head] epoch 1/2 | train_loss=0.305297 | val_loss=0.158781
+[Baseline tuning 1933 | Single Head] epoch 2/2 | train_loss=0.254835 | val_loss=0.130562
+[Baseline tuning 1933 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.130562 | stopped_early=False
+[Baseline tuning 1934 | Single Head] epoch 1/2 | train_loss=0.091703 | val_loss=0.091285
+[Baseline tuning 1934 | Single Head] epoch 2/2 | train_loss=0.046498 | val_loss=0.065662
+[Baseline tuning 1934 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.065662 | stopped_early=False
+[Baseline tuning 1935 | Single Head] epoch 1/2 | train_loss=0.105867 | val_loss=0.067279
+[Baseline tuning 1935 | Single Head] epoch 2/2 | train_loss=0.064041 | val_loss=0.074270
+[Baseline tuning 1935 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.067279 | stopped_early=False
+[Baseline tuning 1936 | Single Head] epoch 1/2 | train_loss=0.043758 | val_loss=0.108271
+[Baseline tuning 1936 | Single Head] epoch 2/2 | train_loss=0.069167 | val_loss=0.066024
+[Baseline tuning 1936 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.066024 | stopped_early=False
+[Baseline tuning 1937 | Single Head] epoch 1/2 | train_loss=0.169033 | val_loss=0.167374
+[Baseline tuning 1937 | Single Head] epoch 2/2 | train_loss=0.144950 | val_loss=0.140176
+[Baseline tuning 1937 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.140176 | stopped_early=False
+[Baseline tuning 1938 | Single Head] epoch 1/2 | train_loss=0.096150 | val_loss=0.016930
+[Baseline tuning 1938 | Single Head] epoch 2/2 | train_loss=0.046880 | val_loss=0.032346
+[Baseline tuning 1938 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.016930 | stopped_early=False
+[Baseline tuning 1939 | Single Head] epoch 1/2 | train_loss=0.035743 | val_loss=0.021333
+[Baseline tuning 1939 | Single Head] epoch 2/2 | train_loss=0.038931 | val_loss=0.022029
+[Baseline tuning 1939 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.021333 | stopped_early=False
+[Baseline tuning 1940 | Single Head] epoch 1/2 | train_loss=0.056612 | val_loss=0.157958
+[Baseline tuning 1940 | Single Head] epoch 2/2 | train_loss=0.062356 | val_loss=0.230509
+[Baseline tuning 1940 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.157958 | stopped_early=False
+[Baseline tuning 1941 | Single Head] epoch 1/2 | train_loss=0.039797 | val_loss=0.033727
+[Baseline tuning 1941 | Single Head] epoch 2/2 | train_loss=0.011830 | val_loss=0.030216
+[Baseline tuning 1941 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.030216 | stopped_early=False
+[Baseline tuning 1942 | Single Head] epoch 1/2 | train_loss=0.056810 | val_loss=0.006453
+[Baseline tuning 1942 | Single Head] epoch 2/2 | train_loss=0.042726 | val_loss=0.007833
+[Baseline tuning 1942 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.006453 | stopped_early=False
+[Baseline tuning 1943 | Single Head] epoch 1/2 | train_loss=0.066136 | val_loss=0.043855
+[Baseline tuning 1943 | Single Head] epoch 2/2 | train_loss=0.043505 | val_loss=0.022399
+[Baseline tuning 1943 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.022399 | stopped_early=False
+[Baseline tuning 1944 | Single Head] epoch 1/2 | train_loss=0.090007 | val_loss=0.007340
+[Baseline tuning 1944 | Single Head] epoch 2/2 | train_loss=0.051580 | val_loss=0.010157
+[Baseline tuning 1944 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.007340 | stopped_early=False
+[Baseline tuning 1945 | Single Head] epoch 1/2 | train_loss=0.046232 | val_loss=0.011737
+[Baseline tuning 1945 | Single Head] epoch 2/2 | train_loss=0.037582 | val_loss=0.007054
+[Baseline tuning 1945 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.007054 | stopped_early=False
+[Baseline tuning 1946 | Single Head] epoch 1/2 | train_loss=0.024336 | val_loss=0.004121
+[Baseline tuning 1946 | Single Head] epoch 2/2 | train_loss=0.031406 | val_loss=0.003323
+[Baseline tuning 1946 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.003323 | stopped_early=False
+[Baseline tuning 1947 | Single Head] epoch 1/2 | train_loss=0.042682 | val_loss=0.015700
+[Baseline tuning 1947 | Single Head] epoch 2/2 | train_loss=0.035380 | val_loss=0.020413
+[Baseline tuning 1947 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.015700 | stopped_early=False
+[Baseline tuning 1948 | Single Head] epoch 1/2 | train_loss=0.065064 | val_loss=0.112617
+[Baseline tuning 1948 | Single Head] epoch 2/2 | train_loss=0.049538 | val_loss=0.117094
+[Baseline tuning 1948 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.112617 | stopped_early=False
+[Baseline tuning 1949 | Single Head] epoch 1/2 | train_loss=0.089480 | val_loss=0.018860
+[Baseline tuning 1949 | Single Head] epoch 2/2 | train_loss=0.069913 | val_loss=0.023299
+[Baseline tuning 1949 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.018860 | stopped_early=False
+[Baseline tuning 1950 | Single Head] epoch 1/2 | train_loss=0.094820 | val_loss=0.040268
+[Baseline tuning 1950 | Single Head] epoch 2/2 | train_loss=0.057937 | val_loss=0.038721
+[Baseline tuning 1950 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.038721 | stopped_early=False
+[Baseline tuning 1951 | Single Head] epoch 1/2 | train_loss=0.079727 | val_loss=0.021327
+[Baseline tuning 1951 | Single Head] epoch 2/2 | train_loss=0.074834 | val_loss=0.020783
+[Baseline tuning 1951 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.020783 | stopped_early=False
+[Baseline tuning 1952 | Single Head] epoch 1/2 | train_loss=0.107750 | val_loss=0.045635
+[Baseline tuning 1952 | Single Head] epoch 2/2 | train_loss=0.046194 | val_loss=0.106831
+[Baseline tuning 1952 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.045635 | stopped_early=False
+[Baseline tuning 1953 | Single Head] epoch 1/2 | train_loss=0.067266 | val_loss=0.055264
+[Baseline tuning 1953 | Single Head] epoch 2/2 | train_loss=0.060540 | val_loss=0.046132
+[Baseline tuning 1953 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.046132 | stopped_early=False
+[Baseline tuning 1954 | Single Head] epoch 1/2 | train_loss=0.094856 | val_loss=0.027025
+[Baseline tuning 1954 | Single Head] epoch 2/2 | train_loss=0.061223 | val_loss=0.031259
+[Baseline tuning 1954 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.027025 | stopped_early=False
+[Baseline tuning 1955 | Single Head] epoch 1/2 | train_loss=0.092163 | val_loss=0.059025
+[Baseline tuning 1955 | Single Head] epoch 2/2 | train_loss=0.045758 | val_loss=0.063405
+[Baseline tuning 1955 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.059025 | stopped_early=False
+[Baseline tuning 1956 | Single Head] epoch 1/2 | train_loss=0.043298 | val_loss=0.038304
+[Baseline tuning 1956 | Single Head] epoch 2/2 | train_loss=0.075377 | val_loss=0.027967
+[Baseline tuning 1956 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.027967 | stopped_early=False
+[Baseline tuning 1957 | Single Head] epoch 1/2 | train_loss=0.105689 | val_loss=0.033977
+[Baseline tuning 1957 | Single Head] epoch 2/2 | train_loss=0.127207 | val_loss=0.052255
+[Baseline tuning 1957 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.033977 | stopped_early=False
+[Baseline tuning 1958 | Single Head] epoch 1/2 | train_loss=0.079294 | val_loss=0.304143
+[Baseline tuning 1958 | Single Head] epoch 2/2 | train_loss=0.058346 | val_loss=0.208451
+[Baseline tuning 1958 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.208451 | stopped_early=False
+[Baseline tuning 1959 | Single Head] epoch 1/2 | train_loss=0.063257 | val_loss=0.042614
+[Baseline tuning 1959 | Single Head] epoch 2/2 | train_loss=0.047890 | val_loss=0.017248
+[Baseline tuning 1959 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.017248 | stopped_early=False
+[Baseline tuning 1960 | Single Head] epoch 1/2 | train_loss=0.064855 | val_loss=0.003504
+[Baseline tuning 1960 | Single Head] epoch 2/2 | train_loss=0.076120 | val_loss=0.006622
+[Baseline tuning 1960 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.003504 | stopped_early=False
+[Baseline tuning 1961 | Single Head] epoch 1/2 | train_loss=0.128227 | val_loss=0.094418
+[Baseline tuning 1961 | Single Head] epoch 2/2 | train_loss=0.082130 | val_loss=0.091084
+[Baseline tuning 1961 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.091084 | stopped_early=False
+[Baseline tuning 1962 | Single Head] epoch 1/2 | train_loss=0.082453 | val_loss=0.023957
+[Baseline tuning 1962 | Single Head] epoch 2/2 | train_loss=0.039251 | val_loss=0.024545
+[Baseline tuning 1962 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.023957 | stopped_early=False
+[Baseline tuning 1963 | Single Head] epoch 1/2 | train_loss=0.059132 | val_loss=0.205182
+[Baseline tuning 1963 | Single Head] epoch 2/2 | train_loss=0.033179 | val_loss=0.039984
+[Baseline tuning 1963 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.039984 | stopped_early=False
+[Baseline tuning 1964 | Single Head] epoch 1/2 | train_loss=0.053612 | val_loss=0.005363
+[Baseline tuning 1964 | Single Head] epoch 2/2 | train_loss=0.063555 | val_loss=0.006667
+[Baseline tuning 1964 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.005363 | stopped_early=False
+[Baseline tuning 1965 | Single Head] epoch 1/2 | train_loss=0.054138 | val_loss=0.019739
+[Baseline tuning 1965 | Single Head] epoch 2/2 | train_loss=0.034084 | val_loss=0.034596
+[Baseline tuning 1965 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.019739 | stopped_early=False
+[Baseline tuning 1966 | Single Head] epoch 1/2 | train_loss=0.077282 | val_loss=0.047574
+[Baseline tuning 1966 | Single Head] epoch 2/2 | train_loss=0.068082 | val_loss=0.034119
+[Baseline tuning 1966 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.034119 | stopped_early=False
+[Baseline tuning 1967 | Single Head] epoch 1/2 | train_loss=0.045002 | val_loss=0.006120
+[Baseline tuning 1967 | Single Head] epoch 2/2 | train_loss=0.038740 | val_loss=0.008214
+[Baseline tuning 1967 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=1 | best_val_loss=0.006120 | stopped_early=False
+[Baseline tuning 1968 | Single Head] epoch 1/2 | train_loss=0.112172 | val_loss=0.017286
+[Baseline tuning 1968 | Single Head] epoch 2/2 | train_loss=0.061243 | val_loss=0.009466
+[Baseline tuning 1968 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.009466 | stopped_early=False
+[Baseline tuning 1969 | Single Head] epoch 1/2 | train_loss=0.143312 | val_loss=0.144885
+[Baseline tuning 1969 | Single Head] epoch 2/2 | train_loss=0.107454 | val_loss=0.136814
+[Baseline tuning 1969 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.136814 | stopped_early=False
+[Baseline tuning 1970 | Single Head] epoch 1/2 | train_loss=0.145352 | val_loss=0.113359
+[Baseline tuning 1970 | Single Head] epoch 2/2 | train_loss=0.098783 | val_loss=0.068396
+[Baseline tuning 1970 | Single Head] TRAINING FINISHED | executed_epochs=2 | best_epoch=2 | best_val_loss=0.068396 | stopped_early=False

@@ -37,7 +37,6 @@ from metadata_tta.training import (
     build_training_schedule,
     initialize_double_from_single,
     train_aux_head_only,
-    train_double_head,
     train_single_head,
 )
 from metadata_tta.tta import get_method_class
@@ -419,7 +418,6 @@ def _train_source_models_with_yearly_id(
 
 def _evaluate_supervised_references(
     source_single_model: nn.Module | None,
-    source_double_model: nn.Module | None,
     protocol_data: EvalStreamTASData,
     config: ExperimentConfig,
     device: torch.device,
@@ -460,29 +458,12 @@ def _evaluate_supervised_references(
         else None
     )
 
-    double_reference = (
-        copy.deepcopy(
-            source_double_model
-        ).to(device)
-        if source_double_model is not None
-        else None
-    )
-
     # New optimizer at the beginning of the OOD supervised
     # reference trajectory.
     #
     # After the first OOD year, the returned optimizer is reused
     # when reset_optimizer_each_year=False.
     single_optimizer = None
-    double_optimizer = None
-
-    aux_loss_weight = float(
-        config.get(
-            "training",
-            "double_head",
-            "aux_loss_weight",
-        )
-    )
 
     # ========================================================
     # SINGLE CONTINUAL SUPERVISED TRAJECTORY
@@ -573,90 +554,6 @@ def _evaluate_supervised_references(
                 )
             )
 
-        # ====================================================
-        # DOUBLE HEAD REFERENCE
-        # ====================================================
-
-        if double_reference is not None:
-
-            schedule = build_training_schedule(
-                config=config,
-                initialized_from_previous=True,
-                model_kind="double_head",
-            )
-
-            print()
-            print(
-                f"TAS supervised Double Head | "
-                f"fine-tuning year {year_data.year} | "
-                f"train_n="
-                f"{len(year_data.y_main_reference_train)} | "
-                f"val_n="
-                f"{len(year_data.y_main_reference_validation)}"
-            )
-
-            result = train_double_head(
-                model=double_reference,
-
-                X=(
-                    year_data.X_reference_train
-                ),
-
-                y_main=(
-                    year_data.y_main_reference_train
-                ),
-
-                y_aux=(
-                    year_data.y_aux_reference_train
-                ),
-
-                schedule=schedule,
-
-                aux_loss_weight=(
-                    aux_loss_weight
-                ),
-
-                device=device,
-
-                optimizer=double_optimizer,
-
-                X_validation=(
-                    year_data.X_reference_validation
-                ),
-
-                y_main_validation=(
-                    year_data.y_main_reference_validation
-                ),
-
-                y_aux_validation=(
-                    year_data.y_aux_reference_validation
-                ),
-
-                log_prefix=(
-                    f"TAS {year_data.year} | "
-                    "Double Head"
-                ),
-            )
-
-            # IMPORTANT:
-            # train_double_head() has already restored the best
-            # validation checkpoint and its optimizer state.
-            double_reference = result.model
-            double_optimizer = result.optimizer
-
-            records.append(
-                evaluate_frozen_year(
-                    model=double_reference,
-                    X=year_data.X_test,
-                    y_main=year_data.y_main_test,
-                    year=year_data.year,
-                    method_name=(
-                        "double_head_supervised_reference"
-                    ),
-                    device=device,
-                )
-            )
-
     return records
 
 def _build_tas_rows(
@@ -689,20 +586,12 @@ def _build_tas_rows(
             record.method
         )
 
-        if family == "single":
-            frozen_method = (
-                "single_head_frozen"
-            )
-            supervised_method = (
-                "single_head_supervised_reference"
-            )
-        else:
-            frozen_method = (
-                "double_head_frozen"
-            )
-            supervised_method = (
-                "double_head_supervised_reference"
-            )
+        frozen_method = (
+            "single_head_frozen"
+        )
+        supervised_method = (
+            "single_head_supervised_reference"
+        )
 
         frozen_accuracy = accuracy_by_key.get(
             (
@@ -1082,7 +971,6 @@ def run_eval_stream_tas(
     supervised_reference_records = (
         _evaluate_supervised_references(
             source_single_model=single_model,
-            source_double_model=double_model,
             protocol_data=protocol_data,
             config=config,
             device=device,
@@ -1119,13 +1007,7 @@ def run_eval_stream_tas(
         tas_rows
     )
 
-    reference_method = (
-        "double_head_frozen"
-        if config.baseline_enabled(
-            "double_head"
-        )
-        else "single_head_frozen"
-    )
+    reference_method = "single_head_frozen"
 
     summary = build_ood_summary(
         records=ood_records,

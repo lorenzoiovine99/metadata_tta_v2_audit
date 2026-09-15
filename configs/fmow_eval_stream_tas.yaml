@@ -64,7 +64,6 @@ training:
     learning_rate: 0.001
     weight_decay: 0.0
     batch_size: 32
-    aux_loss_weight: 0.1
 
   temporal:
     enabled: true
@@ -79,7 +78,6 @@ training:
 
 baselines:
   single_head: true
-  double_head: true
 
 methods:
   metadata: true

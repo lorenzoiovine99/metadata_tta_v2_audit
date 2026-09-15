@@ -1,0 +1,207 @@
+Base experiment config: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Metadata OOD adaptation/metadata_tta_v2/configs/fmow_eval_stream_tas.yaml
+
+================================================================================
+TTA TUNING TEMPORAL SPLIT
+Pseudo-source years: [2002, 2003, 2004, 2005, 2006, 2007, 2008]
+Pseudo-OOD stream years: [2009, 2010, 2011, 2012]
+================================================================================
+
+================================================================================
+DATASET
+================================================================================
+Dataset: fmow
+Data root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/new_FMoW_embeddings_remapped
+
+Year 2002: valid=1199/1199 | main_classes=52 | aux_classes=11
+Year 2003: valid=1661/1661 | main_classes=52 | aux_classes=11
+Year 2004: valid=1499/1499 | main_classes=52 | aux_classes=11
+Year 2005: valid=1837/1837 | main_classes=52 | aux_classes=11
+Year 2006: valid=1995/1995 | main_classes=52 | aux_classes=11
+Year 2007: valid=1044/1044 | main_classes=52 | aux_classes=11
+Year 2008: valid=1459/1459 | main_classes=52 | aux_classes=11
+Year 2009: valid=4278/4278 | main_classes=52 | aux_classes=11
+Year 2010: valid=9922/9922 | main_classes=52 | aux_classes=11
+Year 2011: valid=10933/10933 | main_classes=52 | aux_classes=11
+Year 2012: valid=11122/11122 | main_classes=52 | aux_classes=11
+Year 2013: valid=13374/13374 | main_classes=52 | aux_classes=11
+Year 2014: valid=18840/18840 | main_classes=52 | aux_classes=11
+Year 2015: valid=27653/27653 | main_classes=52 | aux_classes=11
+Year 2016: valid=48861/48861 | main_classes=52 | aux_classes=11
+Year 2017: valid=17160/17160 | main_classes=52 | aux_classes=11
+
+Years: 2002-2017
+Number of years: 16
+Feature dimension: 2048
+Total valid samples: 172837
+[TTA tuning source 2002 | Single Head] epoch 1/50 | train_loss=3.458730 | val_loss=3.859595 | best_val_loss=3.859595 | best_epoch=1 | patience=0/5
+[TTA tuning source 2002 | Single Head] epoch 2/50 | train_loss=2.246081 | val_loss=3.573754 | best_val_loss=3.573754 | best_epoch=2 | patience=0/5
+[TTA tuning source 2002 | Single Head] epoch 3/50 | train_loss=1.581957 | val_loss=3.060828 | best_val_loss=3.060828 | best_epoch=3 | patience=0/5
+[TTA tuning source 2002 | Single Head] epoch 4/50 | train_loss=1.032778 | val_loss=2.864286 | best_val_loss=2.864286 | best_epoch=4 | patience=0/5
+[TTA tuning source 2002 | Single Head] epoch 5/50 | train_loss=0.643304 | val_loss=3.021728 | best_val_loss=2.864286 | best_epoch=4 | patience=1/5
+[TTA tuning source 2002 | Single Head] epoch 6/50 | train_loss=0.379037 | val_loss=2.935066 | best_val_loss=2.864286 | best_epoch=4 | patience=2/5
+[TTA tuning source 2002 | Single Head] epoch 7/50 | train_loss=0.219567 | val_loss=2.901160 | best_val_loss=2.864286 | best_epoch=4 | patience=3/5
+[TTA tuning source 2002 | Single Head] epoch 8/50 | train_loss=0.131508 | val_loss=2.907255 | best_val_loss=2.864286 | best_epoch=4 | patience=4/5
+[TTA tuning source 2002 | Single Head] epoch 9/50 | train_loss=0.082085 | val_loss=2.901923 | best_val_loss=2.864286 | best_epoch=4 | patience=5/5
+[TTA tuning source 2002 | Single Head] EARLY STOP at epoch 9 | best_epoch=4 | best_val_loss=2.864286
+[TTA tuning source 2002 | Single Head] TRAINING FINISHED | executed_epochs=9 | best_epoch=4 | best_val_loss=2.864286 | stopped_early=True
+[TTA tuning source 2003 | Single Head] epoch 1/50 | train_loss=3.114018 | val_loss=2.838041 | best_val_loss=2.838041 | best_epoch=1 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 2/50 | train_loss=2.708701 | val_loss=2.728624 | best_val_loss=2.728624 | best_epoch=2 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 3/50 | train_loss=2.461173 | val_loss=2.665243 | best_val_loss=2.665243 | best_epoch=3 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 4/50 | train_loss=2.255645 | val_loss=2.616723 | best_val_loss=2.616723 | best_epoch=4 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 5/50 | train_loss=2.080512 | val_loss=2.588675 | best_val_loss=2.588675 | best_epoch=5 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 6/50 | train_loss=1.935152 | val_loss=2.562395 | best_val_loss=2.562395 | best_epoch=6 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 7/50 | train_loss=1.791593 | val_loss=2.541930 | best_val_loss=2.541930 | best_epoch=7 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 8/50 | train_loss=1.659930 | val_loss=2.521855 | best_val_loss=2.521855 | best_epoch=8 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 9/50 | train_loss=1.527185 | val_loss=2.508502 | best_val_loss=2.508502 | best_epoch=9 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 10/50 | train_loss=1.416073 | val_loss=2.494379 | best_val_loss=2.494379 | best_epoch=10 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 11/50 | train_loss=1.311622 | val_loss=2.481976 | best_val_loss=2.481976 | best_epoch=11 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 12/50 | train_loss=1.213021 | val_loss=2.481402 | best_val_loss=2.481402 | best_epoch=12 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 13/50 | train_loss=1.115517 | val_loss=2.472742 | best_val_loss=2.472742 | best_epoch=13 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 14/50 | train_loss=1.025574 | val_loss=2.474486 | best_val_loss=2.472742 | best_epoch=13 | patience=1/5
+[TTA tuning source 2003 | Single Head] epoch 15/50 | train_loss=0.945795 | val_loss=2.477216 | best_val_loss=2.472742 | best_epoch=13 | patience=2/5
+[TTA tuning source 2003 | Single Head] epoch 16/50 | train_loss=0.864517 | val_loss=2.468333 | best_val_loss=2.468333 | best_epoch=16 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 17/50 | train_loss=0.791975 | val_loss=2.453052 | best_val_loss=2.453052 | best_epoch=17 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 18/50 | train_loss=0.719085 | val_loss=2.456266 | best_val_loss=2.453052 | best_epoch=17 | patience=1/5
+[TTA tuning source 2003 | Single Head] epoch 19/50 | train_loss=0.658385 | val_loss=2.446500 | best_val_loss=2.446500 | best_epoch=19 | patience=0/5
+[TTA tuning source 2003 | Single Head] epoch 20/50 | train_loss=0.597811 | val_loss=2.452132 | best_val_loss=2.446500 | best_epoch=19 | patience=1/5
+[TTA tuning source 2003 | Single Head] epoch 21/50 | train_loss=0.547160 | val_loss=2.469447 | best_val_loss=2.446500 | best_epoch=19 | patience=2/5
+[TTA tuning source 2003 | Single Head] epoch 22/50 | train_loss=0.494288 | val_loss=2.470736 | best_val_loss=2.446500 | best_epoch=19 | patience=3/5
+[TTA tuning source 2003 | Single Head] epoch 23/50 | train_loss=0.447993 | val_loss=2.478831 | best_val_loss=2.446500 | best_epoch=19 | patience=4/5
+[TTA tuning source 2003 | Single Head] epoch 24/50 | train_loss=0.403940 | val_loss=2.476454 | best_val_loss=2.446500 | best_epoch=19 | patience=5/5
+[TTA tuning source 2003 | Single Head] EARLY STOP at epoch 24 | best_epoch=19 | best_val_loss=2.446500
+[TTA tuning source 2003 | Single Head] TRAINING FINISHED | executed_epochs=24 | best_epoch=19 | best_val_loss=2.446500 | stopped_early=True
+[TTA tuning source 2004 | Single Head] epoch 1/50 | train_loss=3.089000 | val_loss=2.777464 | best_val_loss=2.777464 | best_epoch=1 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 2/50 | train_loss=2.492952 | val_loss=2.668059 | best_val_loss=2.668059 | best_epoch=2 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 3/50 | train_loss=2.123839 | val_loss=2.625675 | best_val_loss=2.625675 | best_epoch=3 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 4/50 | train_loss=1.847805 | val_loss=2.607189 | best_val_loss=2.607189 | best_epoch=4 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 5/50 | train_loss=1.650015 | val_loss=2.572421 | best_val_loss=2.572421 | best_epoch=5 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 6/50 | train_loss=1.454785 | val_loss=2.564068 | best_val_loss=2.564068 | best_epoch=6 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 7/50 | train_loss=1.302014 | val_loss=2.562081 | best_val_loss=2.562081 | best_epoch=7 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 8/50 | train_loss=1.172161 | val_loss=2.547780 | best_val_loss=2.547780 | best_epoch=8 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 9/50 | train_loss=1.052887 | val_loss=2.541419 | best_val_loss=2.541419 | best_epoch=9 | patience=0/5
+[TTA tuning source 2004 | Single Head] epoch 10/50 | train_loss=0.944746 | val_loss=2.546035 | best_val_loss=2.541419 | best_epoch=9 | patience=1/5
+[TTA tuning source 2004 | Single Head] epoch 11/50 | train_loss=0.837476 | val_loss=2.542203 | best_val_loss=2.541419 | best_epoch=9 | patience=2/5
+[TTA tuning source 2004 | Single Head] epoch 12/50 | train_loss=0.758043 | val_loss=2.541593 | best_val_loss=2.541419 | best_epoch=9 | patience=3/5
+[TTA tuning source 2004 | Single Head] epoch 13/50 | train_loss=0.689360 | val_loss=2.555617 | best_val_loss=2.541419 | best_epoch=9 | patience=4/5
+[TTA tuning source 2004 | Single Head] epoch 14/50 | train_loss=0.619319 | val_loss=2.542278 | best_val_loss=2.541419 | best_epoch=9 | patience=5/5
+[TTA tuning source 2004 | Single Head] EARLY STOP at epoch 14 | best_epoch=9 | best_val_loss=2.541419
+[TTA tuning source 2004 | Single Head] TRAINING FINISHED | executed_epochs=14 | best_epoch=9 | best_val_loss=2.541419 | stopped_early=True
+[TTA tuning source 2005 | Single Head] epoch 1/50 | train_loss=2.778626 | val_loss=2.528137 | best_val_loss=2.528137 | best_epoch=1 | patience=0/5
+[TTA tuning source 2005 | Single Head] epoch 2/50 | train_loss=2.270986 | val_loss=2.485236 | best_val_loss=2.485236 | best_epoch=2 | patience=0/5
+[TTA tuning source 2005 | Single Head] epoch 3/50 | train_loss=1.947378 | val_loss=2.444517 | best_val_loss=2.444517 | best_epoch=3 | patience=0/5
+[TTA tuning source 2005 | Single Head] epoch 4/50 | train_loss=1.707923 | val_loss=2.415109 | best_val_loss=2.415109 | best_epoch=4 | patience=0/5
+[TTA tuning source 2005 | Single Head] epoch 5/50 | train_loss=1.518654 | val_loss=2.423097 | best_val_loss=2.415109 | best_epoch=4 | patience=1/5
+[TTA tuning source 2005 | Single Head] epoch 6/50 | train_loss=1.370895 | val_loss=2.430694 | best_val_loss=2.415109 | best_epoch=4 | patience=2/5
+[TTA tuning source 2005 | Single Head] epoch 7/50 | train_loss=1.235339 | val_loss=2.410842 | best_val_loss=2.410842 | best_epoch=7 | patience=0/5
+[TTA tuning source 2005 | Single Head] epoch 8/50 | train_loss=1.099052 | val_loss=2.388755 | best_val_loss=2.388755 | best_epoch=8 | patience=0/5
+[TTA tuning source 2005 | Single Head] epoch 9/50 | train_loss=0.969338 | val_loss=2.408066 | best_val_loss=2.388755 | best_epoch=8 | patience=1/5
+[TTA tuning source 2005 | Single Head] epoch 10/50 | train_loss=0.880039 | val_loss=2.400989 | best_val_loss=2.388755 | best_epoch=8 | patience=2/5
+[TTA tuning source 2005 | Single Head] epoch 11/50 | train_loss=0.791128 | val_loss=2.406923 | best_val_loss=2.388755 | best_epoch=8 | patience=3/5
+[TTA tuning source 2005 | Single Head] epoch 12/50 | train_loss=0.732294 | val_loss=2.391309 | best_val_loss=2.388755 | best_epoch=8 | patience=4/5
+[TTA tuning source 2005 | Single Head] epoch 13/50 | train_loss=0.650568 | val_loss=2.393952 | best_val_loss=2.388755 | best_epoch=8 | patience=5/5
+[TTA tuning source 2005 | Single Head] EARLY STOP at epoch 13 | best_epoch=8 | best_val_loss=2.388755
+[TTA tuning source 2005 | Single Head] TRAINING FINISHED | executed_epochs=13 | best_epoch=8 | best_val_loss=2.388755 | stopped_early=True
+[TTA tuning source 2006 | Single Head] epoch 1/50 | train_loss=2.503236 | val_loss=2.583149 | best_val_loss=2.583149 | best_epoch=1 | patience=0/5
+[TTA tuning source 2006 | Single Head] epoch 2/50 | train_loss=2.072066 | val_loss=2.500148 | best_val_loss=2.500148 | best_epoch=2 | patience=0/5
+[TTA tuning source 2006 | Single Head] epoch 3/50 | train_loss=1.791082 | val_loss=2.476380 | best_val_loss=2.476380 | best_epoch=3 | patience=0/5
+[TTA tuning source 2006 | Single Head] epoch 4/50 | train_loss=1.567879 | val_loss=2.477542 | best_val_loss=2.476380 | best_epoch=3 | patience=1/5
+[TTA tuning source 2006 | Single Head] epoch 5/50 | train_loss=1.398359 | val_loss=2.457195 | best_val_loss=2.457195 | best_epoch=5 | patience=0/5
+[TTA tuning source 2006 | Single Head] epoch 6/50 | train_loss=1.228588 | val_loss=2.467555 | best_val_loss=2.457195 | best_epoch=5 | patience=1/5
+[TTA tuning source 2006 | Single Head] epoch 7/50 | train_loss=1.113632 | val_loss=2.439947 | best_val_loss=2.439947 | best_epoch=7 | patience=0/5
+[TTA tuning source 2006 | Single Head] epoch 8/50 | train_loss=0.985879 | val_loss=2.440730 | best_val_loss=2.439947 | best_epoch=7 | patience=1/5
+[TTA tuning source 2006 | Single Head] epoch 9/50 | train_loss=0.879177 | val_loss=2.440279 | best_val_loss=2.439947 | best_epoch=7 | patience=2/5
+[TTA tuning source 2006 | Single Head] epoch 10/50 | train_loss=0.793926 | val_loss=2.445765 | best_val_loss=2.439947 | best_epoch=7 | patience=3/5
+[TTA tuning source 2006 | Single Head] epoch 11/50 | train_loss=0.705396 | val_loss=2.437668 | best_val_loss=2.437668 | best_epoch=11 | patience=0/5
+[TTA tuning source 2006 | Single Head] epoch 12/50 | train_loss=0.646432 | val_loss=2.458065 | best_val_loss=2.437668 | best_epoch=11 | patience=1/5
+[TTA tuning source 2006 | Single Head] epoch 13/50 | train_loss=0.563401 | val_loss=2.462210 | best_val_loss=2.437668 | best_epoch=11 | patience=2/5
+[TTA tuning source 2006 | Single Head] epoch 14/50 | train_loss=0.507951 | val_loss=2.472794 | best_val_loss=2.437668 | best_epoch=11 | patience=3/5
+[TTA tuning source 2006 | Single Head] epoch 15/50 | train_loss=0.460678 | val_loss=2.467215 | best_val_loss=2.437668 | best_epoch=11 | patience=4/5
+[TTA tuning source 2006 | Single Head] epoch 16/50 | train_loss=0.410119 | val_loss=2.481620 | best_val_loss=2.437668 | best_epoch=11 | patience=5/5
+[TTA tuning source 2006 | Single Head] EARLY STOP at epoch 16 | best_epoch=11 | best_val_loss=2.437668
+[TTA tuning source 2006 | Single Head] TRAINING FINISHED | executed_epochs=16 | best_epoch=11 | best_val_loss=2.437668 | stopped_early=True
+[TTA tuning source 2007 | Single Head] epoch 1/50 | train_loss=2.432356 | val_loss=2.484033 | best_val_loss=2.484033 | best_epoch=1 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 2/50 | train_loss=1.923087 | val_loss=2.438183 | best_val_loss=2.438183 | best_epoch=2 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 3/50 | train_loss=1.579886 | val_loss=2.417283 | best_val_loss=2.417283 | best_epoch=3 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 4/50 | train_loss=1.321559 | val_loss=2.409361 | best_val_loss=2.409361 | best_epoch=4 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 5/50 | train_loss=1.127695 | val_loss=2.406572 | best_val_loss=2.406572 | best_epoch=5 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 6/50 | train_loss=0.972398 | val_loss=2.398050 | best_val_loss=2.398050 | best_epoch=6 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 7/50 | train_loss=0.857342 | val_loss=2.384359 | best_val_loss=2.384359 | best_epoch=7 | patience=0/5
+[TTA tuning source 2007 | Single Head] epoch 8/50 | train_loss=0.772721 | val_loss=2.404681 | best_val_loss=2.384359 | best_epoch=7 | patience=1/5
+[TTA tuning source 2007 | Single Head] epoch 9/50 | train_loss=0.666149 | val_loss=2.401067 | best_val_loss=2.384359 | best_epoch=7 | patience=2/5
+[TTA tuning source 2007 | Single Head] epoch 10/50 | train_loss=0.588522 | val_loss=2.411958 | best_val_loss=2.384359 | best_epoch=7 | patience=3/5
+[TTA tuning source 2007 | Single Head] epoch 11/50 | train_loss=0.524570 | val_loss=2.429994 | best_val_loss=2.384359 | best_epoch=7 | patience=4/5
+[TTA tuning source 2007 | Single Head] epoch 12/50 | train_loss=0.472004 | val_loss=2.434131 | best_val_loss=2.384359 | best_epoch=7 | patience=5/5
+[TTA tuning source 2007 | Single Head] EARLY STOP at epoch 12 | best_epoch=7 | best_val_loss=2.384359
+[TTA tuning source 2007 | Single Head] TRAINING FINISHED | executed_epochs=12 | best_epoch=7 | best_val_loss=2.384359 | stopped_early=True
+[TTA tuning source 2008 | Single Head] epoch 1/50 | train_loss=2.444006 | val_loss=2.449810 | best_val_loss=2.449810 | best_epoch=1 | patience=0/5
+[TTA tuning source 2008 | Single Head] epoch 2/50 | train_loss=1.955630 | val_loss=2.396397 | best_val_loss=2.396397 | best_epoch=2 | patience=0/5
+[TTA tuning source 2008 | Single Head] epoch 3/50 | train_loss=1.647108 | val_loss=2.376675 | best_val_loss=2.376675 | best_epoch=3 | patience=0/5
+[TTA tuning source 2008 | Single Head] epoch 4/50 | train_loss=1.409929 | val_loss=2.375986 | best_val_loss=2.375986 | best_epoch=4 | patience=0/5
+[TTA tuning source 2008 | Single Head] epoch 5/50 | train_loss=1.211937 | val_loss=2.346317 | best_val_loss=2.346317 | best_epoch=5 | patience=0/5
+[TTA tuning source 2008 | Single Head] epoch 6/50 | train_loss=1.056610 | val_loss=2.362756 | best_val_loss=2.346317 | best_epoch=5 | patience=1/5
+[TTA tuning source 2008 | Single Head] epoch 7/50 | train_loss=0.905353 | val_loss=2.361273 | best_val_loss=2.346317 | best_epoch=5 | patience=2/5
+[TTA tuning source 2008 | Single Head] epoch 8/50 | train_loss=0.811612 | val_loss=2.387728 | best_val_loss=2.346317 | best_epoch=5 | patience=3/5
+[TTA tuning source 2008 | Single Head] epoch 9/50 | train_loss=0.720408 | val_loss=2.359013 | best_val_loss=2.346317 | best_epoch=5 | patience=4/5
+[TTA tuning source 2008 | Single Head] epoch 10/50 | train_loss=0.641229 | val_loss=2.382756 | best_val_loss=2.346317 | best_epoch=5 | patience=5/5
+[TTA tuning source 2008 | Single Head] EARLY STOP at epoch 10 | best_epoch=5 | best_val_loss=2.346317
+[TTA tuning source 2008 | Single Head] TRAINING FINISHED | executed_epochs=10 | best_epoch=5 | best_val_loss=2.346317 | stopped_early=True
+[TTA source | AUX-ONLY] aux-only epoch 1/50 | train_aux_loss=1.434599 | val_aux_loss=1.216064 | best_val_aux_loss=1.216064
+[TTA source | AUX-ONLY] aux-only epoch 2/50 | train_aux_loss=1.103056 | val_aux_loss=1.095206 | best_val_aux_loss=1.095206
+[TTA source | AUX-ONLY] aux-only epoch 3/50 | train_aux_loss=1.010880 | val_aux_loss=1.052912 | best_val_aux_loss=1.052912
+[TTA source | AUX-ONLY] aux-only epoch 4/50 | train_aux_loss=0.959534 | val_aux_loss=1.017840 | best_val_aux_loss=1.017840
+[TTA source | AUX-ONLY] aux-only epoch 5/50 | train_aux_loss=0.926686 | val_aux_loss=1.004319 | best_val_aux_loss=1.004319
+[TTA source | AUX-ONLY] aux-only epoch 6/50 | train_aux_loss=0.901835 | val_aux_loss=0.989282 | best_val_aux_loss=0.989282
+[TTA source | AUX-ONLY] aux-only epoch 7/50 | train_aux_loss=0.880078 | val_aux_loss=0.972853 | best_val_aux_loss=0.972853
+[TTA source | AUX-ONLY] aux-only epoch 8/50 | train_aux_loss=0.863135 | val_aux_loss=0.970725 | best_val_aux_loss=0.970725
+[TTA source | AUX-ONLY] aux-only epoch 9/50 | train_aux_loss=0.849468 | val_aux_loss=0.967829 | best_val_aux_loss=0.967829
+[TTA source | AUX-ONLY] aux-only epoch 10/50 | train_aux_loss=0.837328 | val_aux_loss=0.950425 | best_val_aux_loss=0.950425
+[TTA source | AUX-ONLY] aux-only epoch 11/50 | train_aux_loss=0.826844 | val_aux_loss=0.957815 | best_val_aux_loss=0.950425
+[TTA source | AUX-ONLY] aux-only epoch 12/50 | train_aux_loss=0.819325 | val_aux_loss=0.954919 | best_val_aux_loss=0.950425
+[TTA source | AUX-ONLY] aux-only epoch 13/50 | train_aux_loss=0.810049 | val_aux_loss=0.944294 | best_val_aux_loss=0.944294
+[TTA source | AUX-ONLY] aux-only epoch 14/50 | train_aux_loss=0.802883 | val_aux_loss=0.941546 | best_val_aux_loss=0.941546
+[TTA source | AUX-ONLY] aux-only epoch 15/50 | train_aux_loss=0.796990 | val_aux_loss=0.951249 | best_val_aux_loss=0.941546
+[TTA source | AUX-ONLY] aux-only epoch 16/50 | train_aux_loss=0.790356 | val_aux_loss=0.942440 | best_val_aux_loss=0.941546
+[TTA source | AUX-ONLY] aux-only epoch 17/50 | train_aux_loss=0.788037 | val_aux_loss=0.947733 | best_val_aux_loss=0.941546
+[TTA source | AUX-ONLY] aux-only epoch 18/50 | train_aux_loss=0.781185 | val_aux_loss=0.936959 | best_val_aux_loss=0.936959
+[TTA source | AUX-ONLY] aux-only epoch 19/50 | train_aux_loss=0.775571 | val_aux_loss=0.939667 | best_val_aux_loss=0.936959
+[TTA source | AUX-ONLY] aux-only epoch 20/50 | train_aux_loss=0.771748 | val_aux_loss=0.940850 | best_val_aux_loss=0.936959
+[TTA source | AUX-ONLY] aux-only epoch 21/50 | train_aux_loss=0.768804 | val_aux_loss=0.941294 | best_val_aux_loss=0.936959
+[TTA source | AUX-ONLY] aux-only epoch 22/50 | train_aux_loss=0.764636 | val_aux_loss=0.936690 | best_val_aux_loss=0.936690
+[TTA source | AUX-ONLY] aux-only epoch 23/50 | train_aux_loss=0.761493 | val_aux_loss=0.934728 | best_val_aux_loss=0.934728
+[TTA source | AUX-ONLY] aux-only epoch 24/50 | train_aux_loss=0.757470 | val_aux_loss=0.946159 | best_val_aux_loss=0.934728
+[TTA source | AUX-ONLY] aux-only epoch 25/50 | train_aux_loss=0.755299 | val_aux_loss=0.937567 | best_val_aux_loss=0.934728
+[TTA source | AUX-ONLY] aux-only epoch 26/50 | train_aux_loss=0.752895 | val_aux_loss=0.950245 | best_val_aux_loss=0.934728
+[TTA source | AUX-ONLY] aux-only epoch 27/50 | train_aux_loss=0.751661 | val_aux_loss=0.944349 | best_val_aux_loss=0.934728
+[TTA source | AUX-ONLY] aux-only epoch 28/50 | train_aux_loss=0.746457 | val_aux_loss=0.943204 | best_val_aux_loss=0.934728
+[TTA source | AUX-ONLY] AUX-ONLY EARLY STOP at epoch 28
+AUX_ONLY_MAIN_SANITY | year=2009 | single=0.293224299065 | double=0.293224299065 | diff=0.000000000000e+00
+AUX_ONLY_MAIN_SANITY | year=2010 | single=0.293702770781 | double=0.293702770781 | diff=0.000000000000e+00
+AUX_ONLY_MAIN_SANITY | year=2011 | single=0.291723822588 | double=0.291723822588 | diff=0.000000000000e+00
+AUX_ONLY_MAIN_SANITY | year=2012 | single=0.290786516854 | double=0.290786516854 | diff=0.000000000000e+00
+
+================================================================================
+TTA TUNING | metadata | trial=0
+{'learning_rate': 0.0003, 'regularization': 0.0, 'gradient_clip': 0.1, 'normalized_aux_loss_threshold': 0.0, 'episodic_pre_prediction': True}
+================================================================================
+DEBUG_METADATA | before_method_construction
+DEBUG_METADATA | after_method_construction
+DEBUG_METADATA | before_evaluation
+DEBUG_METADATA | after_evaluation
+
+================================================================================
+TTA TUNING | metadata | trial=1
+{'learning_rate': 0.0001, 'regularization': 0.0, 'gradient_clip': 0.1, 'normalized_aux_loss_threshold': 0.0, 'episodic_pre_prediction': True}
+================================================================================
+DEBUG_METADATA | before_method_construction
+DEBUG_METADATA | after_method_construction
+DEBUG_METADATA | before_evaluation
+DEBUG_METADATA | after_evaluation
+
+================================================================================
+TTA TUNING | metadata | trial=2
+{'learning_rate': 0.001, 'regularization': 0.0, 'gradient_clip': 0.1, 'normalized_aux_loss_threshold': 0.0, 'episodic_pre_prediction': True}
+================================================================================
+DEBUG_METADATA | before_method_construction
+DEBUG_METADATA | after_method_construction
+DEBUG_METADATA | before_evaluation
+DEBUG_METADATA | after_evaluation

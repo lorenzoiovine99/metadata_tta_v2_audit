@@ -1,4 +1,3 @@
-
 # Metadata TTA — Current Pipeline, Reproduction and Status
 
 ## 1. Scope
