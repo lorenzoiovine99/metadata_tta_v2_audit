@@ -35,6 +35,8 @@ from metadata_tta.results import (
 from metadata_tta.training import (
     TrainingSchedule,
     build_training_schedule,
+    initialize_double_from_single,
+    train_aux_head_only,
     train_double_head,
     train_single_head,
 )
@@ -93,15 +95,6 @@ def _train_source_models_with_yearly_id(
         first_year.X_supervised.shape[1]
     )
 
-    single_needed = (
-        config.baseline_enabled(
-            "single_head"
-        )
-        or config.method_enabled(
-            "tent"
-        )
-    )
-
     double_needed = (
         config.baseline_enabled(
             "double_head"
@@ -113,6 +106,16 @@ def _train_source_models_with_yearly_id(
         )
     )
 
+    single_needed = (
+        config.baseline_enabled(
+            "single_head"
+        )
+        or config.method_enabled(
+            "tent"
+        )
+        or double_needed
+    )
+
     single_model = (
         _build_single_model(
             input_dim=input_dim,
@@ -122,25 +125,16 @@ def _train_source_models_with_yearly_id(
         else None
     )
 
-    double_model = (
-        _build_double_model(
-            input_dim=input_dim,
-            config=config,
-        ).to(device)
-        if double_needed
-        else None
-    )
+    # The double model is built only AFTER the complete
+    # single-head source trajectory has finished.
+    double_model: nn.Module | None = None
+
+    # Reset RNG after architecture-specific model construction.
+    # Final runs are executed one model family at a time, so this
+    # makes source-training randomness independent of model init.
+    set_seed(config.seed)
 
     single_optimizer = None
-    double_optimizer = None
-
-    aux_loss_weight = float(
-        config.get(
-            "training",
-            "double_head",
-            "aux_loss_weight",
-        )
-    )
 
     id_records: list[
         EvaluationRecord
@@ -165,16 +159,6 @@ def _train_source_models_with_yearly_id(
                     initialized_from_previous
                 ),
                 model_kind="single_head",
-            )
-        )
-
-        double_schedule = (
-            build_training_schedule(
-                config=config,
-                initialized_from_previous=(
-                    initialized_from_previous
-                ),
-                model_kind="double_head",
             )
         )
 
@@ -259,81 +243,167 @@ def _train_source_models_with_yearly_id(
                     )
                 )
 
-        # ====================================================
-        # DOUBLE HEAD
-        # ====================================================
+    # ========================================================
+    # AUX-ONLY DOUBLE FROM FINAL SINGLE SOURCE MODEL
+    # ========================================================
 
-        if double_model is not None:
+    if double_needed:
 
-            result = train_double_head(
-                model=double_model,
-
-                X=(
-                    year_data.X_supervised
-                ),
-
-                y_main=(
-                    year_data.y_main_supervised
-                ),
-
-                y_aux=(
-                    year_data.y_aux_supervised
-                ),
-
-                schedule=double_schedule,
-
-                aux_loss_weight=(
-                    aux_loss_weight
-                ),
-
-                device=device,
-
-                optimizer=double_optimizer,
-
-                X_validation=(
-                    year_data.X_validation
-                ),
-
-                y_main_validation=(
-                    year_data.y_main_validation
-                ),
-
-                y_aux_validation=(
-                    year_data.y_aux_validation
-                ),
-
-                log_prefix=(
-                    f"Source {year_data.year} | "
-                    "Double Head"
-                ),
+        if single_model is None:
+            raise RuntimeError(
+                "Aux-only double requires a trained "
+                "single-head source model."
             )
 
-            double_model = (
-                result.model
+        set_seed(config.seed)
+
+        double_model = (
+            _build_double_model(
+                input_dim=input_dim,
+                config=config,
+            )
+            .to(device)
+        )
+
+        double_model = initialize_double_from_single(
+            single_model=single_model,
+            double_model=double_model,
+        )
+
+        # Pool ONLY source supervised/validation data.
+        X_aux_train = np.concatenate(
+            [
+                year_data.X_supervised
+                for year_data
+                in protocol_data.source_years
+            ],
+            axis=0,
+        )
+
+        y_aux_train = np.concatenate(
+            [
+                year_data.y_aux_supervised
+                for year_data
+                in protocol_data.source_years
+            ],
+            axis=0,
+        )
+
+        X_aux_validation = np.concatenate(
+            [
+                year_data.X_validation
+                for year_data
+                in protocol_data.source_years
+            ],
+            axis=0,
+        )
+
+        y_aux_validation = np.concatenate(
+            [
+                year_data.y_aux_validation
+                for year_data
+                in protocol_data.source_years
+            ],
+            axis=0,
+        )
+
+        aux_schedule = build_training_schedule(
+            config=config,
+            initialized_from_previous=False,
+            model_kind="double_head",
+        )
+
+        # If early stopping is disabled, setting patience larger
+        # than the total number of epochs prevents early stopping.
+        aux_patience = (
+            aux_schedule.early_stopping_patience
+            if aux_schedule.early_stopping_enabled
+            else aux_schedule.epochs + 1
+        )
+
+        set_seed(config.seed)
+
+        double_model = train_aux_head_only(
+            model=double_model,
+            X=X_aux_train,
+            y_aux=y_aux_train,
+            X_validation=X_aux_validation,
+            y_aux_validation=y_aux_validation,
+            learning_rate=aux_schedule.learning_rate,
+            weight_decay=aux_schedule.weight_decay,
+            batch_size=aux_schedule.batch_size,
+            epochs=aux_schedule.epochs,
+            patience=aux_patience,
+            min_delta=(
+                aux_schedule.early_stopping_min_delta
+            ),
+            device=device,
+            log_prefix="Source | AUX-ONLY DOUBLE",
+        )
+
+    # ========================================================
+    # AUX-ONLY MAIN-PATH SANITY CHECK
+    # ========================================================
+
+    if (
+        single_model is not None
+        and double_model is not None
+    ):
+
+        single_model.eval()
+        double_model.eval()
+
+        # OOD features only: no OOD labels are inspected here.
+        sanity_X = torch.as_tensor(
+            protocol_data.ood_years[0].X_test[:256],
+            dtype=torch.float32,
+            device=device,
+        )
+
+        with torch.no_grad():
+
+            single_logits = single_model(
+                sanity_X
             )
 
-            double_optimizer = (
-                result.optimizer
+            double_logits = double_model(
+                sanity_X
             )
 
-            if config.baseline_enabled(
-                "double_head"
-            ):
+        max_abs_diff = float(
+            (
+                single_logits
+                - double_logits
+            )
+            .abs()
+            .max()
+            .item()
+        )
 
-                id_records.append(
-                    evaluate_frozen_year(
-                        model=double_model,
-                        X=year_data.X_id,
-                        y_main=(
-                            year_data.y_main_id
-                        ),
-                        year=year_data.year,
-                        method_name=(
-                            "double_head_frozen"
-                        ),
-                        device=device,
-                    )
-                )
+        predictions_equal = bool(
+            torch.equal(
+                single_logits.argmax(dim=1),
+                double_logits.argmax(dim=1),
+            )
+        )
+
+        print(
+            "FINAL_AUX_ONLY_MAIN_SANITY | "
+            f"max_abs_logit_diff={max_abs_diff:.12e} | "
+            f"predictions_equal={predictions_equal}"
+        )
+
+        if max_abs_diff > 1.0e-7:
+            raise RuntimeError(
+                "Aux-only double changed the copied "
+                "single-head main path."
+            )
+
+        if not predictions_equal:
+            raise RuntimeError(
+                "Aux-only double predictions differ "
+                "from single-head predictions."
+            )
 
     if single_model is not None:
         single_model.eval()
@@ -799,6 +869,14 @@ def run_eval_stream_tas(
         config.as_dict()
     )
 
+    metadata_pre_prediction_episodic = bool(
+        config.method_enabled("metadata")
+        and config.section("metadata").get(
+            "episodic_pre_prediction",
+            False,
+        )
+    )
+
     writer.write_manifest(
         {
             "experiment":
@@ -829,10 +907,18 @@ def run_eval_stream_tas(
                 ),
 
             "tta_order":
-                "predict_then_update",
+                (
+                    "metadata_update_then_predict"
+                    if metadata_pre_prediction_episodic
+                    else "predict_then_update"
+                ),
 
             "tta_state":
-                "carries_across_ood_years",
+                (
+                    "reset_to_source_each_sample"
+                    if metadata_pre_prediction_episodic
+                    else "carries_across_ood_years"
+                ),
 
             "supervised_reference_policy":
                 "single_continual_trajectory_across_ood_years",

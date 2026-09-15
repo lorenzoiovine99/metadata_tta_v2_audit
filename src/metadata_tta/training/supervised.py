@@ -440,6 +440,363 @@ def create_double_head_model(
         ),
     )
 
+def initialize_double_from_single(
+    *,
+    single_model: SingleHeadClassifier,
+    double_model: DoubleHeadClassifier,
+) -> DoubleHeadClassifier:
+    """
+    Copy the complete main-task path from an already trained
+    single-head model into a double-head model.
+
+    The auxiliary head remains at its own initialization.
+    """
+
+    single_state = single_model.state_dict()
+    double_state = double_model.state_dict()
+
+    transferable_state = {}
+
+    for key, value in single_state.items():
+
+        if key not in double_state:
+            raise RuntimeError(
+                "Single-to-double initialization failed: "
+                f"missing target key {key!r}."
+            )
+
+        if (
+            double_state[key].shape
+            != value.shape
+        ):
+            raise RuntimeError(
+                "Single-to-double initialization failed: "
+                f"shape mismatch for {key!r}: "
+                f"{tuple(value.shape)} vs "
+                f"{tuple(double_state[key].shape)}."
+            )
+
+        transferable_state[key] = (
+            value.detach().clone()
+        )
+
+    incompatible = (
+        double_model.load_state_dict(
+            transferable_state,
+            strict=False,
+        )
+    )
+
+    expected_missing = {
+        "aux_head.weight",
+        "aux_head.bias",
+    }
+
+    if (
+        set(incompatible.missing_keys)
+        != expected_missing
+    ):
+        raise RuntimeError(
+            "Unexpected missing keys during "
+            "single-to-double initialization: "
+            f"{incompatible.missing_keys}."
+        )
+
+    if incompatible.unexpected_keys:
+        raise RuntimeError(
+            "Unexpected keys during "
+            "single-to-double initialization: "
+            f"{incompatible.unexpected_keys}."
+        )
+
+    return double_model
+
+def train_aux_head_only(
+    *,
+    model: DoubleHeadClassifier,
+    X: np.ndarray,
+    y_aux: np.ndarray,
+    X_validation: np.ndarray,
+    y_aux_validation: np.ndarray,
+    learning_rate: float,
+    weight_decay: float,
+    batch_size: int,
+    epochs: int,
+    patience: int,
+    min_delta: float,
+    device: torch.device,
+    log_prefix: str | None = None,
+) -> DoubleHeadClassifier:
+    """
+    Train ONLY the auxiliary head.
+
+    The complete main-task path remains frozen and in eval mode,
+    so its parameters, BatchNorm statistics and dropout behaviour
+    cannot change.
+    """
+
+    X = np.asarray(
+        X,
+        dtype=np.float32,
+    )
+    y_aux = np.asarray(
+        y_aux,
+        dtype=np.int64,
+    )
+
+    X_validation = np.asarray(
+        X_validation,
+        dtype=np.float32,
+    )
+    y_aux_validation = np.asarray(
+        y_aux_validation,
+        dtype=np.int64,
+    )
+
+    model = model.to(device)
+
+    # --------------------------------------------------------
+    # Freeze the complete model, then enable aux head only.
+    # --------------------------------------------------------
+
+    for parameter in model.parameters():
+        parameter.requires_grad_(False)
+
+    for parameter in model.aux_head.parameters():
+        parameter.requires_grad_(True)
+
+    # Keep backbone / BatchNorm / Dropout deterministic.
+    model.eval()
+    model.aux_head.train()
+
+    optimizer = Adam(
+        model.aux_head.parameters(),
+        lr=float(learning_rate),
+        weight_decay=float(weight_decay),
+    )
+
+    criterion = nn.CrossEntropyLoss()
+
+    train_dataset = TensorDataset(
+        torch.as_tensor(
+            X,
+            dtype=torch.float32,
+        ),
+        torch.as_tensor(
+            y_aux,
+            dtype=torch.long,
+        ),
+    )
+
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=int(batch_size),
+        shuffle=True,
+        drop_last=False,
+    )
+
+    validation_dataset = TensorDataset(
+        torch.as_tensor(
+            X_validation,
+            dtype=torch.float32,
+        ),
+        torch.as_tensor(
+            y_aux_validation,
+            dtype=torch.long,
+        ),
+    )
+
+    validation_loader = DataLoader(
+        validation_dataset,
+        batch_size=int(batch_size),
+        shuffle=False,
+        drop_last=False,
+    )
+
+    best_validation_loss = float("inf")
+    best_aux_state = copy.deepcopy(
+        model.aux_head.state_dict()
+    )
+
+    epochs_without_improvement = 0
+
+    prefix = (
+        f"[{log_prefix}] "
+        if log_prefix
+        else ""
+    )
+
+    for epoch_index in range(int(epochs)):
+
+        epoch = epoch_index + 1
+
+        model.eval()
+        model.aux_head.train()
+
+        total_train_loss = 0.0
+        total_train_samples = 0
+
+        for (
+            batch_X,
+            batch_aux,
+        ) in train_loader:
+
+            batch_X = batch_X.to(device)
+            batch_aux = batch_aux.to(device)
+
+            optimizer.zero_grad(
+                set_to_none=True
+            )
+
+            # Frozen deterministic representation.
+            with torch.no_grad():
+                shared = (
+                    model.extract_shared_features(
+                        batch_X
+                    )
+                )
+
+            aux_logits = model.aux_head(
+                shared
+            )
+
+            loss = criterion(
+                aux_logits,
+                batch_aux,
+            )
+
+            loss.backward()
+            optimizer.step()
+
+            batch_n = int(
+                len(batch_X)
+            )
+
+            total_train_loss += (
+                float(loss.detach().item())
+                * batch_n
+            )
+
+            total_train_samples += batch_n
+
+        train_loss = (
+            total_train_loss
+            / max(
+                total_train_samples,
+                1,
+            )
+        )
+
+        # ----------------------------------------------------
+        # AUX VALIDATION
+        # ----------------------------------------------------
+
+        model.eval()
+
+        total_validation_loss = 0.0
+        total_validation_samples = 0
+
+        with torch.no_grad():
+
+            for (
+                batch_X,
+                batch_aux,
+            ) in validation_loader:
+
+                batch_X = batch_X.to(device)
+                batch_aux = batch_aux.to(device)
+
+                shared = (
+                    model.extract_shared_features(
+                        batch_X
+                    )
+                )
+
+                aux_logits = model.aux_head(
+                    shared
+                )
+
+                loss = criterion(
+                    aux_logits,
+                    batch_aux,
+                )
+
+                batch_n = int(
+                    len(batch_X)
+                )
+
+                total_validation_loss += (
+                    float(loss.item())
+                    * batch_n
+                )
+
+                total_validation_samples += batch_n
+
+        validation_loss = (
+            total_validation_loss
+            / max(
+                total_validation_samples,
+                1,
+            )
+        )
+
+        improved = (
+            validation_loss
+            < (
+                best_validation_loss
+                - float(min_delta)
+            )
+        )
+
+        if improved:
+
+            best_validation_loss = (
+                validation_loss
+            )
+
+            best_aux_state = copy.deepcopy(
+                model.aux_head.state_dict()
+            )
+
+            epochs_without_improvement = 0
+
+        else:
+
+            epochs_without_improvement += 1
+
+        print(
+            f"{prefix}"
+            f"aux-only epoch {epoch}/{epochs} | "
+            f"train_aux_loss={train_loss:.6f} | "
+            f"val_aux_loss={validation_loss:.6f} | "
+            f"best_val_aux_loss="
+            f"{best_validation_loss:.6f}"
+        )
+
+        if (
+            epochs_without_improvement
+            >= int(patience)
+        ):
+
+            print(
+                f"{prefix}"
+                f"AUX-ONLY EARLY STOP "
+                f"at epoch {epoch}"
+            )
+
+            break
+
+    model.aux_head.load_state_dict(
+        best_aux_state
+    )
+
+    # Restore gradients for later TTA configuration.
+    for parameter in model.parameters():
+        parameter.requires_grad_(True)
+
+    model.eval()
+
+    return model
 
 # ============================================================
 # OPTIMIZER

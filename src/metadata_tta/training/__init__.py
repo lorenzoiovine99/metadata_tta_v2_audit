@@ -9,6 +9,8 @@ from .supervised import (
     set_optimizer_learning_rate,
     train_double_head,
     train_single_head,
+    initialize_double_from_single,
+    train_aux_head_only,
 )
 
 
@@ -23,4 +25,6 @@ __all__ = [
     "train_single_head",
     "train_double_head",
     "get_aux_loss_weight",
+    "initialize_double_from_single",
+    "train_aux_head_only",
 ]

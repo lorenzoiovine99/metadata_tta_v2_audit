@@ -280,6 +280,57 @@ class MetadataTTA(
             lr=self.learning_rate,
         )
 
+    def reset_online_adapter_to_source(
+        self,
+    ) -> None:
+        """
+        Lightweight episodic reset.
+
+        Restore only the online_adapter parameters to their
+        frozen source values. The rest of the model is already
+        frozen and never changes during Metadata TTA, so there
+        is no need to reload the complete model state_dict.
+        """
+
+        if len(self.trainable_parameters) != len(
+            self.source_parameter_values
+        ):
+            raise RuntimeError(
+                "Mismatch between trainable adapter parameters "
+                "and stored source adapter parameters."
+            )
+
+        with torch.no_grad():
+
+            for (
+                parameter,
+                source_value,
+            ) in zip(
+                self.trainable_parameters,
+                self.source_parameter_values,
+            ):
+
+                parameter.copy_(
+                    source_value
+                )
+
+                parameter.grad = None
+
+        # Same semantics as a fresh Adam optimizer for the next
+        # one-step episodic update, without reallocating it.
+        self.optimizer.zero_grad(
+            set_to_none=True
+        )
+
+        self.optimizer.state.clear()
+
+        self._number_of_observations = 0
+        self._number_of_updates = 0
+
+        self._reset_method_stats()
+
+        self.model.eval()
+
     # ========================================================
     # RESET
     # ========================================================

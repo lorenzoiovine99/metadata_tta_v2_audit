@@ -1,6 +1,6 @@
-base_config: configs/fmow_eval_stream_tas.yaml
+base_config: configs/huffpost_eval_stream_tas.yaml
 
-output_root: results/tuning/fmow
+output_root: results/tuning/huffpost
 
 
 # ============================================================
@@ -16,23 +16,25 @@ baseline:
   # ----------------------------------------------------------
 
   single_head:
-    enabled: false
+    enabled: true
     search_strategy: grid
 
-    start_year: 2002
-    end_year: 2012
+    start_year: 2012
+    end_year: 2015
 
     space:
 
       learning_rate:
         values:
-          - 0.001
+          - 3.0e-4
+          - 1.0e-3
         paths:
           - training.single_head.learning_rate
 
       weight_decay:
         values:
           - 0.0
+          - 1.0e-4
         paths:
           - training.single_head.weight_decay
 
@@ -45,6 +47,7 @@ baseline:
       shared_hidden_dim:
         values:
           - 256
+          - 512
         paths:
           - model.single_head.shared_hidden_dim
 
@@ -63,11 +66,11 @@ baseline:
   # ----------------------------------------------------------
 
   double_head:
-    enabled: true
+    enabled: false
     search_strategy: grid
 
-    start_year: 2002
-    end_year: 2012
+    start_year: 2012
+    end_year: 2015
 
     inherits_from: single_head
 
@@ -106,12 +109,12 @@ baseline:
 
 tta:
 
-  # 2002-2008 = pseudo-source
+  # 1930-1966 = pseudo-source
   #
-  # 2009 -> 2010 -> 2011 -> 2012
-  # = continuous pseudo-OOD stream
+  # 1967 -> 1968 -> 1969 -> 1970
+  # = pseudo-OOD temporal stream
 
-  stream_start_year: 2009
+  stream_start_year: 2015
 
   methods:
 
@@ -130,6 +133,11 @@ tta:
 
         learning_rate:
           values:
+            - 1.0e-6
+            - 3.0e-6
+            - 1.0e-5
+            - 3.0e-5
+            - 1.0e-4
             - 3.0e-4
           paths:
             - metadata.learning_rate

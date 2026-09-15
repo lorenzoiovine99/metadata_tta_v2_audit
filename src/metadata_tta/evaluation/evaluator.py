@@ -143,6 +143,82 @@ def _samplewise_tta_predictions(
         dtype=np.int64,
     )
 
+def _samplewise_metadata_pre_prediction_episodic_predictions(
+    method: TTAMethod,
+    X: np.ndarray,
+    y_aux: np.ndarray,
+) -> np.ndarray:
+    """
+    Episodic metadata adaptation with metadata available
+    before the main-task prediction:
+
+        reset to source
+        observe metadata_t / update on x_t
+        predict x_t
+        discard adapted state at next sample
+
+    No main-task labels are used for adaptation.
+    """
+
+    predictions: list[int] = []
+
+    for index in range(len(X)):
+
+        x = X[index]
+
+        auxiliary_label = int(
+            y_aux[index]
+        )
+
+        # --------------------------------------------
+        # 1. RESET ONLINE ADAPTER TO SOURCE
+        # --------------------------------------------
+
+        reset_online_adapter = getattr(
+            method,
+            "reset_online_adapter_to_source",
+            None,
+        )
+
+        if reset_online_adapter is None:
+            raise TypeError(
+                "Episodic pre-prediction Metadata TTA requires "
+                "reset_online_adapter_to_source()."
+            )
+
+        reset_online_adapter()
+
+        # --------------------------------------------
+        # 2. ADAPT USING CURRENT SAMPLE METADATA
+        # --------------------------------------------
+
+        method.observe(
+            x=x,
+            y_aux=auxiliary_label,
+        )
+
+        # --------------------------------------------
+        # 3. PREDICT CURRENT SAMPLE
+        # --------------------------------------------
+
+        logits = method.predict_logits(
+            x
+        )
+
+        prediction = int(
+            logits.argmax(
+                dim=1
+            )[0].item()
+        )
+
+        predictions.append(
+            prediction
+        )
+
+    return np.asarray(
+        predictions,
+        dtype=np.int64,
+    )
 
 def _tent_batch_ranges(
     n_samples: int,
@@ -346,6 +422,24 @@ def evaluate_tta_year(
             _batchwise_tta_predictions(
                 method=method,
                 X=X,
+            )
+        )
+
+    elif (
+        method.method_name == "metadata"
+        and bool(
+            method.config.get(
+                "episodic_pre_prediction",
+                False,
+            )
+        )
+    ):
+
+        predictions = (
+            _samplewise_metadata_pre_prediction_episodic_predictions(
+                method=method,
+                X=X,
+                y_aux=y_aux,
             )
         )
 

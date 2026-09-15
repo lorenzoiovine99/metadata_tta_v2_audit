@@ -201,6 +201,10 @@ def _run_single_trial(
         .to(device)
     )
 
+    # Reset RNG after model construction so training randomness
+    # is independent of architecture-specific parameter initialization.
+    set_seed(config.seed)
+
     optimizer = None
 
     accuracies: dict[
@@ -314,6 +318,10 @@ def _run_double_trial(
         .to(device)
     )
 
+    # Reset RNG after model construction so training randomness
+    # matches the single-head baseline.
+    set_seed(config.seed)
+
     optimizer = None
 
     aux_loss_weight = (
@@ -416,6 +424,86 @@ def _run_double_trial(
                 ),
                 device=device,
             )
+        )
+
+        # ----------------------------------------------------
+        # Auxiliary-head diagnostic.
+        # Measure whether metadata is actually learnable.
+        # This does NOT affect training or model selection.
+        # ----------------------------------------------------
+
+        was_training = model.training
+        model.eval()
+
+        def _aux_metrics(X_eval, y_aux_eval):
+            X_tensor = torch.as_tensor(
+                X_eval,
+                dtype=torch.float32,
+                device=device,
+            )
+            y_tensor = torch.as_tensor(
+                y_aux_eval,
+                dtype=torch.long,
+                device=device,
+            )
+
+            with torch.no_grad():
+                _, aux_logits = model.forward_both(X_tensor)
+
+                aux_loss = torch.nn.functional.cross_entropy(
+                    aux_logits,
+                    y_tensor,
+                )
+
+                aux_predictions = aux_logits.argmax(dim=1)
+
+                aux_accuracy = (
+                    aux_predictions == y_tensor
+                ).float().mean()
+
+                counts = torch.bincount(y_tensor)
+                majority_accuracy = (
+                    counts.max().float()
+                    / max(len(y_tensor), 1)
+                )
+
+            return (
+                float(aux_loss.item()),
+                float(aux_accuracy.item()),
+                float(majority_accuracy.item()),
+            )
+
+        (
+            train_aux_loss,
+            train_aux_accuracy,
+            train_aux_majority,
+        ) = _aux_metrics(
+            X_train,
+            y_aux_train,
+        )
+
+        (
+            val_aux_loss,
+            val_aux_accuracy,
+            val_aux_majority,
+        ) = _aux_metrics(
+            X_validation,
+            y_aux_validation,
+        )
+
+        if was_training:
+            model.train()
+
+        print(
+            "AUX_DIAG | "
+            f"year={year} | "
+            f"aux_weight={aux_loss_weight:.6g} | "
+            f"train_acc={train_aux_accuracy:.6f} | "
+            f"train_loss={train_aux_loss:.6f} | "
+            f"train_majority={train_aux_majority:.6f} | "
+            f"val_acc={val_aux_accuracy:.6f} | "
+            f"val_loss={val_aux_loss:.6f} | "
+            f"val_majority={val_aux_majority:.6f}"
         )
 
         accuracies[
