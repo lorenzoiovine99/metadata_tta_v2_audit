@@ -630,7 +630,7 @@ class ExperimentConfig:
         )
 
         # ========================================================
-        # DOUBLE HEAD
+        # DOUBLE HEAD / AUX-HEAD-ONLY TRAINING
         # ========================================================
 
         double_head = section.get(
@@ -645,9 +645,48 @@ class ExperimentConfig:
                 "training.double_head must be a mapping."
             )
 
-        self._require_non_negative_number(
+        # The double-head model is no longer jointly trained with
+        # main_loss + aux_loss_weight * aux_loss.
+        #
+        # It is initialized from the trained single-head model and
+        # only its auxiliary head is optimized. Therefore
+        # aux_loss_weight is no longer part of the configuration.
+        #
+        # These parameters are optional because aux-head-only
+        # training falls back to training.base when they are absent.
+
+        if "learning_rate" in double_head:
+            self._require_positive_number(
+                double_head,
+                "learning_rate",
+                "training.double_head",
+            )
+
+        if "weight_decay" in double_head:
+            self._require_non_negative_number(
+                double_head,
+                "weight_decay",
+                "training.double_head",
+            )
+
+        if "batch_size" in double_head:
+            self._require_integer(
+                double_head,
+                "batch_size",
+                "training.double_head",
+                minimum=1,
+            )
+
+        if "epochs" in double_head:
+            self._require_integer(
+                double_head,
+                "epochs",
+                "training.double_head",
+                minimum=1,
+            )
+
+        self._validate_early_stopping(
             double_head,
-            "aux_loss_weight",
             "training.double_head",
         )
 

@@ -78,12 +78,13 @@ training:
 
 baselines:
   single_head: true
+  double_head: false
 
 methods:
   metadata: true
-  temporal_gradient: true
-  consensus: true
-  tent: true
+  temporal_gradient: false
+  consensus: false
+  tent: false
   experimental: false
 
 metadata:

@@ -36,11 +36,11 @@ model:
   use_shared_trunk: true
 
   single_head:
-    shared_hidden_dim: 256
+    shared_hidden_dim: 512   
     dropout: 0.1
 
   double_head:
-    shared_hidden_dim: 256
+    shared_hidden_dim: 512  
     dropout: 0.1
 
 training:
@@ -56,8 +56,8 @@ training:
       min_delta: 0.0001
 
   single_head:
-    learning_rate: 0.001
-    weight_decay: 0.0
+    learning_rate: 0.0003    
+    weight_decay: 0.0001   
     batch_size: 32
 
   double_head:
@@ -78,6 +78,7 @@ training:
 
 baselines:
   single_head: true
+  double_head: false
 
 methods:
   metadata: true

@@ -21,7 +21,7 @@ dataset:
 protocol:
   name: eval_stream_tas
 
-  source_start_year: 1930s
+  source_start_year: 1930
   source_end_year: 1970
   ood_start_year: 1971
   ood_end_year: 2013
@@ -78,6 +78,7 @@ training:
 
 baselines:
   single_head: true
+  double_head: false
 
 methods:
   metadata: true

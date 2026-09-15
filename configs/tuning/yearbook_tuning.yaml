@@ -1,11 +1,20 @@
 base_config: configs/yearbook_eval_stream_tas.yaml
 
-output_root: results/tuning/yearbook
+output_root: results/tuning_final/yearbook
 
 
 # ============================================================
-# BASELINE TUNING
+# SUPERVISED SINGLE-HEAD TUNING
 # ============================================================
+#
+# Clean temporal split:
+#   1930-1966 -> supervised hyperparameter selection
+#   1967-1970 -> pseudo-OOD for Metadata TTA tuning
+#
+# Real OOD:
+#   1971-2013
+# ============================================================
+
 
 baseline:
 
@@ -20,7 +29,7 @@ baseline:
     search_strategy: grid
 
     start_year: 1930
-    end_year: 1970
+    end_year: 1966
 
     space:
 
@@ -31,18 +40,20 @@ baseline:
         paths:
           - training.single_head.learning_rate
 
+      temporal_learning_rate:
+        values:
+          - 3.0e-5
+          - 1.0e-4
+          - 3.0e-4
+        paths:
+          - training.temporal.learning_rate
+
       weight_decay:
         values:
           - 0.0
           - 1.0e-4
         paths:
           - training.single_head.weight_decay
-
-      dropout:
-        values:
-          - 0.1
-        paths:
-          - model.single_head.dropout
 
       shared_hidden_dim:
         values:
@@ -51,68 +62,19 @@ baseline:
         paths:
           - model.single_head.shared_hidden_dim
 
-      batch_size:
-        values:
-          - 32
-        paths:
-          - training.single_head.batch_size
-
-
-  # ----------------------------------------------------------
-  # STAGE 2
-  #
-  # Start from best single-head common hyperparameters.
-  # Tune ONLY the additional double-head parameter.
-  # ----------------------------------------------------------
-
-  double_head:
-    enabled: false
-    search_strategy: grid
-
-    start_year: 2002
-    end_year: 2012
-
-    inherits_from: single_head
-
-    # Logical single-head best parameter
-    #        ↓
-    # corresponding double-head config path
-    inherit_parameters:
-
-      learning_rate:
-        - training.double_head.learning_rate
-
-      weight_decay:
-        - training.double_head.weight_decay
-
-      dropout:
-        - model.double_head.dropout
-
-      shared_hidden_dim:
-        - model.double_head.shared_hidden_dim
-
-      batch_size:
-        - training.double_head.batch_size
-
-    space:
-
-      aux_loss_weight:
-        values:
-          - 0.1
-        paths:
-          - training.double_head.aux_loss_weight
-
 
 # ============================================================
-# TTA TUNING
+# METADATA TTA TUNING
+# ============================================================
+#
+# Pseudo-source:
+#   1930-1966
+#
+# Pseudo-OOD:
+#   1967-1970
 # ============================================================
 
 tta:
-
-  # 1930-1966 = pseudo-source
-  #
-  # 1967 -> 1968 -> 1969 -> 1970
-  # = pseudo-OOD temporal stream
 
   stream_start_year: 1967
 
@@ -137,33 +99,19 @@ tta:
             - 3.0e-6
             - 1.0e-5
             - 3.0e-5
+            - 1.0e-4
+            - 3.0e-4
+            - 1.0e-3
           paths:
             - metadata.learning_rate
-
-        regularization:
-          values:
-            - 0.0
-          paths:
-            - metadata.regularization
-
-        gradient_clip:
-          values:
-            - 0.1
-          paths:
-            - metadata.gradient_clip
 
         normalized_aux_loss_threshold:
           values:
             - 0.0
+            - 0.5
+            - 1.0
           paths:
             - metadata.normalized_aux_loss_threshold
-
-        episodic_pre_prediction:
-          values:
-            - true
-          paths:
-            - metadata.episodic_pre_prediction
-
 
     # --------------------------------------------------------
     # STAGE 4

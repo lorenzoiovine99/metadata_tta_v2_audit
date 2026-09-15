@@ -1,10 +1,17 @@
 base_config: configs/fmow_eval_stream_tas.yaml
 
-output_root: results/tuning/fmow
+output_root: results/tuning_final/fmow
 
 
 # ============================================================
-# BASELINE TUNING
+# SUPERVISED SINGLE-HEAD TUNING
+# ============================================================
+#
+# Clean temporal split:
+#   2002-2008 -> supervised hyperparameter selection
+#   2009-2012 -> pseudo-OOD for Metadata TTA tuning
+#
+# The real OOD years 2013-2017 are never touched here.
 # ============================================================
 
 baseline:
@@ -16,100 +23,62 @@ baseline:
   # ----------------------------------------------------------
 
   single_head:
-    enabled: false
-    search_strategy: grid
-
-    start_year: 2002
-    end_year: 2012
-
-    space:
-
-      learning_rate:
-        values:
-          - 0.001
-        paths:
-          - training.single_head.learning_rate
-
-      weight_decay:
-        values:
-          - 0.0
-        paths:
-          - training.single_head.weight_decay
-
-      dropout:
-        values:
-          - 0.1
-        paths:
-          - model.single_head.dropout
-
-      shared_hidden_dim:
-        values:
-          - 256
-        paths:
-          - model.single_head.shared_hidden_dim
-
-      batch_size:
-        values:
-          - 32
-        paths:
-          - training.single_head.batch_size
-
-
-  # ----------------------------------------------------------
-  # STAGE 2
-  #
-  # Start from best single-head common hyperparameters.
-  # Tune ONLY the additional double-head parameter.
-  # ----------------------------------------------------------
-
-  double_head:
     enabled: true
     search_strategy: grid
 
     start_year: 2002
-    end_year: 2012
-
-    inherits_from: single_head
-
-    # Logical single-head best parameter
-    #        ↓
-    # corresponding double-head config path
-    inherit_parameters:
-
-      learning_rate:
-        - training.double_head.learning_rate
-
-      weight_decay:
-        - training.double_head.weight_decay
-
-      dropout:
-        - model.double_head.dropout
-
-      shared_hidden_dim:
-        - model.double_head.shared_hidden_dim
-
-      batch_size:
-        - training.double_head.batch_size
+    end_year: 2008
 
     space:
 
-      aux_loss_weight:
+      learning_rate:
         values:
-          - 0.1
+          - 3.0e-4
+          - 1.0e-3
         paths:
-          - training.double_head.aux_loss_weight
+          - training.single_head.learning_rate
 
+      temporal_learning_rate:
+        values:
+          - 3.0e-5
+          - 1.0e-4
+          - 3.0e-4
+        paths:
+          - training.temporal.learning_rate
+
+      weight_decay:
+        values:
+          - 0.0
+          - 1.0e-4
+        paths:
+          - training.single_head.weight_decay
+
+      shared_hidden_dim:
+        values:
+          - 256
+          - 512
+        paths:
+          - model.single_head.shared_hidden_dim
 
 # ============================================================
-# TTA TUNING
+# METADATA TTA TUNING
+# ============================================================
+#
+# Pseudo-source:
+#   2002-2008
+#
+# Pseudo-OOD:
+#   2009-2012
+#
+# Fixed protocol parameters come from the base config:
+#   batch_size = 1
+#   regularization = 0
+#   gradient_clip = 0.1
+#   steps = 1
+#   episodic_pre_prediction = true
 # ============================================================
 
 tta:
-
-  # 2002-2008 = pseudo-source
-  #
-  # 2009 -> 2010 -> 2011 -> 2012
-  # = continuous pseudo-OOD stream
 
   stream_start_year: 2009
 
@@ -130,34 +99,23 @@ tta:
 
         learning_rate:
           values:
+            - 1.0e-6
+            - 3.0e-6
+            - 1.0e-5
+            - 3.0e-5
+            - 1.0e-4
             - 3.0e-4
+            - 1.0e-3
           paths:
             - metadata.learning_rate
-
-        regularization:
-          values:
-            - 0.0
-          paths:
-            - metadata.regularization
-
-        gradient_clip:
-          values:
-            - 0.1
-          paths:
-            - metadata.gradient_clip
 
         normalized_aux_loss_threshold:
           values:
             - 0.0
+            - 0.5
+            - 1.0
           paths:
             - metadata.normalized_aux_loss_threshold
-
-        episodic_pre_prediction:
-          values:
-            - true
-          paths:
-            - metadata.episodic_pre_prediction
-
 
     # --------------------------------------------------------
     # STAGE 4

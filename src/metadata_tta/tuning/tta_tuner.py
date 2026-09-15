@@ -1852,6 +1852,33 @@ def tune_tta(
             f"{single_best}"
         )
 
+    single_best_result = load_best_result(
+        single_best
+    )
+
+    baseline_years = (
+        single_best_result
+        .get("extra", {})
+        .get("years", [])
+    )
+
+    if not baseline_years:
+        raise ValueError(
+            "Single-head best.yaml does not record tuning years."
+        )
+
+    leaking_years = [
+        int(year)
+        for year in baseline_years
+        if int(year) >= stream_start
+    ]
+
+    if leaking_years:
+        raise ValueError(
+            "Temporal leakage: single-head tuning used years "
+            f"inside the pseudo-OOD TTA stream: {leaking_years}"
+        )
+
     single_config = (
         _load_baseline_config(
             base_config=base_config,
