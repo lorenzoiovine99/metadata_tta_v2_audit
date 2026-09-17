@@ -1,0 +1,78 @@
+base_config: configs/yearbook_eval_stream_tas.yaml
+
+output_root: results/tuning_final/yearbook
+
+
+baseline:
+
+  single_head:
+    enabled: false
+
+
+tta:
+
+  stream_start_year: 1967
+
+  methods:
+
+    metadata:
+      enabled: false
+
+
+    temporal_gradient:
+      enabled: true
+      search_strategy: grid
+
+      inherits_from: metadata
+
+      inherit_parameters:
+
+        normalized_aux_loss_threshold:
+          - temporal_gradient.normalized_aux_loss_threshold
+
+      space:
+
+        learning_rate:
+          values:
+            - 1.0e-7
+            - 3.0e-7
+            - 1.0e-6
+          paths:
+            - temporal_gradient.learning_rate
+
+        regularization:
+          values:
+            - 0.0
+          paths:
+            - temporal_gradient.regularization
+
+        beta:
+          values:
+            - 0.90
+            - 0.95
+            - 0.99
+          paths:
+            - temporal_gradient.beta
+
+        orthogonal_scale:
+          values:
+            - 0.0
+            - 0.25
+            - 0.50
+            - 0.75
+            - 1.0
+          paths:
+            - temporal_gradient.orthogonal_scale
+
+        warmup_updates:
+          values:
+            - 16
+          paths:
+            - temporal_gradient.warmup_updates
+
+
+    consensus:
+      enabled: false
+
+    tent:
+      enabled: false

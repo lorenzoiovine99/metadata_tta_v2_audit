@@ -1,0 +1,64 @@
+base_config: configs/yearbook_eval_stream_tas.yaml
+
+output_root: results/tuning_final/yearbook
+
+baseline:
+
+  single_head:
+    enabled: false
+
+tta:
+
+  stream_start_year: 1967
+
+  methods:
+
+    metadata:
+      enabled: false
+
+    temporal_gradient:
+      enabled: false
+
+    consensus:
+      enabled: false
+
+    tent:
+      enabled: true
+      search_strategy: grid
+
+      space:
+
+        learning_rate:
+          values:
+            - 1.0e-7
+            - 3.0e-7
+            - 1.0e-6
+            - 3.0e-6
+            - 1.0e-5
+            - 3.0e-5
+            - 1.0e-4
+            - 3.0e-4
+            - 1.0e-3
+            - 3.0e-3
+          paths:
+            - tent.learning_rate
+
+        batch_size:
+          values:
+            - 16
+            - 32
+            - 64
+          paths:
+            - tent.batch_size
+
+        weight_decay:
+          values:
+            - 0.0
+          paths:
+            - tent.weight_decay
+
+        steps:
+          values:
+            - 1
+          paths:
+            - tent.steps

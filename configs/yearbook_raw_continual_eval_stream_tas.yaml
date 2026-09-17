@@ -1,94 +1,77 @@
 experiment:
-  name: yearbook_eval_stream_tas
+  name: yearbook_raw_continual_eval_stream_tas
   seed: 42
-
 paths:
-  data_root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal Distribution Shift/moco_embedding/yearbook_embeddings_csv_encoded
+  data_root: /Users/lorenzoiovine/Library/CloudStorage/OneDrive-PolitecnicodiMilano/Lavoro/Lavori/Temporal
+    Distribution Shift/moco_embedding/yearbook_embeddings_csv_encoded
   results_root: results
   artifacts_root: artifacts
   cache_root: .cache
-
 dataset:
   name: yearbook
   n_classes_main: 2
   n_classes_aux: 23
-
   split:
-    test_size: 0.20
+    test_size: 0.2
     validation_size_within_train: 0.125
     seed: 42
-
 protocol:
   name: eval_stream_tas
-
   source_start_year: 1930
   source_end_year: 1970
   ood_start_year: 1971
   ood_end_year: 2013
-
 pca:
   enabled: false
-
 model:
   shared_hidden_dim: 512
   adapter_bottleneck_dim: 64
   dropout: 0.1
   use_shared_trunk: true
-
   single_head:
     shared_hidden_dim: 256
     dropout: 0.1
-
   double_head:
     shared_hidden_dim: 256
     dropout: 0.1
-
 training:
   base:
     learning_rate: 0.001
     weight_decay: 0.0001
     epochs: 50
     batch_size: 64
-
     early_stopping:
       enabled: true
       patience: 5
       min_delta: 0.0001
-
   single_head:
     learning_rate: 0.0003
-    weight_decay: 0.0001
+    weight_decay: 0.0
     batch_size: 32
-
   double_head:
     learning_rate: 0.001
     weight_decay: 0.0
     batch_size: 32
-
   temporal:
     enabled: true
     learning_rate: 0.0001
     epochs: 50
     reset_optimizer_each_year: false
-
     early_stopping:
       enabled: true
       patience: 5
       min_delta: 0.0001
-
 baselines:
   single_head: true
   double_head: false
-
 methods:
-  metadata: true
-  temporal_gradient: false
+  metadata: false
+  temporal_gradient: true
   consensus: false
   tent: false
   experimental: false
-
 metadata:
-  learning_rate: 1.0e-5
+  learning_rate: 1.0e-05
   batch_size: 1
   regularization: 0.0
   gradient_clip: 0.1
@@ -97,38 +80,38 @@ metadata:
   episodic: false
   episodic_pre_prediction: true
   reset_each_year: false
-
 temporal_gradient:
-  learning_rate: 1.0e-6
+  learning_rate: 1.0e-7
   batch_size: 1
-  regularization: 0.01
+
+  regularization: 0.0
   gradient_clip: 0.1
-  normalized_aux_loss_threshold: 0.5
+
+  normalized_aux_loss_threshold: 0.0
+
   steps: 1
+
   beta: 0.95
-  orthogonal_scale: 0.1
+  orthogonal_scale: 1.0
   warmup_updates: 16
-  epsilon: 1.0e-12
-  reset_each_year: false
 
+  reset_each_year: false
+  epsilon: 1.0e-12
 consensus:
-  learning_rate: 1.0e-6
+  learning_rate: 1.0e-06
   batch_size: 1
   regularization: 0.01
   gradient_clip: 0.1
   normalized_aux_loss_threshold: 0.5
   steps: 1
-
   consensus_beta: 0.95
   class_warmup_updates: 4
-  current_gradient_weight: 0.50
-  memory_gradient_weight: 0.50
+  current_gradient_weight: 0.5
+  memory_gradient_weight: 0.5
   preserve_gradient_norm: true
   min_consensus_cosine: 0.0
   epsilon: 1.0e-12
-
   reset_each_year: false
-
 tent:
   optimizer: adam
   learning_rate: 0.001
@@ -136,11 +119,9 @@ tent:
   batch_size: 64
   steps: 1
   reset_each_year: false
-
 cache:
   enabled: true
   version: v2
-
 output:
   save_diagnostics: true
   save_plots: true

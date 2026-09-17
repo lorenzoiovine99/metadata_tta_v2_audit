@@ -766,6 +766,12 @@ def run_eval_stream_tas(
         )
     )
 
+    temporal_gradient_pre_prediction = bool(
+        config.method_enabled(
+            "temporal_gradient"
+        )
+    )
+
     writer.write_manifest(
         {
             "experiment":
@@ -797,17 +803,54 @@ def run_eval_stream_tas(
 
             "tta_order":
                 (
-                    "metadata_update_then_predict"
-                    if metadata_pre_prediction_episodic
-                    else "predict_then_update"
+                    "method_specific"
+                    if (
+                        metadata_pre_prediction_episodic
+                        and temporal_gradient_pre_prediction
+                    )
+                    else (
+                        "metadata_update_then_predict"
+                        if (
+                            metadata_pre_prediction_episodic
+                            or temporal_gradient_pre_prediction
+                        )
+                        else "predict_then_update"
+                    )
                 ),
 
             "tta_state":
                 (
+                    "method_specific"
+                    if (
+                        metadata_pre_prediction_episodic
+                        and temporal_gradient_pre_prediction
+                    )
+                    else (
+                        "reset_to_source_each_sample"
+                        if metadata_pre_prediction_episodic
+                        else "carries_across_ood_years"
+                    )
+                ),
+
+            "tta_order_by_method": {
+                "metadata": (
+                    "update_then_predict"
+                    if metadata_pre_prediction_episodic
+                    else "predict_then_update"
+                ),
+                "temporal_gradient":
+                    "update_then_predict",
+            },
+
+            "tta_state_by_method": {
+                "metadata": (
                     "reset_to_source_each_sample"
                     if metadata_pre_prediction_episodic
                     else "carries_across_ood_years"
                 ),
+                "temporal_gradient":
+                    "carries_across_ood_years",
+            },
 
             "supervised_reference_policy":
                 "single_continual_trajectory_across_ood_years",

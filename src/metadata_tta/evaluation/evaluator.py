@@ -220,6 +220,67 @@ def _samplewise_metadata_pre_prediction_episodic_predictions(
         dtype=np.int64,
     )
 
+def _samplewise_pre_prediction_continual_predictions(
+    method: TTAMethod,
+    X: np.ndarray,
+    y_aux: np.ndarray,
+) -> np.ndarray:
+    """
+    Continual sample-wise TTA with metadata available before
+    the main-task prediction:
+
+        observe metadata_t / update on x_t
+        predict x_t
+        carry adapted model state to t+1
+
+    Unlike episodic Metadata TTA, the model is NOT reset to
+    the source checkpoint between samples.
+
+    No main-task labels are used for adaptation.
+    """
+
+    predictions: list[int] = []
+
+    for index in range(len(X)):
+
+        x = X[index]
+
+        auxiliary_label = int(
+            y_aux[index]
+        )
+
+        # ----------------------------------------------------
+        # 1. ADAPT USING CURRENT SAMPLE METADATA
+        # ----------------------------------------------------
+
+        method.observe(
+            x=x,
+            y_aux=auxiliary_label,
+        )
+
+        # ----------------------------------------------------
+        # 2. PREDICT CURRENT SAMPLE AFTER ADAPTATION
+        # ----------------------------------------------------
+
+        logits = method.predict_logits(
+            x
+        )
+
+        prediction = int(
+            logits.argmax(
+                dim=1
+            )[0].item()
+        )
+
+        predictions.append(
+            prediction
+        )
+
+    return np.asarray(
+        predictions,
+        dtype=np.int64,
+    )
+
 def _tent_batch_ranges(
     n_samples: int,
     batch_size: int,
@@ -437,6 +498,16 @@ def evaluate_tta_year(
 
         predictions = (
             _samplewise_metadata_pre_prediction_episodic_predictions(
+                method=method,
+                X=X,
+                y_aux=y_aux,
+            )
+        )
+
+    elif method.method_name == "temporal_gradient":
+
+        predictions = (
+            _samplewise_pre_prediction_continual_predictions(
                 method=method,
                 X=X,
                 y_aux=y_aux,

@@ -1,0 +1,88 @@
+base_config: configs/fmow_eval_stream_tas.yaml
+
+# IMPORTANT:
+# Same output root of the completed FMoW tuning.
+# We reuse:
+#   baselines/single_head/best.yaml
+#   tta/metadata/best.yaml
+output_root: results/tuning_final/fmow
+
+
+baseline:
+
+  single_head:
+    enabled: false
+
+
+tta:
+
+  stream_start_year: 2009
+
+  methods:
+
+    # Already tuned.
+    # Disabled so the 21 Metadata trials are NOT repeated.
+    metadata:
+      enabled: false
+
+
+    temporal_gradient:
+      enabled: true
+      search_strategy: grid
+
+      # We inherit ONLY the Metadata gate.
+      # For FMoW this is threshold = 0.0.
+      inherits_from: metadata
+
+      inherit_parameters:
+
+        normalized_aux_loss_threshold:
+          - temporal_gradient.normalized_aux_loss_threshold
+
+      space:
+
+        learning_rate:
+          values:
+            - 1.0e-7
+            - 3.0e-7
+            - 1.0e-6
+            - 3.0e-6
+            - 1.0e-5
+            - 3.0e-5
+          paths:
+            - temporal_gradient.learning_rate
+
+        regularization:
+          values:
+            - 1.0
+          paths:
+            - temporal_gradient.regularization
+
+        beta:
+          values:
+            - 0.95
+          paths:
+            - temporal_gradient.beta
+
+        orthogonal_scale:
+          values:
+            - 0.0
+            - 0.25
+            - 0.50
+            - 0.75
+            - 1.0
+          paths:
+            - temporal_gradient.orthogonal_scale
+
+        warmup_updates:
+          values:
+            - 16
+          paths:
+            - temporal_gradient.warmup_updates
+
+
+    consensus:
+      enabled: false
+
+    tent:
+      enabled: false
